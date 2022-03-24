@@ -28,8 +28,9 @@ public class PistolFire : MonoBehaviour
             Bullet bullet = Instantiate(bulletPrefab);
             bullet.transform.parent = transform;
             bullet.transform.localPosition = new Vector3(0,0,1f);
+            bullet.transform.localRotation = Quaternion.Euler(90,0,0);
             bullet.transform.parent = null;
-            bullet.SetDir(cam.transform.forward);
+            bullet.SetDir(cam.transform.forward.normalized);
             fireTimer = fireCooldown;
         }
         fireTimer -= Time.deltaTime;
