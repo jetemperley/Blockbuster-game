@@ -138,7 +138,7 @@ Mesh:
     topology: 0
     baseVertex: 0
     firstVertex: 0
-    vertexCount: 18
+    vertexCount: 13
     localAABB:
       m_Center: {x: -0.6, y: 0.5, z: -0.000000029802322}
       m_Extent: {x: 0.6, y: 0.5, z: 0.6928203}
@@ -158,10 +158,10 @@ Mesh:
   m_KeepVertices: 1
   m_KeepIndices: 1
   m_IndexFormat: 0
-  m_IndexBuffer: 02000100000003000400050008000700060009000a000b000e000d000c000f0010001100
+  m_IndexBuffer: 0000010002000300040005000600070008000400090005000a000b000c00090003000500
   m_VertexData:
     serializedVersion: 3
-    m_VertexCount: 18
+    m_VertexCount: 13
     m_Channels:
     - stream: 0
       offset: 0
@@ -219,8 +219,8 @@ Mesh:
       offset: 0
       format: 0
       dimension: 0
-    m_DataSize: 864
-    _typelessdata: 000000000000000000000000a6b0ed3eeb26be3e7ad84d3fd8b35dbf000000000000003f000080bf00000000000000009a9999bf00000000ac5c313fa6b0ed3eeb26be3e7ad84d3fd8b35dbf000000000000003f000080bfac5cb13f88bc8132cdcc4cbf0000803f00000000a6b0ed3eeb26be3e7ad84d3fd8b35dbf000000000000003f000080bfac5c313f37dc893f00000000000000000000000000000000000080bf00000000000080bf0000000000000000000080bf00000000000000009a9999bf00000000ac5c313f00000000000080bf00000000000080bf0000000000000000000080bf9a99993fac5c313fcdcc4cbf000000000000000000000000000080bf00000000000080bf0000000000000000000080bfcdcc4c3f000000009a9999bf00000000ac5c313fa6b06dbfeb26be3ebb89abb389c0b83300000000000080bf000080bf0000000000000000999999bf00000000ad5c31bfa6b06dbfeb26be3ebb89abb389c0b83300000000000080bf000080bfac5cb13f88bc8132cdcc4cbf0000803f00000000a6b06dbfeb26be3ebb89abb389c0b83300000000000080bf000080bfac5c313f37dc893f9a9999bf00000000ac5c313f00000000000080bf00000000000080bf0000000000000000000080bf9a99993fac5c313f999999bf00000000ad5c31bf00000000000080bf00000000000080bf0000000000000000000080bf9999993fad5c31bfcdcc4cbf000000000000000000000000000080bf00000000000080bf0000000000000000000080bfcdcc4c3f00000000999999bf00000000ad5c31bfa7b0ed3eed26be3e79d84dbfd7b35d3f000000000100003f000080bf0000000000000000000000000000000000000000a7b0ed3eed26be3e79d84dbfd7b35d3f000000000100003f000080bfac5cb13f88bc8132cdcc4cbf0000803f00000000a7b0ed3eed26be3e79d84dbfd7b35d3f000000000100003f000080bfac5c313f37dc893f999999bf00000000ad5c31bf00000000000080bf00000000000080bf0000000000000000000080bf9999993fad5c31bf00000000000000000000000000000000000080bf00000000000080bf0000000000000000000080bf0000000000000000cdcc4cbf000000000000000000000000000080bf00000000000080bf0000000000000000000080bfcdcc4c3f00000000
+    m_DataSize: 624
+    _typelessdata: cdcc4cbf0000803f00000000a6b0ed3eeb26be3e7ad84d3fd8b35dbf000000000000003f000080bfac5c313f37dc893f9a9999bf00000000ac5c313fa6b0ed3eeb26be3e7ad84d3fd8b35dbf000000000000003f000080bfac5cb13f88bc8132000000000000000000000000a6b0ed3eeb26be3e7ad84d3fd8b35dbf000000000000003f000080bf000000000000000000000000000000000000000000000000000080bf00000000000080bf0000000000000000000080bf00000000000000009a9999bf00000000ac5c313f00000000000080bf00000000000080bf0000000000000000000080bf9a99993fac5c313fcdcc4cbf000000000000000000000000000080bf00000000000080bf0000000000000000000080bfcdcc4c3f00000000cdcc4cbf0000803f00000000a6b06dbfeb26be3ebb89abb389c0b83300000000000080bf000080bfac5c313f37dc893f999999bf00000000ad5c31bfa6b06dbfeb26be3ebb89abb389c0b83300000000000080bf000080bfac5cb13f88bc81329a9999bf00000000ac5c313fa6b06dbfeb26be3ebb89abb389c0b83300000000000080bf000080bf0000000000000000999999bf00000000ad5c31bf00000000000080bf00000000000080bf0000000000000000000080bf9999993fad5c31bfcdcc4cbf0000803f00000000a7b0ed3eed26be3e79d84dbfd7b35d3f000000000100003f000080bfac5c313f37dc893f000000000000000000000000a7b0ed3eed26be3e79d84dbfd7b35d3f000000000100003f000080bfac5cb13f88bc8132999999bf00000000ad5c31bfa7b0ed3eed26be3e79d84dbfd7b35d3f000000000100003f000080bf0000000000000000
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -1376,6 +1376,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1941630713}
+    - target: {fileID: 138515592473097219, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
+      propertyPath: m_VersionIndex
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 784198904724275320, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1424,10 +1428,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1662234460}
+    - target: {fileID: 1017204740994466485, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
+      propertyPath: m_VersionIndex
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1663782661039531107, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1956945640}
+    - target: {fileID: 1663782661039531107, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
+      propertyPath: m_VersionIndex
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2088420766721104211, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1460,6 +1472,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 132464848}
+    - target: {fileID: 3951279002118228656, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4024770682406775852, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1488,6 +1504,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 702382104}
+    - target: {fileID: 6116712757025481355, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
+      propertyPath: m_VersionIndex
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6666125524823244840, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1504,10 +1524,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 790002193}
+    - target: {fileID: 7297476362486656689, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
+      propertyPath: m_VersionIndex
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7665654690158848714, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 185711583}
+    - target: {fileID: 7665654690158848714, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
+      propertyPath: m_VersionIndex
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7864938710876818450, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
       propertyPath: m_Mesh
       value: 
