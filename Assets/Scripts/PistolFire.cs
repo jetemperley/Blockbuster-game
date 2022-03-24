@@ -7,7 +7,9 @@ public class PistolFire : MonoBehaviour
     public Camera cam;
     public Bullet bulletPrefab;
     public float fireCooldown; //seconds
-    AudioSource audioData;
+
+    private AudioSource audioData;
+    private Animator animator;
 
     private float fireTimer; //seconds
     // Start is called before the first frame update
@@ -16,6 +18,7 @@ public class PistolFire : MonoBehaviour
         fireTimer = 0f;
         audioData = GetComponent<AudioSource>();
         audioData.Stop();
+        animator = GetComponent<Animator>();
         
     }
 
@@ -25,6 +28,7 @@ public class PistolFire : MonoBehaviour
         if (Input.GetButtonDown("Fire1")&& fireTimer <=0)
         {
             audioData.Play(0);
+            animator.SetTrigger("Shoot");
             Bullet bullet = Instantiate(bulletPrefab);
             bullet.transform.parent = transform;
             bullet.transform.localPosition = new Vector3(0,0,1f);
