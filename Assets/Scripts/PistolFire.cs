@@ -11,6 +11,8 @@ public class PistolFire : MonoBehaviour
     private AudioSource audioData;
     private Animator animator;
 
+    public GameObject spawnPoint;
+
     private float fireTimer; //seconds
     // Start is called before the first frame update
     void Start()
@@ -30,11 +32,11 @@ public class PistolFire : MonoBehaviour
             audioData.Play(0);
             animator.SetTrigger("Shoot");
             Bullet bullet = Instantiate(bulletPrefab);
-            bullet.transform.parent = transform;
-            bullet.transform.localPosition = new Vector3(0,0,1f);
+            bullet.transform.parent = spawnPoint.transform;
+            bullet.transform.localPosition = new Vector3(0,0,0);
             bullet.transform.localRotation = Quaternion.Euler(90,0,0);
             bullet.transform.parent = null;
-            bullet.SetDir(cam.transform.forward.normalized);
+            bullet.SetDir(cam.transform.forward);
             fireTimer = fireCooldown;
         }
         fireTimer -= Time.deltaTime;

@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour
     private Rigidbody rb;
     private Vector3 pos;
     private Vector3 dir;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +21,13 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.MovePosition(transform.position + dir*bulletSpeed*Time.deltaTime);
+        
+    }
+
+    void FixedUpdate(){
+        rb.MovePosition(transform.position + dir*bulletSpeed*Time.fixedDeltaTime);
         if(bulletLifeSpan>0){
-            bulletLifeSpan-=Time.deltaTime;
+            bulletLifeSpan-=Time.fixedDeltaTime;
         }else{
             Destroy(this.gameObject);
         }
