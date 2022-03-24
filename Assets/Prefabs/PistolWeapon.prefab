@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b46f48ea78025d49914cd07a6800241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
-  fireCooldown: 0
+  bulletPrefab: {fileID: 574378370519593902, guid: 47afac7a68da64c4fa30d1963d8ac8df, type: 3}
+  fireCooldown: 0.2
 --- !u!82 &3280152473651015344
 AudioSource:
   m_ObjectHideFlags: 0
@@ -58,7 +58,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9b6f859923d28c84792da8f2b48f7f83, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 46dae70a4aa70054a9056ffe19f90a68, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
