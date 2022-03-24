@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PistolFire : MonoBehaviour
 {
+    public Camera cam;
     public Bullet bulletPrefab;
     public float fireCooldown; //seconds
     AudioSource audioData;
@@ -28,6 +29,7 @@ public class PistolFire : MonoBehaviour
             bullet.transform.parent = transform;
             bullet.transform.localPosition = new Vector3(0,0,1f);
             bullet.transform.parent = null;
+            bullet.SetDir(cam.transform.forward);
             fireTimer = fireCooldown;
         }
         fireTimer -= Time.deltaTime;

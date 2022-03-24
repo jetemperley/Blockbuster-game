@@ -12,17 +12,21 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dir = new Vector3(0f,1f,0);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(dir*(bulletSpeed*Time.deltaTime));
+        transform.Translate(dir*bulletSpeed*Time.deltaTime);
         if(bulletLifeSpan>0){
             bulletLifeSpan-=Time.deltaTime;
         }else{
             Destroy(this.gameObject);
         }
+    }
+
+    public void SetDir(Vector3 direction){
+        dir = direction;
     }
 }
