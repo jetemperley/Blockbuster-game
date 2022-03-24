@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8138416137130166494}
   - component: {fileID: 8138416137130166495}
-  - component: {fileID: 7765016439362469198}
   - component: {fileID: 6972951998146608889}
   - component: {fileID: 8138416137130166488}
   - component: {fileID: 8138416137130166489}
   - component: {fileID: 8138416137130166490}
+  - component: {fileID: 6682842372040629020}
   - component: {fileID: 4425760284782899824}
   m_Layer: 0
   m_Name: testTarget
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8138416137130166491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 1, z: 10}
+  m_LocalPosition: {x: -6, y: 1, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -268,19 +268,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!114 &7765016439362469198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8138416137130166491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43bcd28aee4af7e4a942b8b3e0ea764b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
 --- !u!114 &6972951998146608889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +346,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &6682842372040629020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8138416137130166491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbdc7c8f4eceb6d45bdb4cdfa70fd36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
 --- !u!54 &4425760284782899824
 Rigidbody:
   m_ObjectHideFlags: 0
