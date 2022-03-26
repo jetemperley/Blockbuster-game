@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 3294631579894791622}
   - component: {fileID: 7620756760937662222}
   - component: {fileID: 3280152473651015344}
+  - component: {fileID: 1756320859917237386}
   m_Layer: 0
   m_Name: PistolWeapon
   m_TagString: Untagged
@@ -178,6 +179,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1756320859917237386
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5772489915001041824}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 123bcb5970f70d34da8dc3666e87a98f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6843402825624189095
 PrefabInstance:
   m_ObjectHideFlags: 0

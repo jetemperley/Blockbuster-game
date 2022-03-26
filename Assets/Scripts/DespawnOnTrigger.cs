@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Despawner : MonoBehaviour
+public class DespawnOnTrigger : MonoBehaviour
 {
-
-    public float zLimit = -10;
-    public bool lessThan = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +13,11 @@ public class Despawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lessThan == transform.position.z < -10)
-            Destroy(gameObject);
+        
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        Destroy(other.gameObject);
+        Debug.Log("despawned " + other.gameObject.name);
     }
 }
