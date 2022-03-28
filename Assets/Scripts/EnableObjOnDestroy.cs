@@ -20,7 +20,8 @@ public class EnableObjOnDestroy : MonoBehaviour
     }
 
     void OnDestroy(){
-        toEnable.SetActive(true);
+        if (toEnable != null)
+            toEnable.SetActive(true);
         Instantiate(obj);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
