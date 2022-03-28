@@ -30,7 +30,7 @@ public class PistolFire : MonoBehaviour
         if (Input.GetButtonDown("Fire1")&& fireTimer <=0)
         {
             audioData.Play(0);
-            animator.SetTrigger("Shoot");
+            animator.SetBool("Shooting", true);
             Bullet bullet = Instantiate(bulletPrefab);
             bullet.transform.parent = spawnPoint.transform;
             bullet.transform.localPosition = new Vector3(0,0,0);
@@ -39,6 +39,11 @@ public class PistolFire : MonoBehaviour
             bullet.SetDir(cam.transform.forward);
             fireTimer = fireCooldown;
         }
+        else
+        {
+            animator.SetBool("Shooting", false);
+        }
+
         fireTimer -= Time.deltaTime;
     }
 }
