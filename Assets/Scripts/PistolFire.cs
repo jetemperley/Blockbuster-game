@@ -39,6 +39,7 @@ public class PistolFire : MonoBehaviour
             bullet.SetDir(cam.transform.forward);
             fireTimer = fireCooldown;
         }
+
         fireTimer -= Time.deltaTime;
     }
 }
