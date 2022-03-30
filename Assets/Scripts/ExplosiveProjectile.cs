@@ -10,6 +10,7 @@ public class ExplosiveProjectile : MonoBehaviour
     private Rigidbody rb;
     private Vector3 pos;
     private Vector3 dir;
+    public Vector3 offset;
 
 
     // Start is called before the first frame update
@@ -29,7 +30,7 @@ public class ExplosiveProjectile : MonoBehaviour
     }
 
     public void SetDir(Vector3 direction){
-        dir = direction + new Vector3(-0.05f,0.5f,0);
+        dir = direction + offset;
         //dir = Vector3.Normalize(dir);
     }
 }

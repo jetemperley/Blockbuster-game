@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7366928546268620948}
   m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.7071079}
   m_LocalPosition: {x: -0.023878098, y: 1.5515311, z: -35.77478}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -112,8 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d6ae1be0682804f9563a7be03101fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileForce: 25
+  projectileForce: 700
   projectileLifeSpan: 0
+  offset: {x: -0.05, y: 0.15, z: 0}
 --- !u!54 &8808771237002366976
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -122,7 +123,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7366928546268620948}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
