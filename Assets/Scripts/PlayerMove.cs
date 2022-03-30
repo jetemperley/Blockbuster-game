@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+
     public float walkingSpeed = 7.5f;
     //public float runningSpeed = 11.5f;
     public float dashSpeed = 50.0f;
@@ -24,6 +25,7 @@ public class PlayerMove : MonoBehaviour
 
     [HideInInspector]
     public bool canMove = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -104,5 +106,13 @@ public class PlayerMove : MonoBehaviour
         }
 
         canMove = true;
+    }
+
+    void OnCollisionEnter (Collision collisionInfo){
+        if(collisionInfo.collider.tag == "CompleteLevel"){
+            FindObjectOfType<GameManager>().CompleteLevel();
+            
+        }
+
     }
 }
