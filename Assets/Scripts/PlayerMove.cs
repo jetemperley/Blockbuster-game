@@ -109,10 +109,12 @@ public class PlayerMove : MonoBehaviour
     }
 
     void OnCollisionEnter (Collision collisionInfo){
-        if(collisionInfo.collider.tag == "CompleteLevel"){
-            FindObjectOfType<GameManager>().CompleteLevel();
-            
-        }
+        if(collisionInfo.collider.tag == "Enemy"){
 
+            Debug.Log("i've collided with an enemy!");
+            FindObjectOfType<GameManager>().EndGame();  
+        }
     }
+
+
 }
