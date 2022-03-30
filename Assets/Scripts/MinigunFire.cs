@@ -32,6 +32,7 @@ public class MinigunFire : MonoBehaviour
         {
             //audioData.Play(0);
             animator.SetTrigger("Shoot");
+            animator.SetBool("Shooting",true);
             Bullet bullet = Instantiate(bulletPrefab);
             bullet.transform.parent = spawnPoint.transform;
             bullet.transform.localPosition = Vector3.zero;
@@ -39,6 +40,9 @@ public class MinigunFire : MonoBehaviour
             bullet.transform.parent = null;
             bullet.SetDir(cam.transform.forward + new Vector3(0.01f+Random.Range(fireRadius,-fireRadius),0.01f+Random.Range(fireRadius,-fireRadius),0));
             fireTimer = fireCooldown;
+        }else if(!Input.GetButton("Fire1"))
+        {
+            animator.SetBool("Shooting",false);
         }
 
         fireTimer -= Time.deltaTime;
