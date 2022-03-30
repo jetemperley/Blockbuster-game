@@ -105,4 +105,8 @@ public class PlayerMove : MonoBehaviour
 
         canMove = true;
     }
+
+    void OnCollisionEnter(Collision other) {
+        Debug.Log(other.gameObject.name);    
+    }
 }

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 
-public class HealthChildBreak : Health
+public class HealthParticles : Health
 {
 
+    public ParticleSystem particlesOnDeath;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,18 +28,7 @@ public class HealthChildBreak : Health
         currentHealth -= dam;
 
         if (currentHealth <= 0) {
-            for (int i = 0; i < transform.childCount; i++){
-                GameObject g = transform.GetChild(i).gameObject;
-                Rigidbody r = g.AddComponent<Rigidbody>();
-                g.AddComponent<Health>();
-                // r.AddExplosionForce(100, g.transform.position, 2);
-                r.useGravity = false;
-                g.transform.SetParent(null);
-                
-                Destroy(g, 2);
-                
-                    
-            }
+            particlesOnDeath.Play();
             
             Destroy(gameObject);
         }
