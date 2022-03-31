@@ -34,9 +34,10 @@ public class CannonFire : MonoBehaviour
             ExplosiveProjectile explosiveProjectile = Instantiate(explosiveProjectilePrefab);
             explosiveProjectile.transform.parent = spawnPoint.transform;
             explosiveProjectile.transform.localPosition = new Vector3(0,0,0);
-            explosiveProjectile.transform.localRotation = Quaternion.Euler(80,0,0);
+            explosiveProjectile.transform.localRotation = Quaternion.Euler(90,0,0);
             explosiveProjectile.transform.parent = null;
-            explosiveProjectile.SetDir(cam.transform.forward);
+            Rigidbody rb = explosiveProjectile.GetComponent<Rigidbody>();
+            rb.velocity = (cam.transform.forward+explosiveProjectile.offset)*explosiveProjectile.projectileVelocity;
             fireTimer = fireCooldown;
         }
 
