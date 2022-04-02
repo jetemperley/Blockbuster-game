@@ -20,8 +20,11 @@ public class CubeHomeBehaviour : MonoBehaviour
     }
 
     void FixedUpdate() {
+
         if (target == null)
             return;
+
+        
         rb.MovePosition( rb.position +
             (target.position - rb.position).normalized*moveSpeed*Time.fixedDeltaTime);
     }
