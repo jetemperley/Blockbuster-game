@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7587138900025003919}
   - component: {fileID: 8547807683775799938}
   - component: {fileID: 8808771237002366976}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ExplosiveProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7366928546268620948}
   m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.7071079}
   m_LocalPosition: {x: -0.023878098, y: 1.5515311, z: -35.77478}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileVelocity: 50
-  projectileLifeSpan: 0
+  explosiveRadius: 3
   offset: {x: 0, y: 0.05, z: 0}
 --- !u!54 &8808771237002366976
 Rigidbody:
@@ -130,4 +130,4 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 3
+  m_CollisionDetection: 2
