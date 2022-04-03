@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3674707126175088964}
   - component: {fileID: 3080516130614408277}
   - component: {fileID: 6864243240134421147}
+  - component: {fileID: 6758504871478698253}
   m_Layer: 0
   m_Name: PyramidEnemy
   m_TagString: Untagged
@@ -68,6 +69,21 @@ MonoBehaviour:
   projectile: {fileID: 4908726643756490345, guid: 1af70f223f13a8044ab6a499d54f8ee7, type: 3}
   projSpawnDist: 1.5
   projSpeed: 5
+--- !u!114 &6758504871478698253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552151754869459445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbdc7c8f4eceb6d45bdb4cdfa70fd36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  shield: {fileID: 0}
+  currentHealth: 1
 --- !u!1001 &2830225263574534712
 PrefabInstance:
   m_ObjectHideFlags: 0
