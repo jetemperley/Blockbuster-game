@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class CubeHomeBehaviour : MonoBehaviour
 {
-    public Transform target;
+    Transform target;
     Rigidbody rb;
     public float moveSpeed = 3;
+    public float maxLookDist = 10;
+    public string targetTag = "Player";
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        target = GameObject.FindGameObjectWithTag(targetTag).transform;
     }
 
     // Update is called once per frame
@@ -21,7 +24,7 @@ public class CubeHomeBehaviour : MonoBehaviour
 
     void FixedUpdate() {
 
-        if (target == null)
+        if (target == null || (target.position - transform.position).magnitude > maxLookDist)
             return;
 
         
