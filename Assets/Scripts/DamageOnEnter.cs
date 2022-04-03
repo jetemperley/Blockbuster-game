@@ -18,7 +18,7 @@ public class DamageOnEnter : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        Debug.Log(gameObject.name + " " + other.gameObject.name);
+//        Debug.Log(gameObject.name + " " + other.gameObject.name);
         if (other.gameObject.layer == gameObject.layer) {
             
             return;

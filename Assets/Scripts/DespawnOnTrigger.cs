@@ -18,6 +18,6 @@ public class DespawnOnTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         Destroy(other.gameObject);
-        Debug.Log("despawned " + other.gameObject.name);
+        //Debug.Log("despawned " + other.gameObject.name);
     }
 }
