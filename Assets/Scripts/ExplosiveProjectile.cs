@@ -26,18 +26,18 @@ public class ExplosiveProjectile : MonoBehaviour
         
     }
 
+    void FixedUpdate(){
+        rb.AddForce(new Vector3(0,1f,0) * 5f);
+    }
     void ExplosionDamage(Vector3 center, float radius)
     {
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         foreach(Collider hc in hitColliders){
             if(hc.gameObject.name != "Plane"){
                Destroy(hc.gameObject); 
-            }
-            
-        }
-        
-        Destroy(this.gameObject);
-       
+            }            
+        }        
+        Destroy(this.gameObject);       
     }
 
     void OnCollisionEnter(Collision collision)

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061508731737891201}
   m_LocalRotation: {x: -0, y: -0.07653711, z: -0, w: 0.99706674}
-  m_LocalPosition: {x: -0.22726393, y: 0.5360447, z: 1.8631333}
+  m_LocalPosition: {x: -0.049, y: 0.156, z: 1.09}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,7 +40,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4311856298354361029}
-  - component: {fileID: 4827404797255996574}
   m_Layer: 0
   m_Name: AOEgunWeapon
   m_TagString: Untagged
@@ -64,22 +63,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4827404797255996574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4311856298354361030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97ca11ab07afa5f47a372f9e27ab3662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  explosiveProjectilePrefab: {fileID: 8547807683775799938, guid: cf871699bc7bcb2448bbedc9b503d670, type: 3}
-  fireCooldown: 1
-  spawnPoint: {fileID: 2061508731737891201}
 --- !u!1001 &4311856297784859463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -413,3 +396,44 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2359253289722499879, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
   m_PrefabInstance: {fileID: 4311856297784859463}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6698394695975432354 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7431977365561322469, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
+  m_PrefabInstance: {fileID: 4311856297784859463}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5042228887924868339
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6698394695975432354}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2ed25a6796e08848aa3bffc074f075c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2616068328879433318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6698394695975432354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ca11ab07afa5f47a372f9e27ab3662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  explosiveProjectilePrefab: {fileID: 8547807683775799938, guid: cf871699bc7bcb2448bbedc9b503d670, type: 3}
+  fireCooldown: 1
+  spawnPoint: {fileID: 2061508731737891201}
