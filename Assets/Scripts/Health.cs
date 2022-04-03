@@ -6,7 +6,9 @@ public class Health : MonoBehaviour
 {
 
     public int maxHealth = 1;
-    private int currentHealth;
+
+    public Health shield;
+    public int currentHealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +18,27 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentHealth <= 0)
-            Destroy(gameObject);
+        
     }
 
-    public void addHealth(int add){
-        currentHealth += add;
+    public virtual void takeDamage(int dam){
+        if (shield != null) {
+            shield.takeDamage(dam);
+            return;
+        }
+        currentHealth -= dam;
+
+        if (currentHealth <= 0)
+            Destroy(gameObject);
+
+    }
+
+    int getHealth(){
+        return currentHealth;
+    }
+
+    public void Reset(){
+        currentHealth = maxHealth;
     }
 
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PistolFire : MonoBehaviour
 {
-    public Camera cam;
     public Bullet bulletPrefab;
     public float fireCooldown; //seconds
 
@@ -36,9 +35,10 @@ public class PistolFire : MonoBehaviour
             bullet.transform.localPosition = new Vector3(0,0,0);
             bullet.transform.localRotation = Quaternion.Euler(90,0,0);
             bullet.transform.parent = null;
-            bullet.SetDir(cam.transform.forward);
+            bullet.SetDir(spawnPoint.transform.forward);
             fireTimer = fireCooldown;
         }
+
         fireTimer -= Time.deltaTime;
     }
 }
