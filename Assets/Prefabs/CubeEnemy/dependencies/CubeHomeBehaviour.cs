@@ -31,4 +31,8 @@ public class CubeHomeBehaviour : MonoBehaviour
         rb.MovePosition( rb.position +
             (target.position - rb.position).normalized*moveSpeed*Time.fixedDeltaTime);
     }
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.DrawWireSphere(transform.position, maxLookDist);
+    }
 }

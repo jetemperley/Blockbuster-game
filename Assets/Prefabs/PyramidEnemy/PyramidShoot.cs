@@ -55,10 +55,11 @@ public class PyramidShoot : MonoBehaviour
     }
 
     private void OnDrawGizmos() {
-        Gizmos.DrawWireSphere(transform.position, projSpawnDist);
+        
     }
 
     private void OnDrawGizmosSelected() {
         Gizmos.DrawWireSphere(transform.position, maxLookDist);
+        Gizmos.DrawWireSphere(transform.position, projSpawnDist);
     }
 }
