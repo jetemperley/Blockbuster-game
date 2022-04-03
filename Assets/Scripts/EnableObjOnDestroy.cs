@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnableObjOnDestroy : MonoBehaviour
 {
 
-    public GameObject toEnable;
-    public GameObject obj;
+    public GameObject[] toEnable;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +19,9 @@ public class EnableObjOnDestroy : MonoBehaviour
     }
 
     void OnDestroy(){
-        if (toEnable != null)
-            toEnable.SetActive(true);
-        Instantiate(obj);
+        foreach (GameObject g in toEnable){
+            g.SetActive(true);
+        }
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
