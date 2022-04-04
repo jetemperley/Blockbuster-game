@@ -35,10 +35,14 @@ public class ExplosiveProjectile : MonoBehaviour
     {
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         foreach(Collider hc in hitColliders){
-              Health h = collision.gameObject.GetComponent<Health>();
-                if (h != null){
+              Rigidbody rb = hc.GetComponent<Collider>().attachedRigidbody;
+              if(rb != null){
+                  Health h = rb.gameObject.GetComponent<Health>();
+                  if (h != null){
                     h.takeDamage(damage); 
-                }         
+                } 
+              }
+                        
         }        
         Destroy(this.gameObject);       
     }
