@@ -31,16 +31,14 @@ public class ExplosiveProjectile : MonoBehaviour
         rb.AddForce(new Vector3(0,1f,0) * 5f);
     }
 
-    void ExplosionDamage(Vector3 center, float radius)
+    void ExplosionDamage(Collision collision, Vector3 center, float radius)
     {
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         foreach(Collider hc in hitColliders){
-               Debug.Log(hc.gameObject.transform.parent);
-               Health health = hc.gameObject.GetComponent<Health>();
-               //Debug.Log(health);
-               if(health != null){
-                   health.takeDamage(damage);
-               }           
+              Health h = collision.gameObject.GetComponent<Health>();
+                if (h != null){
+                    h.takeDamage(damage); 
+                }         
         }        
         Destroy(this.gameObject);       
     }
@@ -48,9 +46,11 @@ public class ExplosiveProjectile : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {        
         if(collision.gameObject.name != "Player" && collision.gameObject != this.gameObject){
-            ExplosionDamage(transform.position, explosiveRadius);
+            ExplosionDamage(collision, transform.position, explosiveRadius);
         }
         
     }
+
+
 
 }
