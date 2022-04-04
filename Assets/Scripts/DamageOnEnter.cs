@@ -18,8 +18,15 @@ public class DamageOnEnter : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
+        Debug.Log(gameObject.name + " and " + other.gameObject.name + " collided");
+        if (other.gameObject.layer == gameObject.layer) {
+            
+            return;
+        }
+            
         Health h = other.gameObject.GetComponent<Health>();
         if (h != null)
-            h.addHealth(-damage);
+            h.takeDamage(damage);
     }
+    
 }

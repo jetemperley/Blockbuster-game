@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DespawnOnTrigger : MonoBehaviour
+public class EnemyPool : MonoBehaviour
 {
+
+    List<GameObject> cubes;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +16,5 @@ public class DespawnOnTrigger : MonoBehaviour
     void Update()
     {
         
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        Destroy(other.gameObject);
-        //Debug.Log("despawned " + other.gameObject.name);
     }
 }
