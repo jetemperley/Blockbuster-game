@@ -6,6 +6,7 @@ public class ExplosiveProjectile : MonoBehaviour
 {
     public float projectileVelocity;
     public float explosiveRadius;
+    public int damage;
     public Vector3 offset;
 
     private Rigidbody rb;
@@ -29,13 +30,19 @@ public class ExplosiveProjectile : MonoBehaviour
     void FixedUpdate(){
         rb.AddForce(new Vector3(0,1f,0) * 5f);
     }
-    void ExplosionDamage(Vector3 center, float radius)
+
+    void ExplosionDamage(Collision collision, Vector3 center, float radius)
     {
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         foreach(Collider hc in hitColliders){
-            if(hc.gameObject.name != "Plane"){
-               Destroy(hc.gameObject); 
-            }            
+              Rigidbody rb = hc.GetComponent<Collider>().attachedRigidbody;
+              if(rb != null){
+                  Health h = rb.gameObject.GetComponent<Health>();
+                  if (h != null){
+                    h.takeDamage(damage); 
+                } 
+              }
+                        
         }        
         Destroy(this.gameObject);       
     }
@@ -43,10 +50,11 @@ public class ExplosiveProjectile : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {        
         if(collision.gameObject.name != "Player" && collision.gameObject != this.gameObject){
-            Debug.Log(collision.gameObject);
-            ExplosionDamage(transform.position, explosiveRadius);
+            ExplosionDamage(collision, transform.position, explosiveRadius);
         }
         
     }
+
+
 
 }

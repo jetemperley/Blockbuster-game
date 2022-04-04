@@ -27,9 +27,11 @@ public class Health : MonoBehaviour
             return;
         }
         currentHealth -= dam;
-
-        if (currentHealth <= 0)
+        Debug.Log(currentHealth);
+        if (currentHealth <= 0){
             Destroy(gameObject);
+        }
+
 
     }
 
