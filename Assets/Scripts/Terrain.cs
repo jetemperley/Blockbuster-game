@@ -24,7 +24,7 @@ public class Terrain : MonoBehaviour
 
         if (transform.position.z <= conductor.getBoundary())
         {
-            transform.position = new Vector3(Random.Range(-20.0f, 20.0f), transform.position.y, 60.0f);
+            Destroy(this.gameObject);
         }
     }
 }
