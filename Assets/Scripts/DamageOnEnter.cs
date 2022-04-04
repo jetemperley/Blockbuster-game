@@ -28,4 +28,5 @@ public class DamageOnEnter : MonoBehaviour
         if (h != null)
             h.takeDamage(damage);
     }
+    
 }
