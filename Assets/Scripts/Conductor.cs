@@ -5,9 +5,9 @@ using UnityEngine;
 //This is a singleton script that manages the speed of the terrain and enemies
 public class Conductor : MonoBehaviour
 {
-    private float levelSpeed = 10; //Level speed is the speed at which the level progresses (Flat value)
-    private float gameSpeed = 1; //Game speed is a multiplier for how things move overall (including actions)
-    private float boundary = -30; 
+    public float levelSpeed = 10; //Level speed is the speed at which the level progresses (Flat value)
+    public float gameSpeed = 1; //Game speed is a multiplier for how things move overall (including actions)
+    public float boundary = -30; 
 
     //Singleton stuff
     public static Conductor conductor;
