@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6973421837446795099}
   - component: {fileID: 2340632404463617864}
   - component: {fileID: 2148774913845191312}
-  - component: {fileID: 4486262138850467810}
+  - component: {fileID: 8574873970868257098}
   m_Layer: 9
   m_Name: Collider
   m_TagString: Player
@@ -64,7 +64,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &4486262138850467810
+--- !u!114 &8574873970868257098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,12 +73,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 69865883926401881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbdc7c8f4eceb6d45bdb4cdfa70fd36e, type: 3}
+  m_Script: {fileID: 11500000, guid: ee228a0c761e4164598a15d35d2aceef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
   shield: {fileID: 0}
-  currentHealth: 1
+  currentHealth: 0
+  playerRootObject: {fileID: 8655765040293387633}
 --- !u!1 &8655765040293387633
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +95,7 @@ GameObject:
   - component: {fileID: 8655765040293387634}
   - component: {fileID: 8655765040293387635}
   - component: {fileID: 8655765040293387632}
-  - component: {fileID: 5811457066022545139}
+  - component: {fileID: -7838612456918291130}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -236,7 +237,7 @@ MonoBehaviour:
   lookSpeed: 2
   lookXLimit: 45
   canMove: 1
---- !u!114 &5811457066022545139
+--- !u!114 &-7838612456918291130
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,12 +246,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8655765040293387633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbdc7c8f4eceb6d45bdb4cdfa70fd36e, type: 3}
+  m_Script: {fileID: 11500000, guid: ee228a0c761e4164598a15d35d2aceef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
   shield: {fileID: 0}
-  currentHealth: 0
+  currentHealth: 1
+  playerRootObject: {fileID: 0}
 --- !u!1001 &3101260158751837841
 PrefabInstance:
   m_ObjectHideFlags: 0
