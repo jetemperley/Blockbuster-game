@@ -889,6 +889,7 @@ GameObject:
   - component: {fileID: 7704829240282886675}
   - component: {fileID: 5598648006682944282}
   - component: {fileID: 3681065085275450319}
+  - component: {fileID: 2162656761230680261}
   m_Layer: 11
   m_Name: DiamondEnemy
   m_TagString: Untagged
@@ -944,6 +945,18 @@ MonoBehaviour:
   maxHealth: 1
   shield: {fileID: 0}
   currentHealth: 1
+--- !u!114 &2162656761230680261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082738556797881112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 395eaf78f3ca57143accda14ff329417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4522163663795424636
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void Restart (){
+    public void Restart (){
         //reload scene. gives me an error idk how to fix
-        //SceneManager.LoadScene(SceneManagement.GetActiveScene().name);
+        SceneManager.LoadScene(1);
     }
 
     public void CompleteLevel(){
