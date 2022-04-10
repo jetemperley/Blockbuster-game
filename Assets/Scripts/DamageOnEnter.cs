@@ -28,5 +28,17 @@ public class DamageOnEnter : MonoBehaviour
         if (h != null)
             h.takeDamage(damage);
     }
+
+    private void OnTriggerEnter(Collider other) {
+        Debug.Log(gameObject.name + " and " + other.gameObject.name + " collided");
+        if (other.gameObject.layer == gameObject.layer) {
+            
+            return;
+        }
+            
+        Health h = other.gameObject.GetComponent<Health>();
+        if (h != null)
+            h.takeDamage(damage);
+    }
     
 }

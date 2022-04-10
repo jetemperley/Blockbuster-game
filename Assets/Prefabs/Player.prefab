@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8655765040293387635}
   - component: {fileID: 8655765040293387632}
   - component: {fileID: 238968272100124135}
+  - component: {fileID: 2769227143674863179}
   - component: {fileID: 1596901922480480716}
   m_Layer: 9
   m_Name: Player
@@ -172,6 +173,19 @@ MonoBehaviour:
   maxHealth: 1
   shield: {fileID: 0}
   currentHealth: 1
+--- !u!114 &2769227143674863179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655765040293387633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae28bc47be742b2478a1a0844d17d697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunLocation: {fileID: 8869244976116071729}
 --- !u!54 &1596901922480480716
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -329,6 +343,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 799bb7d4fad9c37448dcdc442698abfe, type: 3}
+--- !u!1 &8869244976116071729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5772489915001041824, guid: 799bb7d4fad9c37448dcdc442698abfe, type: 3}
+  m_PrefabInstance: {fileID: 3101260158751837841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3560174061467043703
 PrefabInstance:
   m_ObjectHideFlags: 0
