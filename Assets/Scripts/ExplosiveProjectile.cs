@@ -7,7 +7,7 @@ public class ExplosiveProjectile : MonoBehaviour
     public float projectileVelocity;
     public float explosiveRadius;
     public int damage;
-    public Vector3 offset;
+    public float verticalOffset;
 
     private Rigidbody rb;
     private Vector3 pos;
@@ -28,7 +28,7 @@ public class ExplosiveProjectile : MonoBehaviour
     }
 
     void FixedUpdate(){
-        rb.AddForce(new Vector3(0,1f,0) * 5f);
+        rb.AddForce(new Vector3(0,1f,0) * verticalOffset);
     }
 
     void ExplosionDamage(Collision collision, Vector3 center, float radius)

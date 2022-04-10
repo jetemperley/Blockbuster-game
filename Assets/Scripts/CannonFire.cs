@@ -37,7 +37,7 @@ public class CannonFire : MonoBehaviour
             explosiveProjectile.transform.localRotation = Quaternion.Euler(90,0,0);
             explosiveProjectile.transform.parent = null;
             Rigidbody rb = explosiveProjectile.GetComponent<Rigidbody>();
-            rb.velocity = (cam.transform.forward+explosiveProjectile.offset)*explosiveProjectile.projectileVelocity;
+            rb.velocity = (spawnPoint.transform.forward)*explosiveProjectile.projectileVelocity;
             fireTimer = fireCooldown;
         }
 
