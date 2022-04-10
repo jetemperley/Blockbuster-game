@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunHolder : MonoBehaviour
 {
-    public GameObject gunLocation;
+    public GameObject gunRoot;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +18,14 @@ public class GunHolder : MonoBehaviour
     }
 
     public void SetGun(GameObject gun){
-        gun.transform.position = gunLocation.transform.position;
-        gun.transform.rotation = gunLocation.transform.rotation;
         
-        gun.transform.SetParent(gunLocation.transform.parent);
-        Destroy(gunLocation);
-        gunLocation = gun;
+        
+        gun.transform.parent = gunRoot.transform.parent;
+        gun.transform.localPosition = Vector3.zero;
+        gun.transform.localRotation = Quaternion.identity;
+        Destroy(gunRoot);
+        
+        gunRoot = gun;
         
 
     }
