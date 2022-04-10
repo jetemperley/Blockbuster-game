@@ -33,7 +33,6 @@ public class MinigunFire : MonoBehaviour
         if (Input.GetButton("Fire1") && fireTimer <= 0)
         {
             //audioData.Play(0);
-            animator.SetTrigger("Shoot");
             animator.SetBool("Shooting",true);
             Bullet bullet = Instantiate(bulletPrefab);
             bullet.transform.parent = spawnPoint.transform;
