@@ -24,7 +24,7 @@ public class CubeHomeBehaviour : MonoBehaviour
 
     void FixedUpdate() {
 
-        if (target == null || (target.position - transform.position).magnitude > maxLookDist)
+        if (target == null || (target.position - transform.position).magnitude > maxLookDist || target.position.z > rb.position.z)
             return;
 
         
