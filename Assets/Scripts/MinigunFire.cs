@@ -38,7 +38,7 @@ public class MinigunFire : MonoBehaviour
             bullet.transform.localPosition = Vector3.zero;
             bullet.transform.localRotation = Quaternion.Euler(90, 0, 0);
             bullet.transform.parent = null;
-            bullet.SetDir(cam.transform.forward + new Vector3(0.01f+Random.Range(fireRadius,-fireRadius),0.01f+Random.Range(fireRadius,-fireRadius),0));
+            bullet.SetDir(spawnPoint.transform.forward + new Vector3(0.01f+Random.Range(fireRadius,-fireRadius),0.01f+Random.Range(fireRadius,-fireRadius),0));
             fireTimer = fireCooldown;
         }else if(!Input.GetButton("Fire1"))
         {
