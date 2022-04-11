@@ -14,6 +14,8 @@ public class Pickup : MonoBehaviour
         pickupModel = Instantiate(pickupModel);
         pickupModel.transform.SetParent(transform);
         pickupModel.transform.localPosition = Vector3.zero;
+        pickupModel.transform.rotation = pickupModel.transform.rotation*transform.rotation;
+        // pickupModel.transform.localScale = transform.localScale;
     }
 
     // Update is called once per frame
