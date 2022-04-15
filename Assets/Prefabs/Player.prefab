@@ -156,7 +156,7 @@ MonoBehaviour:
   gravity: 20
   playerCamera: {fileID: 2596643181358554350}
   lookSpeed: 2
-  lookXLimit: 45
+  lookXLimit: 90
   canMove: 1
 --- !u!114 &238968272100124135
 MonoBehaviour:
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae28bc47be742b2478a1a0844d17d697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunRoot: {fileID: 0}
+  gunRoot: {fileID: 1249914447000744769}
 --- !u!54 &1596901922480480716
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -386,3 +386,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 799bb7d4fad9c37448dcdc442698abfe, type: 3}
+--- !u!1 &1249914447000744769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5772489915001041824, guid: 799bb7d4fad9c37448dcdc442698abfe, type: 3}
+  m_PrefabInstance: {fileID: 4703049315712680161}
+  m_PrefabAsset: {fileID: 0}
