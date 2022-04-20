@@ -12,6 +12,7 @@ public class MinigunFire : MonoBehaviour
     private Camera cam;
     private AudioSource audioData;
     private Animator animator;
+    private bool audioPlaying;
 
     public GameObject spawnPoint;
 
@@ -20,10 +21,12 @@ public class MinigunFire : MonoBehaviour
     void Start()
     {
         fireTimer = 0f;
-        //audioData = GetComponent<AudioSource>();
-        //audioData.Stop();
+        audioData = GetComponent<AudioSource>();
+        audioData.Stop();
         animator = GetComponent<Animator>();
         cam = (Camera)FindObjectOfType(typeof(Camera));
+        audioPlaying = false;
+        audioData.time = 1f;
 
     }
 
@@ -32,7 +35,10 @@ public class MinigunFire : MonoBehaviour
     {
         if (Input.GetButton("Fire1") && fireTimer <= 0)
         {
-            //audioData.Play(0);
+            if(!audioPlaying){
+                audioData.Play(0);
+                audioPlaying = !audioPlaying;
+            }
             animator.SetBool("Shooting",true);
             Bullet bullet = Instantiate(bulletPrefab);
             bullet.transform.parent = spawnPoint.transform;
@@ -43,6 +49,8 @@ public class MinigunFire : MonoBehaviour
             fireTimer = fireCooldown;
         }else if(!Input.GetButton("Fire1"))
         {
+            audioData.Stop();
+            audioPlaying = false;
             animator.SetBool("Shooting",false);
         }
 
