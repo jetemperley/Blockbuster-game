@@ -50,10 +50,6 @@ public class PlayerMove : MonoBehaviour
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        float forwardComponenet = moveDirection.z;
-        moveDirection.z = 0;
-        Conductor.conductor.gameSpeed = 1+forwardComponenet/10;
-
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpSpeed;

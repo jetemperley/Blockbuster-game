@@ -28,7 +28,7 @@ public class Conductor : MonoBehaviour
 
     public float getLevelSpeed()
     {
-        return levelSpeed*gameSpeed;
+        return levelSpeed;
     }
 
     public float getGameSpeed()
