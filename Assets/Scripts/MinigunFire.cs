@@ -30,8 +30,8 @@ public class MinigunFire : MonoBehaviour
         audioPlaying = false;
         audioData.time = 1f;
         line = gameObject.AddComponent<LineRenderer>();
-         line.startWidth = 0.1f;
-         line.endWidth = 0.1f;
+        line.startWidth = 0.1f;
+        line.endWidth = 0.1f;
 
     }
 
