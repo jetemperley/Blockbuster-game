@@ -46,7 +46,7 @@ public class MinigunFire : MonoBehaviour
             }
 
             Vector3 dir = cam.transform.forward + new Vector3(Random.Range(fireRadius,-fireRadius),Random.Range(fireRadius,-fireRadius),0);
-
+            Debug.Log(dir);
             Laser laser = LaserPool.GetLaser();
             laser.fire(
                 spawnPoint.transform.position,
