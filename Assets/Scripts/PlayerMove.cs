@@ -108,13 +108,5 @@ public class PlayerMove : MonoBehaviour
         canMove = true;
     }
 
-    void OnCollisionEnter (Collision collisionInfo){
-        if(collisionInfo.collider.tag == "Enemy"){
-
-            Debug.Log("i've collided with an enemy!");
-            FindObjectOfType<GameManager>().EndGame();  
-        }
-    }
-
 
 }
