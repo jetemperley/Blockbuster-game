@@ -18,7 +18,7 @@ public class EnemyMove : MonoBehaviour
     void FixedUpdate()
     {
         //Move the terrain towards the player at speed determined by the Conductor
-        rigidbody.MovePosition(rigidbody.position + Vector3.back * Time.deltaTime * conductor.getLevelSpeed());
+        rigidbody.MovePosition(rigidbody.position + Vector3.back * Time.fixedDeltaTime * conductor.getLevelSpeed());
 
         if (rigidbody.position.z <= conductor.getBoundary())
         {

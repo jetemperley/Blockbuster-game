@@ -12,10 +12,8 @@ public class Enabler : MonoBehaviour
         enableThis.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void FixedUpdate() {
+        enableThis.transform.position = transform.position + Vector3.back * Time.fixedDeltaTime * Conductor.conductor.getLevelSpeed();
     }
 
     void OnTriggerEnter(Collider other) {
@@ -25,7 +23,10 @@ public class Enabler : MonoBehaviour
         //     child.SetActive(true);
         // }
         if (other.attachedRigidbody.gameObject.CompareTag("Player"))
-        enableThis.SetActive(true);
+            enableThis.SetActive(true);
+
+        gameObject.SetActive(false);
+
 
     }
 
