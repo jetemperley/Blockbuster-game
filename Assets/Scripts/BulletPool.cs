@@ -19,6 +19,7 @@ public class LaserPool
 
     private Laser AddLaser(){
         Laser g = (new GameObject()).AddComponent<Laser>();
+        Object.DontDestroyOnLoad(g.gameObject);
         pool.Add(g);
         return g;
     }
@@ -26,6 +27,7 @@ public class LaserPool
     public static Laser GetLaser(){
         if (single == null)
             single = new LaserPool();
+
         foreach (Laser g in single.pool){
             if (!g.gameObject.activeSelf){
                 g.gameObject.SetActive(true);

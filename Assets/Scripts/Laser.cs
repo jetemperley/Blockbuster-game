@@ -13,9 +13,9 @@ public class Laser : MonoBehaviour
     void Start()
     {
         line = gameObject.AddComponent<LineRenderer>();
-         line.startWidth = 0.1f;
-         line.endWidth = 0.1f;
-         gameObject.SetActive(false);
+        line.startWidth = 0.1f;
+        line.endWidth = 0.1f;
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
