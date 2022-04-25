@@ -9,9 +9,12 @@ public class Laser : MonoBehaviour
     float speed = 700;
     Vector3 dir;
 
+    private int damage;
+
     // Start is called before the first frame update
     void Start()
     {
+        damage = 0;
         line = gameObject.AddComponent<LineRenderer>();
         line.startWidth = 0.1f;
         line.endWidth = 0.1f;
@@ -42,7 +45,7 @@ public class Laser : MonoBehaviour
             try{
                 Health health = hit.collider.attachedRigidbody.gameObject.GetComponent<Health>();
                 if (health != null){
-                health.takeDamage(1);
+                health.takeDamage(damage);
                 }
             } catch{}
             
@@ -53,6 +56,10 @@ public class Laser : MonoBehaviour
             line.SetPositions(arr);
             // Debug.DrawLine(spawnPoint.transform.position, spawnPoint.transform.position*1000);
         }
+    }
+
+    public void SetDamage(int dmg){
+        damage = dmg;
     }
 
 }

@@ -34,6 +34,7 @@ public class PistolFire : MonoBehaviour
             animator.SetTrigger("Shoot");
             
             Laser laser = LaserPool.GetLaser();
+            laser.SetDamage(3);
             laser.fire(
                 spawnPoint.transform.position,
                 spawnPoint.transform.forward*1000,

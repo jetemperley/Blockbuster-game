@@ -8,6 +8,7 @@ public class MinigunFire : MonoBehaviour
     public Bullet bulletPrefab;
     public float fireCooldown; //seconds
     public float fireRadius;
+    public int damage;
 
     private Camera cam;
     private AudioSource audioData;
@@ -48,6 +49,7 @@ public class MinigunFire : MonoBehaviour
             Vector3 dir = cam.transform.forward + new Vector3(Random.Range(fireRadius,-fireRadius),Random.Range(fireRadius,-fireRadius),0);
             Debug.Log(dir);
             Laser laser = LaserPool.GetLaser();
+            laser.SetDamage(2);
             laser.fire(
                 spawnPoint.transform.position,
                 dir,
