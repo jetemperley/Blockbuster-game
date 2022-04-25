@@ -1,33 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class Enabler : MonoBehaviour
 {
     
     public GameObject enableThis;
-
+    float toOffset = 0;
+    int layers = 2;
     void Start()
     {
+        //disable(layers, enableThis.transform);
         enableThis.SetActive(false);
     }
 
     void FixedUpdate() {
-        enableThis.transform.position = transform.position + Vector3.back * Time.fixedDeltaTime * Conductor.conductor.getLevelSpeed();
+        // toOffset = Time.fixedDeltaTime * Conductor.conductor.getLevelSpeed();
     }
 
     void OnTriggerEnter(Collider other) {
-        
-        // for (int i = 0; i < transform.childCount; i++){
-        //     GameObject child = transform.GetChild(i).gameObject;
-        //     child.SetActive(true);
-        // }
-        if (other.attachedRigidbody.gameObject.CompareTag("Player"))
+        if (other.attachedRigidbody == null)
+            return; 
+        if (other.attachedRigidbody.gameObject.CompareTag("Player")) {
+            // StartCoroutine(load(layers, enableThis.transform));
             enableThis.SetActive(true);
+        }
+            
 
-        gameObject.SetActive(false);
+    }
+    
 
+    IEnumerator load(int depth, Transform t){
 
+        for (int i = 0; i < t.transform.childCount; i++){
+            if (depth > 1)
+                yield return load(depth -1, t.transform.GetChild(i));
+            GameObject child = t.transform.GetChild(i).gameObject;
+            child.SetActive(true);
+            yield return null;
+        }
+
+    }
+
+    void disable(int depth, Transform t){
+        for (int i = 0; i < t.transform.childCount; i++){
+            if (depth > 1)
+                load(depth -1, t.transform.GetChild(i));
+            GameObject child = t.transform.GetChild(i).gameObject;
+            child.SetActive(false);
+        }
     }
 
 
