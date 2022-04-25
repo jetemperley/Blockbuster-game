@@ -1,4 +1,5 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,28 +7,33 @@ public class GameManager : MonoBehaviour
 {
     bool gameHasEnded = false;
     
+    public GameObject completeLevelUI;
+    public GameObject gameOverUI;
 
     public void EndGame (){
         
         if(gameHasEnded == false){
             gameHasEnded = true;
             Debug.Log("GAME OVER");
-            //display gameover UI
-            //click Restart button on UI to restart game
-            Restart();
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            gameOverUI.SetActive(true);
+            
         }
 
     }
-
+    public void Quit(){
+        UnityEditor.EditorApplication.isPlaying = false;
+    }
+    
     public void Restart (){
-        //reload scene. gives me an error idk how to fix
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void CompleteLevel(){
         Debug.Log("Level Complete!");
-        //display UI
-        //click next on UI
-        //Restart();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        completeLevelUI.SetActive(true);
     }
 }
