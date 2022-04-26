@@ -18,7 +18,7 @@ public class EnemyMove : MonoBehaviour
     void FixedUpdate()
     {
 
-        float cond = 1;
+        float cond = 0;
         //Move the terrain towards the player at speed determined by the Conductor
         if (conductor != null){
             cond = conductor.getLevelSpeed();

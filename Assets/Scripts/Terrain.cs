@@ -19,12 +19,15 @@ public class Terrain : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        float cond = 1;
         //Move the terrain towards the player at speed determined by the Conductor
-        rigidbody.MovePosition(rigidbody.position + Vector3.back * Time.deltaTime * conductor.getLevelSpeed());
-
-        if (rigidbody.position.z <= conductor.getBoundary())
-        {
-            Destroy(this.gameObject);
+        if (conductor != null){
+            cond = conductor.getLevelSpeed();
+            if (rigidbody.position.z <= conductor.getBoundary())
+            {
+                Destroy(this.gameObject);
+            }
         }
+        rigidbody.MovePosition(rigidbody.position + Vector3.back * Time.fixedDeltaTime * cond);
     }
 }

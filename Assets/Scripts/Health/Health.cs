@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     public int maxHealth = 1;
 
     public Health shield;
+
+    public DeathEffect effect;
     public int currentHealth;
     // Start is called before the first frame update
     void Start()
@@ -21,17 +23,22 @@ public class Health : MonoBehaviour
         
     }
 
-    public virtual void takeDamage(int dam){
+    public int takeDamage(int dam){
         if (shield != null) {
-            shield.takeDamage(dam);
-            return;
+            dam = shield.takeDamage(dam);
         }
+
         currentHealth -= dam;
-        Debug.Log(currentHealth);
+        Debug.Log("health " + currentHealth);
         if (currentHealth <= 0){
+            if (effect != null)
+                effect.effect();
             Destroy(gameObject);
         }
 
+        if (currentHealth > 0)
+            return 0;
+        return currentHealth;
 
     }
 
