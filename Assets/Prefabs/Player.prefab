@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 238968272100124135}
   - component: {fileID: 2769227143674863179}
   - component: {fileID: 1596901922480480716}
+  - component: {fileID: 2325901786100689497}
   - component: {fileID: 7539687143589402058}
   m_Layer: 9
   m_Name: Player
@@ -158,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   shield: {fileID: 0}
+  effect: {fileID: 0}
   currentHealth: 1
 --- !u!114 &2769227143674863179
 MonoBehaviour:
@@ -188,6 +190,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &2325901786100689497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655765040293387633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd0655276e08dc4b8eed8399f40c9e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7539687143589402058
 MonoBehaviour:
   m_ObjectHideFlags: 0
