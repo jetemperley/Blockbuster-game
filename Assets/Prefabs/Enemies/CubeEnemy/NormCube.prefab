@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5309769304340126108}
   - component: {fileID: 220520721384097465}
   - component: {fileID: 1314339336}
+  - component: {fileID: 361880257249234682}
   m_Layer: 11
   m_Name: NormCube
   m_TagString: Untagged
@@ -51,7 +52,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!114 &7293067866509854526
 MonoBehaviour:
@@ -67,6 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 6
   shield: {fileID: 0}
+  effect: {fileID: 0}
   currentHealth: 6
 --- !u!114 &5309769304340126108
 MonoBehaviour:
@@ -94,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  maxLookDist: 30
+  maxLookDist: 20
   targetTag: Player
 --- !u!114 &1314339336
 MonoBehaviour:
@@ -106,6 +108,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 610804a8bab98c342b279259a5cfae04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &361880257249234682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138319655606218225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ef8f36e9f7f89448e94281927f4f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6565655722169516257
