@@ -26,6 +26,19 @@ public class Conductor : MonoBehaviour
         }
     }
 
+    /*public static Conductor getConductor()
+    {
+        if (conductor != null && conductor == this)
+        {
+            return this;
+        }
+        else
+        {
+            conductor = this;
+            return conductor;
+        }
+    }*/
+
     public float getLevelSpeed()
     {
         return levelSpeed;
