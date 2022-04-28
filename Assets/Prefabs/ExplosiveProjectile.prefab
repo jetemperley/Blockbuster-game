@@ -112,10 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d6ae1be0682804f9563a7be03101fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileVelocity: 50
-  explosiveRadius: 5
-  damage: 10
-  offset: {x: -0.015, y: 0.02, z: 0}
+  projectileVelocity: 75
+  explosiveRadius: 6
+  damage: 15
+  verticalOffset: 6
 --- !u!54 &8808771237002366976
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,4 +131,4 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1

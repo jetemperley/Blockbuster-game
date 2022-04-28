@@ -20,6 +20,7 @@ public class PistolFire : MonoBehaviour
         audioData = GetComponent<AudioSource>();
         audioData.Stop();
         animator = GetComponent<Animator>();
+        LaserPool.Init();
         
     }
 
@@ -28,17 +29,29 @@ public class PistolFire : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1")&& fireTimer <=0)
         {
+            
             audioData.Play(0);
             animator.SetTrigger("Shoot");
-            Bullet bullet = Instantiate(bulletPrefab);
-            bullet.transform.parent = spawnPoint.transform;
-            bullet.transform.localPosition = new Vector3(0,0,0);
-            bullet.transform.localRotation = Quaternion.Euler(90,0,0);
-            bullet.transform.parent = null;
-            bullet.SetDir(spawnPoint.transform.forward);
+            
+            Laser laser = LaserPool.GetLaser();
+            laser.SetDamage(3);
+            laser.fire(
+                spawnPoint.transform.position,
+                spawnPoint.transform.forward*1000,
+                0.2f
+                );
+            
+            // Bullet bullet = Instantiate(bulletPrefab);
+            // bullet.transform.parent = spawnPoint.transform;
+            // bullet.transform.localPosition = new Vector3(0,0,0);
+            // bullet.transform.localRotation = Quaternion.Euler(90,0,0);
+            // bullet.transform.parent = null;
+            // bullet.SetDir(spawnPoint.transform.forward);
             fireTimer = fireCooldown;
+        } else if (fireTimer > 0){
+            fireTimer -= Time.deltaTime;
         }
 
-        fireTimer -= Time.deltaTime;
+        
     }
 }
