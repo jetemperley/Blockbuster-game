@@ -11,7 +11,7 @@ public class PyramidShoot : MonoBehaviour
     public float fireRate = 1;
     public GameObject projectile;
     public float projSpawnDist = 1;
-    public float projSpeed = 5;
+    private float projSpeed = 5;
     
 
     private Transform target;
@@ -47,7 +47,7 @@ public class PyramidShoot : MonoBehaviour
             g.transform.position = transform.position + dir;
             g.transform.SetParent(null);
             Rigidbody prb = g.GetComponent<Rigidbody>();
-            prb.AddForce(dir*projSpeed, ForceMode.VelocityChange);
+            prb.AddForce(dir.normalized*projSpeed, ForceMode.VelocityChange);
 
             // alter timer
             timer = 0;

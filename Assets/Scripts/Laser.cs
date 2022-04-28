@@ -26,19 +26,19 @@ public class Laser : MonoBehaviour
     {
         if (time > 0){
             time -= Time.deltaTime;
-            line.SetPosition(0, line.GetPosition(0) + dir.normalized*speed);
+            line.SetPosition(0, line.GetPosition(0) + dir.normalized*speed*Time.deltaTime);
         } else {
             gameObject.SetActive(false);
         }
     }
 
     public void fire(Vector3 pos, Vector3 dir, float time){
-        fire(pos, dir, time, speed);
+        fire(pos, dir, time, 150);
     }
 
     public void fire(Vector3 pos, Vector3 dir, float time, float speed){
         this.dir = dir;
-        this.speed = speed*Time.deltaTime;
+        this.speed = speed;
         this.time = time;
         RaycastHit hit;
         if (Physics.Raycast (pos, dir, out hit, 1000)){
