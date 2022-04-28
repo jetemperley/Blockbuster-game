@@ -12,6 +12,8 @@ public class Conductor : MonoBehaviour
 
     //Singleton stuff
     public static Conductor conductor;
+
+    private static GameObject instance;
     
     private void Awake()
     {
@@ -26,18 +28,17 @@ public class Conductor : MonoBehaviour
         }
     }
 
-    /*public static Conductor getConductor()
+    public static Conductor getConductor()
     {
-        if (conductor != null && conductor == this)
+        if (conductor == null)
         {
-            return this;
+            instance = new GameObject("Conductor");
+            instance.AddComponent<Conductor>();
+            conductor = instance.GetComponent<Conductor>();
         }
-        else
-        {
-            conductor = this;
-            return conductor;
-        }
-    }*/
+
+        return conductor;
+    }
 
     public float getLevelSpeed()
     {
