@@ -7,10 +7,11 @@ public class ExplosiveProjectile : MonoBehaviour
     public float projectileVelocity;
     public float explosiveRadius;
     public int damage;
-    public float verticalOffset;
+    public float verticalOffset;    
 
     private Rigidbody rb;
     private Vector3 pos;
+   
     
     private ParticleSystem explosion;
     
@@ -26,7 +27,6 @@ public class ExplosiveProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     void FixedUpdate(){
@@ -58,13 +58,16 @@ public class ExplosiveProjectile : MonoBehaviour
             float size = explosiveRadius;
             explosion.transform.localScale = new Vector3(size, size, size);
             explosion.Play();
+            AudioSource audioData = explosion.gameObject.GetComponent<AudioSource>();
+            audioData.Stop();
+            audioData.Play(0);
             ExplosionDamage(collision, transform.position, explosiveRadius);
         }
         
     }
 
     public void setExplosion(ParticleSystem s){
-        explosion = s;
+        explosion = s;        
     }
 
 
