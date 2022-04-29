@@ -18,6 +18,9 @@ public class PlayerMove : MonoBehaviour
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
 
+    public bool canJump = true;
+
+
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     Vector3 dashDirection = Vector3.zero;
@@ -50,7 +53,7 @@ public class PlayerMove : MonoBehaviour
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        if (Input.GetButton("Jump") && canMove && canJump)
         {
             moveDirection.y = jumpSpeed;
         }

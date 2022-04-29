@@ -19,21 +19,28 @@ public class FallAway : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate() {
 
-        if (fall || transform.position.z < backWall){
+        if (!fall && transform.position.z < backWall){
             
-            if (!fall){
-                if (rb == null){
-                    rb = gameObject.AddComponent<Rigidbody>();
-                }
-                rb.useGravity = false;
-                rb.isKinematic = false;
-                rb.mass = 1000;
-                rb.drag = 1;
-                // rb.angularDrag = 1;
-                fall = true;
+            if (rb == null){
+                rb = gameObject.AddComponent<Rigidbody>();
             }
-            rb.MovePosition(rb.position + fallSpeed*Time.deltaTime);
+            rb.useGravity = true;
+            rb.isKinematic = false;
+            rb.mass = 100;
+            // rb.drag = 0.1f;
+            // rb.angularDrag = 1;
+            fall = true;
+            Vector3 force = new Vector3(
+                Random.Range(-1f, 1f)*10,
+                Random.Range(0, -1f)*3,
+                Random.Range(0, -1f)*3
+                );
+            // rb.AddForce(randX, randY, randZ, ForceMode.VelocityChange);
+            rb.AddForceAtPosition(force, Random.onUnitSphere, ForceMode.VelocityChange);
+            // rb.MovePosition(rb.position + fallSpeed*Time.deltaTime);
             
         }
+        if (transform.position.y < -40)
+            Destroy(gameObject);
     }
 }
