@@ -14,6 +14,9 @@ public class CannonFire : MonoBehaviour
     public GameObject spawnPoint;
 
     private float fireTimer; //seconds
+
+    public ParticleSystem explosion;
+    private ParticleSystem ps;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,7 @@ public class CannonFire : MonoBehaviour
         //audioData = GetComponent<AudioSource>();
         //audioData.Stop();
         animator = GetComponent<Animator>();
+        ps = Instantiate(explosion);
         
     }
 
@@ -32,6 +36,7 @@ public class CannonFire : MonoBehaviour
 //            audioData.Play(0);
             animator.SetTrigger("Shoot");
             ExplosiveProjectile explosiveProjectile = Instantiate(explosiveProjectilePrefab);
+            explosiveProjectile.setExplosion(ps);
             explosiveProjectile.transform.parent = spawnPoint.transform;
             explosiveProjectile.transform.localPosition = new Vector3(0,0,0);
             explosiveProjectile.transform.localRotation = Quaternion.Euler(90,0,0);
