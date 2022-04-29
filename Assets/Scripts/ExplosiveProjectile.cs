@@ -12,12 +12,14 @@ public class ExplosiveProjectile : MonoBehaviour
     private Rigidbody rb;
     private Vector3 pos;
     
-
+    private ParticleSystem explosion;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
         
     }
 
@@ -35,13 +37,14 @@ public class ExplosiveProjectile : MonoBehaviour
     {
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         foreach(Collider hc in hitColliders){
-              Rigidbody rb = hc.GetComponent<Collider>().attachedRigidbody;
-              if(rb != null){
-                  Health h = rb.gameObject.GetComponent<Health>();
-                  if (h != null){
+
+            Rigidbody rb = hc.GetComponent<Collider>().attachedRigidbody;
+            if(rb != null){
+                Health h = rb.gameObject.GetComponent<Health>();
+                if (h != null){
                     h.takeDamage(damage); 
                 } 
-              }
+            }
                         
         }        
         Destroy(this.gameObject);       
@@ -50,9 +53,18 @@ public class ExplosiveProjectile : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {        
         if(collision.gameObject.name != "Player" && collision.gameObject != this.gameObject){
+            explosion.Stop();
+            explosion.transform.position = transform.position;
+            float size = explosiveRadius;
+            explosion.transform.localScale = new Vector3(size, size, size);
+            explosion.Play();
             ExplosionDamage(collision, transform.position, explosiveRadius);
         }
         
+    }
+
+    public void setExplosion(ParticleSystem s){
+        explosion = s;
     }
 
 
