@@ -21,8 +21,8 @@ public class CannonFire : MonoBehaviour
     void Start()
     {
         fireTimer = 0f;
-        //audioData = GetComponent<AudioSource>();
-        //audioData.Stop();
+        audioData = GetComponent<AudioSource>();
+        audioData.Stop();
         animator = GetComponent<Animator>();
         ps = Instantiate(explosion);
         
@@ -33,7 +33,7 @@ public class CannonFire : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1")&& fireTimer <=0)
         {
-//            audioData.Play(0);
+            audioData.Play(0);
             animator.SetTrigger("Shoot");
             ExplosiveProjectile explosiveProjectile = Instantiate(explosiveProjectilePrefab);
             explosiveProjectile.setExplosion(ps);
