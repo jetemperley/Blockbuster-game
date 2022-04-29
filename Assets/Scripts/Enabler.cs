@@ -12,7 +12,7 @@ public class Enabler : MonoBehaviour
     void Start()
     {
         //disable(layers, enableThis.transform);
-        //enableThis.SetActive(false);
+        enableThis.SetActive(false);
     }
 
     void FixedUpdate() {
