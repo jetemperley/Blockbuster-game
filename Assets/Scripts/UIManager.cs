@@ -8,20 +8,30 @@ public class UIManager : MonoBehaviour
     public GameObject pistolCursor;
     public GameObject minigunCursor;
     public GameObject cannonCursor;
+    public FillHealthBar healthBar;
 
     private GameManager gameManager;
     private GunHolder weapon;
+    private Health playerHealth;
+    
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GetComponent<GameManager>();
-        weapon = FindObjectOfType<GunHolder>().GetComponent<GunHolder>();      
+        weapon = FindObjectOfType<GunHolder>().GetComponent<GunHolder>();
+        playerHealth =  FindObjectOfType<GunHolder>().GetComponent<Health>();     
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(weapon.gunRoot.name);
+        if(playerHealth.currentHealth > 0)
+        {
+            UpdateHealthBar();
+        }else{
+            healthBar.gameObject.SetActive(false);
+        }
+        
         UpdateCursor();
     }
 
@@ -40,5 +50,9 @@ public class UIManager : MonoBehaviour
             minigunCursor.SetActive(false);
             cannonCursor.SetActive(true);
         }
+    }
+
+    private void UpdateHealthBar(){
+        healthBar.UpdateBar(playerHealth.currentHealth, playerHealth.maxHealth);
     }
 }
