@@ -10,6 +10,7 @@ public class PlayerMelee : MonoBehaviour
     public float damage;
 
     public GameObject prefabHitbox;
+    public Camera playerCamera;
 
     public bool attacking;
     public bool canAttack;
@@ -48,7 +49,7 @@ public class PlayerMelee : MonoBehaviour
             MeleeHitbox meleeHitbox = hitbox.AddComponent<MeleeHitbox>();
             meleeHitbox.activeTime = activeTime;
             hitbox.transform.position = gameObject.transform.position;
-            hitbox.transform.rotation = gameObject.transform.rotation;
+            hitbox.transform.rotation = playerCamera.transform.rotation;
             attacking = false;
             recovering = true;
             timer = recovery;
