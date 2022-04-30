@@ -5,7 +5,7 @@ using UnityEngine;
 public class MeleeHitbox : MonoBehaviour
 {
     public float activeTime;
-    public float damage;
+    public int damage;
 
     private float timer;
 
@@ -23,6 +23,19 @@ public class MeleeHitbox : MonoBehaviour
         if (timer <= 0)
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.attachedRigidbody.gameObject.tag != "Player")
+        {
+            try{
+                Health health = collision.attachedRigidbody.gameObject.GetComponent<Health>();
+                if (health != null){
+                    health.takeDamage(damage);
+                }
+            } catch{}
         }
     }
 }
