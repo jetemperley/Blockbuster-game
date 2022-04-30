@@ -25,14 +25,18 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerHealth.currentHealth > 0)
-        {
-            UpdateHealthBar();
+        if(playerHealth != null){
+            if(playerHealth.currentHealth > 0)
+            {
+                UpdateHealthBar();
+            }      
+        UpdateCursor();
         }else{
+            pistolCursor.SetActive(false);
+            minigunCursor.SetActive(false);
+            cannonCursor.SetActive(false);
             healthBar.gameObject.SetActive(false);
         }
-        
-        UpdateCursor();
     }
 
     private void UpdateCursor(){
