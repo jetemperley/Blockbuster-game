@@ -9,10 +9,11 @@ public class PlayerMelee : MonoBehaviour
     public float recovery;
     public float damage;
 
-    public Transform hitbox;
+    public GameObject prefabHitbox;
 
     public bool attacking;
     public bool canAttack;
+    public bool recovering;
 
     private float timer;
 
@@ -22,11 +23,41 @@ public class PlayerMelee : MonoBehaviour
         timer = startup;
         attacking = false;
         canAttack = true;
+        recovering = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Fire2") && canAttack)
+        {
+            timer = startup;
+            attacking = true;
+            canAttack = false;
+            recovering = false;
+        }
+
+        if ((attacking | recovering) && timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+
+        if (attacking && timer <= 0)
+        {
+            GameObject hitbox = Instantiate(prefabHitbox);
+            MeleeHitbox meleeHitbox = hitbox.AddComponent<MeleeHitbox>();
+            meleeHitbox.activeTime = activeTime;
+            hitbox.transform.position = gameObject.transform.position;
+            hitbox.transform.rotation = gameObject.transform.rotation;
+            attacking = false;
+            recovering = true;
+            timer = recovery;
+        }
+
+        if (recovering && timer <= 0)
+        {
+            recovering = false;
+            canAttack = true;
+        }
     }
 }
