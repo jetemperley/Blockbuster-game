@@ -5,12 +5,13 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
 
-    public int maxHealth = 1;
+    public int maxHealth;
+    public int currentHealth;
 
     public Health shield;
 
     public DeathEffect effect;
-    public int currentHealth;
+   
     // Start is called before the first frame update
     void Start()
     {

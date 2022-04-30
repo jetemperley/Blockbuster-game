@@ -96,8 +96,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.6
+  m_Height: 2.25
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8547807683775799938
@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileVelocity: 75
-  explosiveRadius: 6
-  damage: 15
+  explosiveRadius: 4
+  damage: 10
   verticalOffset: 6
 --- !u!54 &8808771237002366976
 Rigidbody:

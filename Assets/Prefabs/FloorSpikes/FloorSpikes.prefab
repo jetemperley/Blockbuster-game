@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4044475730549050306}
   - component: {fileID: 1552177145595969586}
   - component: {fileID: 1059016709881606041}
+  - component: {fileID: 6861178573833479246}
   m_Layer: 0
   m_Name: FloorSpikes
   m_TagString: Untagged
@@ -229,7 +230,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fed9019f6a147141968c359e5158faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 100
+--- !u!114 &6861178573833479246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4044475730549050307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610804a8bab98c342b279259a5cfae04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8540706553472478845
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +317,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5.1, y: 1, z: 4.94}
-  m_Center: {x: 1.4, y: 0.52, z: -2.06}
+  m_Center: {x: 1.4, y: 0.62, z: -2.06}
 --- !u!1001 &162839584564147044
 PrefabInstance:
   m_ObjectHideFlags: 0

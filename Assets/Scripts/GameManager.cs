@@ -17,8 +17,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("GAME OVER");
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
-            gameOverUI.SetActive(true);
-            
+            gameOverUI.SetActive(true);            
         }
 
     }
