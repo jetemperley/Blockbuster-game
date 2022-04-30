@@ -23,6 +23,10 @@ public class PlayerMove : MonoBehaviour
     Vector3 dashDirection = Vector3.zero;
     float rotationX = 0;
 
+    public float dashCooldown = 1.0f;
+    public bool canDash;
+    private float dashTimer;
+
     [HideInInspector]
     public bool canMove = true;
 
@@ -35,6 +39,9 @@ public class PlayerMove : MonoBehaviour
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        dashTimer = 0;
+        canDash = true;
     }
 
     // Update is called once per frame
@@ -60,9 +67,21 @@ public class PlayerMove : MonoBehaviour
         }
 
         //Dashing
-        if(Input.GetKeyDown("left shift"))
-        {
+        if(Input.GetKeyDown("left shift") && canDash)
+        { 
+            canDash = false;
+            dashTimer = dashCooldown;
             StartCoroutine(Dash());
+        }
+
+        if (dashTimer >= 0 && !canDash)
+        {
+            dashTimer -= Time.deltaTime;
+        }
+
+        if (dashTimer <= 0)
+        {
+            canDash = true;
         }
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
