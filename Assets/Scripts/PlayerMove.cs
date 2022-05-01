@@ -52,6 +52,7 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
+            PlayerStats.getInst().addStat("jump");   
             moveDirection.y = jumpSpeed;
         }
         else
@@ -88,6 +89,7 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator Dash()
     {
+        PlayerStats.getInst().addStat("dash");
         float startTime = Time.time;
         
         //Set the direction of the dash
