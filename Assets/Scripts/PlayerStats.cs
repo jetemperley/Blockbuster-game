@@ -56,7 +56,7 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("shield kills " + killShield);
         Debug.Log("tri kills " + killTri);
         Debug.Log("diam kills " + killDiam);
-        Debug.Log("player deaths" + dPlayer);
+        Debug.Log("player deaths " + dPlayer);
         Debug.Log("jumps " + jumps);
         Debug.Log("dashs " + dashs);
         Debug.Log("cannon kills " + cannonKill);
