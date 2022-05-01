@@ -343,10 +343,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdc7c8f4eceb6d45bdb4cdfa70fd36e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 
   maxHealth: 1
+  currentHealth: 1
+  invulnerableTimeCooldown: 0
   shield: {fileID: 0}
   effect: {fileID: 5625552331386009376}
-  currentHealth: 1
 --- !u!1001 &2004365431728041800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -587,6 +589,10 @@ PrefabInstance:
     - target: {fileID: 6800880487049103678, guid: a6ced2e2eeb8f0042a6a01ed2104bd12, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7293067866509854526, guid: a6ced2e2eeb8f0042a6a01ed2104bd12, type: 3}
+      propertyPath: name
+      value: CubeShield
       objectReference: {fileID: 0}
     - target: {fileID: 7293067866509854526, guid: a6ced2e2eeb8f0042a6a01ed2104bd12, type: 3}
       propertyPath: shield

@@ -38,7 +38,8 @@ public class PistolFire : MonoBehaviour
             laser.fire(
                 spawnPoint.transform.position,
                 spawnPoint.transform.forward*1000,
-                0.2f
+                0.2f,
+                gameObject.name
                 );
             
             // Bullet bullet = Instantiate(bulletPrefab);

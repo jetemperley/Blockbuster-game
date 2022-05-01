@@ -42,7 +42,9 @@ public class ExplosiveProjectile : MonoBehaviour
             if(rb != null){
                 Health h = rb.gameObject.GetComponent<Health>();
                 if (h != null){
-                    h.takeDamage(damage); 
+                    if (h.takeDamage(damage) <= 0){
+                        PlayerStats.getInst().addStat(gameObject.name);
+                    } 
                 } 
             }
                         

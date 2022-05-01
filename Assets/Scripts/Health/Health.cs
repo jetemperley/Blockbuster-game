@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
 
+    public string name;
     public int maxHealth;
     public int currentHealth;
     public float invulnerableTimeCooldown;
@@ -44,11 +45,12 @@ public class Health : MonoBehaviour
             }
 
             currentHealth -= dam;
-            Debug.Log("health " + currentHealth);
+//             Debug.Log("health " + currentHealth);
             if (currentHealth <= 0){
                 if (effect != null)
                     effect.effect();
                 Destroy(gameObject);
+                PlayerStats.getInst().addStat("kill "+ name);
             }
 
             if (currentHealth > 0)
@@ -58,7 +60,7 @@ public class Health : MonoBehaviour
         return currentHealth;
     }
 
-    int getHealth(){
+    public int getHealth(){
         return currentHealth;
     }
 
