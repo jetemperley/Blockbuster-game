@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour
     public int killCube = 0, killShield = 0, killTri = 0, killDiam = 0;
     public int miniKill = 0, pistolKill = 0, cannonKill = 0;
     public int dCube = 0, dShield = 0, dTri = 0, dDiam = 0, dSpike = 0, dFall = 0, dPlayer = 0;
-    public int jumps = 0, dashs = 0;
+    public int jumps = 0, dashs = 0, falls = 0;
 
     public float time = 0;
     // Start is called before the first frame update
@@ -106,6 +106,10 @@ public class PlayerStats : MonoBehaviour
 
             case "Pistol":
                 pistolKill++;
+            break;
+
+            case "fall":
+                falls++;
             break;
 
             

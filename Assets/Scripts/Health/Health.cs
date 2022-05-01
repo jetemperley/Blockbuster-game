@@ -31,6 +31,11 @@ public class Health : MonoBehaviour
         }else{
             invulnerableTimer = 0;
         }
+
+        if (transform.position.y < -100 && gameObject.layer == 9) {
+            takeDamage(1000);
+            PlayerStats.getInst().addStat("fall");
+        }
     }
 
     public int takeDamage(int dam){
