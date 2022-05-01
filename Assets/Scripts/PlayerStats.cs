@@ -62,6 +62,7 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("cannon kills " + cannonKill);
         Debug.Log("mini kills " + miniKill);
         Debug.Log("pistol kills " + pistolKill);
+        Debug.Log("time " + time);
         Debug.Log("------------------------------");
 
     }
