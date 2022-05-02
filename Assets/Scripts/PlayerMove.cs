@@ -32,7 +32,6 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        dashSFX = GetComponent<AudioSource>();
         dashSFX.Stop();
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
