@@ -12,6 +12,8 @@ public class PistolFire : MonoBehaviour
 
     public GameObject spawnPoint;
 
+    public int damage = 1;
+
     private float fireTimer; //seconds
     // Start is called before the first frame update
     void Start()
@@ -34,7 +36,7 @@ public class PistolFire : MonoBehaviour
             animator.SetTrigger("Shoot");
             
             Laser laser = LaserPool.GetLaser();
-            laser.SetDamage(3);
+            laser.SetDamage(damage);
             laser.fire(
                 spawnPoint.transform.position,
                 spawnPoint.transform.forward*1000,

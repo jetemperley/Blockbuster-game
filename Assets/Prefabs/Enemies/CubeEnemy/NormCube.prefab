@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6569784786998253550}
   - component: {fileID: 5497854914313097397}
-  - component: {fileID: 7293067866509854526}
   - component: {fileID: 220520721384097465}
   - component: {fileID: 1314339336}
   - component: {fileID: 2129372300309348017}
   - component: {fileID: 5940942673270600914}
+  - component: {fileID: 1971203192983502829}
   m_Layer: 11
   m_Name: NormCube
   m_TagString: Untagged
@@ -54,24 +54,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 2
---- !u!114 &7293067866509854526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3138319655606218225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbdc7c8f4eceb6d45bdb4cdfa70fd36e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: NormCube
-  maxHealth: 6
-  currentHealth: 6
-  invulnerableTimeCooldown: 0
-  shield: {fileID: 0}
-  effect: {fileID: 0}
 --- !u!114 &220520721384097465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +106,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+--- !u!114 &1971203192983502829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138319655606218225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbdc7c8f4eceb6d45bdb4cdfa70fd36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: NormCube
+  maxHealth: 1
+  currentHealth: 1
+  invulnerableTimeCooldown: 0
+  shield: {fileID: 0}
+  effect: {fileID: 0}
 --- !u!1 &6565655722169516257
 GameObject:
   m_ObjectHideFlags: 0

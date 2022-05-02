@@ -59,7 +59,7 @@ public class MinigunFire : MonoBehaviour
             
 //            Debug.Log(dir);
             Laser laser = LaserPool.GetLaser();
-            laser.SetDamage(2);
+            laser.SetDamage(damage);
             laser.fire(
                 spawnPoint.transform.position,
                 dir,
