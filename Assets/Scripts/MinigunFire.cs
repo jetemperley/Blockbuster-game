@@ -21,6 +21,7 @@ public class MinigunFire : MonoBehaviour
 
     public GameObject spawnPoint;
 
+    private float currentFireRate;
     private float currentFireRadius;
     private float fireTimer; //seconds
     LineRenderer line;
