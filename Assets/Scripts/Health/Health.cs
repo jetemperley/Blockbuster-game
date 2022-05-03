@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
     public AudioSource hitSFX;
 
     public DeathEffect effect;
+    public DamageEffect damageEffect;
    
     // Start is called before the first frame update
     void Start()
@@ -70,7 +71,11 @@ public class Health : MonoBehaviour
             }
 
             if (currentHealth > 0)
+            {
+                if (damageEffect != null)
+                    damageEffect.DamageFlash();
                 return 0;
+            }
             
         } 
         return currentHealth;
