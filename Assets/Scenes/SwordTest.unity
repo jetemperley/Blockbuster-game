@@ -287,6 +287,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!20 &125314571 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2596643181358554350, guid: 0fe018bdc434e9f4db1de446571c1980, type: 3}
+  m_PrefabInstance: {fileID: 1561906805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &195088038
 Mesh:
   m_ObjectHideFlags: 0
@@ -779,6 +784,32 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &366363141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8655765040293387633, guid: 0fe018bdc434e9f4db1de446571c1980, type: 3}
+  m_PrefabInstance: {fileID: 1561906805}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &366363155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366363141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa023bedd355f6f4eb30000e21c919ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startup: 0.1
+  activeTime: 0.1
+  recovery: 0.5
+  damage: 6
+  prefabHitbox: {fileID: 4518084797337923592, guid: 2285ea7c40e50134b820208623dd55d8, type: 3}
+  playerCamera: {fileID: 125314571}
+  attacking: 0
+  canAttack: 0
+  recovering: 0
 --- !u!43 &853390410
 Mesh:
   m_ObjectHideFlags: 0
