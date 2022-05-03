@@ -57,13 +57,14 @@ public class MinigunFire : MonoBehaviour
                 currentFireRadius = maxFireRadius;
             }
             
-            Debug.Log(dir);
+//            Debug.Log(dir);
             Laser laser = LaserPool.GetLaser();
-            laser.SetDamage(2);
+            laser.SetDamage(damage);
             laser.fire(
                 spawnPoint.transform.position,
                 dir,
-                0.1f
+                0.1f,
+                gameObject.name
                 );
             //audioData.Play(0);
             animator.SetBool("Shooting",true);

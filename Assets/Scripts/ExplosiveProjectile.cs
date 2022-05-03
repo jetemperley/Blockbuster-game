@@ -11,6 +11,9 @@ public class ExplosiveProjectile : MonoBehaviour
 
     private Rigidbody rb;
     private Vector3 pos;
+
+    public float timeToLive = 2;
+    private float time = 0;
    
     
     private ParticleSystem explosion;
@@ -27,13 +30,18 @@ public class ExplosiveProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
+        if (time > timeToLive){
+            explode();
+            Destroy(gameObject);
+        }
     }
 
     void FixedUpdate(){
         rb.AddForce(new Vector3(0,1f,0) * verticalOffset);
     }
 
-    void ExplosionDamage(Collision collision, Vector3 center, float radius)
+    void ExplosionDamage(Vector3 center, float radius)
     {
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         foreach(Collider hc in hitColliders){
@@ -42,7 +50,9 @@ public class ExplosiveProjectile : MonoBehaviour
             if(rb != null){
                 Health h = rb.gameObject.GetComponent<Health>();
                 if (h != null){
-                    h.takeDamage(damage); 
+                    if (h.takeDamage(damage) <= 0){
+                        PlayerStats.getInst().addStat(gameObject.name);
+                    } 
                 } 
             }
                         
@@ -53,17 +63,21 @@ public class ExplosiveProjectile : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {        
         if(collision.gameObject.name != "Player" && collision.gameObject != this.gameObject){
-            explosion.Stop();
-            explosion.transform.position = transform.position;
-            float size = explosiveRadius;
-            explosion.transform.localScale = new Vector3(size, size, size);
-            explosion.Play();
-            AudioSource audioData = explosion.gameObject.GetComponent<AudioSource>();
-            audioData.Stop();
-            audioData.Play(0);
-            ExplosionDamage(collision, transform.position, explosiveRadius);
+            explode();
         }
         
+    }
+
+    void explode(){
+        explosion.Stop();
+        explosion.transform.position = transform.position;
+        float size = explosiveRadius;
+        explosion.transform.localScale = new Vector3(size, size, size);
+        explosion.Play();
+        AudioSource audioData = explosion.gameObject.GetComponent<AudioSource>();
+        audioData.Stop();
+        audioData.Play(0);
+        ExplosionDamage(transform.position, explosiveRadius);
     }
 
     public void setExplosion(ParticleSystem s){

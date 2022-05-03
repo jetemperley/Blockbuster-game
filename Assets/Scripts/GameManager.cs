@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     }
     public void Quit(){
-        UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
     }
     
     public void Restart (){
@@ -30,9 +30,16 @@ public class GameManager : MonoBehaviour
     }
 
     public void CompleteLevel(){
+        if (gameHasEnded)
+            return;
         Debug.Log("Level Complete!");
+        gameHasEnded = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         completeLevelUI.SetActive(true);
+
+        PlayerStats.getInst().log();
+        PlayerStats.getInst().reset();
     }
+
 }

@@ -17,6 +17,7 @@ public class PlayerMove : MonoBehaviour
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
+    public AudioSource dashSFX;
 
     public bool canJump = true;
 
@@ -34,7 +35,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-
+        dashSFX.Stop();
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -55,6 +56,7 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetButton("Jump") && canMove && canJump)
         {
+            PlayerStats.getInst().addStat("jump");   
             moveDirection.y = jumpSpeed;
         }
         else
@@ -65,6 +67,7 @@ public class PlayerMove : MonoBehaviour
         //Dashing
         if(Input.GetKeyDown("left shift"))
         {
+            dashSFX.Play(0);
             StartCoroutine(Dash());
         }
 
@@ -91,6 +94,7 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator Dash()
     {
+        PlayerStats.getInst().addStat("dash");
         float startTime = Time.time;
         
         //Set the direction of the dash

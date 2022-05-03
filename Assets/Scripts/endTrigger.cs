@@ -6,7 +6,10 @@ public class endTrigger : MonoBehaviour {
     
     public GameManager gameManager;
 
-    void OnTriggerEnter (){
-        GameObject.FindObjectOfType<GameManager>().CompleteLevel();;
+    void OnTriggerEnter (Collider c){
+        if (c.gameObject.CompareTag("Player")){
+            GameObject.FindObjectOfType<GameManager>().CompleteLevel();
+        }
+        
     }
 }
