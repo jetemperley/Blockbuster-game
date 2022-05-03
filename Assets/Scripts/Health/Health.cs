@@ -23,7 +23,10 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
         invulnerableTimer = 0;
         //hitSFX = GetComponent<AudioSource>();
-        hitSFX.Stop();
+        if(hitSFX != null)
+            {
+                hitSFX.Stop();
+            }
     }
 
     // Update is called once per frame
