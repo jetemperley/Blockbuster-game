@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3080516130614408277}
   - component: {fileID: 6864243240134421147}
   - component: {fileID: 6758504871478698253}
+  - component: {fileID: 8746120623242202195}
   - component: {fileID: 7606443629448298253}
-  - component: {fileID: 795663591845187830}
   m_Layer: 0
   m_Name: PyramidEnemy
   m_TagString: Untagged
@@ -90,6 +90,18 @@ MonoBehaviour:
   shield: {fileID: 0}
   hitSFX: {fileID: 7606443629448298253}
   effect: {fileID: 0}
+--- !u!114 &8746120623242202195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552151754869459445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 395eaf78f3ca57143accda14ff329417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &7606443629448298253
 AudioSource:
   m_ObjectHideFlags: 0
@@ -186,18 +198,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &795663591845187830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552151754869459445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395eaf78f3ca57143accda14ff329417, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2830225263574534712
 PrefabInstance:
   m_ObjectHideFlags: 0
