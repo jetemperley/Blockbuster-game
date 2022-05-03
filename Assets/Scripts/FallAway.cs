@@ -40,7 +40,7 @@ public class FallAway : MonoBehaviour
             // rb.MovePosition(rb.position + fallSpeed*Time.deltaTime);
             
         }
-        if (transform.position.y < -40)
+        if (transform.position.y < -100)
             Destroy(gameObject);
     }
 }
