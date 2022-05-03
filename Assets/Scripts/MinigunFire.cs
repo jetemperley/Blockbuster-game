@@ -7,9 +7,11 @@ public class MinigunFire : MonoBehaviour
     
     public Bullet bulletPrefab;
     public float maxFireRate; //seconds
+    public float minFireRate; //seconds
     public float maxFireRadius;
     public float minFireRadius;
     public float fireRadiusIncrement;
+    public float fireRateIncrement;
     public int damage;
 
     private float currentFireRate; //seconds
@@ -37,6 +39,7 @@ public class MinigunFire : MonoBehaviour
         line.startWidth = 0.1f;
         line.endWidth = 0.1f;
         currentFireRadius = minFireRadius;
+        currentFireRate = minFireRate;
 
     }
 
@@ -68,9 +71,16 @@ public class MinigunFire : MonoBehaviour
                 gameObject.name
                 );
             animator.SetBool("Shooting",true);
-            fireTimer = fireCooldown;
+            if(currentFireRate <= maxFireRate)
+            {
+                currentFireRate = maxFireRate;
+            }else{
+                currentFireRate -= fireRateIncrement;
+            }
+            fireTimer = currentFireRate;
         }else if(!Input.GetButton("Fire1"))
         {
+            currentFireRate = minFireRate;
             currentFireRadius = minFireRadius;
             audioData.Stop();
             audioPlaying = false;
