@@ -11,7 +11,7 @@ public class PyramidShoot : MonoBehaviour
     public float fireRate = 1;
     public GameObject projectile;
     public float projSpawnDist = 1;
-    private float projSpeed = 5;
+    public float projSpeed = 5;
     
 
     private Transform target;

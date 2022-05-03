@@ -5,44 +5,78 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
 
-    public int maxHealth = 1;
+    public string name;
+    public int maxHealth;
+    public int currentHealth;
+    public float invulnerableTimeCooldown;
+
+    private float invulnerableTimer;
 
     public Health shield;
+    public AudioSource hitSFX;
 
     public DeathEffect effect;
-    public int currentHealth;
+   
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        invulnerableTimer = 0;
+        //hitSFX = GetComponent<AudioSource>();
+        if(hitSFX != null)
+            {
+                hitSFX.Stop();
+            }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(invulnerableTimer>0){
+            invulnerableTimer -= Time.deltaTime;
+        }else{
+            invulnerableTimer = 0;
+        }
+
+        if (transform.position.y < -100 && gameObject.layer == 9) {
+            takeDamage(1000);
+            PlayerStats.getInst().addStat("fall");
+        }
     }
 
     public int takeDamage(int dam){
-        if (shield != null) {
-            dam = shield.takeDamage(dam);
-        }
+        if(invulnerableTimer<=0)
+        {
+            if(hitSFX != null)
+            {
+                hitSFX.Play(0);
+            }
+            
+            if(gameObject.layer == 9)
+            {
+                invulnerableTimer = invulnerableTimeCooldown;
+            }
+            if (shield != null) {
+                dam = shield.takeDamage(dam);
+            }
 
-        currentHealth -= dam;
-        Debug.Log("health " + currentHealth);
-        if (currentHealth <= 0){
-            if (effect != null)
-                effect.effect();
-            Destroy(gameObject);
-        }
+            currentHealth -= dam;
+            Debug.Log("health " + currentHealth);
+            if (currentHealth <= 0){
+                if (effect != null)
+                    effect.effect();
+                Destroy(gameObject);
+                PlayerStats.getInst().addStat("kill "+ name);
+            }
 
-        if (currentHealth > 0)
-            return 0;
+            if (currentHealth > 0)
+                return 0;
+            
+        } 
         return currentHealth;
-
     }
 
-    int getHealth(){
+    public int getHealth(){
         return currentHealth;
     }
 

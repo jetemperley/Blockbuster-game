@@ -32,11 +32,11 @@ public class Laser : MonoBehaviour
         }
     }
 
-    public void fire(Vector3 pos, Vector3 dir, float time){
-        fire(pos, dir, time, 150);
+    public void fire(Vector3 pos, Vector3 dir, float time, string weap){
+        fire(pos, dir, time, 150, weap);
     }
 
-    public void fire(Vector3 pos, Vector3 dir, float time, float speed){
+    public void fire(Vector3 pos, Vector3 dir, float time, float speed, string weap){
         this.dir = dir;
         this.speed = speed;
         this.time = time;
@@ -45,7 +45,11 @@ public class Laser : MonoBehaviour
             try{
                 Health health = hit.collider.attachedRigidbody.gameObject.GetComponent<Health>();
                 if (health != null){
-                health.takeDamage(damage);
+                    health.takeDamage(damage); 
+                    if (health.getHealth() <= 0){
+                        Debug.Log(weap);
+                        PlayerStats.getInst().addStat(weap);
+                    }
                 }
             } catch{}
             
