@@ -97,7 +97,7 @@ public class PlayerStats : MonoBehaviour
                 dashs++;
             break;
 
-            case "ExplosiveProjectile":
+            case "ExplosiveProjectile(Clone)":
                 cannonKill++;
             break;
 
