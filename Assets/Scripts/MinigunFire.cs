@@ -60,7 +60,13 @@ public class MinigunFire : MonoBehaviour
             }else{
                 currentFireRadius = maxFireRadius;
             }
-            
+            if(currentFireRate <= maxFireRate)
+            {
+                currentFireRate = maxFireRate;
+            }else{
+                currentFireRate -= fireRateIncrement*Time.deltaTime;
+            }
+            fireTimer = currentFireRate;
 //          Debug.Log(dir);
             Laser laser = LaserPool.GetLaser();
             laser.SetDamage(damage);
@@ -71,13 +77,7 @@ public class MinigunFire : MonoBehaviour
                 gameObject.name
                 );
             animator.SetBool("Shooting",true);
-            if(currentFireRate <= maxFireRate)
-            {
-                currentFireRate = maxFireRate;
-            }else{
-                currentFireRate -= fireRateIncrement;
-            }
-            fireTimer = currentFireRate;
+            
         }else if(!Input.GetButton("Fire1"))
         {
             currentFireRate = minFireRate;
