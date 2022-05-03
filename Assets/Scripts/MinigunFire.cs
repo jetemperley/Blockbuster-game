@@ -6,12 +6,13 @@ public class MinigunFire : MonoBehaviour
 {
     
     public Bullet bulletPrefab;
-    public float fireCooldown; //seconds
+    public float maxFireRate; //seconds
     public float maxFireRadius;
     public float minFireRadius;
     public float fireRadiusIncrement;
     public int damage;
 
+    private float currentFireRate; //seconds
     private Camera cam;
     private AudioSource audioData;
     private Animator animator;
@@ -57,7 +58,7 @@ public class MinigunFire : MonoBehaviour
                 currentFireRadius = maxFireRadius;
             }
             
-//            Debug.Log(dir);
+//          Debug.Log(dir);
             Laser laser = LaserPool.GetLaser();
             laser.SetDamage(damage);
             laser.fire(
@@ -66,14 +67,7 @@ public class MinigunFire : MonoBehaviour
                 0.1f,
                 gameObject.name
                 );
-            //audioData.Play(0);
             animator.SetBool("Shooting",true);
-            // Bullet bullet = Instantiate(bulletPrefab);
-            // bullet.transform.parent = spawnPoint.transform;
-            // bullet.transform.localPosition = Vector3.zero;
-            // bullet.transform.localRotation = Quaternion.Euler(90, 0, 0);
-            // bullet.transform.parent = null;
-            // bullet.SetDir(dir);
             fireTimer = fireCooldown;
         }else if(!Input.GetButton("Fire1"))
         {
