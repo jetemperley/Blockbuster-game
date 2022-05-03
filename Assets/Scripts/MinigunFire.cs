@@ -14,7 +14,6 @@ public class MinigunFire : MonoBehaviour
     public float fireRateIncrement;
     public int damage;
 
-    private float currentFireRate; //seconds
     private Camera cam;
     private AudioSource audioData;
     private Animator animator;
@@ -76,6 +75,7 @@ public class MinigunFire : MonoBehaviour
                 0.1f,
                 gameObject.name
                 );
+            //audioData.Play(0);
             animator.SetBool("Shooting",true);
             
         }else if(!Input.GetButton("Fire1"))
