@@ -30,13 +30,9 @@ public class FallAway : MonoBehaviour
             // rb.drag = 0.1f;
             // rb.angularDrag = 1;
             fall = true;
-            Vector3 force = new Vector3(
-                Random.Range(-1f, 1f)*10,
-                Random.Range(0, -1f)*3,
-                Random.Range(0, -1f)*3
-                );
+            
             // rb.AddForce(randX, randY, randZ, ForceMode.VelocityChange);
-            rb.AddForceAtPosition(force, Random.onUnitSphere, ForceMode.VelocityChange);
+            rb.AddForceAtPosition(Random.onUnitSphere/3, Random.onUnitSphere, ForceMode.VelocityChange);
             // rb.MovePosition(rb.position + fallSpeed*Time.deltaTime);
             
         }
