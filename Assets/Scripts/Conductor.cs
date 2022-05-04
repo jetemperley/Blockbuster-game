@@ -10,6 +10,10 @@ public class Conductor : MonoBehaviour
     public float boundary = -30; 
     public float startBoundary = 30;
 
+    private float currentPosition = 0; 
+    public GameObject keepUpWith;
+    public float maxDistAway = 30;
+
     //Singleton stuff
     public static Conductor conductor;
     
@@ -23,7 +27,23 @@ public class Conductor : MonoBehaviour
         else
         {
             conductor = this;
+            currentPosition = boundary;
         }
+    }
+
+    private void Update() 
+    {
+        currentPosition += Time.deltaTime*gameSpeed;
+        
+        if (keepUpWith.transform.position.z - currentPosition > maxDistAway){
+            float dist = keepUpWith.transform.position.z - currentPosition;
+            dist -= maxDistAway;
+            currentPosition += dist;
+        }
+    }
+
+    public float getPosition(){
+        return currentPosition;
     }
 
     public float getLevelSpeed()
