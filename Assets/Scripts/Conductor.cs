@@ -33,9 +33,10 @@ public class Conductor : MonoBehaviour
 
     private void Update() 
     {
-        currentPosition += Time.deltaTime*gameSpeed;
-        
+        currentPosition += Time.deltaTime*levelSpeed;
+        Debug.Log("position " + currentPosition);
         if (keepUpWith.transform.position.z - currentPosition > maxDistAway){
+            Debug.Log("keeping up");
             float dist = keepUpWith.transform.position.z - currentPosition;
             dist -= maxDistAway;
             currentPosition += dist;

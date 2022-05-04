@@ -19,11 +19,11 @@ public class isGrounded : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log("Trigger enter " + other.gameObject.name);
+//         Debug.Log("Trigger enter " + other.gameObject.name);
         cc.canJump = true;
     }
     private void OnTriggerStay(Collider other) {
-        Debug.Log("Trigger stay " + other.gameObject.name);
+//        Debug.Log("Trigger stay " + other.gameObject.name);
         cc.canJump = true;
     }
 
