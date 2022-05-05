@@ -17,6 +17,7 @@ public class PlayerMelee : MonoBehaviour
     public bool recovering;
 
     private float timer;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class PlayerMelee : MonoBehaviour
         attacking = false;
         canAttack = true;
         recovering = false;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class PlayerMelee : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2") && canAttack)
         {
+            animator.SetTrigger("Attack");
             timer = startup;
             attacking = true;
             canAttack = false;
