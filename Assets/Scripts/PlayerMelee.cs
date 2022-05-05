@@ -9,6 +9,7 @@ public class PlayerMelee : MonoBehaviour
     public float recovery;
     public int damage;
 
+    public GameObject sword;    
     public GameObject prefabHitbox;
     public Camera playerCamera;
 
@@ -18,6 +19,7 @@ public class PlayerMelee : MonoBehaviour
 
     private float timer;
     private Animator animator;
+    private GameObject weapon;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,9 @@ public class PlayerMelee : MonoBehaviour
         attacking = false;
         canAttack = true;
         recovering = false;
-        animator = GetComponent<Animator>();
+        weapon = GetComponent<GunHolder>().gunRoot;
+        animator = sword.GetComponent<Animator>();
+        sword.SetActive(false);
     }
 
     // Update is called once per frame
@@ -34,6 +38,8 @@ public class PlayerMelee : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2") && canAttack)
         {
+            weapon.SetActive(false);
+            sword.SetActive(true);
             animator.SetTrigger("Attack");
             timer = startup;
             attacking = true;
@@ -61,6 +67,8 @@ public class PlayerMelee : MonoBehaviour
 
         if (recovering && timer <= 0)
         {
+            weapon.SetActive(true);
+            sword.SetActive(false);
             recovering = false;
             canAttack = true;
         }
