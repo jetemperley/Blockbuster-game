@@ -53,7 +53,22 @@ public class MinigunFire : MonoBehaviour
                 audioPlaying = !audioPlaying;
             }
 
-            Vector3 dir = cam.transform.forward + new Vector3(Random.Range(currentFireRadius,-currentFireRadius),Random.Range(currentFireRadius,-currentFireRadius),0);
+            Vector3 hitPos;
+            RaycastHit hit;
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1000)){
+                hitPos = hit.point;
+            } else {
+                hitPos = cam.transform.position + cam.transform.forward*1000;
+            }
+
+            Vector3 hitDir = (hitPos - spawnPoint.transform.position).normalized; 
+            Vector3 dir = hitDir 
+                + new Vector3(
+                    Random.Range(currentFireRadius,-currentFireRadius),
+                    Random.Range(currentFireRadius,-currentFireRadius),
+                    0);
+            
+
             if(currentFireRadius < maxFireRadius)
             {
                 currentFireRadius += fireRadiusIncrement*Time.deltaTime;
@@ -76,7 +91,6 @@ public class MinigunFire : MonoBehaviour
                 0.1f,
                 gameObject.name
                 );
-            //audioData.Play(0);
             animator.SetBool("Shooting",true);
             
         }else if(!Input.GetButton("Fire1"))
