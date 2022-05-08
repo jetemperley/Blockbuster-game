@@ -6,7 +6,7 @@ public class isGrounded : MonoBehaviour
 {
     
     Collider jump;
-    public PlayerMove cc;
+    public PlayerMove characterController;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +20,11 @@ public class isGrounded : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
 //         Debug.Log("Trigger enter " + other.gameObject.name);
-        cc.canJump = true;
+        characterController.canJump = true;
     }
     private void OnTriggerStay(Collider other) {
 //        Debug.Log("Trigger stay " + other.gameObject.name);
-        cc.canJump = true;
+        characterController.canJump = true;
     }
 
     // private void OnTriggerExit(Collider other) {

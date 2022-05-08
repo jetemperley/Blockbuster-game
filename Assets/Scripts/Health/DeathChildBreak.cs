@@ -17,7 +17,7 @@ public class DeathChildBreak : DeathEffect
             r.useGravity = false;
             g.transform.SetParent(null);
             r.AddForce(Random.onUnitSphere*randomSpeedOnBreak, ForceMode.VelocityChange);
-            g.AddComponent<Terrain>();
+            // g.AddComponent<Terrain>();
             Destroy(g, 2);
             
                 

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ExplosiveProjectile : MonoBehaviour
 {
-    public float projectileVelocity;
-    public float explosiveRadius;
-    public int damage;
-    public float verticalOffset;    
+    public float projectileVelocity = 75;
+    public float explosiveRadius = 4;
+    public int damage = 1;
+    public float gravity = 2;    
 
     private Rigidbody rb;
     private Vector3 pos;
@@ -22,9 +22,7 @@ public class ExplosiveProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        
-        
+        rb = GetComponent<Rigidbody>();    
     }
 
     // Update is called once per frame
@@ -38,7 +36,7 @@ public class ExplosiveProjectile : MonoBehaviour
     }
 
     void FixedUpdate(){
-        rb.AddForce(new Vector3(0,1f,0) * verticalOffset);
+        rb.AddForce(new Vector3(0,-1f,0) * gravity);
     }
 
     void ExplosionDamage(Vector3 center, float radius)
