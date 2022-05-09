@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     
     public GameObject completeLevelUI;
     public GameObject gameOverUI;
+    public CheckpointManager CPManager;
 
     public void EndGame (){
         
@@ -27,6 +28,21 @@ public class GameManager : MonoBehaviour
     
     public void Restart (){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void LoadCheckpoint(){
+        if(CPManager != null){
+            gameOverUI.SetActive(false);
+            GameObject player = Instantiate(CPManager.playerPrefab);
+            foreach(Checkpoint cp in CPManager.checkpoints){
+                if(cp.IsActive())
+                {
+                    player.transform.localPosition = cp.transform.localPosition;
+                    player.transform.localRotation = Quaternion.Euler(0,180,0);
+                }        
+            }
+        }
+        gameHasEnded = false;
     }
 
     public void CompleteLevel(){
