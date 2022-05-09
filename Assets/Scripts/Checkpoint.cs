@@ -21,7 +21,7 @@ public class Checkpoint : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         
-        CheckpointManager.GetInst().DeactivateAll();
+        CheckpointManager.GetInst().DeactivateOthers();
 
         if(other.gameObject.layer == 9){
             active = true;

@@ -29,14 +29,22 @@ public class CheckpointManager : MonoBehaviour
         
     }
 
-    public void DeactivateAll(){
-        
+    public void DeactivateAll(){     
+        for(int i = 0; i <checkpoints.Length; i++){            
+            checkpoints[i].Deactivate();              
+        }
+    }
 
-
+    public void DeactivateOthers(){
         for(int i = 0; i <checkpoints.Length; i++){
-            
-            checkpoints[i].Deactivate();
-              
+            if(checkpoints[i].IsActive())
+            {
+                for(int k = 0; k<i; k++)
+                {
+                    checkpoints[k].Deactivate();
+                }
+            }            
+                          
         }
     }
 
