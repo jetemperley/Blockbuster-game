@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class CheckpointManager : MonoBehaviour
 {
+
     public Checkpoint [] checkpoints;
+
+    private static CheckpointManager inst;
+
+    private void Awake() {
+        if (inst == null)
+            inst = this;
+        else 
+            Destroy(gameObject);
+    }
 
     public GameObject playerPrefab;
     // Start is called before the first frame update
@@ -16,13 +26,21 @@ public class CheckpointManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    public void DeactivateAll(){
+        
+
+
         for(int i = 0; i <checkpoints.Length; i++){
-            Debug.Log(checkpoints[i].IsActive());
-            if(checkpoints[i].IsActive()){
-                for(int k = 0; k<i; k++){
-                    checkpoints[k].Deactivate();
-                }
-            }
+            
+            checkpoints[i].Deactivate();
+              
         }
+    }
+
+    public static CheckpointManager GetInst(){
+        return inst;
     }
 }

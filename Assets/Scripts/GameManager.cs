@@ -37,8 +37,13 @@ public class GameManager : MonoBehaviour
             foreach(Checkpoint cp in CPManager.checkpoints){
                 if(cp.IsActive())
                 {
-                    player.transform.localPosition = cp.transform.localPosition;
+                    Debug.Log(cp.transform.position);
+                    player.GetComponent<CharacterController>().enabled = false;
+                    player.transform.position = cp.transform.position;
+                    player.GetComponent<CharacterController>().enabled = true;
+
                     player.transform.localRotation = Quaternion.Euler(0,180,0);
+
                 }        
             }
         }

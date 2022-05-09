@@ -92,7 +92,10 @@ public class PlayerMove : MonoBehaviour
         // as an acceleration (ms^-2)
         if (!characterController.isGrounded)
         {
+            // Debug.Log("not grounded");
             moveDirection.y -= gravity * Time.deltaTime;
+        } else {
+            // Debug.Log("grounded");
         }
 
         // Move the controller
