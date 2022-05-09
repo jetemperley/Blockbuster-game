@@ -15,7 +15,7 @@ public class Health : MonoBehaviour
     public Health shield;
     public AudioSource hitSFX;
 
-    public DeathEffect effect;
+    public DeathEffect[] effect;
     public DamageEffect damageEffect;
    
     // Start is called before the first frame update
@@ -48,7 +48,7 @@ public class Health : MonoBehaviour
     public int takeDamage(int dam){
         if(invulnerableTimer<=0)
         {
-            if(hitSFX != null)
+            if(hitSFX != null && hitSFX.enabled)
             {
                 hitSFX.Play(0);
             }
@@ -64,8 +64,12 @@ public class Health : MonoBehaviour
             currentHealth -= dam;
             Debug.Log("health " + currentHealth);
             if (currentHealth <= 0){
-                if (effect != null)
-                    effect.effect();
+                
+                foreach (DeathEffect e in effect){
+                    if (e != null)
+                        e.effect();
+                }
+                
                 Destroy(gameObject);
                 PlayerStats.getInst().addStat("kill "+ name);
             }

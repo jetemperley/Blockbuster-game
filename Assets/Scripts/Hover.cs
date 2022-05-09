@@ -6,6 +6,9 @@ public class Hover : MonoBehaviour
 {
     Rigidbody rb;
     Vector3 pos;
+
+    public float rotPerSecond = 180;
+    public float verticalMovement = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,9 +17,11 @@ public class Hover : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        rb.MovePosition(pos + Vector3.up*Mathf.Sin(Time.time)/2);
-        rb.MoveRotation(rb.rotation*Quaternion.Euler(0, 180*Time.deltaTime, 0));
+        float off = Mathf.Sin(Time.time);
+        Debug.Log(off);
+        rb.position= (pos + Vector3.up*off/(1/verticalMovement));
+        rb.MoveRotation(rb.rotation*Quaternion.Euler(0, Time.deltaTime*rotPerSecond, 0));
     }
 }

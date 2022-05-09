@@ -6,10 +6,12 @@ public class MinigunFire : MonoBehaviour
 {
     
     public Bullet bulletPrefab;
-    public float fireCooldown; //seconds
+    public float maxFireRate; //seconds
+    public float minFireRate; //seconds
     public float maxFireRadius;
     public float minFireRadius;
     public float fireRadiusIncrement;
+    public float fireRateIncrement;
     public int damage;
 
     private Camera cam;
@@ -19,6 +21,7 @@ public class MinigunFire : MonoBehaviour
 
     public GameObject spawnPoint;
 
+    private float currentFireRate;
     private float currentFireRadius;
     private float fireTimer; //seconds
     LineRenderer line;
@@ -36,6 +39,7 @@ public class MinigunFire : MonoBehaviour
         line.startWidth = 0.1f;
         line.endWidth = 0.1f;
         currentFireRadius = minFireRadius;
+        currentFireRate = minFireRate;
 
     }
 
@@ -49,15 +53,36 @@ public class MinigunFire : MonoBehaviour
                 audioPlaying = !audioPlaying;
             }
 
-            Vector3 dir = cam.transform.forward + new Vector3(Random.Range(currentFireRadius,-currentFireRadius),Random.Range(currentFireRadius,-currentFireRadius),0);
+            Vector3 hitPos;
+            RaycastHit hit;
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1000)){
+                hitPos = hit.point;
+            } else {
+                hitPos = cam.transform.position + cam.transform.forward*1000;
+            }
+
+            Vector3 hitDir = (hitPos - spawnPoint.transform.position).normalized; 
+            Vector3 dir = hitDir 
+                + new Vector3(
+                    Random.Range(currentFireRadius,-currentFireRadius),
+                    Random.Range(currentFireRadius,-currentFireRadius),
+                    0);
+            
+
             if(currentFireRadius < maxFireRadius)
             {
                 currentFireRadius += fireRadiusIncrement*Time.deltaTime;
             }else{
                 currentFireRadius = maxFireRadius;
             }
-            
-//            Debug.Log(dir);
+            if(currentFireRate <= maxFireRate)
+            {
+                currentFireRate = maxFireRate;
+            }else{
+                currentFireRate -= fireRateIncrement*Time.deltaTime;
+            }
+            fireTimer = currentFireRate;
+//          Debug.Log(dir);
             Laser laser = LaserPool.GetLaser();
             laser.SetDamage(damage);
             laser.fire(
@@ -66,17 +91,11 @@ public class MinigunFire : MonoBehaviour
                 0.1f,
                 gameObject.name
                 );
-            //audioData.Play(0);
             animator.SetBool("Shooting",true);
-            // Bullet bullet = Instantiate(bulletPrefab);
-            // bullet.transform.parent = spawnPoint.transform;
-            // bullet.transform.localPosition = Vector3.zero;
-            // bullet.transform.localRotation = Quaternion.Euler(90, 0, 0);
-            // bullet.transform.parent = null;
-            // bullet.SetDir(dir);
-            fireTimer = fireCooldown;
+            
         }else if(!Input.GetButton("Fire1"))
         {
+            currentFireRate = minFireRate;
             currentFireRadius = minFireRadius;
             audioData.Stop();
             audioPlaying = false;
