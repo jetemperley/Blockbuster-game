@@ -12,7 +12,7 @@ public class Terrain : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        // rigidbody.isKinematic = true;
+        rigidbody.isKinematic = true;
         conductor = Conductor.conductor;
     }
 
