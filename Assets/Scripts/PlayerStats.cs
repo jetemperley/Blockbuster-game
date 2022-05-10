@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -22,7 +23,6 @@ public class PlayerStats : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this);
-            
     }
 
     private void Update() {
@@ -67,6 +67,20 @@ public class PlayerStats : MonoBehaviour
 
     }
 
+    public void deathLog(){
+        AnalyticsResult result = Analytics.CustomEvent("death event", 
+            new Dictionary<string, object> 
+            {
+                {"cubesKilled", killCube},
+                {"shieldsKilled", killShield},
+                {"trianglesKilled", killTri},
+                {"diamondKilled", killDiam},
+
+            }
+        );
+        Debug.Log("analytics result " + result);
+    }
+
     public void addStat(string name){
         switch (name) {
             case "kill CubeShield":
@@ -87,6 +101,7 @@ public class PlayerStats : MonoBehaviour
 
             case "kill Player":
                 dPlayer++;
+                deathLog();
             break;
 
             case "jump":
