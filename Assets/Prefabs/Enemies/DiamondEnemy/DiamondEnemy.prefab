@@ -894,6 +894,7 @@ GameObject:
   - component: {fileID: 6478091444046723916}
   - component: {fileID: 4707363127749129351}
   - component: {fileID: 8551541028345212464}
+  - component: {fileID: 7402763449800277702}
   m_Layer: 11
   m_Name: DiamondEnemy
   m_TagString: Untagged
@@ -948,15 +949,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: DiamondEnemy
-  maxHealth: 1
-  currentHealth: 1
+  maxHealth: 6
+  currentHealth: 6
   invulnerableTimeCooldown: 0
   shield: {fileID: 0}
   hitSFX: {fileID: 6478091444046723916}
   effect:
   - {fileID: 4707363127749129351}
   - {fileID: 8551541028345212464}
-  damageEffect: {fileID: 0}
+  damageEffect: {fileID: 7402763449800277702}
 --- !u!114 &6121632595266365335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1106,6 +1107,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomSpeedOnBreak: 1
   childContainer: {fileID: 1790890386068744439}
+--- !u!114 &7402763449800277702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082738556797881112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568f1d6a3935397419aa31c4e1402528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashTime: 0.3
+  flashColor: {r: 1, g: 0, b: 0, a: 0}
+  renderer: {fileID: 8487917701638752044}
 --- !u!1001 &4522163663795424636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1391,6 +1407,11 @@ Transform:
 --- !u!4 &3757122883254734084 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 784198904724275320, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
+  m_PrefabInstance: {fileID: 4522163663795424636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8487917701638752044 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5407371562181003856, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
   m_PrefabInstance: {fileID: 4522163663795424636}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4830388099511784271

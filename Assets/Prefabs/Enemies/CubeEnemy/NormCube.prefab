@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -1218927571945497588}
   - component: {fileID: 250204566335413963}
   - component: {fileID: 4392793603831770780}
+  - component: {fileID: -408741023382571374}
   m_Layer: 11
   m_Name: NormCube
   m_TagString: Untagged
@@ -124,15 +125,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: NormCube
-  maxHealth: 1
-  currentHealth: 1
+  maxHealth: 6
+  currentHealth: 6
   invulnerableTimeCooldown: 0
   shield: {fileID: 0}
   hitSFX: {fileID: -1218927571945497588}
   effect:
   - {fileID: 250204566335413963}
   - {fileID: 4392793603831770780}
-  damageEffect: {fileID: 0}
+  damageEffect: {fileID: -408741023382571374}
 --- !u!114 &728817346682950442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f380f62412929c74a9a3f2d2127b635f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomSpeedOnBreak: 1
   childContainer: {fileID: 6565655722169516260}
 --- !u!114 &4392793603831770780
 MonoBehaviour:
@@ -268,6 +270,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particlesOnDeath: {fileID: 7501055699649034876}
+--- !u!114 &-408741023382571374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138319655606218225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568f1d6a3935397419aa31c4e1402528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashTime: 0.3
+  flashColor: {r: 1, g: 0, b: 0, a: 0}
+  renderer: {fileID: 6565655722169516258}
 --- !u!1 &6565655722169516257
 GameObject:
   m_ObjectHideFlags: 0
