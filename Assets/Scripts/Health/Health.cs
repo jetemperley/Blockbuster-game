@@ -62,7 +62,7 @@ public class Health : MonoBehaviour
             }
 
             currentHealth -= dam;
-            Debug.Log("health " + currentHealth);
+            // Debug.Log("health " + currentHealth);
             if (currentHealth <= 0){
                 
                 foreach (DeathEffect e in effect){
