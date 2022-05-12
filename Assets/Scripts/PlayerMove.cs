@@ -63,7 +63,9 @@ public class PlayerMove : MonoBehaviour
             PlayerStats.getInst().addStat("jump");   
             moveDirection.y = jumpSpeed;
         }
-        else
+        else if (characterController.isGrounded){
+            moveDirection.y = 0;
+        } else 
         {
             moveDirection.y = movementDirectionY;
         }
@@ -102,13 +104,12 @@ public class PlayerMove : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
 
         // Player and Camera rotation
-        if (canMove)
-        {
-            rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
-            rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
-        }
+        
+        rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
+        rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
+        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+        
     }
 
     IEnumerator Dash()
@@ -123,9 +124,10 @@ public class PlayerMove : MonoBehaviour
         float dashSpeedY = canMove ? dashSpeed * Input.GetAxis("Horizontal") : 0;
         dashDirection = (forward * dashSpeedX) + (right * dashSpeedY);
 
+        canMove = false;
         while(Time.time < startTime + dashTime)
         {
-            canMove = false;
+            
             characterController.Move(dashDirection * Time.deltaTime);
 
             yield return null;
