@@ -28,7 +28,7 @@ public class FallAway : MonoBehaviour
             rb.isKinematic = false;
             rb.mass = 1000;
             // rb.drag = 0.1f;
-            // rb.angularDrag = 1;
+            rb.angularDrag = 1;
             fall = true;
             
             // rb.AddForce(randX, randY, randZ, ForceMode.VelocityChange);
