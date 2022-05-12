@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4562021363966980979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4397393780620365032}
+  - component: {fileID: 1449356266488293635}
+  m_Layer: 9
+  m_Name: Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4397393780620365032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4562021363966980979}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8655765040293387639}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1449356266488293635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4562021363966980979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbdc7c8f4eceb6d45bdb4cdfa70fd36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldOrNot: 1
+  name: 
+  maxHealth: 2
+  currentHealth: 0
+  invulnerableTimeCooldown: 1
+  shield: {fileID: 0}
+  hitSFX: {fileID: 0}
+  effect: []
+  damageEffect: {fileID: 0}
 --- !u!1 &8655765040293387633
 GameObject:
   m_ObjectHideFlags: 0
@@ -22,6 +75,7 @@ GameObject:
   - component: {fileID: 6543688535885125696}
   - component: {fileID: 7509098747381349089}
   - component: {fileID: 4404366252478746699}
+  - component: {fileID: 4391065286575554416}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -42,6 +96,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2596643181358554349}
+  - {fileID: 4397393780620365032}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -163,13 +218,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdc7c8f4eceb6d45bdb4cdfa70fd36e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldOrNot: 0
   name: Player
   maxHealth: 3
   currentHealth: 3
   invulnerableTimeCooldown: 1
-  shield: {fileID: 0}
+  shield: {fileID: 1449356266488293635}
   hitSFX: {fileID: 7509098747381349089}
-  effect: {fileID: 0}
+  effect:
+  - {fileID: 0}
   damageEffect: {fileID: 0}
 --- !u!114 &2769227143674863179
 MonoBehaviour:
@@ -439,6 +496,19 @@ MonoBehaviour:
   attacking: 0
   canAttack: 0
   recovering: 0
+--- !u!114 &4391065286575554416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655765040293387633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84cb998fafac3b44f9b7ac491d0dd3b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthComponent: {fileID: 238968272100124135}
 --- !u!1001 &2902400399343826914
 PrefabInstance:
   m_ObjectHideFlags: 0
