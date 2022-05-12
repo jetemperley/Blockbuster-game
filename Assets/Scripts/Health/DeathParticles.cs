@@ -9,7 +9,7 @@ public class DeathParticles : DeathEffect
     public ParticleSystem particlesOnDeath;
     // Start is called before the first frame update
     public override void effect(){
-        particlesOnDeath.transform.SetParent(transform.parent.parent);
+        particlesOnDeath.transform.SetParent(null);
         particlesOnDeath.Play();
         Destroy(particlesOnDeath, 5);
     }

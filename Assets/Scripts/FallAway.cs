@@ -19,7 +19,7 @@ public class FallAway : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate() {
 
-        if (!fall && transform.position.z < Conductor.conductor.getPosition()){
+        if (Conductor.getConductor().getTotalSpeed() != 0 && !fall && transform.position.z < Conductor.conductor.getPosition()){
             
             if (rb == null){
                 rb = gameObject.AddComponent<Rigidbody>();
@@ -43,4 +43,5 @@ public class FallAway : MonoBehaviour
         if (transform.position.y < -100)
             Destroy(gameObject);
     }
+
 }
