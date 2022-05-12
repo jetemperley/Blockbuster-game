@@ -20,9 +20,10 @@ public class Checkpoint : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        if(other.gameObject == player){
+        if(other.gameObject.layer == 9){
             active = true;
         }
+        CheckpointManager.GetInst().DeactivateOthers();
     }
 
     public bool IsActive(){

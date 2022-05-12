@@ -48,7 +48,7 @@ public class Health : MonoBehaviour
     public int takeDamage(int dam){
         if(invulnerableTimer<=0)
         {
-            if(hitSFX != null)
+            if(hitSFX != null && hitSFX.enabled)
             {
                 hitSFX.Play(0);
             }
