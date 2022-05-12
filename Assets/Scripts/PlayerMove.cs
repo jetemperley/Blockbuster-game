@@ -28,6 +28,13 @@ public class PlayerMove : MonoBehaviour
     public bool canDash;
     private float dashTimer;
 
+    public float DashTimer
+    {
+        get {
+            return dashTimer;
+        }
+    }
+
     [HideInInspector]
     public bool canMove = true;
 

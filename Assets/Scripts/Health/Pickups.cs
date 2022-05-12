@@ -20,13 +20,13 @@ public class Pickups : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "ShieldPickup") {
-            if (healthComponent.shield == null)
+            /*if (healthComponent.shield == null)
             {
                 GameObject instance = new GameObject("Shield");
                 Health shieldComponent = instance.AddComponent<Health>();
                 shieldComponent.maxHealth = 2;
                 healthComponent.shield = shieldComponent;
-            }
+            }*/
             
             if (healthComponent.shield != null)
             {
