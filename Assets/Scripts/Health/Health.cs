@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class Health : MonoBehaviour
 {
-    public bool shieldOrNot;
 
     public string name;
     public int maxHealth;
@@ -18,12 +18,12 @@ public class Health : MonoBehaviour
 
     public DeathEffect[] effect;
     public DamageEffect damageEffect;
+    public Explode explode;
    
     // Start is called before the first frame update
     void Start()
     {
-        if (!shieldOrNot)
-            currentHealth = maxHealth;
+        currentHealth = maxHealth;
         invulnerableTimer = 0;
         //hitSFX = GetComponent<AudioSource>();
         if(hitSFX != null)
@@ -60,19 +60,34 @@ public class Health : MonoBehaviour
                 invulnerableTimer = invulnerableTimeCooldown;
             }
             if (shield != null) {
-                if (shield.currentHealth > 0)
-                    dam = shield.takeDamage(dam);
+                dam = shield.takeDamage(dam);
             }
 
             currentHealth -= dam;
-            // Debug.Log("health " + currentHealth);
-            if (currentHealth <= 0 && !shieldOrNot){
-                
-                foreach (DeathEffect e in effect){
-                    if (e != null)
-                        e.effect();
+            if (currentHealth <= 0){
+                if(effect != null){
+                    foreach (DeathEffect e in effect){
+                        if (e != null)
+                            e.effect();
+                    }
                 }
-                
+                if(gameObject.tag == "Player"){
+                    PlayerStats.getInst().addStatAnalytic("kill Player", this.gameObject);
+                }
+
+                if(gameObject.tag == "Enemy"){
+                    Debug.Log("Enemy Killed");
+                    Analytics.CustomEvent(
+                        "Enemy Killed",
+                        new Dictionary<string, object>{
+                            {"Enemy Type", gameObject.name},
+                        }
+                    );
+                }
+                if(explode != null){
+                    Debug.Log("I exploded!");
+                    explode.explode();
+                }
                 Destroy(gameObject);
                 PlayerStats.getInst().addStat("kill "+ name);
             }

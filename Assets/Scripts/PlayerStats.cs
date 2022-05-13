@@ -102,6 +102,7 @@ public class PlayerStats : MonoBehaviour
             case "kill Player":
                 dPlayer++;
                 deathLog();
+
             break;
 
             case "jump":
@@ -130,5 +131,15 @@ public class PlayerStats : MonoBehaviour
 
             
         }
+
+
+    }
+    public void addStatAnalytic(string name, GameObject thingy){
+        Analytics.CustomEvent(
+            "Player Died",
+            new Dictionary<string, object>{
+                {"Position", thingy.transform.position},
+            }
+        );
     }
 }
