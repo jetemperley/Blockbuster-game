@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class Health : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Health : MonoBehaviour
 
     public DeathEffect[] effect;
     public DamageEffect damageEffect;
+    public Explode explode;
    
     // Start is called before the first frame update
     void Start()
@@ -62,14 +64,30 @@ public class Health : MonoBehaviour
             }
 
             currentHealth -= dam;
-            // Debug.Log("health " + currentHealth);
             if (currentHealth <= 0){
-                
-                foreach (DeathEffect e in effect){
-                    if (e != null)
-                        e.effect();
+                if(effect != null){
+                    foreach (DeathEffect e in effect){
+                        if (e != null)
+                            e.effect();
+                    }
                 }
-                
+                if(gameObject.tag == "Player"){
+                    PlayerStats.getInst().addStatAnalytic("kill Player", this.gameObject);
+                }
+
+                if(gameObject.tag == "Enemy"){
+                    Debug.Log("Enemy Killed");
+                    Analytics.CustomEvent(
+                        "Enemy Killed",
+                        new Dictionary<string, object>{
+                            {"Enemy Type", gameObject.name},
+                        }
+                    );
+                }
+                if(explode != null){
+                    Debug.Log("I exploded!");
+                    explode.explode();
+                }
                 Destroy(gameObject);
                 PlayerStats.getInst().addStat("kill "+ name);
             }
