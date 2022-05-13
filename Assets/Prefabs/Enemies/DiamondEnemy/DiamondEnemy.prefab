@@ -895,6 +895,7 @@ GameObject:
   - component: {fileID: 4707363127749129351}
   - component: {fileID: 8551541028345212464}
   - component: {fileID: 7402763449800277702}
+  - component: {fileID: -1542408540806135805}
   m_Layer: 11
   m_Name: DiamondEnemy
   m_TagString: Untagged
@@ -958,6 +959,7 @@ MonoBehaviour:
   - {fileID: 4707363127749129351}
   - {fileID: 8551541028345212464}
   damageEffect: {fileID: 7402763449800277702}
+  explode: {fileID: 0}
 --- !u!114 &6121632595266365335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1122,6 +1124,19 @@ MonoBehaviour:
   flashTime: 0.3
   flashColor: {r: 1, g: 0, b: 0, a: 0}
   renderer: {fileID: 8487917701638752044}
+--- !u!65 &-1542408540806135805
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082738556797881112}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 1.05, z: 0}
 --- !u!1001 &4522163663795424636
 PrefabInstance:
   m_ObjectHideFlags: 0
