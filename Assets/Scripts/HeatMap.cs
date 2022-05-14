@@ -113,7 +113,7 @@ public class HeatMap : MonoBehaviour
 
                 tex.SetPixels(relInt.x, relInt.z, pixelsPerWorldUnit, pixelsPerWorldUnit, pixels);
             } catch (Exception e){
-                Debug.Log("some position was omitted, probably out of camera bounds")
+                Debug.Log("some position was omitted, probably out of camera bounds");
             }
 
 
