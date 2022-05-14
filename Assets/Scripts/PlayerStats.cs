@@ -36,7 +36,9 @@ public class PlayerStats : MonoBehaviour
     public static PlayerStats getInst(){
         if (inst == null){
             GameObject g = new GameObject();
+            g.isStatic = true;
             inst = g.AddComponent<PlayerStats>();
+
         }
         return inst;
     }
@@ -150,7 +152,7 @@ public class PlayerStats : MonoBehaviour
 
     private void addPlayerDeathToCSV(Vector3 pos){
         
-        string fname = "./"+ SceneManager.GetActiveScene().name+"Deaths.txt";
+        string fname = getPosFilename();
         if (!File.Exists(fname)){
             File.Create(fname);
         }
@@ -159,5 +161,9 @@ public class PlayerStats : MonoBehaviour
         } catch (Exception e) {
             Debug.Log("Could not write death position to file");
         }
+    }
+
+    public string getPosFilename(){
+        return "./" + SceneManager.GetActiveScene().name + "Deaths.txt";
     }
 }

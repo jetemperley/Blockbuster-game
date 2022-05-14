@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 using System.IO;
+using System;
 
 public class HeatMap : MonoBehaviour
 {
@@ -57,6 +59,37 @@ public class HeatMap : MonoBehaviour
 
         // revert active render texture
         RenderTexture.active = currentTex;
+
+        // get the file with position data and parse it
+
+        List<Vector3> vecs = new List<Vector3>();
+        if (File.Exists(PlayerStats.getInst().getPosFilename())){
+            string[] lines = File.ReadAllLines(PlayerStats.getInst().getPosFilename());
+            foreach (string line in lines){
+                
+                string[] pos = line.Split(",");
+                foreach (string posn in pos){
+                    string[] nums = posn.Split(" ");
+                    if (nums.Length != 3)
+                        continue;
+                    try {
+                    vecs.Add(new Vector3(
+                        float.Parse(nums[0]),
+                        float.Parse(nums[1]),
+                        float.Parse(nums[2])
+                        ));
+                        Debug.Log("parsed " + vecs[vecs.Count-1]);
+                    } catch (Exception e){
+                        Debug.Log("failed to parse: " + posn);
+                    }
+                    
+                }
+            }
+        }
+
+        foreach (Vector3 v in vecs){
+            
+        }
 
         // save file and cleanup
         byte[] bytes = tex.EncodeToPNG();
