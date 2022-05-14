@@ -62,10 +62,12 @@ public class Health : MonoBehaviour
                 invulnerableTimer = invulnerableTimeCooldown;
             }
             if (shield != null) {
-                int sh = shield.takeDamage(dam);
+                /*int sh = shield.takeDamage(dam);
                 if (sh <= 0){
                     shield = null;
-                }
+                }*/
+                if (shield.currentHealth > 0)
+                    dam = shield.takeDamage(dam);
 
             } else {
                 currentHealth -= dam;
