@@ -69,9 +69,9 @@ public class Health : MonoBehaviour
                 if (shield.currentHealth > 0)
                     dam = shield.takeDamage(dam);
 
-            } else {
+            } //else {
                 currentHealth -= dam;
-            }
+            //}
 
 
             
