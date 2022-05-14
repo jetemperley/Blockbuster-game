@@ -34,15 +34,6 @@ public class RailgunFire : MonoBehaviour
             
             audioData.Play(0);
             //animator.SetTrigger("Shoot");
-            
-            /*Laser laser = LaserPool.GetLaser();
-            laser.SetDamage(damage);
-            laser.fire(
-                spawnPoint.transform.position,
-                spawnPoint.transform.forward*1000,
-                0.2f,
-                gameObject.name
-                );*/
 
             Health health;
 

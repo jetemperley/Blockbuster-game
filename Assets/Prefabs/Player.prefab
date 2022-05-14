@@ -53,6 +53,7 @@ MonoBehaviour:
   hitSFX: {fileID: 0}
   effect: []
   damageEffect: {fileID: 0}
+  explode: {fileID: 0}
 --- !u!1 &8655765040293387633
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +204,7 @@ MonoBehaviour:
   lookSpeed: 2
   lookXLimit: 90
   dashSFX: {fileID: 6543688535885125696}
-  dashCooldown: 2
+  dashCooldown: 1
   canDash: 0
   canMove: 1
 --- !u!114 &238968272100124135
@@ -228,6 +229,7 @@ MonoBehaviour:
   effect:
   - {fileID: 0}
   damageEffect: {fileID: 0}
+  explode: {fileID: 0}
 --- !u!114 &2769227143674863179
 MonoBehaviour:
   m_ObjectHideFlags: 0
