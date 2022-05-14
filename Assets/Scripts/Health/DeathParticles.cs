@@ -12,7 +12,8 @@ public class DeathParticles : DeathEffect
 
     void Start()
     {
-        explosion = explode.explosionRadius*1.5f;
+        if (explode != null)
+            explosion = explode.explosionRadius*1.5f;
     }
     // Start is called before the first frame update
     public override void effect(){
