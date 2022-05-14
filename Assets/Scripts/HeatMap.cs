@@ -103,14 +103,18 @@ public class HeatMap : MonoBehaviour
             relInt = relInt*pixelsPerWorldUnit;
 
             // get the world unit relating to the death
-            Color[] pixels = tex.GetPixels(relInt.x, relInt.z, pixelsPerWorldUnit, pixelsPerWorldUnit);
+            try {
+                Color[] pixels = tex.GetPixels(relInt.x, relInt.z, pixelsPerWorldUnit, pixelsPerWorldUnit);
 
-            for (int i = 0; i < pixels.Length; i++){
-                pixels[i] = heatAlpha*heatColor + (1-heatAlpha)*pixels[i];
-                pixels[i].a = 1;
+                for (int i = 0; i < pixels.Length; i++){
+                    pixels[i] = heatAlpha*heatColor + (1-heatAlpha)*pixels[i];
+                    pixels[i].a = 1;
+                }
+
+                tex.SetPixels(relInt.x, relInt.z, pixelsPerWorldUnit, pixelsPerWorldUnit, pixels);
+            } catch (Exception e){
+                Debug.Log("some position was omitted, probably out of camera bounds")
             }
-            
-            tex.SetPixels(relInt.x, relInt.z, pixelsPerWorldUnit, pixelsPerWorldUnit, pixels);
 
 
         }
