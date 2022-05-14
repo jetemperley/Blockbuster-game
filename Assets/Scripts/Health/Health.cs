@@ -63,8 +63,9 @@ public class Health : MonoBehaviour
                 shield.takeDamage(dam);
             }
 
-            // currentHealth -= dam;
-            if (currentHealth <= 0){
+            currentHealth -= dam;
+            // Debug.Log("health " + currentHealth);
+            if (currentHealth <= 0 && !shieldOrNot){
                 if(effect != null){
                     foreach (DeathEffect e in effect){
                         if (e != null)

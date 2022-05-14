@@ -31,7 +31,6 @@ public class Pickups : MonoBehaviour
             if (healthComponent.shield != null)
             {
                 healthComponent.shield.currentHealth = healthComponent.shield.maxHealth;
-                Debug.Log("Shield Health: " + healthComponent.shield.currentHealth);
                 Destroy(other.gameObject);
             }
         }
