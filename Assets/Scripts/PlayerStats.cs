@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Analytics;
+
+using System.IO;
+using System;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -141,5 +145,19 @@ public class PlayerStats : MonoBehaviour
                 {"Position", thingy.transform.position},
             }
         );
+        addPlayerDeathToCSV(thingy.transform.position);
+    }
+
+    private void addPlayerDeathToCSV(Vector3 pos){
+        
+        string fname = "./"+ SceneManager.GetActiveScene().name+"Deaths.txt";
+        if (!File.Exists(fname)){
+            File.Create(fname);
+        }
+        try {
+            File.AppendAllText(fname, pos.x + " " + pos.y + " " + pos.z + ",\n");
+        } catch (Exception e) {
+            Debug.Log("Could not write death position to file");
+        }
     }
 }
