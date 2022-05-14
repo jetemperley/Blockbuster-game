@@ -16,6 +16,8 @@ public class HeatMap : MonoBehaviour
     private Camera cam;
     private Texture2D tex;
     private Vector3 drawSize;
+    public Color heatColor;
+    public float heatAlpha = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +41,7 @@ public class HeatMap : MonoBehaviour
         cam.transform.rotation = Quaternion.Euler(90, 0, 0);
         cam.orthographic = true;
         cam.aspect = cameraSize.x/cameraSize.y;
-        cam.orthographicSize = cameraSize.y;
+        cam.orthographicSize = cameraSize.y/2;
         cam.nearClipPlane = 0;
         cam.farClipPlane = farplane;
         cam.gameObject.SetActive(false);
@@ -87,8 +89,30 @@ public class HeatMap : MonoBehaviour
             }
         }
 
+        float zMax = transform.position.z + cameraSize.y/2;
+        float zMin = transform.position.z - cameraSize.y/2;
+        float xMax = transform.position.x + cameraSize.x/2;
+        float xMin = transform.position.x - cameraSize.x/2;
+
+
+
         foreach (Vector3 v in vecs){
+            // translate the position to be relative the map
+            Vector3 relative = v - new Vector3(xMin, 0, zMin);
+            Vector3Int relInt = new Vector3Int((int)relative.x, (int)relative.y, (int)relative.z);
+            relInt = relInt*pixelsPerWorldUnit;
+
+            // get the world unit relating to the death
+            Color[] pixels = tex.GetPixels(relInt.x, relInt.z, pixelsPerWorldUnit, pixelsPerWorldUnit);
+
+            for (int i = 0; i < pixels.Length; i++){
+                pixels[i] = heatAlpha*heatColor + (1-heatAlpha)*pixels[i];
+                pixels[i].a = 1;
+            }
             
+            tex.SetPixels(relInt.x, relInt.z, pixelsPerWorldUnit, pixelsPerWorldUnit, pixels);
+
+
         }
 
         // save file and cleanup
