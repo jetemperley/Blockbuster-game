@@ -60,10 +60,10 @@ public class Health : MonoBehaviour
                 invulnerableTimer = invulnerableTimeCooldown;
             }
             if (shield != null) {
-                dam = shield.takeDamage(dam);
+                shield.takeDamage(dam);
             }
 
-            currentHealth -= dam;
+            // currentHealth -= dam;
             if (currentHealth <= 0){
                 if(effect != null){
                     foreach (DeathEffect e in effect){
