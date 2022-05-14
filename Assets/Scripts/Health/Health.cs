@@ -5,6 +5,7 @@ using UnityEngine.Analytics;
 
 public class Health : MonoBehaviour
 {
+    public bool shieldOrNot;
 
     public string name;
     public int maxHealth;
@@ -23,7 +24,8 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        if (!shieldOrNot)
+            currentHealth = maxHealth;
         invulnerableTimer = 0;
         //hitSFX = GetComponent<AudioSource>();
         if(hitSFX != null)
@@ -72,7 +74,7 @@ public class Health : MonoBehaviour
 
             
             
-            if (currentHealth <= 0){
+            if (currentHealth <= 0 && !shieldOrNot){
                 if(effect != null){
                     foreach (DeathEffect e in effect){
                         if (e != null)
