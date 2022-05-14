@@ -159,7 +159,8 @@ public class PlayerStats : MonoBehaviour
         try {
             File.AppendAllText(fname, pos.x + " " + pos.y + " " + pos.z + ",\n");
         } catch (Exception e) {
-            Debug.Log("Could not write death position to file");
+            Debug.Log("Could not write death position to file: " + e.ToString());
+            
         }
     }
 
