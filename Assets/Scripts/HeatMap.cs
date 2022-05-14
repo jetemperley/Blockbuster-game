@@ -63,10 +63,9 @@ public class HeatMap : MonoBehaviour
         RenderTexture.active = currentTex;
 
         // get the file with position data and parse it
-
         List<Vector3> vecs = new List<Vector3>();
-        if (File.Exists(PlayerStats.getInst().getPosFilename())){
-            string[] lines = File.ReadAllLines(PlayerStats.getInst().getPosFilename());
+        if (File.Exists(PlayerStats.getPosFilename())){
+            string[] lines = File.ReadAllLines(PlayerStats.getPosFilename());
             foreach (string line in lines){
                 
                 string[] pos = line.Split(",");
@@ -89,6 +88,7 @@ public class HeatMap : MonoBehaviour
             }
         }
 
+        // calculate the bounds of the draw volume
         float zMax = transform.position.z + cameraSize.y/2;
         float zMin = transform.position.z - cameraSize.y/2;
         float xMax = transform.position.x + cameraSize.x/2;
@@ -107,6 +107,7 @@ public class HeatMap : MonoBehaviour
                 Color[] pixels = tex.GetPixels(relInt.x, relInt.z, pixelsPerWorldUnit, pixelsPerWorldUnit);
 
                 for (int i = 0; i < pixels.Length; i++){
+                    // do an alpha blend
                     pixels[i] = heatAlpha*heatColor + (1-heatAlpha)*pixels[i];
                     pixels[i].a = 1;
                 }

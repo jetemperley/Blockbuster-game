@@ -163,7 +163,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public string getPosFilename(){
+    public static string getPosFilename(){
         return "./" + SceneManager.GetActiveScene().name + "Deaths.txt";
     }
 }
