@@ -7,18 +7,20 @@ public class DeathParticles : DeathEffect
 {
 
     public ParticleSystem particlesOnDeath;
-    public Explode explode;
+    public Explode explodeScale;
     private float explosion;
 
     void Start()
-    {
-        if (explode != null)
-            explosion = explode.explosionRadius*1.5f;
+    {  
+        if(explodeScale != null){
+            explosion = explodeScale.explosionRadius*1.5f;
+        }
+        
     }
     // Start is called before the first frame update
     public override void effect(){
         particlesOnDeath.transform.SetParent(null);
-        if(explode != null){
+        if(explodeScale != null){
             particlesOnDeath.gameObject.transform.localScale = new Vector3 (explosion,explosion,explosion);
         }
         particlesOnDeath.Play();

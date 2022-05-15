@@ -83,6 +83,7 @@ public class Health : MonoBehaviour
                             e.effect();
                     }
                 }
+                //Analytics
                 if(gameObject.tag == "Player"){
                     PlayerStats.getInst().addStatAnalytic("kill Player", this.gameObject);
                 }
@@ -96,8 +97,8 @@ public class Health : MonoBehaviour
                         }
                     );
                 }
+                //
                 if(explode != null){
-                    Debug.Log("I exploded!");
                     explode.explode();
                 }
                 Destroy(gameObject);
