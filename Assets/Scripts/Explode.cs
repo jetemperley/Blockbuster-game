@@ -15,7 +15,6 @@ public class Explode : MonoBehaviour
                         
             Health h = nearbyObject.gameObject.GetComponent<Health>();
             if (h != null){
-                Debug.Log("i've dealt Damage");
                 h.takeDamage(damage);
             }
             

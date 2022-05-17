@@ -20,7 +20,7 @@ public class Hover : MonoBehaviour
     void FixedUpdate()
     {
         float off = Mathf.Sin(Time.time);
-        Debug.Log(off);
+//         Debug.Log(off);
         rb.position= (pos + Vector3.up*off/(1/verticalMovement));
         rb.MoveRotation(rb.rotation*Quaternion.Euler(0, Time.deltaTime*rotPerSecond, 0));
     }

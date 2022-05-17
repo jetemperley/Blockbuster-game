@@ -19,7 +19,10 @@ public class Health : MonoBehaviour
 
     public DeathEffect[] effect;
     public DamageEffect damageEffect;
-    public Explode explode;
+
+    //This is only if the enemy with this script needs the explosion to do damage to everything around it.
+    //
+    public Explode explodeOnDeathAOE; 
    
     // Start is called before the first frame update
     void Start()
@@ -62,12 +65,20 @@ public class Health : MonoBehaviour
                 invulnerableTimer = invulnerableTimeCooldown;
             }
             if (shield != null) {
+                /*int sh = shield.takeDamage(dam);
+                if (sh <= 0){
+                    shield = null;
+                }*/
                 if (shield.currentHealth > 0)
                     dam = shield.takeDamage(dam);
-            }
 
-            currentHealth -= dam;
-            // Debug.Log("health " + currentHealth);
+            } //else {
+                currentHealth -= dam;
+            //}
+
+
+            
+            
             if (currentHealth <= 0 && !shieldOrNot){
                 if(effect != null){
                     foreach (DeathEffect e in effect){
@@ -75,6 +86,7 @@ public class Health : MonoBehaviour
                             e.effect();
                     }
                 }
+                //Analytics
                 if(gameObject.tag == "Player"){
                     PlayerStats.getInst().addStatAnalytic("kill Player", this.gameObject);
                 }
@@ -88,9 +100,10 @@ public class Health : MonoBehaviour
                         }
                     );
                 }
-                if(explode != null){
-                    Debug.Log("I exploded!");
-                    explode.explode();
+                //
+                //if you want an object to explode and affect other enemies
+                if(explodeOnDeathAOE != null){
+                    explodeOnDeathAOE.explode();
                 }
                 Destroy(gameObject);
                 PlayerStats.getInst().addStat("kill "+ name);
