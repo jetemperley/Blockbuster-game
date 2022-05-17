@@ -6,24 +6,40 @@ public class MineBehaviour : MonoBehaviour
 {
     Transform target;
     Rigidbody rb;
-    public float moveSpeed = 3;
-    public float maxLookDist = 10;
+    public float moveSpeed;
+    public float maxLookDist;
     public string targetTag = "Player";
     private bool foundTarget = false;
     private Vector3 foundTheMotherFucker;
+
+    private float distance;
+
+    public AudioSource mineBeep;
+    public AudioClip clip;
+    private float beepRate;
+    private float time;
+    private float volume;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag(targetTag).transform;
         foundTarget = false;
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-        if (target == null || (target.position - transform.position).magnitude > maxLookDist)
+
+        //distance between player and this gameObject
+        distance = (target.position - transform.position).magnitude;
+        beepRate += Time.deltaTime;
+
+        if (target == null || distance > maxLookDist)
             return;
 
 
@@ -35,6 +51,18 @@ public class MineBehaviour : MonoBehaviour
             foundTarget = true;
         }
         transform.Translate(0,0,moveSpeed*Time.deltaTime);
+
+        volume=(-1/maxLookDist)*distance+1; //y = m*x+b
+        if(target.position.z < rb.position.z+7){
+            if(beepRate>distance/50){
+                mineBeep.PlayOneShot(clip, volume);
+                beepRate=0;
+            }
+        }
+
+        
+
+
     }
 
     private void OnDrawGizmosSelected() {
