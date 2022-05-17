@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4733856382352844579}
+  - component: {fileID: 3629549826269179851}
   m_Layer: 0
   m_Name: RailgunWeapon
   m_TagString: Untagged
@@ -55,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4733856382352844578}
   m_LocalRotation: {x: 0, y: -0.043619405, z: 0, w: 0.9990483}
-  m_LocalPosition: {x: 1, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -64,6 +65,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -5, z: 0}
+--- !u!114 &3629549826269179851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4733856382352844578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf1db2294243a0408c49ddcba2a62c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smooth: 10
+  swayMultiplier: 10
 --- !u!1001 &4733856380863975843
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82,6 +97,10 @@ PrefabInstance:
     - target: {fileID: 362795341792031978, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 362795341792031978, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 911842433871348035, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
       propertyPath: m_Mesh
@@ -106,6 +125,10 @@ PrefabInstance:
     - target: {fileID: 2042341028670437770, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042341028670437770, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2244819833125806724, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
       propertyPath: m_Mesh
@@ -135,6 +158,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3311559632955215660, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3641074822212980892, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -147,9 +174,17 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4434665862348664137, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4899775458047076337, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899775458047076337, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5141177266840032324, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
       propertyPath: m_Mesh
@@ -231,6 +266,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7446298872315177969, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8573726505330975458, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -242,6 +281,10 @@ PrefabInstance:
     - target: {fileID: 9149682615678619710, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9149682615678619710, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e16b4fcb66b4efb49a89f04e5a539efe, type: 3}

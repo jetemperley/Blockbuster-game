@@ -105,6 +105,7 @@ public class Health : MonoBehaviour
                 if(explodeOnDeathAOE != null){
                     explodeOnDeathAOE.explode();
                 }
+                
                 Destroy(gameObject);
                 PlayerStats.getInst().addStat("kill "+ name);
             }
