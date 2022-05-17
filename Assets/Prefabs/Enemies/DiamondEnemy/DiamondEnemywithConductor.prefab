@@ -78,6 +78,7 @@ MonoBehaviour:
   laserGrowthRate: 50
   moveSpeed: 5
   Positions: []
+  isRepeating: 0
 --- !u!114 &5035763947401709097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdc7c8f4eceb6d45bdb4cdfa70fd36e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldOrNot: 0
   name: DiamondEnemy
   maxHealth: 6
   currentHealth: 6
@@ -100,7 +102,7 @@ MonoBehaviour:
   - {fileID: 4009483787543288161}
   - {fileID: 25412814009484246}
   damageEffect: {fileID: 1174458407103599392}
-  explode: {fileID: 0}
+  explodeOnDeathAOE: {fileID: 0}
 --- !u!82 &3391677024187733674
 AudioSource:
   m_ObjectHideFlags: 0
@@ -278,7 +280,7 @@ Transform:
   m_GameObject: {fileID: 2768201937835070407}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1, y: 0.99999994, z: 0}
-  m_LocalScale: {x: 0, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7792613761238329232}

@@ -24,6 +24,9 @@ public class DiamondEnemyBehaviour : MonoBehaviour
     private Vector3 newPosition;
     private bool newPosCheck=false;
 
+    //if turning on isRepeating, make sure the last element in the array is the original position it started at
+    public bool isRepeating;
+
     private int i = 0; //index
 
 
@@ -56,11 +59,10 @@ public class DiamondEnemyBehaviour : MonoBehaviour
                     laserCurrentLength += laserGrowthRate*Time.deltaTime;
                 }
             }
-
-                    
+   
             var step = moveSpeed*Time.deltaTime;
             if(laserCurrentLength>=laserTotalLength){
-                if(Positions!=null){
+                if(Positions!=null && Positions.Length != 0){
                     if(newPosCheck==false){             
                         newPosition=transform.position+Positions[i];
                         newPosCheck=true;
@@ -70,6 +72,11 @@ public class DiamondEnemyBehaviour : MonoBehaviour
                         
                     }
                     if(transform.position == newPosition){
+                        if(isRepeating == true){
+                            if(i==Positions.Length-1){
+                                i=-1;
+                            }
+                        }
                         if(i<Positions.Length-1){
                             i++;
                             newPosCheck=false;

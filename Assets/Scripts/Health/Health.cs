@@ -19,7 +19,10 @@ public class Health : MonoBehaviour
 
     public DeathEffect[] effect;
     public DamageEffect damageEffect;
-    public Explode explode;
+
+    //This is only if the enemy with this script needs the explosion to do damage to everything around it.
+    //
+    public Explode explodeOnDeathAOE; 
    
     // Start is called before the first frame update
     void Start()
@@ -98,8 +101,9 @@ public class Health : MonoBehaviour
                     );
                 }
                 //
-                if(explode != null){
-                    explode.explode();
+                //if you want an object to explode and affect other enemies
+                if(explodeOnDeathAOE != null){
+                    explodeOnDeathAOE.explode();
                 }
                 Destroy(gameObject);
                 PlayerStats.getInst().addStat("kill "+ name);
