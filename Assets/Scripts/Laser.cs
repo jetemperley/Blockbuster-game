@@ -41,7 +41,7 @@ public class Laser : MonoBehaviour
         this.speed = speed;
         this.time = time;
         RaycastHit hit;
-        if (Physics.Raycast (pos, dir, out hit, 1000)){
+        if (Physics.SphereCast (pos, 0.1f, dir, out hit, 1000)){
             try{
                 Health health = hit.collider.attachedRigidbody.gameObject.GetComponent<Health>();
                 if (health != null){
