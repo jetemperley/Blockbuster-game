@@ -63,4 +63,8 @@ public class GameManager : MonoBehaviour
         PlayerStats.getInst().reset();
     }
 
+    public void Load1(){
+        SceneManager.LoadScene(1);
+    }
+
 }

@@ -28,8 +28,7 @@ public class CubeHomeBehaviour : MonoBehaviour
             return;
 
         
-        rb.MovePosition( rb.position +
-            (target.position - rb.position).normalized*moveSpeed*Time.fixedDeltaTime);
+        rb.MovePosition( rb.position +(target.position - rb.position).normalized*moveSpeed*Time.fixedDeltaTime);
     }
 
     private void OnDrawGizmosSelected() {

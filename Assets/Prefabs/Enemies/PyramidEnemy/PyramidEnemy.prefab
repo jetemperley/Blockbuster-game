@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 7606443629448298253}
   - component: {fileID: 4977989285566784533}
   - component: {fileID: 2785959473498701669}
+  - component: {fileID: 2328675935744752432}
+  - component: {fileID: 1359805555541872707}
   m_Layer: 0
   m_Name: PyramidEnemy
   m_TagString: Untagged
@@ -87,15 +89,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: PyramidEnemy
-  maxHealth: 1
-  currentHealth: 1
+  maxHealth: 6
+  currentHealth: 6
   invulnerableTimeCooldown: 0
   shield: {fileID: 0}
   hitSFX: {fileID: 7606443629448298253}
   effect:
   - {fileID: 4977989285566784533}
   - {fileID: 2785959473498701669}
-  damageEffect: {fileID: 0}
+  damageEffect: {fileID: 2328675935744752432}
+  explode: {fileID: 0}
 --- !u!114 &3605048379343087328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +234,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particlesOnDeath: {fileID: 7344506518024697282}
+--- !u!114 &2328675935744752432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552151754869459445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568f1d6a3935397419aa31c4e1402528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashTime: 0.3
+  flashColor: {r: 1, g: 0, b: 0, a: 0}
+  renderer: {fileID: 7803661906327847016}
+--- !u!65 &1359805555541872707
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552151754869459445}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!1001 &2830225263574534712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -407,6 +438,11 @@ PrefabInstance:
 --- !u!4 &3289020115322210880 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 784198904724275320, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
+  m_PrefabInstance: {fileID: 2830225263574534712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7803661906327847016 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5407371562181003856, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
   m_PrefabInstance: {fileID: 2830225263574534712}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3669377916271594812

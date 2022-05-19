@@ -12,7 +12,7 @@ public class Terrain : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        // rigidbody.isKinematic = true;
+        //rigidbody.isKinematic = true;
         conductor = Conductor.conductor;
     }
 
@@ -23,10 +23,10 @@ public class Terrain : MonoBehaviour
         //Move the terrain towards the player at speed determined by the Conductor
         if (conductor != null){
             cond = conductor.getLevelSpeed();
-            if (rigidbody.position.z <= conductor.getBoundary())
+            /*if (rigidbody.position.z <= conductor.getBoundary())
             {
                 Destroy(this.gameObject);
-            }
+            }*/
         }
         rigidbody.MovePosition(rigidbody.position + Vector3.back * Time.fixedDeltaTime * cond);
     }

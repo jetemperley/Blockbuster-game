@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class Health : MonoBehaviour
 {
+    public bool shieldOrNot;
 
     public string name;
     public int maxHealth;
@@ -17,11 +19,16 @@ public class Health : MonoBehaviour
 
     public DeathEffect[] effect;
     public DamageEffect damageEffect;
+
+    //This is only if the enemy with this script needs the explosion to do damage to everything around it.
+    //
+    public Explode explodeOnDeathAOE; 
    
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        if (!shieldOrNot)
+            currentHealth = maxHealth;
         invulnerableTimer = 0;
         //hitSFX = GetComponent<AudioSource>();
         if(hitSFX != null)
@@ -58,16 +65,45 @@ public class Health : MonoBehaviour
                 invulnerableTimer = invulnerableTimeCooldown;
             }
             if (shield != null) {
-                dam = shield.takeDamage(dam);
-            }
+                /*int sh = shield.takeDamage(dam);
+                if (sh <= 0){
+                    shield = null;
+                }*/
+                if (shield.currentHealth > 0)
+                    dam = shield.takeDamage(dam);
 
-            currentHealth -= dam;
-            Debug.Log("health " + currentHealth);
-            if (currentHealth <= 0){
-                
-                foreach (DeathEffect e in effect){
-                    if (e != null)
-                        e.effect();
+            } //else {
+                currentHealth -= dam;
+            //}
+
+
+            
+            
+            if (currentHealth <= 0 && !shieldOrNot){
+                if(effect != null){
+                    foreach (DeathEffect e in effect){
+                        if (e != null)
+                            e.effect();
+                    }
+                }
+                //Analytics
+                if(gameObject.tag == "Player"){
+                    PlayerStats.getInst().addStatAnalytic("kill Player", this.gameObject);
+                }
+
+                if(gameObject.tag == "Enemy"){
+                    Debug.Log("Enemy Killed");
+                    Analytics.CustomEvent(
+                        "Enemy Killed",
+                        new Dictionary<string, object>{
+                            {"Enemy Type", gameObject.name},
+                        }
+                    );
+                }
+                //
+                //if you want an object to explode and affect other enemies
+                if(explodeOnDeathAOE != null){
+                    explodeOnDeathAOE.explode();
                 }
                 
                 Destroy(gameObject);

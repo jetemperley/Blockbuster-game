@@ -1,6 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Analytics;
+
+using System.IO;
+using System;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -22,7 +27,6 @@ public class PlayerStats : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this);
-            
     }
 
     private void Update() {
@@ -32,7 +36,9 @@ public class PlayerStats : MonoBehaviour
     public static PlayerStats getInst(){
         if (inst == null){
             GameObject g = new GameObject();
+            g.isStatic = true;
             inst = g.AddComponent<PlayerStats>();
+
         }
         return inst;
     }
@@ -67,6 +73,20 @@ public class PlayerStats : MonoBehaviour
 
     }
 
+    public void deathLog(){
+        AnalyticsResult result = Analytics.CustomEvent("death event", 
+            new Dictionary<string, object> 
+            {
+                {"cubesKilled", killCube},
+                {"shieldsKilled", killShield},
+                {"trianglesKilled", killTri},
+                {"diamondKilled", killDiam},
+
+            }
+        );
+        Debug.Log("analytics result " + result);
+    }
+
     public void addStat(string name){
         switch (name) {
             case "kill CubeShield":
@@ -87,6 +107,8 @@ public class PlayerStats : MonoBehaviour
 
             case "kill Player":
                 dPlayer++;
+                deathLog();
+
             break;
 
             case "jump":
@@ -115,5 +137,34 @@ public class PlayerStats : MonoBehaviour
 
             
         }
+
+
+    }
+    public void addStatAnalytic(string name, GameObject thingy){
+        Analytics.CustomEvent(
+            "Player Died",
+            new Dictionary<string, object>{
+                {"Position", thingy.transform.position},
+            }
+        );
+        addPlayerDeathToCSV(thingy.transform.position);
+    }
+
+    private void addPlayerDeathToCSV(Vector3 pos){
+        
+        string fname = getPosFilename();
+        if (!File.Exists(fname)){
+            File.Create(fname);
+        }
+        try {
+            File.AppendAllText(fname, pos.x + " " + pos.y + " " + pos.z + ",\n");
+        } catch (Exception e) {
+            Debug.Log("Could not write death position to file: " + e.ToString());
+            
+        }
+    }
+
+    public static string getPosFilename(){
+        return "./" + SceneManager.GetActiveScene().name + "Deaths.txt";
     }
 }

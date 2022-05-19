@@ -38,6 +38,7 @@ public class PlayerMelee : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2") && canAttack)
         {
+            weapon = GetComponent<GunHolder>().gunRoot;
             weapon.SetActive(false);
             sword.SetActive(true);
             animator.SetTrigger("Attack");
