@@ -18,6 +18,7 @@ public class PlayerMove : MonoBehaviour
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
     public AudioSource dashSFX;
+    public AudioSource jumpSFX;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
@@ -44,6 +45,7 @@ public class PlayerMove : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         dashSFX.Stop();
+        jumpSFX.Stop();
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -67,6 +69,7 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
+            jumpSFX.Play(0);
             PlayerStats.getInst().addStat("jump");   
             moveDirection.y = jumpSpeed;
         }
