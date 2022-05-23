@@ -17,11 +17,11 @@ public class Hover : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float off = Mathf.Sin(Time.time);
 //         Debug.Log(off);
-        rb.position = rb.position + (Vector3.up*off/(1/verticalMovement))*Time.deltaTime;
+        rb.position= (pos + Vector3.up*off/(1/verticalMovement));
         rb.MoveRotation(rb.rotation*Quaternion.Euler(0, Time.deltaTime*rotPerSecond, 0));
     }
 }

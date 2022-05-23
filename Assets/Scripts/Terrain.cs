@@ -17,7 +17,7 @@ public class Terrain : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float cond = 1;
         //Move the terrain towards the player at speed determined by the Conductor
@@ -28,6 +28,6 @@ public class Terrain : MonoBehaviour
                 Destroy(this.gameObject);
             }*/
         }
-        rigidbody.position = rigidbody.position + Vector3.back * Time.fixedDeltaTime * cond;
+        rigidbody.MovePosition(rigidbody.position + Vector3.back * Time.fixedDeltaTime * cond);
     }
 }
