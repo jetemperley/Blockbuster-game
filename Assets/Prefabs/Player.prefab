@@ -53,7 +53,6 @@ MonoBehaviour:
   hitSFX: {fileID: 0}
   effect: []
   damageEffect: {fileID: 0}
-  explode: {fileID: 0}
 --- !u!1 &8655765040293387633
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +230,6 @@ MonoBehaviour:
   effect:
   - {fileID: 0}
   damageEffect: {fileID: 0}
-  explode: {fileID: 0}
 --- !u!114 &2769227143674863179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -951,7 +949,8 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7433955695047614638, guid: 799bb7d4fad9c37448dcdc442698abfe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 799bb7d4fad9c37448dcdc442698abfe, type: 3}
 --- !u!1 &1249914447000744769 stripped
 GameObject:
