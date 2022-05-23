@@ -190,10 +190,7 @@ GameObject:
   - component: {fileID: 4685779116864046962}
   - component: {fileID: 4685779116864046963}
   - component: {fileID: 4685779116864046960}
-  - component: {fileID: 2595827593620774000}
   - component: {fileID: 4685779116864046961}
-  - component: {fileID: 4910617595716618589}
-  - component: {fileID: 3255821320442765773}
   m_Layer: 2
   m_Name: Pickup
   m_TagString: Untagged
@@ -279,18 +276,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2595827593620774000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4685779116864046966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395eaf78f3ca57143accda14ff329417, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4685779116864046961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,36 +290,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupPrefab: {fileID: 4311856298354361030, guid: 863b35c8b70dba647b94baf15f16a43b, type: 3}
   pickupModel: {fileID: 7431977365561322469, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
---- !u!54 &4910617595716618589
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4685779116864046966}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &3255821320442765773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4685779116864046966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cf5f58aebb9503418cfcd8770c61a3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotPerSecond: 60
-  verticalMovement: 0.3
 --- !u!1 &7724992497925311348
 GameObject:
   m_ObjectHideFlags: 0
