@@ -17,8 +17,8 @@ public class GunSway : MonoBehaviour
 
     void Update()
     {
-        // RotateSway();
-        MoveSway();
+        RotateSway();
+        //MoveSway();
     }
 
     private void RotateSway(){

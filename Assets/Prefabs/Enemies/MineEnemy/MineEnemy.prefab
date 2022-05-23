@@ -8742,8 +8742,8 @@ MonoBehaviour:
   hitSFX: {fileID: 0}
   effect:
   - {fileID: 8512736610205344369}
+  - {fileID: 8512736610205344375}
   damageEffect: {fileID: 0}
-  explodeOnDeathAOE: {fileID: 8512736610205344375}
 --- !u!114 &8512736610205344371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8795,7 +8795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   explosionRadius: 7
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 42a46d6a1dd5f374eb7f31b2ef8d5b36, type: 3}
 --- !u!82 &8965274695505560001
 AudioSource:
   m_ObjectHideFlags: 0
