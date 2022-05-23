@@ -43,6 +43,8 @@ public class Laser : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast (pos, dir, out hit, 1000)){
             try{
+                if (hit.collider.attachedRigidbody.gameObject.layer == 9)
+                    return;
                 Health health = hit.collider.attachedRigidbody.gameObject.GetComponent<Health>();
                 if (health != null){
                     health.takeDamage(damage); 

@@ -28,7 +28,7 @@ public class Pickup : MonoBehaviour
 
         if (other.gameObject.CompareTag(playerTag)){
             other.gameObject.GetComponent<GunHolder>().SetGun(Instantiate(pickupPrefab));
-            Destroy(gameObject);
+            Destroy(gameObject.transform.parent.gameObject);
         }
         
     }
