@@ -136,7 +136,6 @@ MonoBehaviour:
   - {fileID: 250204566335413963}
   - {fileID: 4392793603831770780}
   damageEffect: {fileID: -408741023382571374}
-  explodeOnDeathAOE: {fileID: 0}
 --- !u!114 &728817346682950442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlesOnDeath: {fileID: 0}
   explodeScale: {fileID: 0}
+  deParent: 1
 --- !u!82 &-1218927571945497588
 AudioSource:
   m_ObjectHideFlags: 0
@@ -259,7 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f380f62412929c74a9a3f2d2127b635f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomSpeedOnBreak: 1
   childContainer: {fileID: 6565655722169516260}
 --- !u!114 &4392793603831770780
 MonoBehaviour:
@@ -275,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlesOnDeath: {fileID: 2675728418512258100}
   explodeScale: {fileID: 0}
+  deParent: 1
 --- !u!114 &-408741023382571374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1630,6 +1630,18 @@ PrefabInstance:
     - target: {fileID: 6269241604099225840, guid: e6656f167bd84054288de0e7010a22c2, type: 3}
       propertyPath: m_Name
       value: Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269241604099225854, guid: e6656f167bd84054288de0e7010a22c2, type: 3}
+      propertyPath: ShapeModule.alignToDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269241604099225854, guid: e6656f167bd84054288de0e7010a22c2, type: 3}
+      propertyPath: ShapeModule.randomPositionAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269241604099225854, guid: e6656f167bd84054288de0e7010a22c2, type: 3}
+      propertyPath: ShapeModule.randomDirectionAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6269241604099225855, guid: e6656f167bd84054288de0e7010a22c2, type: 3}
       propertyPath: m_RootOrder
