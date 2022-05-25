@@ -27,7 +27,9 @@ public class CubeHomeBehaviour : MonoBehaviour
         if (target == null || (target.position - transform.position).magnitude > maxLookDist || target.position.z > rb.position.z)
             return;
 
-        
+        Vector3 direction = target.position-transform.position;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = rotation;
         rb.MovePosition( rb.position +(target.position - rb.position).normalized*moveSpeed*Time.fixedDeltaTime);
     }
 

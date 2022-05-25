@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
         
         if(gameHasEnded == false){
             gameHasEnded = true;
-            Debug.Log("GAME OVER");
+            // Debug.Log("GAME OVER");
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
             gameOverUI.SetActive(true);            

@@ -6,14 +6,22 @@ public class GunSway : MonoBehaviour
 {
     public float smooth;
     public float swayMultiplier;
+    public float maxAmount;
+
+    private Vector3 initialPos;
 
     // Update is called once per frame
-    void Update()
-    {
-        MoveSway();
+    void Start(){
+        initialPos = transform.localPosition;
     }
 
-    private void MoveSway(){
+    void Update()
+    {
+        RotateSway();
+        //MoveSway();
+    }
+
+    private void RotateSway(){
         float mouseX = Input.GetAxisRaw("Mouse X")*swayMultiplier;
         float mouseY = Input.GetAxisRaw("Mouse Y")*swayMultiplier;
 
@@ -23,5 +31,16 @@ public class GunSway : MonoBehaviour
         Quaternion targetRotation = rotationX * rotationY;
 
         transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, smooth*Time.deltaTime);
+    }
+
+    private void MoveSway(){
+        float movementX = -Input.GetAxis("Mouse X")*swayMultiplier;
+        float movementY = -Input.GetAxis("Mouse Y")*swayMultiplier;
+        // movementX = Mathf.Clamp(movementX, -maxAmount, maxAmount);
+        // movementY = Mathf.Clamp(movementY, -maxAmount, maxAmount);
+
+        Vector3 finalPosition = new Vector3(movementX, movementY, 0);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, finalPosition+initialPos, Time.deltaTime*smooth);
+
     }
 }

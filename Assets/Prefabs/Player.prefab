@@ -53,7 +53,6 @@ MonoBehaviour:
   hitSFX: {fileID: 0}
   effect: []
   damageEffect: {fileID: 0}
-  explodeOnDeathAOE: {fileID: 0}
 --- !u!1 &8655765040293387633
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,6 +74,7 @@ GameObject:
   - component: {fileID: 263510631790545787}
   - component: {fileID: 6543688535885125696}
   - component: {fileID: 7509098747381349089}
+  - component: {fileID: 815473161130350145}
   - component: {fileID: 4404366252478746699}
   - component: {fileID: 4391065286575554416}
   m_Layer: 9
@@ -204,6 +204,7 @@ MonoBehaviour:
   lookSpeed: 2
   lookXLimit: 90
   dashSFX: {fileID: 6543688535885125696}
+  jumpSFX: {fileID: 815473161130350145}
   dashCooldown: 1
   canDash: 0
   canMove: 1
@@ -229,7 +230,6 @@ MonoBehaviour:
   effect:
   - {fileID: 0}
   damageEffect: {fileID: 0}
-  explodeOnDeathAOE: {fileID: 0}
 --- !u!114 &2769227143674863179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,10 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae28bc47be742b2478a1a0844d17d697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunRoot: {fileID: 0}
-  pistolRoot: {fileID: 1249914447000744769}
-  playerCamera: {fileID: 2596643181358554344}
-  canSwitch: 1
+  gunRoot: {fileID: 1249914447000744769}
 --- !u!54 &1596901922480480716
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -394,6 +391,102 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7ab5a6204e76bc142a80f67fee81a666, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &815473161130350145
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655765040293387633}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4478bccfe8cc7924aa403b6acedffc48, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -856,7 +949,8 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7433955695047614638, guid: 799bb7d4fad9c37448dcdc442698abfe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 799bb7d4fad9c37448dcdc442698abfe, type: 3}
 --- !u!1 &1249914447000744769 stripped
 GameObject:
