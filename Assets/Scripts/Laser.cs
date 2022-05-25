@@ -49,7 +49,7 @@ public class Laser : MonoBehaviour
                 if (health != null){
                     health.takeDamage(damage); 
                     if (health.getHealth() <= 0){
-                        Debug.Log(weap);
+                        // Debug.Log(weap);
                         PlayerStats.getInst().addStat(weap);
                     }
                 }
