@@ -53,7 +53,7 @@ MonoBehaviour:
   hitSFX: {fileID: 0}
   effect: []
   damageEffect: {fileID: 0}
-  explode: {fileID: 0}
+  explodeOnDeathAOE: {fileID: 0}
 --- !u!1 &8655765040293387633
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   effect:
   - {fileID: 0}
   damageEffect: {fileID: 0}
-  explode: {fileID: 0}
+  explodeOnDeathAOE: {fileID: 0}
 --- !u!114 &2769227143674863179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae28bc47be742b2478a1a0844d17d697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunRoot: {fileID: 1249914447000744769}
+  gunRoot: {fileID: 0}
+  pistolRoot: {fileID: 1249914447000744769}
+  playerCamera: {fileID: 2596643181358554344}
+  canSwitch: 1
 --- !u!54 &1596901922480480716
 Rigidbody:
   m_ObjectHideFlags: 0

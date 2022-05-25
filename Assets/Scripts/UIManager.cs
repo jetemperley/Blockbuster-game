@@ -62,19 +62,28 @@ public class UIManager : MonoBehaviour
     }
 
     private void UpdateCursor(){
-        string weaponName = weapon.gunRoot.name;
-        if(weaponName.Contains("Pistol")){
+        if (weapon.gunRoot != null && weapon.gunRoot.activeSelf)
+        {
+            string weaponName = weapon.gunRoot.name;
+            if(weaponName.Contains("Pistol")){
+                pistolCursor.SetActive(true);
+                minigunCursor.SetActive(false);
+                cannonCursor.SetActive(false);
+            }else if(weaponName.Contains("Minigun")){
+                pistolCursor.SetActive(false);
+                minigunCursor.SetActive(true);
+                cannonCursor.SetActive(false);
+            }else{
+                pistolCursor.SetActive(false);
+                minigunCursor.SetActive(false);
+                cannonCursor.SetActive(true);
+            }
+        } 
+        else if (weapon.pistolRoot.activeSelf)
+        {
             pistolCursor.SetActive(true);
             minigunCursor.SetActive(false);
             cannonCursor.SetActive(false);
-        }else if(weaponName.Contains("Minigun")){
-            pistolCursor.SetActive(false);
-            minigunCursor.SetActive(true);
-            cannonCursor.SetActive(false);
-        }else{
-            pistolCursor.SetActive(false);
-            minigunCursor.SetActive(false);
-            cannonCursor.SetActive(true);
         }
     }
 
