@@ -6,7 +6,14 @@ public class PlayerBounds : MonoBehaviour
 {
     public float escapeTimeMax;
     private float escapeTime;
-    bool inBounds;
+    public float EscapeTime 
+    {
+        get 
+        {
+            return escapeTime;
+        }
+    }
+    public bool inBounds;
 
     // Start is called before the first frame update
     void Start()

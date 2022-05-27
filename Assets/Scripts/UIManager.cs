@@ -11,12 +11,14 @@ public class UIManager : MonoBehaviour
     public FillHealthBar healthBar;
     public FillHealthBar shieldBar;
     public FillDashBar dashBar;
+    public FillDashBar escapeBar;
 
     private GameManager gameManager;
     private GunHolder weapon;
     private Health playerHealth;
     private Health playerShield;
     private PlayerMove playerMove;
+    private PlayerBounds playerBounds;
     
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class UIManager : MonoBehaviour
         playerHealth =  FindObjectOfType<GunHolder>().GetComponent<Health>(); 
         playerShield = playerHealth.shield;   
         playerMove =  FindObjectOfType<GunHolder>().GetComponent<PlayerMove>();  
+        playerBounds =  FindObjectOfType<GunHolder>().GetComponent<PlayerBounds>(); 
     }
 
     // Update is called once per frame
@@ -50,6 +53,16 @@ public class UIManager : MonoBehaviour
                     UpdateDashBar();
                 }  
             }
+
+            if (!playerBounds.inBounds)
+            {
+                escapeBar.gameObject.SetActive(true);
+                UpdateEscapeBar();
+            } 
+            else 
+            {
+                escapeBar.gameObject.SetActive(false);
+            }
         UpdateCursor();
         }else{
             pistolCursor.SetActive(false);
@@ -58,6 +71,7 @@ public class UIManager : MonoBehaviour
             healthBar.gameObject.SetActive(false);
             shieldBar.gameObject.SetActive(false);
             dashBar.gameObject.SetActive(false);
+            escapeBar.gameObject.SetActive(false);
         }
     }
 
@@ -97,5 +111,9 @@ public class UIManager : MonoBehaviour
 
     private void UpdateDashBar(){
         dashBar.UpdateBar(playerMove.DashTimer, playerMove.dashCooldown);
+    }
+
+    private void UpdateEscapeBar(){
+        escapeBar.UpdateBar(playerBounds.EscapeTime, playerBounds.escapeTimeMax);
     }
 }

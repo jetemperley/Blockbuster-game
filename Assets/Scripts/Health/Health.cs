@@ -63,8 +63,17 @@ public class Health : MonoBehaviour
             }
             if (shield != null) {
 
-                if (shield.takeDamage(dam)<=0)
+                if (shield.takeDamage(dam)<=0 && !shield.shieldOrNot)
                     shield = null;
+                
+                if (shield.currentHealth > 0 && shield.shieldOrNot)
+                {
+                    dam = shield.takeDamage(dam);
+                }
+                else if (shield.currentHealth <= 0 && shield.shieldOrNot)
+                {
+                    currentHealth -= dam;
+                }
 
             } else {
                 currentHealth -= dam;
