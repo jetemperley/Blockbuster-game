@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MinigunFire : MonoBehaviour
 {
-    
+    public AudioClip fireSFX;
     public Bullet bulletPrefab;
     public float maxFireRate; //seconds
     public float minFireRate; //seconds
@@ -48,10 +48,12 @@ public class MinigunFire : MonoBehaviour
     {
         if (Input.GetButton("Fire1") && fireTimer <= 0)
         {
-            if(!audioPlaying){
-                audioData.Play(0);
-                audioPlaying = !audioPlaying;
-            }
+            
+            AudioSource audio = AudioPool.GetAudioSource();
+            audio.clip = fireSFX;
+            audio.volume
+            audio.Play(0);
+            
 
             Vector3 hitPos;
             RaycastHit hit;

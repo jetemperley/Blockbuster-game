@@ -4365,13 +4365,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c211233b571c77a418acc4e9894c64c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireSFX: {fileID: 8300000, guid: 5b91d1b1e4a1799408bf20d6ae6bd5c4, type: 3}
   bulletPrefab: {fileID: 574378370519593902, guid: 47afac7a68da64c4fa30d1963d8ac8df, type: 3}
-  maxFireRate: 0.02
+  maxFireRate: 0.015
   minFireRate: 0.1
   maxFireRadius: 0.1
   minFireRadius: 0.03
   fireRadiusIncrement: 0.2
-  fireRateIncrement: 1
+  fireRateIncrement: 0.5
   damage: 2
   spawnPoint: {fileID: 1475327037492718461}
 --- !u!95 &7711309505392384576
@@ -4408,16 +4409,16 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -4537,7 +4538,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smooth: 10
   swayMultiplier: 10
-  rotationMultiplier: 0
 --- !u!1 &7312633072020644507
 GameObject:
   m_ObjectHideFlags: 0
