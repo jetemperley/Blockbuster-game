@@ -8,8 +8,21 @@ public class CheckpointManager : MonoBehaviour
     public Checkpoint [] checkpoints;
 
     private static CheckpointManager inst;
+    public static CheckpointManager Inst 
+    {
+        get 
+        {
+            return inst;
+        }
+    }
+
+    public static Checkpoint activeCheckpoint;
+    public GameObject level;
+    public GameObject player;
 
     private void Awake() {
+        DontDestroyOnLoad(this);
+
         if (inst == null)
             inst = this;
         else 
@@ -21,6 +34,8 @@ public class CheckpointManager : MonoBehaviour
     void Start()
     {
         //player = FindObjectOfType<PlayerMove>().gameObject;
+        player = GameObject.FindWithTag("Player");
+        level = GameObject.FindWithTag("Level");
     }
 
     // Update is called once per frame
@@ -50,5 +65,38 @@ public class CheckpointManager : MonoBehaviour
 
     public static CheckpointManager GetInst(){
         return inst;
+    }
+
+    public void ResetToCheckpoint()
+    {
+        player = GameObject.FindWithTag("Player");
+        level = GameObject.FindWithTag("Level");
+
+        if (activeCheckpoint != null && level != null && player != null)
+        {
+            Vector3 levelPosition;
+            Vector3 playerPosition;
+
+            levelPosition = level.transform.position;
+            levelPosition.z = -activeCheckpoint.startPosition.z;
+            level.transform.position = levelPosition;
+
+            playerPosition = player.transform.position;
+            playerPosition.y = activeCheckpoint.startPosition.y;
+            player.transform.position = playerPosition;
+
+            MoveCheckpoints(activeCheckpoint.startPosition.z);
+        }
+    }
+
+    public void MoveCheckpoints(float zMovement)
+    {
+        Vector3 newPosition;
+
+        for(int i = 0; i <checkpoints.Length; i++){     
+            newPosition = checkpoints[i].gameObject.transform.position;
+            newPosition.z -= zMovement;
+            checkpoints[i].gameObject.transform.position = newPosition;
+        }
     }
 }

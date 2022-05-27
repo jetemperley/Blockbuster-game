@@ -11,6 +11,18 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
     public CheckpointManager CPManager;
 
+    public static bool resetToCheckpointOrNot = false;
+
+    void Start()
+    {
+        if (resetToCheckpointOrNot) 
+        {
+            CPManager = CheckpointManager.Inst;
+            CPManager.ResetToCheckpoint();
+            resetToCheckpointOrNot = false;
+        }
+    }
+
     public void EndGame (){
         
         if(gameHasEnded == false){
@@ -32,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadCheckpoint(){
         if(CPManager != null){
-            gameOverUI.SetActive(false);
+            /*gameOverUI.SetActive(false);
             GameObject player = Instantiate(CPManager.playerPrefab);
             foreach(Checkpoint cp in CPManager.checkpoints){
                 if(cp.IsActive())
@@ -45,7 +57,9 @@ public class GameManager : MonoBehaviour
                     player.transform.localRotation = Quaternion.Euler(0,180,0);
 
                 }        
-            }
+            }*/
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            resetToCheckpointOrNot = true;
         }
         gameHasEnded = false;
     }
