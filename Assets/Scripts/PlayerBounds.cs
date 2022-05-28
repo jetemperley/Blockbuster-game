@@ -51,7 +51,7 @@ public class PlayerBounds : MonoBehaviour
         if (collision.tag == "PlayerBoundary")
         {
             inBounds = true;
-            // Debug.Log("Entered player bounds");
+            Debug.Log("Entered player bounds");
         }
     }
 
@@ -60,7 +60,7 @@ public class PlayerBounds : MonoBehaviour
         if (collision.tag == "PlayerBoundary")
         {
             inBounds = false;
-            // Debug.Log("Left player bounds");
+            Debug.Log("Left player bounds");
         }
     }
 }
