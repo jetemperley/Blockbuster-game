@@ -16,10 +16,11 @@ public class CheckpointManager : MonoBehaviour
         }
     }
 
-    public static Checkpoint activeCheckpoint;
+    public static Checkpoint activeCheckpoint = null;
     public GameObject level;
     public GameObject player;
-    public static int savedScore;
+    public static int savedScore = 0;
+    public bool isActive = false;
 
     private void Awake() {
         DontDestroyOnLoad(this);
@@ -42,7 +43,8 @@ public class CheckpointManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (activeCheckpoint != null)
+            isActive = true;
     }
 
     public void DeactivateAll(){     
@@ -87,6 +89,7 @@ public class CheckpointManager : MonoBehaviour
             player.transform.position = playerPosition;
 
             ScoreManager.currentScore = savedScore;
+            ScoreManager.scoreToAdd = 0;
 
             MoveCheckpoints(activeCheckpoint.startPosition.z);
         }

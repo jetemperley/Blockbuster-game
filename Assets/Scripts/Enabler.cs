@@ -20,10 +20,13 @@ public class Enabler : MonoBehaviour
 
     void FixedUpdate() {
         // toOffset = Time.fixedDeltaTime * Conductor.conductor.getLevelSpeed();
-        if (player.transform.position.z > gameObject.transform.position.z && playerPassed == false)
+        if (player != null)
         {
-            playerPassed = true;
-            enableThis.SetActive(true);
+            if (player.transform.position.z > gameObject.transform.position.z && playerPassed == false)
+            {
+                playerPassed = true;
+                enableThis.SetActive(true);
+            }
         }
     }
 

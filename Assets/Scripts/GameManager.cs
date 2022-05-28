@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void LoadCheckpoint(){
-        if(CPManager != null){
+        if(CPManager != null && CheckpointManager.activeCheckpoint != null){
             /*gameOverUI.SetActive(false);
             GameObject player = Instantiate(CPManager.playerPrefab);
             foreach(Checkpoint cp in CPManager.checkpoints){
