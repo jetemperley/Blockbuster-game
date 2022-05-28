@@ -95,7 +95,7 @@ public class Health : MonoBehaviour
                 }
 
                 if(gameObject.tag == "Enemy"){
-                    Debug.Log("Enemy Killed");
+                    // Debug.Log("Enemy Killed");
                     Analytics.CustomEvent(
                         "Enemy Killed",
                         new Dictionary<string, object>{
@@ -121,6 +121,16 @@ public class Health : MonoBehaviour
 
     public int getHealth(){
         return currentHealth;
+    }
+
+    public void kill(){
+        if(effect != null){
+            foreach (DeathEffect e in effect){
+                if (e != null)
+                    e.effect();
+            }
+        }
+        Destroy(gameObject);
     }
 
     public void Reset(){
