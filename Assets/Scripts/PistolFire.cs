@@ -11,6 +11,7 @@ public class PistolFire : MonoBehaviour
     private Animator animator;
 
     public GameObject spawnPoint;
+    public AudioClip fireSFX;
 
     public int damage = 1;
 
@@ -32,7 +33,10 @@ public class PistolFire : MonoBehaviour
         if (Input.GetButtonDown("Fire1")&& fireTimer <=0)
         {
             
-            audioData.Play(0);
+            AudioSource audio = AudioPool.GetAudioSource();
+            audio.clip = fireSFX;
+            audio.volume = 0.5f;
+            audio.Play(0);
             animator.SetTrigger("Shoot");
             
             Laser laser = LaserPool.GetLaser();

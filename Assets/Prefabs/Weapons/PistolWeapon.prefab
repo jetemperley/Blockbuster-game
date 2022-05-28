@@ -79,7 +79,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smooth: 10
   swayMultiplier: 10
-  rotationMultiplier: 0
 --- !u!1001 &6843402825624189095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -290,7 +289,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 46dae70a4aa70054a9056ffe19f90a68, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a4a1a2f6e1add244380d4570d7e8a6de, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -411,4 +410,5 @@ MonoBehaviour:
   bulletPrefab: {fileID: 574378370519593902, guid: 47afac7a68da64c4fa30d1963d8ac8df, type: 3}
   fireCooldown: 0.2
   spawnPoint: {fileID: 3628588183316073407}
+  fireSFX: {fileID: 8300000, guid: a4a1a2f6e1add244380d4570d7e8a6de, type: 3}
   damage: 1
