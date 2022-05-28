@@ -80,7 +80,7 @@ public class Health : MonoBehaviour
             }
 
 
-            
+             Debug.Log("took dam");
             
             if (currentHealth <= 0 && !shieldOrNot){
                 if(effect != null){
@@ -103,7 +103,7 @@ public class Health : MonoBehaviour
                         }
                     );
                 }
-                
+                Debug.Log("destroying");
                 Destroy(gameObject);
                 PlayerStats.getInst().addStat("kill "+ name);
             }
