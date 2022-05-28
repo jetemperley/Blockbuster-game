@@ -56,7 +56,7 @@ public class MinigunFire : MonoBehaviour
                 audio.clip = fireSFX;
                 audio.volume = 0.25f;
                 audio.Play(0);
-            //     skip = 2;
+            //     skip = 4;
             // }
             // skip--;
             
