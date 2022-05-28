@@ -26,6 +26,7 @@ public class Checkpoint : MonoBehaviour
         if(other.gameObject.layer == 9){
             active = true;
             CheckpointManager.activeCheckpoint = this;
+            CheckpointManager.savedScore = ScoreManager.SetScore();
         }
         CheckpointManager.GetInst().DeactivateOthers();
     }

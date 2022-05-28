@@ -19,6 +19,7 @@ public class CheckpointManager : MonoBehaviour
     public static Checkpoint activeCheckpoint;
     public GameObject level;
     public GameObject player;
+    public static int savedScore;
 
     private void Awake() {
         DontDestroyOnLoad(this);
@@ -84,6 +85,8 @@ public class CheckpointManager : MonoBehaviour
             playerPosition = player.transform.position;
             playerPosition.y = activeCheckpoint.startPosition.y;
             player.transform.position = playerPosition;
+
+            ScoreManager.currentScore = savedScore;
 
             MoveCheckpoints(activeCheckpoint.startPosition.z);
         }

@@ -15,9 +15,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        CPManager = CheckpointManager.Inst;
         if (resetToCheckpointOrNot) 
         {
-            CPManager = CheckpointManager.Inst;
             CPManager.ResetToCheckpoint();
             resetToCheckpointOrNot = false;
         }

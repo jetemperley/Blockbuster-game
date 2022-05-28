@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,12 +14,17 @@ public class UIManager : MonoBehaviour
     public FillDashBar dashBar;
     public FillDashBar escapeBar;
 
+    public TMP_Text scoreText;
+    public TMP_Text scoreAddText;
+    public TMP_Text scoreMultiplierText;
+
     private GameManager gameManager;
     private GunHolder weapon;
     private Health playerHealth;
     private Health playerShield;
     private PlayerMove playerMove;
     private PlayerBounds playerBounds;
+    private ScoreManager scoreManager;
     
     // Start is called before the first frame update
     void Start()
@@ -29,6 +35,7 @@ public class UIManager : MonoBehaviour
         playerShield = playerHealth.shield;   
         playerMove =  FindObjectOfType<GunHolder>().GetComponent<PlayerMove>();  
         playerBounds =  FindObjectOfType<GunHolder>().GetComponent<PlayerBounds>(); 
+        scoreManager = ScoreManager.Inst;
     }
 
     // Update is called once per frame
@@ -63,6 +70,10 @@ public class UIManager : MonoBehaviour
             {
                 escapeBar.gameObject.SetActive(false);
             }
+
+            scoreText.text = "Score: " + ScoreManager.currentScore;
+            scoreAddText.text = "+" + ScoreManager.scoreToAdd;
+            scoreMultiplierText.text = "x" + scoreManager.scoreMultiplier;
         UpdateCursor();
         }else{
             pistolCursor.SetActive(false);

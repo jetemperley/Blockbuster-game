@@ -6,7 +6,8 @@ public class ScoreManager : MonoBehaviour
 {
     public static int currentScore = 0;
     public static int scoreToAdd = 0;
-    public int addRate;
+    public int baseAddRate;
+    private int addRate;
     public float timeToAdd;
     private float timer;
 
@@ -43,6 +44,8 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        addRate = scoreToAdd/baseAddRate;
+
         if (scoreToAdd > 0)
             timer -= Time.deltaTime;
 
@@ -52,7 +55,7 @@ public class ScoreManager : MonoBehaviour
             scoreToAdd -= addRate;
         }
 
-        if (timer <= 0 && scoreToAdd <= addRate)
+        if (timer <= 0 && scoreToAdd <= baseAddRate)
         {
             currentScore += scoreToAdd;
             scoreToAdd = 0;
@@ -73,9 +76,8 @@ public class ScoreManager : MonoBehaviour
             scoreMultiplier += multiplierRate;
     }
 
-    public static void SetScore()
+    public static int SetScore()
     {
-        currentScore += scoreToAdd;
-        scoreToAdd = 0;
+        return currentScore += scoreToAdd;
     }
 }

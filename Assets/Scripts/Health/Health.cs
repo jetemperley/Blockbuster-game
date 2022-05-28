@@ -106,6 +106,7 @@ public class Health : MonoBehaviour
                 
                 Destroy(gameObject);
                 PlayerStats.getInst().addStat("kill "+ name);
+                ScoreManager.Inst.AddScore(50);
             }
 
             if (currentHealth > 0)
