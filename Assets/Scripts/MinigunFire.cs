@@ -50,15 +50,15 @@ public class MinigunFire : MonoBehaviour
     {
         if (Input.GetButton("Fire1") && fireTimer <= 0)
         {
-            if(currentFireRate > maxFireRate*3 || skip == 0)
-            {
+            // if(currentFireRate > maxFireRate*3 || skip == 0)
+            // {
                 AudioSource audio = AudioPool.GetAudioSource();
                 audio.clip = fireSFX;
                 audio.volume = 0.25f;
                 audio.Play(0);
-                skip = 4;
-            }
-            skip--;
+            //     skip = 2;
+            // }
+            // skip--;
             
             
             

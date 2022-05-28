@@ -4365,9 +4365,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c211233b571c77a418acc4e9894c64c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireSFX: {fileID: 8300000, guid: 5b91d1b1e4a1799408bf20d6ae6bd5c4, type: 3}
+  fireSFX: {fileID: 8300000, guid: c09373eaa59236342895802916709fb6, type: 3}
   bulletPrefab: {fileID: 574378370519593902, guid: 47afac7a68da64c4fa30d1963d8ac8df, type: 3}
-  maxFireRate: 0.015
+  maxFireRate: 0.05
   minFireRate: 0.1
   maxFireRadius: 0.1
   minFireRadius: 0.03
@@ -4413,7 +4413,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 256
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
