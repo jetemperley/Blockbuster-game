@@ -870,7 +870,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5809016174780071457}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.99999994, z: 0}
+  m_LocalPosition: {x: 1, y: 0.16199994, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -960,7 +960,6 @@ MonoBehaviour:
   - {fileID: 4707363127749129351}
   - {fileID: 8551541028345212464}
   damageEffect: {fileID: 7402763449800277702}
-  explodeOnDeathAOE: {fileID: 0}
 --- !u!114 &6121632595266365335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,8 +1094,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ba3a38b871ee649b819589b0061f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlesOnDeath: {fileID: 0}
+  particlesOnDeath: {fileID: 5198867954593991839}
   explodeScale: {fileID: 0}
+  deParent: 1
 --- !u!114 &8551541028345212464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1109,7 +1109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f380f62412929c74a9a3f2d2127b635f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomSpeedOnBreak: 1
   childContainer: {fileID: 1790890386068744439}
 --- !u!114 &7402763449800277702
 MonoBehaviour:
@@ -1164,7 +1163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6269241604099225855, guid: 59f4e826da8776c40ab9f6a60a09a75f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.898
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 6269241604099225855, guid: 59f4e826da8776c40ab9f6a60a09a75f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1205,6 +1204,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6269241604099225855, guid: 59f4e826da8776c40ab9f6a60a09a75f, type: 3}
   m_PrefabInstance: {fileID: 2244697903879926881}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &5198867954593991839 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6269241604099225854, guid: 59f4e826da8776c40ab9f6a60a09a75f, type: 3}
+  m_PrefabInstance: {fileID: 2244697903879926881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4522163663795424636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1242,7 +1246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 784198904724275320, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.99999994
+      value: 0.16199994
       objectReference: {fileID: 0}
     - target: {fileID: 784198904724275320, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
       propertyPath: m_LocalPosition.z
