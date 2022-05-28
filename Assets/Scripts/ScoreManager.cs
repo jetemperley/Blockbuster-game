@@ -35,8 +35,6 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentScore = 0;
-        scoreToAdd = 0;
         timer = timeToAdd;
         scoreMultiplier = baseMultiplier;
     }
@@ -79,5 +77,11 @@ public class ScoreManager : MonoBehaviour
     public static int SetScore()
     {
         return currentScore += scoreToAdd;
+    }
+
+    public static void ResetScores()
+    {
+        currentScore = 0;
+        scoreToAdd = 0;
     }
 }

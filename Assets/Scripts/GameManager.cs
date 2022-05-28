@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     
     public void Restart (){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        ScoreManager.ResetScores();
+        CheckpointManager.ResetCheckpoints();
     }
 
     public void LoadCheckpoint(){

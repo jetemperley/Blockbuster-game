@@ -102,4 +102,10 @@ public class CheckpointManager : MonoBehaviour
             checkpoints[i].gameObject.transform.position = newPosition;
         }
     }
+
+    public static void ResetCheckpoints()
+    {
+        savedScore = 0;
+        activeCheckpoint = null;
+    }
 }

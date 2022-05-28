@@ -9,17 +9,25 @@ public class Enabler : MonoBehaviour
     public GameObject enableThis;
     float toOffset = 0;
     int layers = 2;
+    public GameObject player;
+    bool playerPassed = false;
     void Start()
     {
         //disable(layers, enableThis.transform);
         enableThis.SetActive(false);
+        player = GameObject.FindWithTag("Player");
     }
 
     void FixedUpdate() {
         // toOffset = Time.fixedDeltaTime * Conductor.conductor.getLevelSpeed();
+        if (player.transform.position.z > gameObject.transform.position.z && playerPassed == false)
+        {
+            playerPassed = true;
+            enableThis.SetActive(true);
+        }
     }
 
-    void OnTriggerEnter(Collider other) {
+    /*void OnTriggerEnter(Collider other) {
         if (other.attachedRigidbody == null)
             return; 
         if (other.attachedRigidbody.gameObject.CompareTag("Player")) {
@@ -28,7 +36,7 @@ public class Enabler : MonoBehaviour
         }
             
 
-    }
+    }*/
     
 
     IEnumerator load(int depth, Transform t){
