@@ -20,6 +20,7 @@ public class PlayerMelee : MonoBehaviour
     private float timer;
     private Animator animator;
     private GameObject weapon;
+    private GunHolder weaponHolder;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,9 @@ public class PlayerMelee : MonoBehaviour
         attacking = false;
         canAttack = true;
         recovering = false;
-        weapon = GetComponent<GunHolder>().gunRoot;
+        //weapon = GetComponent<GunHolder>().gunRoot;
+        weaponHolder = GetComponent<GunHolder>();
+        CurrentWeapon();
         animator = sword.GetComponent<Animator>();
         sword.SetActive(false);
     }
@@ -38,7 +41,9 @@ public class PlayerMelee : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2") && canAttack)
         {
-            weapon = GetComponent<GunHolder>().gunRoot;
+            //weapon = GetComponent<GunHolder>().gunRoot;
+            CurrentWeapon();
+            weaponHolder.canSwitch = false;
             weapon.SetActive(false);
             sword.SetActive(true);
             animator.SetTrigger("Attack");
@@ -72,6 +77,19 @@ public class PlayerMelee : MonoBehaviour
             sword.SetActive(false);
             recovering = false;
             canAttack = true;
+            weaponHolder.canSwitch = true;
+        }
+    }
+
+    private void CurrentWeapon()
+    {
+        if (weaponHolder.gunRoot != null && weaponHolder.gunRoot.activeSelf)
+        {
+            weapon = weaponHolder.gunRoot;
+        }
+        else if (weaponHolder.pistolRoot.activeSelf)
+        {
+            weapon = weaponHolder.pistolRoot;
         }
     }
 }

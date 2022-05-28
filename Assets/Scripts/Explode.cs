@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explode : MonoBehaviour
+public class Explode : DeathEffect
 {
     public int damage = 10;
     public int explosionRadius = 10;
     public AudioClip clip;
 
-    public void explode(){
+    public override void effect(){
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
 

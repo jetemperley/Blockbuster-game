@@ -6,11 +6,14 @@ public class Checkpoint : MonoBehaviour
 {
     private GameObject player;
     private bool active;
+    public Vector3 startPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<PlayerMove>().gameObject;
         active = false;
+        startPosition = gameObject.transform.position;
     }
 
     // Update is called once per frame
@@ -22,6 +25,7 @@ public class Checkpoint : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if(other.gameObject.layer == 9){
             active = true;
+            CheckpointManager.activeCheckpoint = this;
         }
         CheckpointManager.GetInst().DeactivateOthers();
     }
@@ -32,5 +36,10 @@ public class Checkpoint : MonoBehaviour
 
     public void Deactivate(){
         active = false;
+    }
+
+    public void ResetPosition()
+    {
+        gameObject.transform.position = startPosition;
     }
 }

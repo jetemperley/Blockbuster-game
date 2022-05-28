@@ -20,9 +20,6 @@ public class Health : MonoBehaviour
     public DeathEffect[] effect;
     public DamageEffect damageEffect;
 
-    //This is only if the enemy with this script needs the explosion to do damage to everything around it.
-    //
-    public Explode explodeOnDeathAOE; 
    
     // Start is called before the first frame update
     void Start()
@@ -65,16 +62,22 @@ public class Health : MonoBehaviour
                 invulnerableTimer = invulnerableTimeCooldown;
             }
             if (shield != null) {
-                /*int sh = shield.takeDamage(dam);
-                if (sh <= 0){
-                    shield = null;
-                }*/
-                if (shield.currentHealth > 0)
-                    dam = shield.takeDamage(dam);
 
-            } //else {
+                if (shield.takeDamage(dam)<=0 && !shield.shieldOrNot)
+                    shield = null;
+                
+                if (shield.currentHealth > 0 && shield.shieldOrNot)
+                {
+                    dam = shield.takeDamage(dam);
+                }
+                else if (shield.currentHealth <= 0 && shield.shieldOrNot)
+                {
+                    currentHealth -= dam;
+                }
+
+            } else {
                 currentHealth -= dam;
-            //}
+            }
 
 
             
@@ -99,11 +102,6 @@ public class Health : MonoBehaviour
                             {"Enemy Type", gameObject.name},
                         }
                     );
-                }
-                //
-                //if you want an object to explode and affect other enemies
-                if(explodeOnDeathAOE != null){
-                    explodeOnDeathAOE.explode();
                 }
                 
                 Destroy(gameObject);
