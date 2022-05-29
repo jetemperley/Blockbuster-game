@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Analytics;
+using UnityEngine.Networking;
 
 using System.IO;
 using System;
@@ -74,6 +75,9 @@ public class PlayerStats : MonoBehaviour
     }
 
     public void deathLog(){
+
+        
+
         AnalyticsResult result = Analytics.CustomEvent("death event", 
             new Dictionary<string, object> 
             {
@@ -141,6 +145,9 @@ public class PlayerStats : MonoBehaviour
 
     }
     public void addStatAnalytic(string name, GameObject thingy){
+
+        StartCoroutine(Upload(thingy.transform.position));
+
         Analytics.CustomEvent(
             "Player Died",
             new Dictionary<string, object>{
@@ -166,5 +173,27 @@ public class PlayerStats : MonoBehaviour
 
     public static string getPosFilename(){
         return "./" + SceneManager.GetActiveScene().name + "Deaths.txt";
+    }
+
+    IEnumerator Upload(Vector3 loc)
+    {
+        Debug.Log("setting up url");
+        UnityWebRequest www = UnityWebRequest.Get("http://193.119.107.178:91/log.php?" + 
+            "level="+SceneManager.GetActiveScene().name+"&"+
+            "x="+loc.x+"&"+
+            "y="+loc.y+"&"+
+            "z="+loc.z
+            );
+        Debug.Log(www.url);
+        yield return www.SendWebRequest();
+
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            Debug.Log("Form upload complete!");
+        }
     }
 }
