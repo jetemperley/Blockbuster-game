@@ -164,7 +164,7 @@ public class PlayerStats : MonoBehaviour
             File.Create(fname);
         }
         try {
-            File.AppendAllText(fname, pos.x + " " + pos.y + " " + pos.z + ",\n");
+            File.AppendAllText(fname, pos.x + " " + pos.y + " " + (pos.z+Conductor.getConductor().getDistTraveled()) + ",\n");
         } catch (Exception e) {
             Debug.Log("Could not write death position to file: " + e.ToString());
             
@@ -182,7 +182,7 @@ public class PlayerStats : MonoBehaviour
             "level="+SceneManager.GetActiveScene().name+"&"+
             "x="+loc.x+"&"+
             "y="+loc.y+"&"+
-            "z="+loc.z
+            "z="+(loc.z+Conductor.getConductor().getDistTraveled())
             );
         Debug.Log(www.url);
         yield return www.SendWebRequest();
