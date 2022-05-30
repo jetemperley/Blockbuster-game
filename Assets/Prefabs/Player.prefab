@@ -53,7 +53,6 @@ MonoBehaviour:
   hitSFX: {fileID: 0}
   effect: []
   damageEffect: {fileID: 0}
-  explodeOnDeathAOE: {fileID: 0}
 --- !u!1 &8655765040293387633
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +231,6 @@ MonoBehaviour:
   effect:
   - {fileID: 0}
   damageEffect: {fileID: 0}
-  explodeOnDeathAOE: {fileID: 0}
 --- !u!114 &2769227143674863179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,7 +301,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: d1500e7aa52e6df4c868bc1702161c31, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -492,9 +490,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4478bccfe8cc7924aa403b6acedffc48, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e487a926b89bc58459b789db8f433008, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
