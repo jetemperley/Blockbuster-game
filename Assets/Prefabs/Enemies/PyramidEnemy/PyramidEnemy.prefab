@@ -93,13 +93,13 @@ MonoBehaviour:
   maxHealth: 6
   currentHealth: 6
   invulnerableTimeCooldown: 0
+  scoreValue: 60
   shield: {fileID: 0}
   hitSFX: {fileID: 7606443629448298253}
   effect:
   - {fileID: 4977989285566784533}
   - {fileID: 2785959473498701669}
   damageEffect: {fileID: 2328675935744752432}
-  explodeOnDeathAOE: {fileID: 0}
 --- !u!114 &3605048379343087328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f380f62412929c74a9a3f2d2127b635f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomSpeedOnBreak: 1
   childContainer: {fileID: 3289020115322210880}
 --- !u!114 &2785959473498701669
 MonoBehaviour:
@@ -236,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlesOnDeath: {fileID: 5997495915215243865}
   explodeScale: {fileID: 0}
+  deParent: 1
 --- !u!114 &2328675935744752432
 MonoBehaviour:
   m_ObjectHideFlags: 0

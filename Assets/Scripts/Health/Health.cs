@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public float invulnerableTimeCooldown;
+    public int scoreValue;
 
     private float invulnerableTimer;
 
@@ -106,7 +107,7 @@ public class Health : MonoBehaviour
                 
                 Destroy(gameObject);
                 PlayerStats.getInst().addStat("kill "+ name);
-                ScoreManager.Inst.AddScore(50);
+                ScoreManager.Inst.AddScore(scoreValue);
             }
 
             if (currentHealth > 0)
