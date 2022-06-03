@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text scoreAddText;
     public TMP_Text scoreMultiplierText;
+    public Text scoreDisplayText;
 
     private GameManager gameManager;
     private GunHolder weapon;
@@ -84,6 +85,8 @@ public class UIManager : MonoBehaviour
             dashBar.gameObject.SetActive(false);
             escapeBar.gameObject.SetActive(false);
         }
+
+        scoreDisplayText.text = "Final Score: " + ScoreManager.currentScore;
     }
 
     private void UpdateCursor(){
