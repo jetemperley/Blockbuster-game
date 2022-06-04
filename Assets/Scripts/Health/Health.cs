@@ -89,20 +89,6 @@ public class Health : MonoBehaviour
                             e.effect();
                     }
                 }
-                //Analytics
-                if(gameObject.tag == "Player"){
-                    PlayerStats.getInst().addStatAnalytic("kill Player", this.gameObject);
-                }
-
-                if(gameObject.tag == "Enemy"){
-                    Debug.Log("Enemy Killed");
-                    Analytics.CustomEvent(
-                        "Enemy Killed",
-                        new Dictionary<string, object>{
-                            {"Enemy Type", gameObject.name},
-                        }
-                    );
-                }
                 
                 Destroy(gameObject);
                 PlayerStats.getInst().addStat("kill "+ name);
