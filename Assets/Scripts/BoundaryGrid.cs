@@ -29,8 +29,13 @@ public class BoundaryGrid : MonoBehaviour
             if (player.transform.position.z < distanceToFade)
                 materialColor.a = 0;
 
-            if (player.transform.position.z >= distanceToFade && player.transform.position.z < distanceToAppear)
-                materialColor.a = ((player.transform.position.z - distanceToFade)/(distanceToAppear - distanceToFade))/originalAlpha;
+            if (player.transform.position.z >= distanceToFade && player.transform.position.z < distanceToAppear){
+                
+                float val = ((player.transform.position.z - distanceToFade)/(distanceToAppear - distanceToFade))*originalAlpha;
+
+                materialColor.a = val;
+            
+            }
 
             if (player.transform.position.z >= distanceToAppear)
                 materialColor.a = originalAlpha;
