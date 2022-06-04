@@ -49,6 +49,7 @@ MonoBehaviour:
   maxHealth: 2
   currentHealth: 0
   invulnerableTimeCooldown: 1
+  scoreValue: 0
   shield: {fileID: 0}
   hitSFX: {fileID: 0}
   effect: []
@@ -78,6 +79,7 @@ GameObject:
   - component: {fileID: 4404366252478746699}
   - component: {fileID: 4391065286575554416}
   - component: {fileID: -6147068321577090945}
+  - component: {fileID: 2392754476205389324}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -226,6 +228,7 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 3
   invulnerableTimeCooldown: 1
+  scoreValue: 0
   shield: {fileID: 1449356266488293635}
   hitSFX: {fileID: 7509098747381349089}
   effect:
@@ -625,6 +628,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   escapeTimeMax: 5
   inBounds: 0
+--- !u!114 &2392754476205389324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655765040293387633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163d33ccb6faa0f4886cd3e8a4b774d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gotHitScreen: {fileID: 0}
+  StartOpacity: 0.7
+  fadeAwaySpeed: 0.01
 --- !u!1001 &2902400399343826914
 PrefabInstance:
   m_ObjectHideFlags: 0
