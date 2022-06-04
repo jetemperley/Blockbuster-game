@@ -35,7 +35,7 @@ public class PistolFire : MonoBehaviour
             
             AudioSource audio = AudioPool.GetAudioSource();
             audio.clip = fireSFX;
-            audio.volume = 0.5f;
+            audio.volume = 0.25f;
             audio.Play(0);
             animator.SetTrigger("Shoot");
             

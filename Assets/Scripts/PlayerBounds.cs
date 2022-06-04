@@ -41,6 +41,7 @@ public class PlayerBounds : MonoBehaviour
         if (escapeTime <= 0)
         {
             //KILL PLAYER
+            Destroy(gameObject);
             Debug.Log("Stayed out of bounds for too long");
             escapeTime = escapeTimeMax;
         }

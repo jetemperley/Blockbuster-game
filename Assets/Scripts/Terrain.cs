@@ -28,6 +28,8 @@ public class Terrain : MonoBehaviour
                 Destroy(this.gameObject);
             }*/
         }
-        rigidbody.MovePosition(rigidbody.position + Vector3.back * Time.fixedDeltaTime * cond);
+        rigidbody.position = (rigidbody.position + Vector3.back * Time.fixedDeltaTime * cond);
     }
+
+    
 }

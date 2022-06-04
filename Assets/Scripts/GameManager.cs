@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void LoadCheckpoint(){
+        Debug.Log("Attempted to reset to checkpoint");
         if(CPManager != null && CheckpointManager.activeCheckpoint != null){
             /*gameOverUI.SetActive(false);
             GameObject player = Instantiate(CPManager.playerPrefab);

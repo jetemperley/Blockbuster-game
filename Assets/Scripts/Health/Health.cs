@@ -11,11 +11,12 @@ public class Health : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public float invulnerableTimeCooldown;
+    public int scoreValue;
 
     private float invulnerableTimer;
 
     public Health shield;
-    public AudioSource hitSFX;
+    public AudioClip hitSFX;
 
     public DeathEffect[] effect;
     public DamageEffect damageEffect;
@@ -27,11 +28,6 @@ public class Health : MonoBehaviour
         if (!shieldOrNot)
             currentHealth = maxHealth;
         invulnerableTimer = 0;
-        //hitSFX = GetComponent<AudioSource>();
-        if(hitSFX != null)
-            {
-                hitSFX.Stop();
-            }
     }
 
     // Update is called once per frame
@@ -52,9 +48,13 @@ public class Health : MonoBehaviour
     public int takeDamage(int dam){
         if(invulnerableTimer<=0)
         {
-            if(hitSFX != null && hitSFX.enabled)
+            if(hitSFX != null)
             {
-                hitSFX.Play(0);
+                AudioSource audio = AudioPool.GetAudioSource();
+                audio.gameObject.transform.position = this.gameObject.transform.position;
+                audio.clip = hitSFX;
+                audio.volume = 0.25f;
+                audio.Play(0);
             }
             
             if(gameObject.layer == 9)
@@ -92,7 +92,7 @@ public class Health : MonoBehaviour
                 
                 Destroy(gameObject);
                 PlayerStats.getInst().addStat("kill "+ name);
-                ScoreManager.Inst.AddScore(50);
+                ScoreManager.Inst.AddScore(scoreValue);
             }
 
             if (currentHealth > 0)

@@ -21,7 +21,6 @@ public class HeatMap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        buildHeatmap();
     }
 
     // Update is called once per frame

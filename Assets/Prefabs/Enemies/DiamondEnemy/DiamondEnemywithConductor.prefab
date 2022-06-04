@@ -96,13 +96,13 @@ MonoBehaviour:
   maxHealth: 6
   currentHealth: 6
   invulnerableTimeCooldown: 0
+  scoreValue: 80
   shield: {fileID: 0}
   hitSFX: {fileID: 3391677024187733674}
   effect:
   - {fileID: 4009483787543288161}
   - {fileID: 25412814009484246}
   damageEffect: {fileID: 1174458407103599392}
-  explodeOnDeathAOE: {fileID: 0}
 --- !u!82 &3391677024187733674
 AudioSource:
   m_ObjectHideFlags: 0
@@ -213,6 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlesOnDeath: {fileID: 7133503861736932951}
   explodeScale: {fileID: 0}
+  deParent: 1
 --- !u!114 &25412814009484246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f380f62412929c74a9a3f2d2127b635f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomSpeedOnBreak: 1
   childContainer: {fileID: 7939248838835733777}
 --- !u!114 &1174458407103599392
 MonoBehaviour:
