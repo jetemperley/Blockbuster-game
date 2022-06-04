@@ -18,7 +18,12 @@ public class DestroyOnPlayerCantact : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.layer == 9){
-            Destroy(gameObject);
+            Health health = GetComponent<Health>();
+            if (health != null) {
+                health.takeDamage(100);
+            } else {
+                Destroy(gameObject);
+            }
         }        
     }
 }
