@@ -101,7 +101,7 @@ public class UIManager : MonoBehaviour
                 pistolCursor.SetActive(false);
                 minigunCursor.SetActive(true);
                 cannonCursor.SetActive(false);
-            }else{
+            }else if (weaponName.Contains("AOE")){
                 pistolCursor.SetActive(false);
                 minigunCursor.SetActive(false);
                 cannonCursor.SetActive(true);
