@@ -15,7 +15,6 @@ public class MinigunFire : MonoBehaviour
     public int damage;
 
     private Camera cam;
-    private AudioSource audioData;
     private Animator animator;
     private bool audioPlaying;
     private int skip;
@@ -32,8 +31,6 @@ public class MinigunFire : MonoBehaviour
     void Start()
     {
         fireTimer = 0f;
-        audioData = GetComponent<AudioSource>();
-        audioData.Stop();
         animator = GetComponent<Animator>();
         cam = (Camera)FindObjectOfType(typeof(Camera));
         audioPlaying = false;
@@ -42,7 +39,7 @@ public class MinigunFire : MonoBehaviour
         line.endWidth = 0.1f;
         currentFireRadius = minFireRadius;
         currentFireRate = minFireRate;
-        skip = 0;
+        skip = 5;
     }
 
     // Update is called once per frame
@@ -52,10 +49,15 @@ public class MinigunFire : MonoBehaviour
         {
             // if(currentFireRate > maxFireRate*3 || skip == 0)
             // {
+                if(skip < 1)
+                {
+                    skip = 5;
+                }
                 AudioSource audio = AudioPool.GetAudioSource();
                 audio.clip = fireSFX;
-                audio.volume = 0.15f;
+                audio.volume = 0.15f/skip;
                 audio.Play(0);
+                skip--;
             //     skip = 4;
             // }
             // skip--;
@@ -107,7 +109,6 @@ public class MinigunFire : MonoBehaviour
         {
             currentFireRate = minFireRate;
             currentFireRadius = minFireRadius;
-            audioData.Stop();
             audioPlaying = false;
             animator.SetBool("Shooting",false);
         } else {
