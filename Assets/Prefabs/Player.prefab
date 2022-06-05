@@ -49,6 +49,7 @@ MonoBehaviour:
   maxHealth: 2
   currentHealth: 0
   invulnerableTimeCooldown: 1
+  scoreValue: 0
   shield: {fileID: 0}
   hitSFX: {fileID: 0}
   effect: []
@@ -226,6 +227,7 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 3
   invulnerableTimeCooldown: 1
+  scoreValue: 0
   shield: {fileID: 1449356266488293635}
   hitSFX: {fileID: 7509098747381349089}
   effect:
@@ -395,7 +397,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7ab5a6204e76bc142a80f67fee81a666, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
@@ -491,7 +493,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e487a926b89bc58459b789db8f433008, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
@@ -588,14 +590,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa023bedd355f6f4eb30000e21c919ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startup: 0.15
+  startup: 0.05
   activeTime: 0.1
   recovery: 0.2
   damage: 6
   sword: {fileID: 7569004774304977531}
   prefabHitbox: {fileID: 4518084797337923592, guid: 2285ea7c40e50134b820208623dd55d8, type: 3}
   playerCamera: {fileID: 2596643181358554350}
-  swordSwingSFX: {fileID: 8300000, guid: 937c5e89bf695f24ca4bc633446f43d7, type: 3}
+  swordSwingSFX: {fileID: 8300000, guid: bc2e92e1d6d00f544b14a75a010fecab, type: 3}
   attacking: 0
   canAttack: 0
   recovering: 0

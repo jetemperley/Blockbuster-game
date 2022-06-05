@@ -32,7 +32,6 @@ public class PistolFire : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1")&& fireTimer <=0)
         {
-            
             AudioSource audio = AudioPool.GetAudioSource();
             audio.clip = fireSFX;
             audio.volume = 0.25f;
