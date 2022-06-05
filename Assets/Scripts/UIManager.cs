@@ -75,7 +75,7 @@ public class UIManager : MonoBehaviour
             scoreText.text = "Score: " + ScoreManager.currentScore;
             scoreAddText.text = "+" + ScoreManager.scoreToAdd;
             scoreMultiplierText.text = "x" + scoreManager.scoreMultiplier;
-        UpdateCursor();
+            UpdateCursor();
         }else{
             pistolCursor.SetActive(false);
             minigunCursor.SetActive(false);
