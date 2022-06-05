@@ -46,6 +46,7 @@ public class Health : MonoBehaviour
     }
 
     public int takeDamage(int dam){
+        Debug.Log(gameObject);
         if(invulnerableTimer<=0)
         {
             if(hitSFX != null)

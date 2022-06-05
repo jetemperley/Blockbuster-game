@@ -42,7 +42,6 @@ public class PlayerBounds : MonoBehaviour
         {
             //KILL PLAYER
             Destroy(gameObject);
-            Debug.Log("Stayed out of bounds for too long");
             escapeTime = escapeTimeMax;
         }
     }
@@ -52,7 +51,6 @@ public class PlayerBounds : MonoBehaviour
         if (collision.tag == "PlayerBoundary")
         {
             inBounds = true;
-            Debug.Log("Entered player bounds");
         }
     }
 
@@ -61,7 +59,6 @@ public class PlayerBounds : MonoBehaviour
         if (collision.tag == "PlayerBoundary")
         {
             inBounds = false;
-            Debug.Log("Left player bounds");
         }
     }
 }
