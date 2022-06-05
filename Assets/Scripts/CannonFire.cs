@@ -25,6 +25,7 @@ public class CannonFire : MonoBehaviour
         audioData.Stop();
         animator = GetComponent<Animator>();
         ps = Instantiate(explosion);
+        ps.Stop();
         ps.gameObject.AddComponent<Terrain>();
         ps.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         
