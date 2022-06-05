@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
     public void EndGame (){
         
         if(gameHasEnded == false){
+            GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().volume = 0.15f;
             gameHasEnded = true;
-            // Debug.Log("GAME OVER");
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
             gameOverUI.SetActive(true);            
@@ -47,20 +47,6 @@ public class GameManager : MonoBehaviour
     public void LoadCheckpoint(){
         Debug.Log("Attempted to reset to checkpoint");
         if(CPManager != null && CheckpointManager.activeCheckpoint != null){
-            /*gameOverUI.SetActive(false);
-            GameObject player = Instantiate(CPManager.playerPrefab);
-            foreach(Checkpoint cp in CPManager.checkpoints){
-                if(cp.IsActive())
-                {
-                    Debug.Log(cp.transform.position);
-                    player.GetComponent<CharacterController>().enabled = false;
-                    player.transform.position = cp.transform.position;
-                    player.GetComponent<CharacterController>().enabled = true;
-
-                    player.transform.localRotation = Quaternion.Euler(0,180,0);
-
-                }        
-            }*/
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             resetToCheckpointOrNot = true;
         }
@@ -68,6 +54,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void CompleteLevel(){
+        GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().volume = 0.15f;
         if (gameHasEnded)
             return;
         Debug.Log("Level Complete!");

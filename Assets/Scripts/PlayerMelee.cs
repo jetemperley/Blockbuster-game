@@ -12,6 +12,7 @@ public class PlayerMelee : MonoBehaviour
     public GameObject sword;    
     public GameObject prefabHitbox;
     public Camera playerCamera;
+    public AudioClip swordSwingSFX;
 
     public bool attacking;
     public bool canAttack;
@@ -29,7 +30,6 @@ public class PlayerMelee : MonoBehaviour
         attacking = false;
         canAttack = true;
         recovering = false;
-        //weapon = GetComponent<GunHolder>().gunRoot;
         weaponHolder = GetComponent<GunHolder>();
         CurrentWeapon();
         animator = sword.GetComponent<Animator>();
@@ -41,7 +41,10 @@ public class PlayerMelee : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2") && canAttack)
         {
-            //weapon = GetComponent<GunHolder>().gunRoot;
+            AudioSource audio = AudioPool.GetAudioSource();
+            audio.clip = swordSwingSFX;
+            audio.volume = 0.25f;
+            audio.Play(0);
             CurrentWeapon();
             weaponHolder.canSwitch = false;
             weapon.SetActive(false);
