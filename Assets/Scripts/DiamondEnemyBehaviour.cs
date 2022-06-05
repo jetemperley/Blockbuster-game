@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,8 +35,11 @@ public class DiamondEnemyBehaviour : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         conductor = Conductor.getConductor();
-        target = GameObject.FindGameObjectWithTag(targetTag).transform;
-
+        try {
+            target = GameObject.FindGameObjectWithTag(targetTag).transform;
+        } catch (Exception e){
+            Destroy(this);
+        }
 
     }
 

@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,7 +23,11 @@ public class PyramidShoot : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        target = GameObject.FindGameObjectWithTag(targetTag).transform;
+        try {
+            target = GameObject.FindGameObjectWithTag(targetTag).transform;
+        } catch (Exception e){
+            Destroy(this);
+        }
     }
 
     // Update is called once per frame
