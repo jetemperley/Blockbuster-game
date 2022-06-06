@@ -21,7 +21,7 @@ public class DeathParticles : DeathEffect
     }
     // Start is called before the first frame update
     public override void effect(){
-        Debug.Log("explode scale null " + (explodeScale==null));
+//         Debug.Log("explode scale null " + (explodeScale==null));
         if (deParent)
             particlesOnDeath.transform.SetParent(null);
         particlesOnDeath.transform.position = transform.position;

@@ -18,6 +18,7 @@ public class DamageEffect : MonoBehaviour
     // Update is called once per frame
     public void DamageFlash()
     {
+        Debug.Log("flash");
         renderer.material.color = flashColor;
         Invoke("ResetColor", flashTime);
     }
