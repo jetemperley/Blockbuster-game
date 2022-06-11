@@ -154,7 +154,7 @@ public class PlayerStats : MonoBehaviour
                 {"Position", thingy.transform.position},
             }
         );
-        addPlayerDeathToCSV(thingy.transform.position);
+        // addPlayerDeathToCSV(thingy.transform.position);
     }
 
     private void addPlayerDeathToCSV(Vector3 pos){

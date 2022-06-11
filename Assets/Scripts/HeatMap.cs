@@ -18,6 +18,7 @@ public class HeatMap : MonoBehaviour
     private Vector3 drawSize;
     public Color heatColor;
     public float heatAlpha = 0.5f;
+    public float unitsPerGrid = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -93,17 +94,17 @@ public class HeatMap : MonoBehaviour
         float xMax = transform.position.x + cameraSize.x/2;
         float xMin = transform.position.x - cameraSize.x/2;
 
-
+        int pixelsPerGrid = (int)(unitsPerGrid * pixelsPerWorldUnit);
 
         foreach (Vector3 v in vecs){
             // translate the position to be relative the map
-            Vector3 relative = v - new Vector3(xMin, 0, zMin);
+            Vector3 relative = (v - new Vector3(xMin, 0, zMin))/unitsPerGrid;
             Vector3Int relInt = new Vector3Int((int)relative.x, (int)relative.y, (int)relative.z);
-            relInt = relInt*pixelsPerWorldUnit;
+            relInt = relInt*pixelsPerGrid;
 
             // get the world unit relating to the death
             try {
-                Color[] pixels = tex.GetPixels(relInt.x, relInt.z, pixelsPerWorldUnit, pixelsPerWorldUnit);
+                Color[] pixels = tex.GetPixels(relInt.x, relInt.z, pixelsPerGrid, pixelsPerGrid);
 
                 for (int i = 0; i < pixels.Length; i++){
                     // do an alpha blend
@@ -111,7 +112,7 @@ public class HeatMap : MonoBehaviour
                     pixels[i].a = 1;
                 }
 
-                tex.SetPixels(relInt.x, relInt.z, pixelsPerWorldUnit, pixelsPerWorldUnit, pixels);
+                tex.SetPixels(relInt.x, relInt.z, pixelsPerGrid, pixelsPerGrid, pixels);
             } catch (Exception e){
                 Debug.Log("some position was omitted, probably out of camera bounds");
             }
