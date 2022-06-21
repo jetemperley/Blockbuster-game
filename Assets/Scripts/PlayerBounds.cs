@@ -6,7 +6,14 @@ public class PlayerBounds : MonoBehaviour
 {
     public float escapeTimeMax;
     private float escapeTime;
-    bool inBounds;
+    public float EscapeTime 
+    {
+        get 
+        {
+            return escapeTime;
+        }
+    }
+    public bool inBounds;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +41,7 @@ public class PlayerBounds : MonoBehaviour
         if (escapeTime <= 0)
         {
             //KILL PLAYER
-            Debug.Log("Stayed out of bounds for too long");
+            Destroy(gameObject);
             escapeTime = escapeTimeMax;
         }
     }
@@ -44,7 +51,6 @@ public class PlayerBounds : MonoBehaviour
         if (collision.tag == "PlayerBoundary")
         {
             inBounds = true;
-            Debug.Log("Entered player bounds");
         }
     }
 
@@ -53,7 +59,6 @@ public class PlayerBounds : MonoBehaviour
         if (collision.tag == "PlayerBoundary")
         {
             inBounds = false;
-            Debug.Log("Left player bounds");
         }
     }
 }

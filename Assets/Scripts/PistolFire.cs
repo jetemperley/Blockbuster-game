@@ -11,6 +11,9 @@ public class PistolFire : MonoBehaviour
     private Animator animator;
 
     public GameObject spawnPoint;
+    public AudioClip fireSFX;
+
+    public int damage = 1;
 
     private float fireTimer; //seconds
     // Start is called before the first frame update
@@ -20,6 +23,7 @@ public class PistolFire : MonoBehaviour
         audioData = GetComponent<AudioSource>();
         audioData.Stop();
         animator = GetComponent<Animator>();
+        LaserPool.Init();
         
     }
 
@@ -28,17 +32,32 @@ public class PistolFire : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1")&& fireTimer <=0)
         {
-            audioData.Play(0);
+            AudioSource audio = AudioPool.GetAudioSource();
+            audio.clip = fireSFX;
+            audio.volume = 0.25f;
+            audio.Play(0);
             animator.SetTrigger("Shoot");
-            Bullet bullet = Instantiate(bulletPrefab);
-            bullet.transform.parent = spawnPoint.transform;
-            bullet.transform.localPosition = new Vector3(0,0,0);
-            bullet.transform.localRotation = Quaternion.Euler(90,0,0);
-            bullet.transform.parent = null;
-            bullet.SetDir(spawnPoint.transform.forward);
+            
+            Laser laser = LaserPool.GetLaser();
+            laser.SetDamage(damage);
+            laser.fire(
+                spawnPoint.transform.position,
+                spawnPoint.transform.forward*1000,
+                0.2f,
+                gameObject.name
+                );
+            
+            // Bullet bullet = Instantiate(bulletPrefab);
+            // bullet.transform.parent = spawnPoint.transform;
+            // bullet.transform.localPosition = new Vector3(0,0,0);
+            // bullet.transform.localRotation = Quaternion.Euler(90,0,0);
+            // bullet.transform.parent = null;
+            // bullet.SetDir(spawnPoint.transform.forward);
             fireTimer = fireCooldown;
+        } else if (fireTimer > 0){
+            fireTimer -= Time.deltaTime;
         }
 
-        fireTimer -= Time.deltaTime;
+        
     }
 }

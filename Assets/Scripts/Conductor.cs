@@ -9,9 +9,12 @@ public class Conductor : MonoBehaviour
     public float gameSpeed = 1; //Game speed is a multiplier for how things move overall (including actions)
     public float boundary = -30; 
     public float startBoundary = 30;
+    private float totalDist = 0;
 
     //Singleton stuff
     public static Conductor conductor;
+
+    private static GameObject instance;
     
     private void Awake()
     {
@@ -24,6 +27,23 @@ public class Conductor : MonoBehaviour
         {
             conductor = this;
         }
+    }
+
+    public static Conductor getConductor()
+    {
+        if (conductor == null)
+        {
+            instance = new GameObject("Conductor");
+            instance.AddComponent<Conductor>();
+            conductor = instance.GetComponent<Conductor>();
+        }
+
+        return conductor;
+    }
+
+    private void FixedUpdate() {
+        totalDist += Time.fixedDeltaTime*levelSpeed;
+        // Debug.Log("fixed " + totalDist);
     }
 
     public float getLevelSpeed()
@@ -45,5 +65,9 @@ public class Conductor : MonoBehaviour
     {
         levelSpeed = lspeed;
         gameSpeed = gspeed;
+    }
+
+    public float getDistTraveled(){
+        return totalDist;
     }
 }

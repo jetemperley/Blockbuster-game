@@ -11,7 +11,7 @@ public class PyramidMove : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        conductor = Conductor.conductor;
+        conductor = Conductor.getConductor();
     }
 
     // Update is called once per frame

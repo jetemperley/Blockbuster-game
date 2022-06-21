@@ -12,19 +12,24 @@ public class Terrain : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        rigidbody.isKinematic = true;
+        //rigidbody.isKinematic = true;
         conductor = Conductor.conductor;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        float cond = 1;
         //Move the terrain towards the player at speed determined by the Conductor
-        rigidbody.MovePosition(rigidbody.position + Vector3.back * Time.deltaTime * conductor.getLevelSpeed());
-
-        if (rigidbody.position.z <= conductor.getBoundary())
-        {
-            Destroy(this.gameObject);
+        if (conductor != null){
+            cond = conductor.getLevelSpeed();
+            /*if (rigidbody.position.z <= conductor.getBoundary())
+            {
+                Destroy(this.gameObject);
+            }*/
         }
+        rigidbody.position = (rigidbody.position + Vector3.back * Time.fixedDeltaTime * cond);
     }
+
+    
 }
