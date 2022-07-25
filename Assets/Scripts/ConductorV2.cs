@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //This is a singleton script that manages the speed of the terrain and enemies
-public class Conductor : MonoBehaviour
+public class ConductorV2 : MonoBehaviour
 {
     public float levelSpeed = 10; //Level speed is the speed at which the level progresses (Flat value)
     public float gameSpeed = 1; //Game speed is a multiplier for how things move overall (including actions)
@@ -15,7 +15,7 @@ public class Conductor : MonoBehaviour
     public float maxDistAway = 30;
 
     //Singleton stuff
-    public static Conductor conductor;
+    public static ConductorV2 conductor;
 
     private static GameObject instance;
     
@@ -49,13 +49,13 @@ public class Conductor : MonoBehaviour
         return currentPosition;
     }
     
-    public static Conductor getConductor()
+    public static ConductorV2 getConductor()
     {
         if (conductor == null)
         {
             instance = new GameObject("Conductor");
-            instance.AddComponent<Conductor>();
-            conductor = instance.GetComponent<Conductor>();
+            instance.AddComponent<ConductorV2>();
+            conductor = instance.GetComponent<ConductorV2>();
         }
 
         return conductor;
