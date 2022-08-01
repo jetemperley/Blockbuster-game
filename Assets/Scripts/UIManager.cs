@@ -62,16 +62,6 @@ public class UIManager : MonoBehaviour
                 }  
             }
 
-            if (!playerBounds.inBounds)
-            {
-                escapeBar.gameObject.SetActive(true);
-                UpdateEscapeBar();
-            } 
-            else 
-            {
-                escapeBar.gameObject.SetActive(false);
-            }
-
             scoreText.text = "Score: " + ScoreManager.currentScore;
             scoreAddText.text = "+" + ScoreManager.scoreToAdd;
             scoreMultiplierText.text = "x" + scoreManager.scoreMultiplier;
