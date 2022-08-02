@@ -70,10 +70,11 @@ public class UIManager : MonoBehaviour
             pistolCursor.SetActive(false);
             minigunCursor.SetActive(false);
             cannonCursor.SetActive(false);
-            healthBar.gameObject.SetActive(false);
-            shieldBar.gameObject.SetActive(false);
-            dashBar.gameObject.SetActive(false);
-            escapeBar.gameObject.SetActive(false);
+            GameObject.Find("StatSliders").SetActive(false);
+            // healthBar.gameObject.SetActive(false);
+            // shieldBar.gameObject.SetActive(false);
+            // dashBar.gameObject.SetActive(false);
+            //escapeBar.gameObject.SetActive(false);
         }
 
         scoreDisplayText.text = "Final Score: " + ScoreManager.currentScore;
