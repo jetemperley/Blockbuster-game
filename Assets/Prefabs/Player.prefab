@@ -208,6 +208,7 @@ MonoBehaviour:
   lookXLimit: 90
   dashSFX: {fileID: 6543688535885125696}
   jumpSFX: {fileID: 815473161130350145}
+  speedParticles: {fileID: 0}
   dashCooldown: 1
   canDash: 0
   canMove: 1
@@ -850,6 +851,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8655765040293387639}
     m_Modifications:
+    - target: {fileID: 1540624994094848900, guid: b5194b727cfa8ac43bfea6e77b03dff7, type: 3}
+      propertyPath: weight
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1540624994094848922, guid: b5194b727cfa8ac43bfea6e77b03dff7, type: 3}
       propertyPath: m_RootOrder
       value: 0
