@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject completeLevelUI;
     public GameObject gameOverUI;
     public CheckpointManager CPManager;
+    public string url = "";
 
     public static bool resetToCheckpointOrNot = false;
 
@@ -69,6 +70,11 @@ public class GameManager : MonoBehaviour
 
     public void Load1(){
         SceneManager.LoadScene(1);
+    }
+
+    public void OpenUrl()
+    {
+        Application.OpenURL(url);
     }
 
 }
