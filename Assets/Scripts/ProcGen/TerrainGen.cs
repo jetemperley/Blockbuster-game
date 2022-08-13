@@ -5,11 +5,11 @@ using UnityEngine;
 public class TerrainGen : MonoBehaviour
 {
     public static float zOffset = 0.0f; //Next z position to spawn blocks
+    public static float yOffset = 0.0f; //Next y position to spawn blocks
     public float distanceToSpawn; //Distance to player to spawn new blocks
     public int blocksToSpawn; //Initial amount of blocks to spawn
 
-    public GameObject[] blocks; //Array of the different types of blocks to spawn
-    public float blockLength; //Length of a block
+    public Block[] blocks; //Array of the different types of blocks to spawn
 
     public static TerrainGen instance;
 
@@ -24,8 +24,9 @@ public class TerrainGen : MonoBehaviour
 
         for (int i = 0; i < blocksToSpawn; i++)
         {
-            Instantiate(blocks[0], new Vector3(0.0f, 0.0f, zOffset), blocks[0].transform.rotation);
-            zOffset += blockLength;
+            Instantiate(blocks[0].gameObject, new Vector3(0.0f, yOffset, zOffset), blocks[0].gameObject.transform.rotation);
+            zOffset += blocks[0].length;
+            yOffset += blocks[0].heightOffset;
         }
     }
 
@@ -42,8 +43,9 @@ public class TerrainGen : MonoBehaviour
     {
         System.Random random = new System.Random();
         int randomNumber = random.Next(0, blocks.Length);
-        Instantiate(blocks[randomNumber], new Vector3(0.0f, 0.0f, zOffset), blocks[randomNumber].transform.rotation);
+        Instantiate(blocks[randomNumber].gameObject, new Vector3(0.0f, yOffset, zOffset), blocks[randomNumber].gameObject.transform.rotation);
 
-        zOffset += blockLength;
+        zOffset += blocks[randomNumber].length;
+        yOffset += blocks[randomNumber].heightOffset;
     }
 }

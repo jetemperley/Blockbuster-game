@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 165328777812447250}
   - component: {fileID: 220399011006276295}
+  - component: {fileID: -7809049808974902483}
   m_Layer: 0
   m_Name: BlockGreenWide
   m_TagString: Untagged
@@ -81,6 +82,20 @@ MonoBehaviour:
   - {fileID: 3451406523962625072, guid: 4dedf328541c7934484c489a61d195b3, type: 3}
   - {fileID: 778578454764302262, guid: e47e10f11331ff44799ad0b8dc2c7a92, type: 3}
   - {fileID: 6905233715170431550, guid: d458575f1fe3f5b49a7325cdb55fe27c, type: 3}
+--- !u!114 &-7809049808974902483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6789929326324061346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 065cad0270a2985468ee127a33b9b403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  length: 40
+  heightOffset: 0
 --- !u!1001 &601472246428849407
 PrefabInstance:
   m_ObjectHideFlags: 0

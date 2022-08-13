@@ -12,7 +12,8 @@ public class EnemyGen : MonoBehaviour
         System.Random random = new System.Random();
         int randomNumber = random.Next(0, groups.Length);
         Vector3 groupPosition = groups[randomNumber].transform.position;
-        Instantiate(groups[randomNumber], new Vector3(groupPosition.x, groupPosition.y, gameObject.transform.position.z), 
+        Vector3 objectPosition = gameObject.transform.position;
+        Instantiate(groups[randomNumber], new Vector3(groupPosition.x, objectPosition.y, objectPosition.z), 
             groups[randomNumber].transform.rotation);
     }
 
