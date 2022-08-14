@@ -62,16 +62,6 @@ public class UIManager : MonoBehaviour
                 }  
             }
 
-            if (!playerBounds.inBounds)
-            {
-                escapeBar.gameObject.SetActive(true);
-                UpdateEscapeBar();
-            } 
-            else 
-            {
-                escapeBar.gameObject.SetActive(false);
-            }
-
             scoreText.text = "Score: " + ScoreManager.currentScore;
             scoreAddText.text = "+" + ScoreManager.scoreToAdd;
             scoreMultiplierText.text = "x" + scoreManager.scoreMultiplier;
@@ -80,10 +70,11 @@ public class UIManager : MonoBehaviour
             pistolCursor.SetActive(false);
             minigunCursor.SetActive(false);
             cannonCursor.SetActive(false);
-            healthBar.gameObject.SetActive(false);
-            shieldBar.gameObject.SetActive(false);
-            dashBar.gameObject.SetActive(false);
-            escapeBar.gameObject.SetActive(false);
+            GameObject.Find("StatSliders").SetActive(false);
+            // healthBar.gameObject.SetActive(false);
+            // shieldBar.gameObject.SetActive(false);
+            // dashBar.gameObject.SetActive(false);
+            //escapeBar.gameObject.SetActive(false);
         }
 
         scoreDisplayText.text = "Final Score: " + ScoreManager.currentScore;

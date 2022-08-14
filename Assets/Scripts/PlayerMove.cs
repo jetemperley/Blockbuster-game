@@ -19,6 +19,7 @@ public class PlayerMove : MonoBehaviour
     public float lookXLimit = 45.0f;
     public AudioSource dashSFX;
     public AudioSource jumpSFX;
+    public ParticleSystem speedParticles;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
