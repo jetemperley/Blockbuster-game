@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     private GunHolder weapon;
     private Health playerHealth;
     private Health playerShield;
+    private GameObject StatSliders;
     private PlayerMove playerMove;
     private PlayerBounds playerBounds;
     private ScoreManager scoreManager;
@@ -37,12 +38,13 @@ public class UIManager : MonoBehaviour
         playerMove =  FindObjectOfType<GunHolder>().GetComponent<PlayerMove>();  
         playerBounds =  FindObjectOfType<GunHolder>().GetComponent<PlayerBounds>(); 
         scoreManager = ScoreManager.Inst;
+        StatSliders = GameObject.Find("StatSliders");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(playerHealth != null){
+        if(playerHealth != null && !PauseMenu.gameIsPaused){
             if(playerHealth.currentHealth > 0)
             {
                 UpdateHealthBar();
@@ -65,12 +67,16 @@ public class UIManager : MonoBehaviour
             scoreText.text = "Score: " + ScoreManager.currentScore;
             scoreAddText.text = "+" + ScoreManager.scoreToAdd;
             scoreMultiplierText.text = "x" + scoreManager.scoreMultiplier;
-        UpdateCursor();
+            UpdateCursor();
         }else{
             pistolCursor.SetActive(false);
             minigunCursor.SetActive(false);
             cannonCursor.SetActive(false);
-            GameObject.Find("StatSliders").SetActive(false);
+            if(StatSliders.active)
+            {
+                GameObject.Find("StatSliders").SetActive(false); 
+            }
+           
             // healthBar.gameObject.SetActive(false);
             // shieldBar.gameObject.SetActive(false);
             // dashBar.gameObject.SetActive(false);
