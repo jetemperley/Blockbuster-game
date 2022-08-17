@@ -77,10 +77,7 @@ public class UIManager : MonoBehaviour
                 GameObject.Find("StatSliders").SetActive(false); 
             }
            
-            // healthBar.gameObject.SetActive(false);
-            // shieldBar.gameObject.SetActive(false);
-            // dashBar.gameObject.SetActive(false);
-            //escapeBar.gameObject.SetActive(false);
+
         }
 
         scoreDisplayText.text = "Final Score: " + ScoreManager.currentScore;
@@ -104,12 +101,12 @@ public class UIManager : MonoBehaviour
                 cannonCursor.SetActive(true);
             }
         } 
-        else if (weapon.pistolRoot.activeSelf)
+        /*else if (weapon.pistolRoot.activeSelf)
         {
             pistolCursor.SetActive(true);
             minigunCursor.SetActive(false);
             cannonCursor.SetActive(false);
-        }
+        }*/
     }
 
     private void UpdateHealthBar(){
