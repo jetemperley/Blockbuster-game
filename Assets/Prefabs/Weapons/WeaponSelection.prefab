@@ -257,14 +257,15 @@ MonoBehaviour:
   - Make Your Choice
   - Choose Your Weapon
   - It's Dangerous To Go Alone
-  - Be The Danger
+  - Pick Their Poison
   - All Your Block-Busting Needs
   - Take One - Only One
   - Outrunning Death Requires FIrepower
   - Curated For You
   - Only The Finest Firepower
+  - Made To Unmake
   pickupText:
-  - Enjoy Until You Can't
+  - Enjoy Existence, Until You Can't
   - An Excellent Choice
   - You Won't Be Disappointed
   - Now, Go Forth
@@ -273,6 +274,7 @@ MonoBehaviour:
   - Don't Disappoint Me
   - Bring The Hurt
   - No Refunds
+  - Be The Danger
   displayText: {fileID: 7129190872189738534}
 --- !u!1001 &1522242634880322729
 PrefabInstance:
@@ -329,6 +331,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickupV2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4685779116864046961, guid: d48c1e649cf03f943bbec6fa35522fae, type: 3}
+      propertyPath: weaponGen
+      value: 
+      objectReference: {fileID: 8369815254992127096}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d48c1e649cf03f943bbec6fa35522fae, type: 3}
 --- !u!4 &1466952272799774328 stripped
@@ -402,6 +408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickupV2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4685779116864046961, guid: d48c1e649cf03f943bbec6fa35522fae, type: 3}
+      propertyPath: weaponGen
+      value: 
+      objectReference: {fileID: 8369815254992127096}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d48c1e649cf03f943bbec6fa35522fae, type: 3}
 --- !u!4 &2220451690094768848 stripped
@@ -475,6 +485,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickupV2
       objectReference: {fileID: 0}
+    - target: {fileID: 4685779116864046961, guid: d48c1e649cf03f943bbec6fa35522fae, type: 3}
+      propertyPath: weaponGen
+      value: 
+      objectReference: {fileID: 8369815254992127096}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d48c1e649cf03f943bbec6fa35522fae, type: 3}
 --- !u!114 &2139313915944079737 stripped
