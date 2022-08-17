@@ -11,8 +11,10 @@ public class ConductorV2 : MonoBehaviour
     public float startBoundary = 30;
 
     private float currentPosition = 0; 
-    public GameObject keepUpWith;
-    public float maxDistAway = 30;
+    //public GameObject keepUpWith;
+    public GameObject player;
+    public PlayerBounds playerBounds;
+    public float maxDistAway = 50;
 
     //Singleton stuff
     public static ConductorV2 conductor;
@@ -31,11 +33,15 @@ public class ConductorV2 : MonoBehaviour
             conductor = this;
             currentPosition = boundary;
         }
+
+        player = FindObjectOfType<PlayerMove>().gameObject;
+        playerBounds = player.GetComponent<PlayerBounds>();
     }
 
     private void Update() 
     {
-        currentPosition += Time.deltaTime*levelSpeed*gameSpeed;
+        if (!playerBounds.inBounds) 
+            currentPosition += Time.deltaTime*levelSpeed*gameSpeed;
         // Debug.Log("position " + currentPosition);
         // if ( keepUpWith.transform.position.z - currentPosition > maxDistAway){
         //     // Debug.Log("keeping up");
@@ -43,6 +49,10 @@ public class ConductorV2 : MonoBehaviour
         //     dist -= maxDistAway;
         //     currentPosition += dist;
         // }
+        if (player.transform.position.z - currentPosition > maxDistAway) 
+        {
+            currentPosition = player.transform.position.z - maxDistAway;
+        }
     }
 
     public float getPosition(){

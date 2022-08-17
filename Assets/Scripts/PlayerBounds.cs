@@ -18,14 +18,14 @@ public class PlayerBounds : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inBounds = true;
+        inBounds = false;
         escapeTime = escapeTimeMax;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!inBounds && escapeTime > 0)
+        /*if (!inBounds && escapeTime > 0)
         {
             escapeTime -= Time.deltaTime;
         }
@@ -43,7 +43,7 @@ public class PlayerBounds : MonoBehaviour
             //KILL PLAYER
             Destroy(gameObject);
             escapeTime = escapeTimeMax;
-        }
+        }*/
     }
 
     void OnTriggerEnter(Collider collision)
