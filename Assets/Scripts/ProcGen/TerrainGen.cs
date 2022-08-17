@@ -10,6 +10,13 @@ public class TerrainGen : MonoBehaviour
     public int blocksToSpawn; //Initial amount of blocks to spawn
 
     public Block[] blocks; //Array of the different types of blocks to spawn
+    public Block checkpointBlock;
+    public Block emptyBlock; //Empty block for the start of each level
+
+    public float distToCheckpoint; //Total distance needed to spawn the next checkpoint
+    private int checkpointNumber = 1; //The number of checkpoints spawned, starting at 1
+
+    public static int level = 1; //The current level (determines difficulty)
 
     public static TerrainGen instance;
 
@@ -22,20 +29,32 @@ public class TerrainGen : MonoBehaviour
 
         player =  FindObjectOfType<PlayerMove>().gameObject;
 
-        for (int i = 0; i < blocksToSpawn; i++)
+        for (int i = 0; i < blocksToSpawn; i++) //Create initial starting area
         {
-            Instantiate(blocks[0].gameObject, new Vector3(0.0f, yOffset, zOffset), blocks[0].gameObject.transform.rotation);
-            zOffset += blocks[0].length;
-            yOffset += blocks[0].heightOffset;
+            Instantiate(emptyBlock.gameObject, new Vector3(0.0f, yOffset, zOffset), emptyBlock.gameObject.transform.rotation);
+            zOffset += emptyBlock.length;
+            yOffset += emptyBlock.heightOffset;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.z > (zOffset - distanceToSpawn))
+        if (player != null)
         {
-            SpawnTerrain();
+            if (player.transform.position.z > (zOffset - distanceToSpawn))
+            {
+                SpawnTerrain();
+            }
+        }
+
+        //Spawn a checkpoint
+        if (zOffset >= distToCheckpoint*checkpointNumber)
+        {
+            Instantiate(checkpointBlock.gameObject, new Vector3(0.0f, yOffset, zOffset), checkpointBlock.gameObject.transform.rotation);
+            zOffset += checkpointBlock.length;
+            yOffset += checkpointBlock.heightOffset;
+            checkpointNumber++;
         }
     }
 
