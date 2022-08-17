@@ -21,7 +21,7 @@ public class GunHolder : MonoBehaviour
         gunRoot = slots[activeSlot];
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i != activeSlot)
+            if (i != activeSlot && slots[i] != null)
                 slots[i].SetActive(false);
         }
         gunRoot.SetActive(true);
