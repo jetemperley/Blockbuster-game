@@ -40,8 +40,11 @@ public class ConductorV2 : MonoBehaviour
 
     private void Update() 
     {
-        if (!playerBounds.inBounds) 
-            currentPosition += Time.deltaTime*levelSpeed*gameSpeed;
+        if (player != null)
+        {
+            if (!playerBounds.inBounds) 
+                currentPosition += Time.deltaTime*levelSpeed*gameSpeed;
+        
         // Debug.Log("position " + currentPosition);
         // if ( keepUpWith.transform.position.z - currentPosition > maxDistAway){
         //     // Debug.Log("keeping up");
@@ -49,9 +52,10 @@ public class ConductorV2 : MonoBehaviour
         //     dist -= maxDistAway;
         //     currentPosition += dist;
         // }
-        if (player.transform.position.z - currentPosition > maxDistAway) 
-        {
-            currentPosition = player.transform.position.z - maxDistAway;
+            if (player.transform.position.z - currentPosition > maxDistAway) 
+            {
+                currentPosition = player.transform.position.z - maxDistAway;
+            }
         }
     }
 
