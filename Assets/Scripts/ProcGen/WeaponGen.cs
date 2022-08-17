@@ -49,28 +49,32 @@ public class WeaponGen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    public void ChoiceMade(Pickup save)
+    {
         if (!choiceMade)
         {
             for (int i = 0; i < choices.Length; i++)
             {
-                if (choices[i] == null)
+                if (choices[i] != null)
                 {
-                    ChoiceMade();
+                    if (save != null)
+                    {
+                        if (choices[i] != save)
+                            Destroy(choices[i].gameObject.transform.parent.gameObject);
+                    }
+                    else
+                    {
+                        Destroy(choices[i].gameObject.transform.parent.gameObject);
+                    }
                 }
             }
+            System.Random random = new System.Random();
+            int randomNumber = random.Next(0, pickupText.Length);
+            displayText.text = pickupText[randomNumber];
+            choiceMade = true;
         }
-    }
-
-    void ChoiceMade()
-    {
-        for (int i = 0; i < choices.Length; i++)
-        {
-            if (choices[i] != null)
-                Destroy(choices[i].gameObject.transform.parent.gameObject);
-        }
-        System.Random random = new System.Random();
-        int randomNumber = random.Next(0, pickupText.Length);
-        displayText.text = pickupText[randomNumber];
-        choiceMade = true;
     }
 }

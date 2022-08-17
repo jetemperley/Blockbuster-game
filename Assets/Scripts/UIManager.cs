@@ -70,7 +70,7 @@ public class UIManager : MonoBehaviour
             pistolCursor.SetActive(false);
             minigunCursor.SetActive(false);
             cannonCursor.SetActive(false);
-            GameObject.Find("StatSliders").SetActive(false);
+            // GameObject.Find("StatSliders").SetActive(false);
             // healthBar.gameObject.SetActive(false);
             // shieldBar.gameObject.SetActive(false);
             // dashBar.gameObject.SetActive(false);
@@ -98,12 +98,12 @@ public class UIManager : MonoBehaviour
                 cannonCursor.SetActive(true);
             }
         } 
-        else if (weapon.pistolRoot.activeSelf)
+        /*else if (weapon.pistolRoot.activeSelf)
         {
             pistolCursor.SetActive(true);
             minigunCursor.SetActive(false);
             cannonCursor.SetActive(false);
-        }
+        }*/
     }
 
     private void UpdateHealthBar(){
