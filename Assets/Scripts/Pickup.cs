@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pickup : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class Pickup : MonoBehaviour
     public GameObject pickupPrefab;
     public GameObject pickupModel;
     string playerTag = "Player";
+
+    public Text displayText;
+    public string displayString;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +26,7 @@ public class Pickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        displayText.text = displayString;
     }
 
     void OnTriggerEnter(Collider other) {

@@ -40,9 +40,12 @@ public class TerrainGen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.z > (zOffset - distanceToSpawn))
+        if (player != null)
         {
-            SpawnTerrain();
+            if (player.transform.position.z > (zOffset - distanceToSpawn))
+            {
+                SpawnTerrain();
+            }
         }
 
         //Spawn a checkpoint

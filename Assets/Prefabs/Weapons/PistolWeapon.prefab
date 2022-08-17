@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3294631579894791622}
+  - component: {fileID: 1631405570855151416}
   m_Layer: 9
   m_Name: PistolWeapon
   m_TagString: Untagged
@@ -64,6 +65,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1631405570855151416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5772489915001041824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9492359072af474c9ca77e553933adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponModel: {fileID: 2723927436619323961, guid: f1b6476d2e9d4ed4d8dd47bc833f7ec3, type: 3}
+  weaponName: Pistol
 --- !u!1001 &6843402825624189095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -394,6 +409,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 574378370519593902, guid: 47afac7a68da64c4fa30d1963d8ac8df, type: 3}
   fireCooldown: 0.2
-  fireSFX: {fileID: 8300000, guid: a4a1a2f6e1add244380d4570d7e8a6de, type: 3}
   spawnPoint: {fileID: 3979784243225022646}
+  fireSFX: {fileID: 8300000, guid: a4a1a2f6e1add244380d4570d7e8a6de, type: 3}
   damage: 1
