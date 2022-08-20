@@ -2336,7 +2336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 2, y: -3}
-  m_UseGraphicAlpha: 1
+  m_UseGraphicAlpha: 0
 --- !u!114 &2562169450194725595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2349,7 +2349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 1, b: 0, a: 0.11372549}
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 0.08627451}
   m_EffectDistance: {x: -6, y: -7}
   m_UseGraphicAlpha: 1
 --- !u!1 &7013306409747171282
@@ -4057,6 +4057,7 @@ GameObject:
   - component: {fileID: 5270469672918718837}
   - component: {fileID: 4297852635034342199}
   - component: {fileID: 3620249269839139588}
+  - component: {fileID: 1195151103529043731}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -4145,7 +4146,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 1, b: 0, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -4194,6 +4195,20 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0, b: 0.8579731, a: 1}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!114 &1195151103529043731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313430866333283490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6125c91a61196b64aabe6e954566324e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hovColour: {x: 0.9490196, y: 1, z: 0, w: 1}
+  text: {fileID: 3047569654445318750}
 --- !u!1 &8477632236310740138
 GameObject:
   m_ObjectHideFlags: 0
