@@ -4,15 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
-{
-    bool gameHasEnded = false;
-    
+{    
     public GameObject completeLevelUI;
     public GameObject gameOverUI;
     public CheckpointManager CPManager;
-    public string url = "";
 
     public static bool resetToCheckpointOrNot = false;
+
+    public static bool gameHasEnded = false;
 
     void Start()
     {
@@ -43,6 +42,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         ScoreManager.ResetScores();
         CheckpointManager.ResetCheckpoints();
+        gameHasEnded = false;
     }
 
     public void LoadCheckpoint(){
@@ -70,11 +70,6 @@ public class GameManager : MonoBehaviour
 
     public void Load1(){
         SceneManager.LoadScene(1);
-    }
-
-    public void OpenUrl()
-    {
-        Application.OpenURL(url);
     }
 
 }

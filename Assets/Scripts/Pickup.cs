@@ -52,18 +52,20 @@ public class Pickup : MonoBehaviour
 
     public void SetGunPickup(GameObject gun)
     {
-        pickupPrefab = gun;
+        pickupPrefab = Instantiate(gun.GetComponent<WeaponModel>().weaponPrefab);
         pickupPrefab.transform.SetParent(transform);
         pickupPrefab.transform.localPosition = Vector3.zero;
         pickupPrefab.SetActive(false);
 
+        Destroy(gun);
+
         Destroy(pickupModel);
-        pickupModel = Instantiate(gun.GetComponent<WeaponModel>().weaponModel);
+        pickupModel = Instantiate(pickupPrefab.GetComponent<WeaponModel>().weaponModel);
         pickupModel.transform.SetParent(transform);
         pickupModel.transform.localPosition = Vector3.zero;
         pickupModel.transform.rotation = pickupModel.transform.rotation*transform.rotation;
 
-        displayString = gun.GetComponent<WeaponModel>().weaponName;
+        displayString = pickupPrefab.GetComponent<WeaponModel>().weaponName;
     }
 
     private void OnDrawGizmos() {
