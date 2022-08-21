@@ -7,4 +7,5 @@ public class WeaponModel : MonoBehaviour
     public GameObject weaponModel;
     public string weaponName;
     public GameObject weaponPrefab;
+    public Sprite icon;
 }

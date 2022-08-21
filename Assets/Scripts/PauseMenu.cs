@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     {
       if(Input.GetKeyDown(KeyCode.Escape) && !GameManager.gameHasEnded)
         {
+            Debug.Log(gameIsPaused);
             if(gameIsPaused)
             {
                 Resume();
@@ -51,8 +52,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart (){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        ScoreManager.ResetScores();  
-        Resume();     
-        
+        ScoreManager.ResetScores();
+        GameManager.gameHasEnded = false;  
+        Resume();           
     }
 }
