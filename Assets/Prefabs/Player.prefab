@@ -248,7 +248,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunRoot: {fileID: 0}
-  pistolRoot: {fileID: 1249914447000744769}
+  slots:
+  - {fileID: 1249914447000744769}
+  - {fileID: 0}
+  - {fileID: 0}
+  activeSlot: 0
   playerCamera: {fileID: 2596643181358554344}
   canSwitch: 1
 --- !u!54 &1596901922480480716

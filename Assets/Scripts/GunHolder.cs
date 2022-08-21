@@ -10,6 +10,7 @@ public class GunHolder : MonoBehaviour
     //public GameObject pistolRoot;
     public GameObject playerCamera;
     public bool canSwitch = true;
+    public UIManager UI;
     // Start is called before the first frame update
     void Start()
     {
@@ -91,10 +92,11 @@ public class GunHolder : MonoBehaviour
 
     public void AddGun(GameObject newGun, Pickup pickup)
     {
+        
         newGun.transform.parent = playerCamera.transform;
         newGun.transform.localPosition = Vector3.zero;
         newGun.transform.localRotation = Quaternion.identity;
-        
+
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i] == null)
@@ -102,6 +104,7 @@ public class GunHolder : MonoBehaviour
                 slots[i] = newGun;
                 SwitchGun(i);
                 Destroy(pickup.gameObject.transform.parent.gameObject);
+                UI.UpdateWeaponSlots(i, newGun.GetComponent<WeaponModel>());
                 return;
             }
         }
@@ -112,5 +115,6 @@ public class GunHolder : MonoBehaviour
         slots[activeSlot] = newGun;
         gunRoot = slots[activeSlot];
         slots[activeSlot].SetActive(true);
+        UI.UpdateWeaponSlots(activeSlot, newGun.GetComponent<WeaponModel>());
     }
 }
