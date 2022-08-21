@@ -72,13 +72,7 @@ public class UIManager : MonoBehaviour
         }else{
             pistolCursor.SetActive(false);
             minigunCursor.SetActive(false);
-            cannonCursor.SetActive(false);
-            if(StatSliders.active)
-            {
-                GameObject.Find("StatSliders").SetActive(false); 
-            }
-           
-
+            cannonCursor.SetActive(false);    
         }
 
         scoreDisplayText.text = "Final Score: " + ScoreManager.currentScore;
