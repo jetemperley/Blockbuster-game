@@ -29,6 +29,8 @@ public class PlayerMove : MonoBehaviour
     public bool canDash;
     private float dashTimer;
 
+    private int nbJumps;
+
     public float DashTimer
     {
         get {
@@ -60,7 +62,7 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown("k")){
             GetComponent<Health>().takeDamage(100);
         }
-
+        Debug.Log(moveDirection.y);
 
         // We are grounded, so recalculate move direction based on axes
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -72,13 +74,15 @@ public class PlayerMove : MonoBehaviour
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        if (Input.GetKeyDown("space") && canMove && nbJumps<2)
         {
             jumpSFX.Play(0);
             PlayerStats.getInst().addStat("jump");   
             moveDirection.y = jumpSpeed;
+            nbJumps++;
         }
         else if (characterController.isGrounded){
+            nbJumps=0;
             moveDirection.y = 0;
         } else 
         {
