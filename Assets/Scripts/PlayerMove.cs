@@ -37,6 +37,8 @@ public class PlayerMove : MonoBehaviour
     private bool jumpPressed;
     private bool dashPressed;
 
+    private int nbJumps;
+
     public float DashTimer
     {
         get {
@@ -86,14 +88,16 @@ public class PlayerMove : MonoBehaviour
             movementDirectionY = moveDirection.y;
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-            if (controls.actions["Jump"].triggered && canMove && characterController.isGrounded)
+            if (controls.actions["Jump"].triggered && canMove && nbJumps < 2)
             {
                 jumpSFX.Play(0);
                 PlayerStats.getInst().addStat("jump");   
                 moveDirection.y = jumpSpeed;
+                nbJumps++;
             }
             else if (characterController.isGrounded){
                 moveDirection.y = 0;
+                nbJumps = 0;
             } else 
             {
                 moveDirection.y = movementDirectionY;
