@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RailgunFire : MonoBehaviour
 {
@@ -29,12 +30,16 @@ public class RailgunFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")&& fireTimer <=0 && !PauseMenu.gameIsPaused)
+        fireTimer -= Time.deltaTime;
+    }
+
+    public void Fire(InputAction.CallbackContext ctx)
+    {
+        if (fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
             
             audioData.Play(0);
             //animator.SetTrigger("Shoot");
-
             Health health;
 
             foreach(RaycastHit hit in Physics.SphereCastAll(spawnPoint.transform.position, beamWidth, spawnPoint.transform.forward*1000, 300.0f))
@@ -49,13 +54,8 @@ public class RailgunFire : MonoBehaviour
                         }*/
                     }
                 } catch{}
-            }
-        
+            }        
             fireTimer = fireCooldown;
-        } else if (fireTimer > 0){
-            fireTimer -= Time.deltaTime;
-        }
-
-        
+        } 
     }
 }

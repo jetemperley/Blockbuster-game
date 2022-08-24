@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GunHolder : MonoBehaviour
 {
+    private PlayerInput controls;
+    private Input playerInputActions; 
+
     public GameObject gunRoot;
     public GameObject[] slots;
     public int activeSlot;
@@ -14,8 +18,12 @@ public class GunHolder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // gunLocation = transform.GetChild(0).GetChild(0).gameObject;
-        // pistolRoot.SetActive(true);
+        controls = GetComponent<PlayerInput>();
+        playerInputActions = new Input();
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.SwitchWeapon1.performed += Weap1Switch;
+        playerInputActions.Player.SwitchWeapon2.performed += Weap2Switch;
+        playerInputActions.Player.SwitchWeapon3.performed += Weap3Switch;
         Destroy(gunRoot);
 
         activeSlot = 0;
@@ -35,51 +43,47 @@ public class GunHolder : MonoBehaviour
         {
             SwitchGun();
         }*/
-        if (Input.GetButtonDown("Weap1"))
-        {
-            SwitchGun(0);
-        }
-        if (Input.GetButtonDown("Weap2"))
-        {
-            SwitchGun(1);
-        }
-        if (Input.GetButtonDown("Weap3"))
-        {
-            SwitchGun(2);
-        }
+        // if (Input.GetButtonDown("Weap1"))
+        // {
+        //     SwitchGun(0);
+        // }
+        // if (Input.GetButtonDown("Weap2"))
+        // {
+        //     SwitchGun(1);
+        // }
+        // if (Input.GetButtonDown("Weap3"))
+        // {
+        //     SwitchGun(2);
+        // }
     }
 
     public void SetGun(GameObject gun){
-        
-        
-        //gun.transform.parent = gunRoot.transform.parent;
         gun.transform.parent = playerCamera.transform;
         gun.transform.localPosition = Vector3.zero;
         gun.transform.localRotation = Quaternion.identity;
         Destroy(gunRoot);
         
         gunRoot = gun;
-        
-        /*if(pistolRoot.activeSelf)
-            SwitchGun();*/
-
     }
+
+    public void Weap1Switch(InputAction.CallbackContext ctx)
+    {
+        SwitchGun(0);
+    }
+
+    public void Weap2Switch(InputAction.CallbackContext ctx)
+    {
+        SwitchGun(1);
+    }
+
+    public void Weap3Switch(InputAction.CallbackContext ctx)
+    {
+        SwitchGun(2);
+    }
+
 
     public void SwitchGun(int slot) 
     {
-        /*if (gunRoot != null && canSwitch)
-        {
-            if (pistolRoot.activeSelf)
-            {
-                pistolRoot.SetActive(false);
-                gunRoot.SetActive(true);
-            }
-            else if (gunRoot.activeSelf)
-            {
-                pistolRoot.SetActive(true);
-                gunRoot.SetActive(false);
-            }
-        }*/
 
         if (slots[slot] != null)
         {

@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMelee : MonoBehaviour
 {
+    private PlayerInput controls;
+    private Input playerInputActions; 
+
     public float startup;
     public float activeTime;
     public float recovery;
@@ -26,6 +30,10 @@ public class PlayerMelee : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controls = GetComponent<PlayerInput>();
+        playerInputActions = new Input();
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.Fire2.performed += Fire;
         timer = startup;
         attacking = false;
         canAttack = true;
@@ -39,22 +47,6 @@ public class PlayerMelee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire2") && canAttack)
-        {
-            AudioSource audio = AudioPool.GetAudioSource();
-            audio.clip = swordSwingSFX;
-            audio.volume = 0.25f;
-            audio.Play(0);
-            CurrentWeapon();
-            weaponHolder.canSwitch = false;
-            weapon.SetActive(false);
-            sword.SetActive(true);
-            animator.SetTrigger("Attack");
-            timer = startup;
-            attacking = true;
-            canAttack = false;
-            recovering = false;
-        }
 
         if ((attacking | recovering) && timer > 0)
         {
@@ -84,6 +76,25 @@ public class PlayerMelee : MonoBehaviour
         }
     }
 
+    public void Fire(InputAction.CallbackContext ctx)
+    {
+        if (canAttack)
+        {
+            AudioSource audio = AudioPool.GetAudioSource();
+            audio.clip = swordSwingSFX;
+            audio.volume = 0.25f;
+            audio.Play(0);
+            CurrentWeapon();
+            weaponHolder.canSwitch = false;
+            weapon.SetActive(false);
+            sword.SetActive(true);
+            animator.SetTrigger("Attack");
+            timer = startup;
+            attacking = true;
+            canAttack = false;
+            recovering = false;
+        }
+    }
     private void CurrentWeapon()
     {
         if (weaponHolder.gunRoot != null && weaponHolder.gunRoot.activeSelf)

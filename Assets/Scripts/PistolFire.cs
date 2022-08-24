@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PistolFire : MonoBehaviour
 {
+    private PlayerInput controls;
+    private Input playerInputActions; 
+
     public Bullet bulletPrefab;
     public float fireCooldown; //seconds
 
@@ -19,18 +23,26 @@ public class PistolFire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controls = GetComponent<PlayerInput>();
+        playerInputActions = new Input();
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.Fire.performed += Fire;
         fireTimer = 0f;
         audioData = GetComponent<AudioSource>();
         audioData.Stop();
         animator = GetComponent<Animator>();
-        LaserPool.Init();
-        
+        LaserPool.Init();        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && fireTimer <=0 && !PauseMenu.gameIsPaused)
+        fireTimer -= Time.deltaTime;        
+    }
+
+    public void Fire(InputAction.CallbackContext ctx)
+    {
+       if (fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
             AudioSource audio = AudioPool.GetAudioSource();
             audio.clip = fireSFX;
@@ -47,17 +59,8 @@ public class PistolFire : MonoBehaviour
                 gameObject.name
                 );
             
-            // Bullet bullet = Instantiate(bulletPrefab);
-            // bullet.transform.parent = spawnPoint.transform;
-            // bullet.transform.localPosition = new Vector3(0,0,0);
-            // bullet.transform.localRotation = Quaternion.Euler(90,0,0);
-            // bullet.transform.parent = null;
-            // bullet.SetDir(spawnPoint.transform.forward);
             fireTimer = fireCooldown;
-        } else if (fireTimer > 0){
-            fireTimer -= Time.deltaTime;
         }
-
-        
     }
+    
 }

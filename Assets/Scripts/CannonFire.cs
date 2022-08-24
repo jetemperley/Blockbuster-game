@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CannonFire : MonoBehaviour
 {
+    private PlayerInput controls;
+    private Input playerInputActions; 
+
     public Camera cam;
     public ExplosiveProjectile explosiveProjectilePrefab;
     public float fireCooldown; //seconds
@@ -20,6 +24,10 @@ public class CannonFire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controls = GetComponent<PlayerInput>();
+        playerInputActions = new Input();
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.Fire.performed += Fire;
         fireTimer = 0f;
         audioData = GetComponent<AudioSource>();
         audioData.Stop();
@@ -33,7 +41,12 @@ public class CannonFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && fireTimer <=0 && !PauseMenu.gameIsPaused)
+        fireTimer -= Time.deltaTime;
+    }
+
+    public void Fire(InputAction.CallbackContext ctx)
+    {
+        if (fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
             audioData.Play(0);
             animator.SetTrigger("Shoot");
@@ -47,7 +60,5 @@ public class CannonFire : MonoBehaviour
             rb.velocity = (spawnPoint.transform.forward)*explosiveProjectile.projectileVelocity;
             fireTimer = fireCooldown;
         }
-
-        fireTimer -= Time.deltaTime;
     }
 }

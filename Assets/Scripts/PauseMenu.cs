@@ -1,19 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    private PlayerInput controls;
+    private Input playerInputActions;
+
     public GameObject pauseMenuUI;
 
     public static bool gameIsPaused = false;
     // Update is called once per frame
+    void Awake()
+    {
+        controls = GetComponent<PlayerInput>();
+        playerInputActions = new Input();
+        playerInputActions.UI.Enable();
+        playerInputActions.UI.Pause.performed += PauseGame;
+    }
+
     void Update()
     {
-      if(Input.GetKeyDown(KeyCode.Escape) && !GameManager.gameHasEnded)
+      
+    }
+
+    public void PauseGame(InputAction.CallbackContext ctx)
+    {
+        if(!GameManager.gameHasEnded)
         {
-            Debug.Log(gameIsPaused);
             if(gameIsPaused)
             {
                 Resume();

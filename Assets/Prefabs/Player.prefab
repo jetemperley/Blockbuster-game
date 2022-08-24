@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 4391065286575554416}
   - component: {fileID: -6147068321577090945}
   - component: {fileID: 2639284148020671168}
+  - component: {fileID: 2571761205356685111}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -255,6 +256,7 @@ MonoBehaviour:
   activeSlot: 0
   playerCamera: {fileID: 2596643181358554344}
   canSwitch: 1
+  UI: {fileID: 0}
 --- !u!54 &1596901922480480716
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -649,6 +651,56 @@ MonoBehaviour:
   gotHitScreen: {fileID: 0}
   StartOpacity: 0.7
   fadeAwaySpeed: 0.03
+--- !u!114 &2571761205356685111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655765040293387633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 49315d8a6eea6e4449205b0aef1e81a6, type: 3}
+  m_NotificationBehavior: 3
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8655765040293387632}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: da2b544e-3631-408e-a3a4-801945343db2
+    m_ActionName: Player/Move[/Keyboard/s,/Keyboard/w,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3ca16dd0-37ca-4a79-af6d-97eebef29f88
+    m_ActionName: Player/Shoot[/Mouse/leftButton]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &2362151901120308473
 PrefabInstance:
   m_ObjectHideFlags: 0
