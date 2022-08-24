@@ -33,6 +33,7 @@ public class PlayerMovement2 : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
+    //public LayerMask Ground;
     bool grounded;
 
     [Header("Slope Handling")]
@@ -76,11 +77,12 @@ public class PlayerMovement2 : MonoBehaviour
     {
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        //grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, Ground);
 
         MyInput();
         SpeedControl();
         StateHandler();
-        Debug.Log(numOfJumps);
+        
         // handle drag
         if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching)
             rb.drag = groundDrag;
@@ -106,8 +108,7 @@ public class PlayerMovement2 : MonoBehaviour
                 readyToJump = false;
             }
             Jump();
-            //Invoke(nameof(ResetJump), jumpCooldown);
-            //numOfJumps=0;
+
         }else if(grounded){
             readyToJump = true;
             numOfJumps=1;

@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class SniperEnemy : MonoBehaviour
 {
-
     Transform target;
     Rigidbody rb;
-    public float moveSpeed = 3;
+    public float moveSpeed = 0;
     public float maxLookDist = 10;
     public string targetTag = "Player";
 
+    // private LineRenderer laser;
+    // private float counter;
+    // private float dist;
 
-    // Start is called before the first frame update
+    // public Transform sniperPos;
+    // public Transform playerPos;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag(targetTag).transform;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+        //Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
     }
 
     void FixedUpdate() {
@@ -33,10 +38,12 @@ public class SniperEnemy : MonoBehaviour
         Vector3 direction = target.position-transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = rotation;
-        //rb.MovePosition( rb.position +(target.position - rb.position).normalized*moveSpeed*Time.fixedDeltaTime);
+        rb.MovePosition( rb.position +(target.position - rb.position).normalized*moveSpeed*Time.fixedDeltaTime);
     }
 
-    private void Shoot(){
-        //RaycastHit hitInfo
+    private void OnDrawGizmosSelected() {
+        Gizmos.DrawWireSphere(transform.position, maxLookDist);
     }
+
+
 }
