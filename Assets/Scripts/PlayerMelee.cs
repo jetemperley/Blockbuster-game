@@ -90,9 +90,5 @@ public class PlayerMelee : MonoBehaviour
         {
             weapon = weaponHolder.gunRoot;
         }
-        else if (weaponHolder.pistolRoot.activeSelf)
-        {
-            weapon = weaponHolder.pistolRoot;
-        }
     }
 }

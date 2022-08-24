@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5125213347258825941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5125213347258825939}
+  - component: {fileID: 5125213347258825940}
+  m_Layer: 0
+  m_Name: TerrainGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5125213347258825939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5125213347258825941}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5125213347258825940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5125213347258825941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f25433948c08b894cac0b53a6063ac8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToSpawn: 120
+  blocksToSpawn: 2
+  blocks:
+  - {fileID: 1514402156528173783, guid: 8e96131c1264cbc41a687e1778350a44, type: 3}
+  - {fileID: -1446733503127389673, guid: 4775462e7dd347a40ba36de7aa20e0d1, type: 3}
+  - {fileID: -7809049808974902483, guid: e98f364b7b25a404789a9fd361e74826, type: 3}
+  - {fileID: 4187442212781498502, guid: 1acbb58a338fb3f49ad2f994ccf41e2a, type: 3}
+  - {fileID: 1637546381351265968, guid: 6eb67b03af65220428d94a34dcee9243, type: 3}
+  checkpointBlock: {fileID: 0}
+  emptyBlock: {fileID: 0}
+  distToCheckpoint: 0
