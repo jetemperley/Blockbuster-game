@@ -26,6 +26,8 @@ public class GunHolder : MonoBehaviour
                 slots[i].SetActive(false);
         }
         gunRoot.SetActive(true);
+
+        UI = FindObjectOfType<UIManager>();
     }
 
     // Update is called once per frame
