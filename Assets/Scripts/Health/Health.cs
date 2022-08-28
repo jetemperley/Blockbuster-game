@@ -93,6 +93,7 @@ public class Health : MonoBehaviour
                 //Analytics
                 if(gameObject.tag == "Player"){
                     PlayerStats.getInst().addStatAnalytic("kill Player", this.gameObject);
+                    FindObjectOfType<GameManager>().EndGame(); 
                 }
 
                 if(gameObject.tag == "Enemy"){

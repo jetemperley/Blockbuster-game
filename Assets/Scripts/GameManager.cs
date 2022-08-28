@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public void EndGame (){
         
         if(gameHasEnded == false){
-            GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().volume = 0.15f;
+            // GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().volume = 0.15f;
             gameHasEnded = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     public void Restart (){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         ScoreManager.ResetScores();
-        CheckpointManager.ResetCheckpoints();
+        // CheckpointManager.ResetCheckpoints();
         gameHasEnded = false;
     }
 

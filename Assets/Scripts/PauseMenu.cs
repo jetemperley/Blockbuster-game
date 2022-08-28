@@ -16,18 +16,24 @@ public class PauseMenu : MonoBehaviour
     void Awake()
     {
         controls = GetComponent<PlayerInput>();
-        playerInputActions = new Input();
+        playerInputActions = new Input();        
+    }
+
+    void OnEnable()
+    {
         playerInputActions.UI.Enable();
         playerInputActions.UI.Pause.performed += PauseGame;
     }
 
-    void Update()
+    private void OnDisable()
     {
-      
+      playerInputActions.UI.Pause.performed -= PauseGame;  
+      playerInputActions.UI.Disable();
     }
 
     public void PauseGame(InputAction.CallbackContext ctx)
     {
+        Debug.Log(GameManager.gameHasEnded);
         if(!GameManager.gameHasEnded)
         {
             if(gameIsPaused)
@@ -67,9 +73,12 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Restart (){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         ScoreManager.ResetScores();
-        GameManager.gameHasEnded = false;  
-        Resume();           
+        GameManager.gameHasEnded = false; 
+        Debug.Log("Restarting " + GameManager.gameHasEnded);
+        Resume();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);      
     }
+
+    
 }

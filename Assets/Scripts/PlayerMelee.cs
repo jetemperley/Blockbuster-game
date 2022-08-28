@@ -28,12 +28,11 @@ public class PlayerMelee : MonoBehaviour
     private GunHolder weaponHolder;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         controls = GetComponent<PlayerInput>();
         playerInputActions = new Input();
-        playerInputActions.Player.Enable();
-        playerInputActions.Player.Fire2.performed += Fire;
+        
         timer = startup;
         attacking = false;
         canAttack = true;
@@ -42,6 +41,18 @@ public class PlayerMelee : MonoBehaviour
         CurrentWeapon();
         animator = sword.GetComponent<Animator>();
         sword.SetActive(false);
+    }
+
+    void OnEnable()
+    {
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.Fire2.performed += Fire;
+    }
+
+    private void OnDisable()
+    {
+      playerInputActions.Player.Fire2.performed -= Fire;
+      playerInputActions.Player.Disable();
     }
 
     // Update is called once per frame

@@ -21,17 +21,27 @@ public class PistolFire : MonoBehaviour
 
     private float fireTimer; //seconds
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         controls = GetComponent<PlayerInput>();
         playerInputActions = new Input();
-        playerInputActions.Player.Enable();
-        playerInputActions.Player.Fire.performed += Fire;
         fireTimer = 0f;
         audioData = GetComponent<AudioSource>();
         audioData.Stop();
         animator = GetComponent<Animator>();
         LaserPool.Init();        
+    }
+
+    void OnEnable()
+    {
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.Fire.performed += Fire;
+    }
+
+    private void OnDisable()
+    {
+      playerInputActions.Player.Fire.performed -= Fire;  
+      playerInputActions.Player.Disable();
     }
 
     // Update is called once per frame
