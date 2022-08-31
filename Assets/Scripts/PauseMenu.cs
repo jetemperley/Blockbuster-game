@@ -33,7 +33,6 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame(InputAction.CallbackContext ctx)
     {
-        Debug.Log(GameManager.gameHasEnded);
         if(!GameManager.gameHasEnded)
         {
             if(gameIsPaused)

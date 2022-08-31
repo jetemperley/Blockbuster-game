@@ -46,12 +46,12 @@ public class PlayerMelee : MonoBehaviour
     void OnEnable()
     {
         playerInputActions.Player.Enable();
-        playerInputActions.Player.Fire2.performed += Fire;
+        playerInputActions.Player.Melee.performed += Fire;
     }
 
     private void OnDisable()
     {
-      playerInputActions.Player.Fire2.performed -= Fire;
+      playerInputActions.Player.Melee.performed -= Fire;
       playerInputActions.Player.Disable();
     }
 

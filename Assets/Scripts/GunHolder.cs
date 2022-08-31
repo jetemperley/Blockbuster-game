@@ -21,9 +21,9 @@ public class GunHolder : MonoBehaviour
         controls = GetComponent<PlayerInput>();
         playerInputActions = new Input();
         playerInputActions.Player.Enable();
-        playerInputActions.Player.SwitchWeapon1.performed += Weap1Switch;
-        playerInputActions.Player.SwitchWeapon2.performed += Weap2Switch;
-        playerInputActions.Player.SwitchWeapon3.performed += Weap3Switch;
+        playerInputActions.Player.Weapon1.performed += Weap1Switch;
+        playerInputActions.Player.Weapon2.performed += Weap2Switch;
+        playerInputActions.Player.Weapon3.performed += Weap3Switch;
         Destroy(gunRoot);
 
         activeSlot = 0;

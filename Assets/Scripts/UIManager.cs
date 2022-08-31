@@ -96,12 +96,6 @@ public class UIManager : MonoBehaviour
                 cannonCursor.SetActive(true);
             }
         } 
-        /*else if (weapon.pistolRoot.activeSelf)
-        {
-            pistolCursor.SetActive(true);
-            minigunCursor.SetActive(false);
-            cannonCursor.SetActive(false);
-        }*/
     }
 
     private void UpdateHealthBar()

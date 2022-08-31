@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
     public CheckpointManager CPManager;
 
+    //Main Menu objects
+    public GameObject controlPanel;
+    public GameObject mainMenuPanel;
+
     public static bool resetToCheckpointOrNot = false;
 
     public static bool gameHasEnded = false;
@@ -70,6 +74,18 @@ public class GameManager : MonoBehaviour
 
     public void Load1(){
         SceneManager.LoadScene(1);
+    }
+
+    public void ActivateControlPanel()
+    {
+        controlPanel.SetActive(true);
+        mainMenuPanel.SetActive(false);
+    }
+
+    public void ActivateMenuPanel()
+    {
+        controlPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
     }
 
 }
