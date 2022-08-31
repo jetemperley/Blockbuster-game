@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 public class PlayerMove : MonoBehaviour
 {
     private PlayerInput controls;
-    private Input playerInputActions; 
+    // private Input playerInputActions; 
 
     public float walkingSpeed = 7.5f;
     //public float runningSpeed = 11.5f;
@@ -52,13 +52,13 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         playerRB = GetComponent<Rigidbody>();
-        controls = GetComponent<PlayerInput>();
-        playerInputActions = new Input();
-        playerInputActions.Enable();
-        playerInputActions.Player.Jump.performed += JumpPressed;
-        playerInputActions.Player.Jump.canceled += JumpReleased;
-        playerInputActions.Player.Dash.performed += DashPressed;
-        playerInputActions.Player.Dash.canceled += DashReleased;
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
+        // playerInputActions = new Input();
+        // playerInputActions.Enable();
+        // playerInputActions.Player.Jump.performed += JumpPressed;
+        // playerInputActions.Player.Jump.canceled += JumpReleased;
+        // playerInputActions.Player.Dash.performed += DashPressed;
+        // playerInputActions.Player.Dash.canceled += DashReleased;
         characterController = GetComponent<CharacterController>();
         dashSFX.Stop();
         jumpSFX.Stop();
@@ -83,7 +83,8 @@ public class PlayerMove : MonoBehaviour
             characterController.enabled = false;
         }else{
             characterController.enabled = true;
-            Vector2 moveInputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
+            // Debug.Log(controls.actions["Move"].ReadValue<Vector2>());
+             Vector2 moveInputVector = controls.actions["Move"].ReadValue<Vector2>();
             Vector3 forward = transform.TransformDirection(Vector3.forward);
             Vector3 right = transform.TransformDirection(Vector3.right);
             float curSpeedX = canMove ? (/*isRunning ? runningSpeed : */walkingSpeed) * moveInputVector.y : 0;
@@ -91,7 +92,7 @@ public class PlayerMove : MonoBehaviour
             movementDirectionY = moveDirection.y;
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-            if (jumpPressed && canMove && characterController.isGrounded)
+            if (controls.actions["Jump"].triggered && canMove && characterController.isGrounded)
             {
                 jumpSFX.Play(0);
                 PlayerStats.getInst().addStat("jump");   
@@ -110,7 +111,7 @@ public class PlayerMove : MonoBehaviour
             }
 
                 //Dashing
-            if(dashPressed && canDash)
+            if(controls.actions["Dash"].triggered && canDash)
             {
                 dashSFX.Play(0);
                 dashTimer = dashCooldown;
@@ -129,7 +130,7 @@ public class PlayerMove : MonoBehaviour
             }
             characterController.Move(moveDirection*Time.deltaTime);
 
-            Vector2 lookInputVector = playerInputActions.Player.Look.ReadValue<Vector2>();
+            Vector2 lookInputVector = controls.actions["Look"].ReadValue<Vector2>();
             rotationX += -lookInputVector.y * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
@@ -143,7 +144,6 @@ public class PlayerMove : MonoBehaviour
         // // as an acceleration (ms^-2)
        
     }
-
     private void JumpPressed(InputAction.CallbackContext ctx)
     {
         jumpPressed = true;
@@ -170,7 +170,7 @@ public class PlayerMove : MonoBehaviour
         float startTime = Time.time;
         
         //Set the direction of the dash
-        Vector2 moveInputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
+        Vector2 moveInputVector = controls.actions["Move"].ReadValue<Vector2>();
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
         float dashSpeedX = canMove ? dashSpeed * moveInputVector.y : 0;
