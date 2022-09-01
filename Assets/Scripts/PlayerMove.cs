@@ -53,12 +53,6 @@ public class PlayerMove : MonoBehaviour
     {
         playerRB = GetComponent<Rigidbody>();
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
-        // playerInputActions = new Input();
-        // playerInputActions.Enable();
-        // playerInputActions.Player.Jump.performed += JumpPressed;
-        // playerInputActions.Player.Jump.canceled += JumpReleased;
-        // playerInputActions.Player.Dash.performed += DashPressed;
-        // playerInputActions.Player.Dash.canceled += DashReleased;
         characterController = GetComponent<CharacterController>();
         dashSFX.Stop();
         jumpSFX.Stop();

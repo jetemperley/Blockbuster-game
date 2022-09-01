@@ -56,21 +56,4 @@ public class CannonFire : MonoBehaviour
         
     }
 
-    // public void Fire(InputAction.CallbackContext ctx)
-    // {
-    //     if (fireTimer <=0 && !PauseMenu.gameIsPaused)
-    //     {
-    //         audioData.Play(0);
-    //         animator.SetTrigger("Shoot");
-    //         ExplosiveProjectile explosiveProjectile = Instantiate(explosiveProjectilePrefab);
-    //         explosiveProjectile.setExplosion(ps);
-    //         explosiveProjectile.transform.parent = spawnPoint.transform;
-    //         explosiveProjectile.transform.localPosition = new Vector3(0,0,0);
-    //         explosiveProjectile.transform.localRotation = Quaternion.Euler(90,0,0);
-    //         explosiveProjectile.transform.parent = null;
-    //         Rigidbody rb = explosiveProjectile.GetComponent<Rigidbody>();
-    //         rb.velocity = (spawnPoint.transform.forward)*explosiveProjectile.projectileVelocity;
-    //         fireTimer = fireCooldown;
-    //     }
-    // }
 }
