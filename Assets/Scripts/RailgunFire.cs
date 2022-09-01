@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class RailgunFire : MonoBehaviour
 {
+    private PlayerInput controls; 
+
     public float fireCooldown; //seconds
     public float beamWidth;
 
@@ -19,6 +21,7 @@ public class RailgunFire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;
         audioData = GetComponent<AudioSource>();
         audioData.Stop();
@@ -30,12 +33,7 @@ public class RailgunFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        fireTimer -= Time.deltaTime;
-    }
-
-    public void Fire(InputAction.CallbackContext ctx)
-    {
-        if (fireTimer <=0 && !PauseMenu.gameIsPaused)
+        if (controls.actions["Fire"].triggered && fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
             
             audioData.Play(0);
@@ -56,6 +54,13 @@ public class RailgunFire : MonoBehaviour
                 } catch{}
             }        
             fireTimer = fireCooldown;
-        } 
+        }else{
+        fireTimer -= Time.deltaTime;
+        }
+    }
+
+    public void Fire(InputAction.CallbackContext ctx)
+    {
+        
     }
 }

@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerMelee : MonoBehaviour
 {
     private PlayerInput controls;
-    private Input playerInputActions; 
 
     public float startup;
     public float activeTime;
@@ -28,10 +27,9 @@ public class PlayerMelee : MonoBehaviour
     private GunHolder weaponHolder;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        controls = GetComponent<PlayerInput>();
-        playerInputActions = new Input();
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         
         timer = startup;
         attacking = false;
@@ -43,21 +41,25 @@ public class PlayerMelee : MonoBehaviour
         sword.SetActive(false);
     }
 
-    void OnEnable()
-    {
-        playerInputActions.Player.Enable();
-        playerInputActions.Player.Melee.performed += Fire;
-    }
-
-    private void OnDisable()
-    {
-      playerInputActions.Player.Melee.performed -= Fire;
-      playerInputActions.Player.Disable();
-    }
-
     // Update is called once per frame
     void Update()
     {
+         if (canAttack && controls.actions["Melee"].triggered)
+        {
+            AudioSource audio = AudioPool.GetAudioSource();
+            audio.clip = swordSwingSFX;
+            audio.volume = 0.25f;
+            audio.Play(0);
+            CurrentWeapon();
+            weaponHolder.canSwitch = false;
+            weapon.SetActive(false);
+            sword.SetActive(true);
+            animator.SetTrigger("Attack");
+            timer = startup;
+            attacking = true;
+            canAttack = false;
+            recovering = false;
+        }
 
         if ((attacking | recovering) && timer > 0)
         {
@@ -87,25 +89,6 @@ public class PlayerMelee : MonoBehaviour
         }
     }
 
-    public void Fire(InputAction.CallbackContext ctx)
-    {
-        if (canAttack)
-        {
-            AudioSource audio = AudioPool.GetAudioSource();
-            audio.clip = swordSwingSFX;
-            audio.volume = 0.25f;
-            audio.Play(0);
-            CurrentWeapon();
-            weaponHolder.canSwitch = false;
-            weapon.SetActive(false);
-            sword.SetActive(true);
-            animator.SetTrigger("Attack");
-            timer = startup;
-            attacking = true;
-            canAttack = false;
-            recovering = false;
-        }
-    }
     private void CurrentWeapon()
     {
         if (weaponHolder.gunRoot != null && weaponHolder.gunRoot.activeSelf)

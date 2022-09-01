@@ -5,8 +5,7 @@ using UnityEngine.InputSystem;
 
 public class GunHolder : MonoBehaviour
 {
-    private PlayerInput controls;
-    private Input playerInputActions; 
+    private PlayerInput controls; 
 
     public GameObject gunRoot;
     public GameObject[] slots;
@@ -18,12 +17,7 @@ public class GunHolder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        controls = GetComponent<PlayerInput>();
-        playerInputActions = new Input();
-        playerInputActions.Player.Enable();
-        playerInputActions.Player.Weapon1.performed += Weap1Switch;
-        playerInputActions.Player.Weapon2.performed += Weap2Switch;
-        playerInputActions.Player.Weapon3.performed += Weap3Switch;
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         Destroy(gunRoot);
 
         activeSlot = 0;
@@ -39,22 +33,18 @@ public class GunHolder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetButtonDown("Switch") && gunRoot != null)
+        if (controls.actions["Weapon 1"].triggered)
         {
-            SwitchGun();
-        }*/
-        // if (Input.GetButtonDown("Weap1"))
-        // {
-        //     SwitchGun(0);
-        // }
-        // if (Input.GetButtonDown("Weap2"))
-        // {
-        //     SwitchGun(1);
-        // }
-        // if (Input.GetButtonDown("Weap3"))
-        // {
-        //     SwitchGun(2);
-        // }
+            SwitchGun(0);
+        }
+        if (controls.actions["Weapon 2"].triggered)
+        {
+            SwitchGun(1);
+        }
+        if (controls.actions["Weapon 3"].triggered)
+        {
+            SwitchGun(2);
+        }
     }
 
     public void SetGun(GameObject gun){
@@ -64,21 +54,6 @@ public class GunHolder : MonoBehaviour
         Destroy(gunRoot);
         
         gunRoot = gun;
-    }
-
-    public void Weap1Switch(InputAction.CallbackContext ctx)
-    {
-        SwitchGun(0);
-    }
-
-    public void Weap2Switch(InputAction.CallbackContext ctx)
-    {
-        SwitchGun(1);
-    }
-
-    public void Weap3Switch(InputAction.CallbackContext ctx)
-    {
-        SwitchGun(2);
     }
 
 

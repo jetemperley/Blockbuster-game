@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class MinigunFire : MonoBehaviour
 {
     private PlayerInput controls;
-    private Input playerInputActions;
 
     public AudioClip fireSFX;
     public Bullet bulletPrefab;
@@ -18,7 +17,6 @@ public class MinigunFire : MonoBehaviour
     public float fireRateIncrement;
     public int damage;
 
-    private bool isFiring;
     private Camera cam;
     private Animator animator;
     private bool audioPlaying;
@@ -35,12 +33,8 @@ public class MinigunFire : MonoBehaviour
 
     void Start()
     {
-        controls = GetComponent<PlayerInput>();
-        playerInputActions = new Input();
-        playerInputActions.Enable();
-        playerInputActions.Player.Fire.performed += Firing;
-        playerInputActions.Player.Fire.canceled += StopFiring;
-        isFiring = false;
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
+
         fireTimer = 0f;
         animator = GetComponent<Animator>();
         cam = (Camera)FindObjectOfType(typeof(Camera));
@@ -56,7 +50,8 @@ public class MinigunFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isFiring && fireTimer <= 0 && !PauseMenu.gameIsPaused)
+
+        if (controls.actions["Fire"].ReadValue<float>() == 1 && fireTimer <= 0 && !PauseMenu.gameIsPaused)
         {
 
                 if(volumeAdjuster < 1)
@@ -93,6 +88,7 @@ public class MinigunFire : MonoBehaviour
             }else{
                 currentFireRadius = maxFireRadius;
             }
+
             if(currentFireRate <= maxFireRate)
             {
                 currentFireRate = maxFireRate;
@@ -111,7 +107,7 @@ public class MinigunFire : MonoBehaviour
                 );
             animator.SetBool("Shooting",true);
             
-        }else if(!isFiring)
+        }else if(controls.actions["Fire"].ReadValue<float>() == 0)
         {
             currentFireRate = minFireRate;
             currentFireRadius = minFireRadius;
@@ -124,13 +120,13 @@ public class MinigunFire : MonoBehaviour
         fireTimer -= Time.deltaTime;
     }
 
-    public void Firing(InputAction.CallbackContext ctx)
-    {
-        isFiring = true;
-    }
+    // public void Firing(InputAction.CallbackContext ctx)
+    // {
+    //     isFiring = true;
+    // }
 
-    public void StopFiring(InputAction.CallbackContext ctx)
-    {
-        isFiring = false;
-    }
+    // public void StopFiring(InputAction.CallbackContext ctx)
+    // {
+    //     isFiring = false;
+    // }
 }

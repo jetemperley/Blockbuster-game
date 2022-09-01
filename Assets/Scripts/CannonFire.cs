@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class CannonFire : MonoBehaviour
 {
     private PlayerInput controls;
-    private Input playerInputActions; 
 
     public Camera cam;
     public ExplosiveProjectile explosiveProjectilePrefab;
@@ -24,10 +23,7 @@ public class CannonFire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        controls = GetComponent<PlayerInput>();
-        playerInputActions = new Input();
-        playerInputActions.Player.Enable();
-        playerInputActions.Player.Fire.performed += Fire;
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;
         audioData = GetComponent<AudioSource>();
         audioData.Stop();
@@ -41,12 +37,7 @@ public class CannonFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        fireTimer -= Time.deltaTime;
-    }
-
-    public void Fire(InputAction.CallbackContext ctx)
-    {
-        if (fireTimer <=0 && !PauseMenu.gameIsPaused)
+        if (controls.actions["Fire"].triggered && fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
             audioData.Play(0);
             animator.SetTrigger("Shoot");
@@ -59,6 +50,27 @@ public class CannonFire : MonoBehaviour
             Rigidbody rb = explosiveProjectile.GetComponent<Rigidbody>();
             rb.velocity = (spawnPoint.transform.forward)*explosiveProjectile.projectileVelocity;
             fireTimer = fireCooldown;
+        }else{
+           fireTimer -= Time.deltaTime; 
         }
+        
     }
+
+    // public void Fire(InputAction.CallbackContext ctx)
+    // {
+    //     if (fireTimer <=0 && !PauseMenu.gameIsPaused)
+    //     {
+    //         audioData.Play(0);
+    //         animator.SetTrigger("Shoot");
+    //         ExplosiveProjectile explosiveProjectile = Instantiate(explosiveProjectilePrefab);
+    //         explosiveProjectile.setExplosion(ps);
+    //         explosiveProjectile.transform.parent = spawnPoint.transform;
+    //         explosiveProjectile.transform.localPosition = new Vector3(0,0,0);
+    //         explosiveProjectile.transform.localRotation = Quaternion.Euler(90,0,0);
+    //         explosiveProjectile.transform.parent = null;
+    //         Rigidbody rb = explosiveProjectile.GetComponent<Rigidbody>();
+    //         rb.velocity = (spawnPoint.transform.forward)*explosiveProjectile.projectileVelocity;
+    //         fireTimer = fireCooldown;
+    //     }
+    // }
 }
