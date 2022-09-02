@@ -14,6 +14,7 @@ public class TankMelee : MonoBehaviour
     public int meleeDamage;
     public float meleeChargeTime;
     public float attackCooldown;
+
     private float attackTimer;
     private bool isAttacking;
     private bool growChargeCircle;
@@ -71,9 +72,9 @@ public class TankMelee : MonoBehaviour
                 if (h != null && rb.gameObject.layer == 9){
                   h.takeDamage(meleeDamage);
                 } 
-            }
-                        
+            }                        
         } 
+        
         ResetMelee();
     }
 
