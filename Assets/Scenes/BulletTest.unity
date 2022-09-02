@@ -3073,6 +3073,13 @@ MonoBehaviour:
   meleeDamage: 10
   meleeChargeTime: 3
   attackCooldown: 5
+  fireRate: 1
+  projectile: {fileID: 4908726643756490345, guid: 1af70f223f13a8044ab6a499d54f8ee7, type: 3}
+  projSpawnDist: 5
+  projSpeed: 20
+  projPerBurst: 3
+  projInterval: 0.1
+  burstFireCooldown: 3
 --- !u!199 &2073535343
 ParticleSystemRenderer:
   serializedVersion: 6
