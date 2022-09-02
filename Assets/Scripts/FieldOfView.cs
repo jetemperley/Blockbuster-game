@@ -40,6 +40,7 @@ public class FieldOfView : MonoBehaviour
     }
 
     //uncomment this if you want to see the visualisation in game;
+    
     // void LateUpdate()
     // {
     //     DrawFieldOfView();
