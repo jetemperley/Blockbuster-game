@@ -45,6 +45,7 @@ public class TankMelee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         float dist = Vector3.Distance(player.transform.position, transform.position);
         if(dist <= startMeleeDistance && attackTimer <= 0 && !isAttacking)
         {
@@ -53,7 +54,7 @@ public class TankMelee : MonoBehaviour
 
         }else if(dist > startMeleeDistance && fov.visibleTargets.Count > 0 && burstFireTimer <=0 && !isAttacking)
         {
-            StartCoroutine(BurstFire(FindObjectOfType<PlayerMove>().gameObject));
+            StartCoroutine(BurstFire(player.gameObject));
             burstFireTimer = burstFireCooldown;
         }
 
