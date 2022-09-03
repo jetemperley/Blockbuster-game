@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMelee : MonoBehaviour
 {
+    private PlayerInput controls;
+
     public float startup;
     public float activeTime;
     public float recovery;
@@ -26,6 +29,8 @@ public class PlayerMelee : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
+        
         timer = startup;
         attacking = false;
         canAttack = true;
@@ -39,7 +44,7 @@ public class PlayerMelee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire2") && canAttack)
+         if (canAttack && controls.actions["Melee"].triggered)
         {
             AudioSource audio = AudioPool.GetAudioSource();
             audio.clip = swordSwingSFX;
