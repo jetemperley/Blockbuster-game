@@ -27,6 +27,10 @@ public class TerrainGen : MonoBehaviour
     {
         instance = this;
 
+        zOffset = 0.0f;
+        yOffset = 0.0f;
+        level = 0;
+
         player =  FindObjectOfType<PlayerMove>().gameObject;
 
         for (int i = 0; i < blocksToSpawn; i++) //Create initial starting area
@@ -35,10 +39,6 @@ public class TerrainGen : MonoBehaviour
             zOffset += emptyBlock.length;
             yOffset += emptyBlock.heightOffset;
         }
-
-        zOffset = 0.0f;
-        yOffset = 0.0f;
-        level = 0;
     }
 
     // Update is called once per frame

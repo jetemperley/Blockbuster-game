@@ -19,7 +19,7 @@ public class BurstFire : MonoBehaviour
     public int damage = 2;
 
     public int numberOfShots = 3; //Number of shots in a burst
-    public float shotsDelay = 1.0f; //Delay between shots in a burst
+    public float shotsDelay = 0.1f; //Delay between shots in a burst
 
     private float delayTimer;
     private int shotCount;
