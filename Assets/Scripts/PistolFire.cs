@@ -56,28 +56,5 @@ public class PistolFire : MonoBehaviour
         }
                 
     }
-
-    // public void Fire(InputAction.CallbackContext ctx)
-    // {
-    //    if (fireTimer <=0 && !PauseMenu.gameIsPaused)
-    //     {
-    //         AudioSource audio = AudioPool.GetAudioSource();
-    //         audio.clip = fireSFX;
-    //         audio.volume = 0.25f;
-    //         audio.Play(0);
-    //         animator.SetTrigger("Shoot");
-            
-    //         Laser laser = LaserPool.GetLaser();
-    //         laser.SetDamage(damage);
-    //         laser.fire(
-    //             spawnPoint.transform.position,
-    //             spawnPoint.transform.forward*1000,
-    //             0.2f,
-    //             gameObject.name
-    //             );
-            
-    //         fireTimer = fireCooldown;
-    //     }
-    // }
     
 }
