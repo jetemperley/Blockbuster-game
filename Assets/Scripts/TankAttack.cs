@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankMelee : MonoBehaviour
+public class TankAttack : MonoBehaviour
 {
     private PlayerMove player;
-    public ParticleSystem meleeCharge;
+    //public ParticleSystem meleeCharge;
     public GameObject ChargingCircleUI;
     public GameObject AoEIndicatorCanvas;
 
@@ -22,7 +22,6 @@ public class TankMelee : MonoBehaviour
     private float chargeCircleTimer;
 
     //projectile
-    public float fireRate = 1;
     public GameObject projectile;
     public float projSpawnDist = 1;
     public float projSpeed = 5;
@@ -47,6 +46,10 @@ public class TankMelee : MonoBehaviour
     {
         
         float dist = Vector3.Distance(player.transform.position, transform.position);
+        if(!isAttacking && fov.visibleTargets.Count > 0)
+        {
+            transform.LookAt(player.gameObject.transform);
+        }
         if(dist <= startMeleeDistance && attackTimer <= 0 && !isAttacking)
         {
             StartCoroutine(AttackSequence());
@@ -63,7 +66,6 @@ public class TankMelee : MonoBehaviour
             chargeCircleTimer += Time.deltaTime;
             ChargingCircleUI.transform.localScale = 
                 new Vector3(chargeCircleTimer/meleeChargeTime,chargeCircleTimer/meleeChargeTime,chargeCircleTimer/meleeChargeTime);
-
         }
 
         attackTimer -= Time.deltaTime;
@@ -76,9 +78,8 @@ public class TankMelee : MonoBehaviour
         //do charge up particles
         ChargeMelee();
         yield return new WaitForSeconds(meleeChargeTime);
-        meleeCharge.Stop();
+        // meleeCharge.Stop();
         AttackPlayer();
-        ResetCooldown();
     }
 
     private IEnumerator BurstFire(GameObject target)
@@ -120,6 +121,13 @@ public class TankMelee : MonoBehaviour
         ResetMelee();
     }
 
+    void ChargeMelee()
+    {
+        AoEIndicatorCanvas.SetActive(true);
+        //meleeCharge.Play();
+        growChargeCircle = true;
+    }
+
     private void ResetMelee()
     {
         growChargeCircle = false;
@@ -128,18 +136,6 @@ public class TankMelee : MonoBehaviour
         isAttacking = false;
         ChargingCircleUI.transform.localScale = new Vector3(0,0,0);
         AoEIndicatorCanvas.SetActive(false);
-    }
-
-    void ChargeMelee()
-    {
-        AoEIndicatorCanvas.SetActive(true);
-        meleeCharge.Play();
-        growChargeCircle = true;
-    }
-
-    void ResetCooldown()
-    {
-
     }
 
     void OnDrawGizmosSelected()

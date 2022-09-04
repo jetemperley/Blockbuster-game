@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 4392793603831770780}
   - component: {fileID: -408741023382571374}
   - component: {fileID: 1331059500945294767}
+  - component: {fileID: 5744002391426724549}
   m_Layer: 11
   m_Name: NormCube
   m_TagString: Untagged
@@ -207,6 +208,31 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.26, y: 0.28, z: 0.34}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5744002391426724549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138319655606218225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a70f31d6a159aa48a2e3fd3a88f3025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 20
+  viewAngle: 100
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 512
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  visibleTargets: []
+  meshResolution: 0
+  edgeResolveIterations: 0
+  edgeDistanceThreshold: 0
+  viewMeshFilter: {fileID: 0}
 --- !u!1 &6565655722169516257
 GameObject:
   m_ObjectHideFlags: 0

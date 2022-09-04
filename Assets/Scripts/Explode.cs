@@ -17,7 +17,6 @@ public class Explode : DeathEffect
         }
 
         
-
         foreach(Collider nearbyObject in colliders){
                         
             Health h = nearbyObject.gameObject.GetComponent<Health>();

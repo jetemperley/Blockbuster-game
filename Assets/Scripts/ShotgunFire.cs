@@ -12,6 +12,8 @@ public class ShotgunFire : MonoBehaviour
     private float fireTimer; //seconds
 
     public float maxSpread;
+    public int bulletRows;
+    public int bulletColumns;
 
     private AudioSource audioData;
     private Animator animator;
@@ -52,23 +54,27 @@ public class ShotgunFire : MonoBehaviour
             } else {
                 hitPos = cam.transform.position + cam.transform.forward*1000;
             }
-            for(int i = 0; i<9; i++)
+            for(int i = 0; i<bulletRows; i++)
             {
-                Vector3 hitDir = (hitPos - spawnPoint.transform.position).normalized; 
-                Vector3 dir = hitDir 
-                    + new Vector3(
-                        Random.Range(maxSpread,-maxSpread),
-                        Random.Range(maxSpread,-maxSpread),
-                        0);
+                for(int k = 0; k<bulletColumns; k++)
+                {
+                    Vector3 hitDir = (hitPos - spawnPoint.transform.position).normalized; 
+                    Vector3 dir = hitDir 
+                        + new Vector3(
+                            (k-1) * Random.Range(maxSpread/2,maxSpread),
+                            (i-1) * Random.Range(maxSpread/2,maxSpread),
+                            0);
+                    
+                    Laser laser = LaserPool.GetLaser();
+                    laser.SetDamage(damage);
+                    laser.fire(
+                        spawnPoint.transform.position,
+                        dir,
+                        0.2f,
+                        gameObject.name
+                        );  
+                }
                 
-                Laser laser = LaserPool.GetLaser();
-                laser.SetDamage(damage);
-                laser.fire(
-                    spawnPoint.transform.position,
-                    dir,
-                    1f,
-                    gameObject.name
-                    );
             
             }
             
