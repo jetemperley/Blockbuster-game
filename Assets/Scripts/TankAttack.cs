@@ -5,7 +5,7 @@ using UnityEngine;
 public class TankAttack : MonoBehaviour
 {
     private PlayerMove player;
-    //public ParticleSystem meleeCharge;
+    public ParticleSystem meleeCharge;
     public GameObject ChargingCircleUI;
     public GameObject AoEIndicatorCanvas;
 
@@ -78,7 +78,7 @@ public class TankAttack : MonoBehaviour
         //do charge up particles
         ChargeMelee();
         yield return new WaitForSeconds(meleeChargeTime);
-        // meleeCharge.Stop();
+        meleeCharge.Stop();
         AttackPlayer();
     }
 
@@ -124,7 +124,7 @@ public class TankAttack : MonoBehaviour
     void ChargeMelee()
     {
         AoEIndicatorCanvas.SetActive(true);
-        //meleeCharge.Play();
+        meleeCharge.Play();
         growChargeCircle = true;
     }
 
