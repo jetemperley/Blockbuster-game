@@ -67,7 +67,7 @@ public class TerrainGen : MonoBehaviour
         //Increase level after reaching set number of checkpoints
         if (checkpointNumber >= checkpointsToNextLvl && level < maxLevel)
         {
-            level++;
+            level += 1;
             distToCheckpoint += lengthIncrement;
             checkpointNumber = 0;
         }

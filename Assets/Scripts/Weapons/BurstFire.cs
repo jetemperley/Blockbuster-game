@@ -36,7 +36,7 @@ public class BurstFire : MonoBehaviour
         LaserPool.Init(); 
 
         delayTimer = 0.0f;   
-        shotCount = numberOfShots;    
+        shotCount = 0;    
     }
 
     // Update is called once per frame
