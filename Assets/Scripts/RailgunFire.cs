@@ -44,7 +44,7 @@ public class RailgunFire : MonoBehaviour
             {
                 try{
                     health = hit.collider.attachedRigidbody.gameObject.GetComponent<Health>();
-                    if (health != null){
+                    if (health != null && hit.collider.attachedRigidbody.gameObject.layer != 9){
                         health.takeDamage(damage); 
                         /*if (health.getHealth() <= 0){
                             Debug.Log(weap);

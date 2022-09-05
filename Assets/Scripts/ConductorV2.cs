@@ -99,4 +99,12 @@ public class ConductorV2 : MonoBehaviour
     public float getTotalSpeed(){
         return gameSpeed*levelSpeed;
     }
+
+    public void GetConsumed(GameObject food)
+    {
+        if (getTotalSpeed() != 0 && food.transform.position.z < getPosition())
+        {
+            Destroy(food);
+        }
+    }
 }

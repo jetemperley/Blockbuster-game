@@ -14,7 +14,8 @@ public class TerrainGen : MonoBehaviour
     public Block emptyBlock; //Empty block for the start of each level
 
     public float distToCheckpoint; //Total distance needed to spawn the next checkpoint
-    private int checkpointNumber; //The current number of checkpoints spawned between levels
+    private int checkpointNumber; //The total number of checkpoints spawned
+    private int checkpointCount;
     public int checkpointsToNextLvl; //The number of checkpoints to be reached until a level increase
 
     public static int level = 0; //The current level (determines difficulty)
@@ -62,14 +63,15 @@ public class TerrainGen : MonoBehaviour
             zOffset += checkpointBlock.length;
             yOffset += checkpointBlock.heightOffset;
             checkpointNumber++;
+            checkpointCount++;
         }
 
         //Increase level after reaching set number of checkpoints
-        if (checkpointNumber >= checkpointsToNextLvl && level < maxLevel)
+        if (checkpointCount >= checkpointsToNextLvl && level < maxLevel)
         {
             level += 1;
             distToCheckpoint += lengthIncrement;
-            checkpointNumber = 0;
+            checkpointCount = 0;
         }
     }
 
