@@ -7,6 +7,8 @@ public class Sliding : MonoBehaviour{
 
     private PlayerInput controls;
 
+    public Camera cam;
+
     [Header("Referebces")]
     public Transform orientation;
     public Transform playerObj;
@@ -49,7 +51,7 @@ public class Sliding : MonoBehaviour{
         if(slideKey && (horizontalInput !=0 || verticalInput !=0)){
             StartSlide();
         }
-        if(slideKey && sliding){
+        if(!slideKey && sliding){
             StopSlide();
         }
     }
@@ -61,10 +63,10 @@ public class Sliding : MonoBehaviour{
     }
 
     private void StartSlide(){
-        Debug.Log("slide");
         sliding = true;
 
         playerObj.localScale= new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
+        cam.transform.localScale = new Vector3(1,1/slideYScale,1);
         rb.AddForce(Vector3.down *5f, ForceMode.Impulse);
 
         slideTimer=maxSlideTime;
@@ -89,5 +91,6 @@ public class Sliding : MonoBehaviour{
     private void StopSlide(){
         sliding=false;
         playerObj.localScale= new Vector3(playerObj.localScale.x, startYScale, playerObj.localScale.z);
+        cam.transform.localScale = new Vector3(1,1,1);
     }
 }
