@@ -80,7 +80,7 @@ public class PlayerMove : MonoBehaviour
         }else{
             characterController.enabled = true;
             // Debug.Log(controls.actions["Move"].ReadValue<Vector2>());
-             Vector2 moveInputVector = controls.actions["Move"].ReadValue<Vector2>();
+            Vector2 moveInputVector = controls.actions["Move"].ReadValue<Vector2>();
             Vector3 forward = transform.TransformDirection(Vector3.forward);
             Vector3 right = transform.TransformDirection(Vector3.right);
             float curSpeedX = canMove ? (/*isRunning ? runningSpeed : */walkingSpeed) * moveInputVector.y : 0;

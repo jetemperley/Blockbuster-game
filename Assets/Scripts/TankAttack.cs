@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TankAttack : MonoBehaviour
 {
-    private PlayerMove player;
+    private PlayerMovement2 player;
     public ParticleSystem meleeCharge;
     public GameObject ChargingCircleUI;
     public GameObject AoEIndicatorCanvas;
@@ -36,7 +36,7 @@ public class TankAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerMove>();
+        player = FindObjectOfType<PlayerMovement2>();
         AoEIndicatorCanvas.SetActive(false);
         fov = GetComponent<FieldOfView>();
     }

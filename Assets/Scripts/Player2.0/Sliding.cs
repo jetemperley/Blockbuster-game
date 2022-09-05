@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Sliding : MonoBehaviour{
+
+    private PlayerInput controls;
 
     [Header("Referebces")]
     public Transform orientation;
@@ -19,13 +22,14 @@ public class Sliding : MonoBehaviour{
     private float startYScale;
 
     [Header("Keycodes")]
-    public KeyCode slideKey = KeyCode.LeftControl;
     private float horizontalInput;
     private float verticalInput;
 
     private bool sliding;
+    private bool slideKey = false;
 
     private void Start(){
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovement2>();
 
@@ -33,13 +37,19 @@ public class Sliding : MonoBehaviour{
     }
 
     private void Update(){
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        Vector2 moveInputVector = controls.actions["Move"].ReadValue<Vector2>();
+        horizontalInput = moveInputVector.x;
+        verticalInput = moveInputVector.y;
 
-        if(Input.GetKeyDown(slideKey) && (horizontalInput !=0 || verticalInput !=0)){
+        if(controls.actions["slide"].triggered)
+        {
+            slideKey = !slideKey;
+        }
+
+        if(slideKey && (horizontalInput !=0 || verticalInput !=0)){
             StartSlide();
         }
-        if(Input.GetKeyUp(slideKey) && sliding){
+        if(slideKey && sliding){
             StopSlide();
         }
     }
@@ -51,6 +61,7 @@ public class Sliding : MonoBehaviour{
     }
 
     private void StartSlide(){
+        Debug.Log("slide");
         sliding = true;
 
         playerObj.localScale= new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2771789091848693781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1164993421717732661}
+  m_Layer: 9
+  m_Name: Orientation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1164993421717732661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2771789091848693781}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8655765040293387639}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4562021363966980979
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,8 +97,9 @@ GameObject:
   - component: {fileID: 8655765040293387636}
   - component: {fileID: 8655765040293387637}
   - component: {fileID: 8655765040293387634}
-  - component: {fileID: 8655765040293387635}
-  - component: {fileID: 8655765040293387632}
+  - component: {fileID: 2699912547837968695}
+  - component: {fileID: 3234270993111012452}
+  - component: {fileID: 2285770098102767923}
   - component: {fileID: 238968272100124135}
   - component: {fileID: 2769227143674863179}
   - component: {fileID: 1596901922480480716}
@@ -102,6 +134,7 @@ Transform:
   m_Children:
   - {fileID: 2596643181358554349}
   - {fileID: 4397393780620365032}
+  - {fileID: 1164993421717732661}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -169,25 +202,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!143 &8655765040293387635
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655765040293387633}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.8
-  m_Radius: 0.4
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8655765040293387632
+--- !u!114 &2699912547837968695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,23 +211,68 @@ MonoBehaviour:
   m_GameObject: {fileID: 8655765040293387633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9be7a83074d9a63469499502e6ac797d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3834cf16800acc848afa46a72d9fa1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 10
-  dashSpeed: 40
-  dashTime: 0.2
-  jumpSpeed: 8
-  gravity: 20
   playerCamera: {fileID: 2596643181358554350}
-  lookSpeed: 0.1
+  lookSpeed: 0.05
   lookXLimit: 90
-  dashSFX: {fileID: 6543688535885125696}
-  jumpSFX: {fileID: 815473161130350145}
-  speedParticles: {fileID: 0}
-  dashCooldown: 1
-  canDash: 0
-  canMove: 1
+  walkSpeed: 6
+  sprintSpeed: 15
+  dashSpeed: 30
+  groundDrag: 10
+  jumpForce: 12
+  jumpCooldown: 0.1
+  airMultiplier: 1
+  totalJumps: 2
+  crouchSpeed: 6
+  crouchYScale: 0.5
+  jumpKey: 32
+  walkKey: 308
+  crouchKey: 306
+  playerHeight: 2
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 13312
+  maxSlopeAngle: 50
+  orientation: {fileID: 1164993421717732661}
+  dashing: 0
+--- !u!114 &3234270993111012452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655765040293387633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f390fbe50efb0b4dba4426c98ccfddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 1164993421717732661}
+  playerCam: {fileID: 2596643181358554349}
+  dashForce: 20
+  dashUpwardForce: 0
+  dashDuration: 0.25
+  dashCD: 1.5
+  dashKey: 304
+--- !u!114 &2285770098102767923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655765040293387633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4eac603b55b429448b80d0dbf72c52a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 1164993421717732661}
+  playerObj: {fileID: 8655765040293387639}
+  maxSlideTime: 0.75
+  slideForce: 800
+  slideYScale: 0.5
 --- !u!114 &238968272100124135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,9 +330,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!114 &7539687143589402058
 MonoBehaviour:
   m_ObjectHideFlags: 0
