@@ -20,6 +20,13 @@ public class Dashing : MonoBehaviour{
     [Header("Cooldown")]
     public float dashCD;
     private float dashCDTimer;
+    public float DashCDTimer
+    {
+        get
+        {
+            return dashCDTimer;
+        }
+    }
 
     [Header("Input")]
     public KeyCode dashKey = KeyCode.LeftShift;

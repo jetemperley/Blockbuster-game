@@ -24,8 +24,7 @@ public class UIManager : MonoBehaviour
     private Health playerHealth;
     private Health playerShield;
     private GameObject StatSliders;
-    private PlayerMove playerMove;
-    private PlayerBounds playerBounds;
+    private Dashing playerMove;
     private ScoreManager scoreManager;
     
     // Start is called before the first frame update
@@ -35,8 +34,7 @@ public class UIManager : MonoBehaviour
         weapon = FindObjectOfType<GunHolder>().GetComponent<GunHolder>();
         playerHealth =  FindObjectOfType<GunHolder>().GetComponent<Health>(); 
         playerShield = playerHealth.shield;   
-        playerMove =  FindObjectOfType<GunHolder>().GetComponent<PlayerMove>();  
-        playerBounds =  FindObjectOfType<GunHolder>().GetComponent<PlayerBounds>(); 
+        playerMove =  FindObjectOfType<GunHolder>().GetComponent<Dashing>();  
         scoreManager = ScoreManager.Inst;
         StatSliders = GameObject.Find("StatSliders");
     }
@@ -58,7 +56,7 @@ public class UIManager : MonoBehaviour
             }
 
             if(playerMove != null){
-                if(playerMove.DashTimer < playerMove.dashCooldown)
+                if(playerMove.DashCDTimer < playerMove.dashCD)
                 {
                     UpdateDashBar();
                 }  
@@ -109,7 +107,7 @@ public class UIManager : MonoBehaviour
 
     private void UpdateDashBar()
     {
-        dashBar.UpdateBar(playerMove.DashTimer, playerMove.dashCooldown);
+        dashBar.UpdateBar(playerMove.DashCDTimer, playerMove.dashCD);
     }
 
     public void UpdateWeaponSlots(int slot, WeaponModel wm)
