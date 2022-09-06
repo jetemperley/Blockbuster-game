@@ -34,7 +34,7 @@ public class ConductorV2 : MonoBehaviour
             currentPosition = boundary;
         }
 
-        player = FindObjectOfType<PlayerMove>().gameObject;
+        player = FindObjectOfType<PlayerMovement2>().gameObject;
         playerBounds = player.GetComponent<PlayerBounds>();
     }
 

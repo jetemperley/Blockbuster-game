@@ -35,7 +35,7 @@ public class TerrainGen : MonoBehaviour
         yOffset = 0.0f;
         level = 0;
 
-        player =  FindObjectOfType<PlayerMove>().gameObject;
+        player =  FindObjectOfType<PlayerMovement2>().gameObject;
 
         for (int i = 0; i < blocksToSpawn; i++) //Create initial starting area
         {
