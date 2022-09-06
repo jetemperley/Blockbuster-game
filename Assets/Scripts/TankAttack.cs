@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TankAttack : MonoBehaviour
 {
-    private PlayerMove player;
+    private PlayerMovement2 player;
     public ParticleSystem meleeCharge;
     public GameObject ChargingCircleUI;
     public GameObject AoEIndicatorCanvas;
@@ -36,7 +36,7 @@ public class TankAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerMove>();
+        player = FindObjectOfType<PlayerMovement2>();
         AoEIndicatorCanvas.SetActive(false);
         fov = GetComponent<FieldOfView>();
     }
@@ -44,8 +44,9 @@ public class TankAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        float dist = Vector3.Distance(player.transform.position, transform.position);
+        if(player != null)
+        {
+            float dist = Vector3.Distance(player.transform.position, transform.position);        
         if(!isAttacking && fov.visibleTargets.Count > 0)
         {
             transform.LookAt(player.gameObject.transform);
@@ -70,6 +71,7 @@ public class TankAttack : MonoBehaviour
 
         attackTimer -= Time.deltaTime;
         burstFireTimer -= Time.deltaTime;
+        }
             
     }
 

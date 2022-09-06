@@ -38,7 +38,7 @@
                     "id": "039b2cae-7966-4cb6-8746-77971984ece4",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(pressPoint=0.05)",
                     "initialStateCheck": false
                 },
                 {
@@ -90,6 +90,15 @@
                     "name": "Slide",
                     "type": "Button",
                     "id": "53cf9490-ce21-4bf6-9cc6-86046b2d1ca8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Crouch",
+                    "type": "Button",
+                    "id": "fcd9da5a-f92a-439f-a2ad-5f4b8c923f7f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -343,10 +352,21 @@
                     "name": "",
                     "id": "fe2d3100-5d2c-43b8-a5da-c8102251e8b7",
                     "path": "<Keyboard>/ctrl",
-                    "interactions": "",
+                    "interactions": "Press(pressPoint=0.05,behavior=2)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "af4f4d01-1bda-4543-aa0e-6527e80d2b95",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

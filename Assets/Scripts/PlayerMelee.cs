@@ -24,7 +24,7 @@ public class PlayerMelee : MonoBehaviour
     private float timer;
     private Animator animator;
     private GameObject weapon;
-    private GunHolder weaponHolder;
+    //private GunHolder weaponHolder;
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +35,8 @@ public class PlayerMelee : MonoBehaviour
         attacking = false;
         canAttack = true;
         recovering = false;
-        weaponHolder = GetComponent<GunHolder>();
-        CurrentWeapon();
+        //weaponHolder = GetComponent<GunHolder>();
+        // CurrentWeapon();
         animator = sword.GetComponent<Animator>();
         sword.SetActive(false);
     }
@@ -44,16 +44,16 @@ public class PlayerMelee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         if (canAttack && controls.actions["Melee"].triggered)
+         if (canAttack && controls.actions["Fire"].triggered)
         {
             AudioSource audio = AudioPool.GetAudioSource();
             audio.clip = swordSwingSFX;
             audio.volume = 0.25f;
             audio.Play(0);
-            CurrentWeapon();
-            weaponHolder.canSwitch = false;
-            weapon.SetActive(false);
-            sword.SetActive(true);
+            //CurrentWeapon();
+            //weaponHolder.canSwitch = false;
+            // weapon.SetActive(false);
+            // sword.SetActive(true);
             animator.SetTrigger("Attack");
             timer = startup;
             attacking = true;
@@ -81,19 +81,19 @@ public class PlayerMelee : MonoBehaviour
 
         if (recovering && timer <= 0)
         {
-            weapon.SetActive(true);
-            sword.SetActive(false);
+            // weapon.SetActive(true);
+            // sword.SetActive(false);
             recovering = false;
             canAttack = true;
-            weaponHolder.canSwitch = true;
+            // weaponHolder.canSwitch = true;
         }
     }
 
-    private void CurrentWeapon()
-    {
-        if (weaponHolder.gunRoot != null && weaponHolder.gunRoot.activeSelf)
-        {
-            weapon = weaponHolder.gunRoot;
-        }
-    }
+    // private void CurrentWeapon()
+    // {
+    //     if (weaponHolder.gunRoot != null && weaponHolder.gunRoot.activeSelf)
+    //     {
+    //         weapon = weaponHolder.gunRoot;
+    //     }
+    // }
 }
