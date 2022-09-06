@@ -9,11 +9,20 @@ public class FallAway : MonoBehaviour
     public float backWall = -10;
 
     private bool fall = false;
+
+    public Renderer rend;
+
+    Color startColor;
+    Color endColor = Color.red;
+    float duration = 1.0f;
+    float distanceToFlash = 30.0f;
+
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
+        startColor = rend.material.color;
     }
 
     // Update is called once per frame
@@ -42,6 +51,13 @@ public class FallAway : MonoBehaviour
         }
         if (transform.position.y < TerrainGen.yOffset-100)
             Destroy(gameObject);
+
+        //Flash red when close to falling away
+        if (transform.position.z < ConductorV2.conductor.getPosition()+distanceToFlash)
+        {
+            float lerp = Mathf.PingPong(Time.time, duration) / duration;
+            rend.material.color = Color.Lerp(startColor, endColor, lerp);
+        }
     }
 
 }

@@ -21,6 +21,7 @@ public class TerrainGen : MonoBehaviour
     public static int level = 0; //The current level (determines difficulty)
     public int maxLevel; //Maximum level
     public int lengthIncrement; //The increase in a level length
+    public float levelSpeedIncrement; //Increase in fall away speed after increasing level
 
     public static TerrainGen instance;
 
@@ -72,6 +73,7 @@ public class TerrainGen : MonoBehaviour
             level += 1;
             distToCheckpoint += lengthIncrement;
             checkpointCount = 0;
+            ConductorV2.getConductor().levelSpeed += levelSpeedIncrement;
         }
     }
 
