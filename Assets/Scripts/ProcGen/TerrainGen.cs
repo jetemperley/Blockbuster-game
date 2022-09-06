@@ -16,7 +16,7 @@ public class TerrainGen : MonoBehaviour
     public float distToCheckpoint; //Total distance needed to spawn the next checkpoint
     private int checkpointNumber = 1; //The number of checkpoints spawned, starting at 1
 
-    public static int level = 1; //The current level (determines difficulty)
+    public static int level = 0; //The current level (determines difficulty)
 
     public static TerrainGen instance;
 
@@ -26,6 +26,10 @@ public class TerrainGen : MonoBehaviour
     void Start()
     {
         instance = this;
+
+        zOffset = 0.0f;
+        yOffset = 0.0f;
+        level = 0;
 
         player =  FindObjectOfType<PlayerMove>().gameObject;
 

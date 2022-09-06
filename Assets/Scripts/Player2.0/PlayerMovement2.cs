@@ -89,14 +89,18 @@ public class PlayerMovement2 : MonoBehaviour
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
-        MyInput();
-        SpeedControl();
-        StateHandler();
-        // handle drag
-        if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching)
-            rb.drag = groundDrag;
-        else
-            rb.drag = 0;
+        if(!PauseMenu.gameIsPaused)
+        {
+            MyInput();
+            SpeedControl();
+            StateHandler();
+            // handle drag
+            if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching)
+                rb.drag = groundDrag;
+            else
+                rb.drag = 0; 
+        }
+        
     }
 
     private void FixedUpdate()

@@ -41,7 +41,6 @@ public class ShotgunFire : MonoBehaviour
     {
         if (controls.actions["Fire"].triggered && fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
-            Debug.Log("shotgun bang!");
             // AudioSource audio = AudioPool.GetAudioSource();
             // audio.clip = fireSFX;
             // audio.volume = 0.25f;
