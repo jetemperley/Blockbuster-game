@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     private Health playerHealth;
     private Health playerShield;
     private GameObject StatSliders;
+    private GameObject WeaponSlots;
     private Dashing playerMove;
     private ScoreManager scoreManager;
     
@@ -37,12 +38,16 @@ public class UIManager : MonoBehaviour
         playerMove =  FindObjectOfType<GunHolder>().GetComponent<Dashing>();  
         scoreManager = ScoreManager.Inst;
         StatSliders = GameObject.Find("StatSliders");
+        WeaponSlots = GameObject.Find("WeaponSlots");
     }
 
     // Update is called once per frame
     void Update()
     {
         if(playerHealth != null && !PauseMenu.gameIsPaused){
+            StatSliders.SetActive(true);
+            WeaponSlots.SetActive(true);
+            
             if(playerHealth.currentHealth > 0)
             {
                 UpdateHealthBar();
@@ -66,10 +71,13 @@ public class UIManager : MonoBehaviour
             scoreAddText.text = "+" + ScoreManager.scoreToAdd;
             scoreMultiplierText.text = "x" + scoreManager.scoreMultiplier;
             UpdateCursor();
+
         }else{
             pistolCursor.SetActive(false);
             minigunCursor.SetActive(false);
-            cannonCursor.SetActive(false);    
+            cannonCursor.SetActive(false);
+            StatSliders.SetActive(false);
+            WeaponSlots.SetActive(false);
         }
 
         scoreDisplayText.text = "Final Score: " + ScoreManager.currentScore;
