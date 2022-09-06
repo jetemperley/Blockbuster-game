@@ -13,7 +13,6 @@ public class UIManager : MonoBehaviour
     public FillHealthBar healthBar;
     public FillHealthBar shieldBar;
     public FillDashBar dashBar;
-    public FillDashBar escapeBar;
 
     public TMP_Text scoreText;
     public TMP_Text scoreAddText;
@@ -111,11 +110,6 @@ public class UIManager : MonoBehaviour
     private void UpdateDashBar()
     {
         dashBar.UpdateBar(playerMove.DashTimer, playerMove.dashCooldown);
-    }
-
-    private void UpdateEscapeBar()
-    {
-        escapeBar.UpdateBar(playerBounds.EscapeTime, playerBounds.escapeTimeMax);
     }
 
     public void UpdateWeaponSlots(int slot, WeaponModel wm)
