@@ -62,7 +62,7 @@ public class ShotgunFire : MonoBehaviour
                         + new Vector3(
                             (k-1) * Random.Range(maxSpread/2,maxSpread),
                             (i-1) * Random.Range(maxSpread/2,maxSpread),
-                            0);
+                            (k-1) * Random.Range(maxSpread/2,maxSpread));
                     
                     Laser laser = LaserPool.GetLaser();
                     laser.SetDamage(damage);
