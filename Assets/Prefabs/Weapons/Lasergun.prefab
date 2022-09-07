@@ -1656,37 +1656,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3164827175672971618}
   m_Mesh: {fileID: 0}
---- !u!1 &3245549780141222580
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8167307936414085389}
-  m_Layer: 9
-  m_Name: BulletSpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8167307936414085389
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3245549780141222580}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.231, y: -0.1536, z: 0.652}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2921929803665363731}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6136196986067033461
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,7 +1686,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4705909311244741143}
-  - {fileID: 8167307936414085389}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1733,8 +1701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9492359072af474c9ca77e553933adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponModel: {fileID: 9079772885994245195}
-  weaponName: Laser
+  weaponModel: {fileID: 2723927436619323961, guid: f1b6476d2e9d4ed4d8dd47bc833f7ec3, type: 3}
+  weaponName: Lasergun
   weaponPrefab: {fileID: 6136196986067033461}
   icon: {fileID: 0}
 --- !u!1 &7952098700798371534
@@ -2432,11 +2400,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireCooldown: 0
   damage: 1
-  beamWidth: 0
   laserRange: 40
   lineRenderer: {fileID: 9079772885994245197}
-  spawnPoint: {fileID: 3245549780141222580}
-  ticRateCap: 0.15
+  ticRateCap: 0.05
 --- !u!120 &9079772885994245197
 LineRenderer:
   m_ObjectHideFlags: 0

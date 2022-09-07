@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(FieldOfView))]
 public class PyramidShoot : MonoBehaviour
 {    
+    private FieldOfView fov;
     public float maxLookDist = 10;
     public string targetTag = "Player";
 
@@ -20,6 +22,7 @@ public class PyramidShoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        fov = GetComponent<FieldOfView>();
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag(targetTag).transform;
     }
@@ -30,9 +33,7 @@ public class PyramidShoot : MonoBehaviour
 
         timer += Time.deltaTime;
         
-        if (target == null || 
-            (target.position - transform.position).magnitude > maxLookDist ||
-            target.position.z > transform.position.z)
+        if (target == null || fov.visibleTargets.Count < 1)
             {    
                 return;
             }
