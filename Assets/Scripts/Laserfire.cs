@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Laserfire : MonoBehaviour
 {
+    private PlayerInput controls;
     public float fireCooldown; //seconds
     public int damage = 1;
 
@@ -18,6 +20,7 @@ public class Laserfire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;     
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.startWidth = 0.2f;
@@ -27,7 +30,7 @@ public class Laserfire : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-        if (Input.GetButton("Fire1") && !PauseMenu.gameIsPaused)
+        if (controls.actions["Fire"].ReadValue<float>() == 1 && !PauseMenu.gameIsPaused)
         {
             Shoot();
         }else{
