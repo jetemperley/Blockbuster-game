@@ -32,7 +32,7 @@ public class BurstFire : MonoBehaviour
         fireTimer = 0f;
         audioData = GetComponent<AudioSource>();
         audioData.Stop();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         LaserPool.Init(); 
 
         delayTimer = 0.0f;   

@@ -118,7 +118,6 @@ public class PlayerMovement2 : MonoBehaviour
         Vector2 moveInputVector = controls.actions["Move"].ReadValue<Vector2>();
         horizontalInput = moveInputVector.x;
         verticalInput = moveInputVector.y;
-        Debug.Log(speedParticles.GetComponent<ParticleSystem>().isEmitting);
         if(verticalInput > 0 && speedParticles!= null)
         {
             speedParticles.GetComponent<ParticleSystem>().Play();
