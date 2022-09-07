@@ -58,7 +58,7 @@ public class TerrainGen : MonoBehaviour
         }
 
         //Spawn a checkpoint
-        if (zOffset >= distToCheckpoint*checkpointNumber)
+        if (zOffset >= distToCheckpoint*(checkpointNumber+1))
         {
             Instantiate(checkpointBlock.gameObject, new Vector3(0.0f, yOffset, zOffset), checkpointBlock.gameObject.transform.rotation);
             zOffset += checkpointBlock.length;
