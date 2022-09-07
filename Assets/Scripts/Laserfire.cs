@@ -8,13 +8,12 @@ public class Laserfire : MonoBehaviour
     private PlayerInput controls;
     public float fireCooldown; //seconds
     public int damage = 1;
-    public float beamWidth;
+
     private float fireTimer; //seconds
     public int laserRange;
     public LineRenderer lineRenderer;
     private Vector3[] points;
 
-    public GameObject spawnPoint;
     private float ticRate;
     public float ticRateCap = 0.2f;
 
@@ -42,10 +41,9 @@ public class Laserfire : MonoBehaviour
     }
 
     private void Shoot(){
+        RaycastHit hit;
         lineRenderer.enabled=true;
-        foreach(RaycastHit hit in Physics.SphereCastAll(spawnPoint.transform.position, beamWidth, spawnPoint.transform.forward*1000, laserRange))
-        {
-            try{
+        if (Physics.Raycast(transform.position, transform.forward*laserRange, out hit)){
                 if(hit.transform.tag == "Enemy"){
                     ticRate+=Time.deltaTime;
                     if(ticRate>=ticRateCap){
@@ -56,10 +54,15 @@ public class Laserfire : MonoBehaviour
                         }
                     }
                 }
-            } catch{}
-            }
-            points[0] = spawnPoint.transform.position; 
-            points[1] = spawnPoint.transform.position+(spawnPoint.transform.forward*laserRange);
+            
+            
+            points[0] = transform.position; 
+            points[1] = hit.point;
+            lineRenderer.SetPositions(points);
+        }else{
+            points[0] = transform.position; 
+            points[1] = transform.position+(transform.forward*laserRange);
             lineRenderer.SetPositions(points);
         }
     }
+}
