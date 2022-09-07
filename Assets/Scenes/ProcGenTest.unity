@@ -190,7 +190,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh177968
+  m_Name: pb_Mesh-1888
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -496,7 +496,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh178178
+  m_Name: pb_Mesh-1876
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -988,7 +988,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh177996
+  m_Name: pb_Mesh-1852
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1737,7 +1737,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh178194
+  m_Name: pb_Mesh-1900
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1901,7 +1901,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh177888
+  m_Name: pb_Mesh-1864
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2448,11 +2448,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
       propertyPath: distToCheckpoint
-      value: 400
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
       propertyPath: blocks.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
       propertyPath: blocks.Array.data[0]
@@ -2461,7 +2461,15 @@ PrefabInstance:
     - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
       propertyPath: blocks.Array.data[5]
       value: 
-      objectReference: {fileID: 2147084409492033645, guid: 4ce63bb99a73cd24190f1e17bf2c2775, type: 3}
+      objectReference: {fileID: 3990914062254483585, guid: 37ad74cfab5ebfa43b582d56311c8e54, type: 3}
+    - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
+      propertyPath: blocks.Array.data[6]
+      value: 
+      objectReference: {fileID: 3990914062254483585, guid: 37ad74cfab5ebfa43b582d56311c8e54, type: 3}
+    - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
+      propertyPath: blocks.Array.data[7]
+      value: 
+      objectReference: {fileID: 3990914062254483585, guid: 37ad74cfab5ebfa43b582d56311c8e54, type: 3}
     - target: {fileID: 5125213347258825941, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
       propertyPath: m_Name
       value: TerrainGenerator
