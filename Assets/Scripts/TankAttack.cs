@@ -46,31 +46,36 @@ public class TankAttack : MonoBehaviour
     {
         if(player != null)
         {
-            float dist = Vector3.Distance(player.transform.position, transform.position);        
-        if(!isAttacking && fov.visibleTargets.Count > 0)
-        {
-            transform.LookAt(player.gameObject.transform);
-        }
-        if(dist <= startMeleeDistance && attackTimer <= 0 && !isAttacking)
-        {
-            StartCoroutine(AttackSequence());
-            isAttacking = true;
+            float dist = Vector3.Distance(player.transform.position, transform.position);   
 
-        }else if(dist > startMeleeDistance && fov.visibleTargets.Count > 0 && burstFireTimer <=0 && !isAttacking)
-        {
-            StartCoroutine(BurstFire(player.gameObject));
-            burstFireTimer = burstFireCooldown;
-        }
+            if(!isAttacking && fov.visibleTargets.Count > 0)
+            {
+                transform.LookAt(player.gameObject.transform);
+            }
 
-        if(growChargeCircle && Mathf.Abs(chargeCircleTimer/meleeChargeTime)<1)
-        {
-            chargeCircleTimer += Time.deltaTime;
-            ChargingCircleUI.transform.localScale = 
-                new Vector3(chargeCircleTimer/meleeChargeTime,chargeCircleTimer/meleeChargeTime,chargeCircleTimer/meleeChargeTime);
-        }
 
-        attackTimer -= Time.deltaTime;
-        burstFireTimer -= Time.deltaTime;
+            if(dist <= startMeleeDistance && attackTimer <= 0 && !isAttacking)
+            {
+                StartCoroutine(AttackSequence());
+                isAttacking = true;
+                GetComponent<Rigidbody>().AddForce((player.transform.position - transform.position) * 10);
+
+            }else if(dist > startMeleeDistance && fov.visibleTargets.Count > 0 && burstFireTimer <=0 && !isAttacking)
+            {
+                StartCoroutine(BurstFire(player.gameObject));
+                burstFireTimer = burstFireCooldown;
+            }
+
+
+            if(growChargeCircle && Mathf.Abs(chargeCircleTimer/meleeChargeTime)<1)
+            {
+                chargeCircleTimer += Time.deltaTime;
+                ChargingCircleUI.transform.localScale = 
+                    new Vector3(chargeCircleTimer/meleeChargeTime,chargeCircleTimer/meleeChargeTime,chargeCircleTimer/meleeChargeTime);
+            }
+
+            attackTimer -= Time.deltaTime;
+            burstFireTimer -= Time.deltaTime;
         }
             
     }

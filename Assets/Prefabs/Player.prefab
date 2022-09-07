@@ -103,13 +103,10 @@ GameObject:
   - component: {fileID: 238968272100124135}
   - component: {fileID: 2769227143674863179}
   - component: {fileID: 1596901922480480716}
-  - component: {fileID: 7539687143589402058}
-  - component: {fileID: 263510631790545787}
   - component: {fileID: 6543688535885125696}
   - component: {fileID: 7509098747381349089}
   - component: {fileID: 815473161130350145}
   - component: {fileID: 4391065286575554416}
-  - component: {fileID: -6147068321577090945}
   - component: {fileID: 2639284148020671168}
   - component: {fileID: 4276181381963681362}
   m_Layer: 9
@@ -289,10 +286,10 @@ MonoBehaviour:
   name: Player
   maxHealth: 3
   currentHealth: 3
-  invulnerableTimeCooldown: 1
+  invulnerableTimeCooldown: 0.5
   scoreValue: 0
   shield: {fileID: 1449356266488293635}
-  hitSFX: {fileID: 7509098747381349089}
+  hitSFX: {fileID: 8300000, guid: 065f51b3bae50c84887e944ebd681d50, type: 3}
   effect:
   - {fileID: 0}
   damageEffect: {fileID: 0}
@@ -333,31 +330,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &7539687143589402058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655765040293387633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b2e9b51544676e4a86be57bd5e55c84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &263510631790545787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655765040293387633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fed9019f6a147141968c359e5158faa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 50
 --- !u!82 &6543688535885125696
 AudioSource:
   m_ObjectHideFlags: 0
@@ -659,20 +631,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthComponent: {fileID: 238968272100124135}
---- !u!114 &-6147068321577090945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655765040293387633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dcd687fc5298bd4fae119d8dbe14068, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  escapeTimeMax: 5
-  inBounds: 0
 --- !u!114 &2639284148020671168
 MonoBehaviour:
   m_ObjectHideFlags: 0
