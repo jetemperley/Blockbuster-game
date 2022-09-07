@@ -9,6 +9,7 @@ public class RailgunFire : MonoBehaviour
 
     public float fireCooldown; //seconds
     public float beamWidth;
+    public float beamLength;
 
     private AudioSource audioData;
     private Animator animator;
@@ -40,7 +41,7 @@ public class RailgunFire : MonoBehaviour
             //animator.SetTrigger("Shoot");
             Health health;
 
-            foreach(RaycastHit hit in Physics.SphereCastAll(spawnPoint.transform.position, beamWidth, spawnPoint.transform.forward*1000, 300.0f))
+            foreach(RaycastHit hit in Physics.SphereCastAll(spawnPoint.transform.position, beamWidth, spawnPoint.transform.forward*1000, beamLength))
             {
                 try{
                     health = hit.collider.attachedRigidbody.gameObject.GetComponent<Health>();
