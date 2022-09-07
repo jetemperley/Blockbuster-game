@@ -8,6 +8,7 @@ public class TankAttack : MonoBehaviour
     public ParticleSystem meleeCharge;
     public GameObject ChargingCircleUI;
     public GameObject AoEIndicatorCanvas;
+    public float moveSpeed;
 
     //melee 
     public float maxMeleeRadius;
@@ -18,6 +19,13 @@ public class TankAttack : MonoBehaviour
 
     private float attackTimer;
     private bool isAttacking;
+    public bool IsAttacking
+    {
+        get
+        {
+            return isAttacking;
+        }
+    }
     private bool growChargeCircle;
     private float chargeCircleTimer;
 
@@ -54,10 +62,15 @@ public class TankAttack : MonoBehaviour
                 StartCoroutine(AttackSequence());
                 isAttacking = true;
 
-            }else if(dist > startMeleeDistance && fov.visibleTargets.Count > 0 && burstFireTimer <=0 && !isAttacking)
+            }else if((dist > startMeleeDistance || attackTimer > 0) && fov.visibleTargets.Count > 0 && burstFireTimer <=0 && !isAttacking)
             {
                 StartCoroutine(BurstFire(player.gameObject));
                 burstFireTimer = burstFireCooldown;
+            }
+
+            if(dist > startMeleeDistance && fov.visibleTargets.Count > 0 && !isAttacking)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * moveSpeed);
             }
 
 
