@@ -779,11 +779,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!33 &332571039 stripped
-MeshFilter:
-  m_CorrespondingSourceObject: {fileID: 8182740740197556496, guid: 1df6b4bebeadf524c8d123f812b89436, type: 3}
-  m_PrefabInstance: {fileID: 8182740739988826705}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &397313289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,48 +1707,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 565d8c1925fde8f4a83c72152140a902, type: 3}
---- !u!1 &920007855 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9208254930403397600, guid: 1df6b4bebeadf524c8d123f812b89436, type: 3}
-  m_PrefabInstance: {fileID: 8182740739988826705}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &920007857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920007855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6817872504e04b40ac43be44a262c2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &920007858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920007855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a70f31d6a159aa48a2e3fd3a88f3025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewRadius: 30
-  viewAngle: 90
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 512
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 15857
-  visibleTargets: []
-  meshResolution: 1
-  edgeResolveIterations: 4
-  edgeDistanceThreshold: 0.5
-  viewMeshFilter: {fileID: 332571039}
 --- !u!43 &1048173784
 Mesh:
   m_ObjectHideFlags: 0
@@ -2676,9 +2629,9 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 4972485640752539262, guid: 1df6b4bebeadf524c8d123f812b89436, type: 3}
-      propertyPath: m_Mass
-      value: 1000
+    - target: {fileID: 5944900186249223683, guid: 1df6b4bebeadf524c8d123f812b89436, type: 3}
+      propertyPath: moveSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7096802254971432143, guid: 1df6b4bebeadf524c8d123f812b89436, type: 3}
       propertyPath: m_Layer
