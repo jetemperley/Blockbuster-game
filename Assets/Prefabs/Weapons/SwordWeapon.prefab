@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4705668374510183830}
   - component: {fileID: 4705668374510183831}
   - component: {fileID: 1552634307930752656}
+  - component: {fileID: 5329297377741494036}
   m_Layer: 0
   m_Name: SwordWeapon
   m_TagString: Untagged
@@ -66,10 +67,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9492359072af474c9ca77e553933adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponModel: {fileID: 3004447611916007123, guid: 42743ed59693c1b4dad43594b2fa6901, type: 3}
+  weaponModel: {fileID: 7564944956083502891}
   weaponName: Sword
   weaponPrefab: {fileID: 4705668374510183833}
   icon: {fileID: 21300000, guid: f637727046c50c141bdb9389fa546b96, type: 3}
+--- !u!114 &5329297377741494036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705668374510183833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa023bedd355f6f4eb30000e21c919ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startup: 0.1
+  activeTime: 0.2
+  recovery: 0.3
+  damage: 6
+  sword: {fileID: 0}
+  prefabHitbox: {fileID: 4518084797337923592, guid: 2285ea7c40e50134b820208623dd55d8, type: 3}
+  playerCamera: {fileID: 0}
+  swordSwingSFX: {fileID: 8300000, guid: 64356b48b0aedec46b396a1e4b6d9459, type: 3}
+  attacking: 0
+  canAttack: 0
+  recovering: 0
 --- !u!1001 &4705668372979468792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -222,5 +246,10 @@ PrefabInstance:
 --- !u!4 &4642817276424273260 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 82047493829555348, guid: 42743ed59693c1b4dad43594b2fa6901, type: 3}
+  m_PrefabInstance: {fileID: 4705668372979468792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7564944956083502891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3004447611916007123, guid: 42743ed59693c1b4dad43594b2fa6901, type: 3}
   m_PrefabInstance: {fileID: 4705668372979468792}
   m_PrefabAsset: {fileID: 0}

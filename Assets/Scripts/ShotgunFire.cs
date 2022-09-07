@@ -41,10 +41,10 @@ public class ShotgunFire : MonoBehaviour
     {
         if (controls.actions["Fire"].triggered && fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
-            // AudioSource audio = AudioPool.GetAudioSource();
-            // audio.clip = fireSFX;
-            // audio.volume = 0.25f;
-            // audio.Play(0);
+            AudioSource audio = AudioPool.GetAudioSource();
+            audio.clip = fireSFX;
+            audio.volume = 0.25f;
+            audio.Play(0);
             // animator.SetTrigger("Shoot");
             Vector3 hitPos;
             RaycastHit hit;
