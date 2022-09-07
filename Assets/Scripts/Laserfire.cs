@@ -38,7 +38,6 @@ public class Laserfire : MonoBehaviour
             lineRenderer.enabled = false;
             ticRate = 0;
         }
-        Debug.Log(ticRate);
     }
 
     private void Shoot(){
