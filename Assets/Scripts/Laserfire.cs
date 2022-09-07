@@ -44,7 +44,7 @@ public class Laserfire : MonoBehaviour
         RaycastHit hit;
         lineRenderer.enabled=true;
         if (Physics.Raycast(transform.position, transform.forward*laserRange, out hit)){
-                if(hit.transform.tag == "Enemy"){
+                if(hit.collider.attachedRigidbody.gameObject.layer == 11){
                     ticRate+=Time.deltaTime;
                     if(ticRate>=ticRateCap){
                         Health health = hit.collider.attachedRigidbody.gameObject.GetComponent<Health>();
