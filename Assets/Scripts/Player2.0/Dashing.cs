@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Dashing : MonoBehaviour{
+    private PlayerInput controls;
+
     [Header("References")]
     public Transform orientation;
     public Transform playerCam;
@@ -17,18 +20,26 @@ public class Dashing : MonoBehaviour{
     [Header("Cooldown")]
     public float dashCD;
     private float dashCDTimer;
+    public float DashCDTimer
+    {
+        get
+        {
+            return dashCDTimer;
+        }
+    }
 
     [Header("Input")]
     public KeyCode dashKey = KeyCode.LeftShift;
 
     private void Start(){
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovement2>();
 
     }
 
     private void Update(){
-        if(Input.GetKeyDown(dashKey)){
+        if(controls.actions["Dash"].triggered){
             Dash();
         }
         if(dashCDTimer>0){

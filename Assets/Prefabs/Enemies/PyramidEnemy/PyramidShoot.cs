@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PyramidShoot : MonoBehaviour
-{
-    
+{    
     public float maxLookDist = 10;
     public string targetTag = "Player";
 

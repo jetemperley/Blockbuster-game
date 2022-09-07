@@ -39,14 +39,13 @@ public class Health : MonoBehaviour
             invulnerableTimer = 0;
         }
 
-        if (transform.position.y < -100 && gameObject.layer == 9) {
+        if (transform.position.y < TerrainGen.yOffset-100 && gameObject.layer == 9) {
             takeDamage(1000);
             PlayerStats.getInst().addStat("fall");
         }
     }
 
     public int takeDamage(int dam){
-//         Debug.Log(gameObject);
         if(invulnerableTimer<=0)
         {
             if(hitSFX != null)
@@ -93,6 +92,7 @@ public class Health : MonoBehaviour
                 //Analytics
                 if(gameObject.tag == "Player"){
                     PlayerStats.getInst().addStatAnalytic("kill Player", this.gameObject);
+                    FindObjectOfType<GameManager>().EndGame(); 
                 }
 
                 if(gameObject.tag == "Enemy"){

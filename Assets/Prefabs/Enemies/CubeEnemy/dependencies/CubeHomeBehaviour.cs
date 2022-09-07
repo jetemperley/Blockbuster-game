@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(FieldOfView))]
 public class CubeHomeBehaviour : MonoBehaviour
 {
+    FieldOfView fov;
     Transform target;
     Rigidbody rb;
     public float moveSpeed = 3;
@@ -12,6 +14,7 @@ public class CubeHomeBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        fov = GetComponent<FieldOfView>();
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag(targetTag).transform;
     }
@@ -24,7 +27,7 @@ public class CubeHomeBehaviour : MonoBehaviour
 
     void FixedUpdate() {
 
-        if (target == null || (target.position - transform.position).magnitude > maxLookDist || target.position.z > rb.position.z)
+        if (target == null || fov.visibleTargets.Count < 1)
             return;
 
         Vector3 direction = target.position-transform.position;

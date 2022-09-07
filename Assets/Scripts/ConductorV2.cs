@@ -5,7 +5,7 @@ using UnityEngine;
 //This is a singleton script that manages the speed of the terrain and enemies
 public class ConductorV2 : MonoBehaviour
 {
-    public float levelSpeed = 10; //Level speed is the speed at which the level progresses (Flat value)
+    public float levelSpeed = 6; //Level speed is the speed at which the level progresses (Flat value)
     public float gameSpeed = 1; //Game speed is a multiplier for how things move overall (including actions)
     public float boundary = -30; 
     public float startBoundary = 30;
@@ -34,7 +34,7 @@ public class ConductorV2 : MonoBehaviour
             currentPosition = boundary;
         }
 
-        player = FindObjectOfType<PlayerMove>().gameObject;
+        player = FindObjectOfType<PlayerMovement2>().gameObject;
         playerBounds = player.GetComponent<PlayerBounds>();
     }
 
@@ -98,5 +98,13 @@ public class ConductorV2 : MonoBehaviour
 
     public float getTotalSpeed(){
         return gameSpeed*levelSpeed;
+    }
+
+    public void GetConsumed(GameObject food)
+    {
+        if (getTotalSpeed() != 0 && food.transform.position.z < getPosition())
+        {
+            Destroy(food);
+        }
     }
 }

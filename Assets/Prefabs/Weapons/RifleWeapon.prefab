@@ -1,0 +1,173 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6601181264215011936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5419594315934945227}
+  m_Layer: 0
+  m_Name: BulletSpawnLoc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5419594315934945227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6601181264215011936}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.24330877, y: -0.162, z: 0.72}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3015075494472484304}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6656603484612156461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3015075494472484304}
+  - component: {fileID: 29746352770594539}
+  m_Layer: 0
+  m_Name: RifleWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3015075494472484304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6656603484612156461}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5419594315934945227}
+  - {fileID: 7811675851381192488}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &29746352770594539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6656603484612156461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9492359072af474c9ca77e553933adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponModel: {fileID: 2723927436619323961, guid: f1b6476d2e9d4ed4d8dd47bc833f7ec3, type: 3}
+  weaponName: Burst Rifle
+  weaponPrefab: {fileID: 6656603484612156461}
+  icon: {fileID: 21300000, guid: 87d2e2c6774eca14b8b8bec375e17aab, type: 3}
+--- !u!1001 &7773807453341208771
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3015075494472484304}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.40207195
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.55388343
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.1997947
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7141469
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.026082745
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6989826
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.027150033
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.113
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -93.267
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 4.314
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+      propertyPath: m_Name
+      value: Rifle gun
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+--- !u!1 &7431912869104643474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+  m_PrefabInstance: {fileID: 7773807453341208771}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8044025768302870838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7431912869104643474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc669d42da396ee49a1ab1e3ad8859f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 574378370519593902, guid: 47afac7a68da64c4fa30d1963d8ac8df, type: 3}
+  fireCooldown: 0.4
+  spawnPoint: {fileID: 6601181264215011936}
+  fireSFX: {fileID: 8300000, guid: a4a1a2f6e1add244380d4570d7e8a6de, type: 3}
+  damage: 2
+  numberOfShots: 3
+  shotsDelay: 0.1
+--- !u!4 &7811675851381192488 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+  m_PrefabInstance: {fileID: 7773807453341208771}
+  m_PrefabAsset: {fileID: 0}

@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 7539387026147435561}
   - component: {fileID: 6007061763086282597}
   - component: {fileID: 2743020106910926598}
-  - component: {fileID: 3835997907146903488}
-  - component: {fileID: 7624161475168586367}
+  - component: {fileID: 8660671823230886133}
   m_Layer: 0
   m_Name: Pillar
   m_TagString: Untagged
@@ -665,26 +664,10 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!54 &3835997907146903488
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2828459238211201641}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &7624161475168586367
+--- !u!114 &8660671823230886133
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -693,6 +676,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2828459238211201641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395eaf78f3ca57143accda14ff329417, type: 3}
+  m_Script: {fileID: 11500000, guid: fcd4c25308a878a458f80b51ffa65fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backWall: -10
+  rend: {fileID: 7539387026147435561}

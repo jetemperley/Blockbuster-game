@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MinigunFire : MonoBehaviour
 {
+    private PlayerInput controls;
+
     public AudioClip fireSFX;
     public Bullet bulletPrefab;
     public float maxFireRate; //seconds
@@ -30,6 +33,8 @@ public class MinigunFire : MonoBehaviour
 
     void Start()
     {
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
+
         fireTimer = 0f;
         animator = GetComponent<Animator>();
         cam = (Camera)FindObjectOfType(typeof(Camera));
@@ -45,7 +50,8 @@ public class MinigunFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1") && fireTimer <= 0 && !PauseMenu.gameIsPaused)
+
+        if (controls.actions["Fire"].ReadValue<float>() == 1 && fireTimer <= 0 && !PauseMenu.gameIsPaused)
         {
 
                 if(volumeAdjuster < 1)
@@ -56,9 +62,7 @@ public class MinigunFire : MonoBehaviour
                 audio.clip = fireSFX;
                 audio.volume = 0.75f/volumeAdjuster;
                 audio.Play(0);
-                volumeAdjuster--;
-
-            
+                volumeAdjuster--;       
             
             
 
@@ -84,6 +88,7 @@ public class MinigunFire : MonoBehaviour
             }else{
                 currentFireRadius = maxFireRadius;
             }
+
             if(currentFireRate <= maxFireRate)
             {
                 currentFireRate = maxFireRate;
@@ -102,7 +107,7 @@ public class MinigunFire : MonoBehaviour
                 );
             animator.SetBool("Shooting",true);
             
-        }else if(!Input.GetButton("Fire1"))
+        }else if(controls.actions["Fire"].ReadValue<float>() == 0)
         {
             currentFireRate = minFireRate;
             currentFireRadius = minFireRadius;
@@ -114,4 +119,14 @@ public class MinigunFire : MonoBehaviour
 
         fireTimer -= Time.deltaTime;
     }
+
+    // public void Firing(InputAction.CallbackContext ctx)
+    // {
+    //     isFiring = true;
+    // }
+
+    // public void StopFiring(InputAction.CallbackContext ctx)
+    // {
+    //     isFiring = false;
+    // }
 }

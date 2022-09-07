@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class EnemyGen : MonoBehaviour
 {
-    public GameObject[][] groups = new GameObject[2][];
-    public GameObject[] lvl1Groups; //Array of the different types of enemy groups to spawn
+    public GameObject[][] groups = new GameObject[4][];
+    public GameObject[] lvl0Groups; //Array of the different types of enemy groups to spawn
+    public GameObject[] lvl1Groups;
     public GameObject[] lvl2Groups;
+    public GameObject[] lvl3Groups;
 
     void Awake()
     {
-        groups[0] = lvl1Groups;
-        groups[1] = lvl2Groups;
+        groups[0] = lvl0Groups;
+        groups[1] = lvl1Groups;
+        groups[2] = lvl2Groups;
+        groups[3] = lvl3Groups;
     }
 
     void Start()
@@ -24,8 +28,8 @@ public class EnemyGen : MonoBehaviour
             }
         }
         System.Random random = new System.Random();
-        int randomNumber = random.Next(0, groups[0].Length);
-        groups[0][randomNumber].SetActive(true);
+        int randomNumber = random.Next(0, groups[TerrainGen.level].Length);
+        groups[TerrainGen.level][randomNumber].SetActive(true);
     }
 
     // Update is called once per frame

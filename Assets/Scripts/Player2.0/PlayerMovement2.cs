@@ -1,14 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement2 : MonoBehaviour
 {
+    private PlayerInput controls;
+
+    public GameObject speedParticles;
+    public Camera playerCamera;
+    public float lookSpeed = 2.0f;
+    public float lookXLimit = 45.0f;
+
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
     public float dashSpeed;
+    float rotationX = 0;
 
     public float groundDrag;
 
@@ -33,7 +42,6 @@ public class PlayerMovement2 : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    //public LayerMask Ground;
     bool grounded;
 
     [Header("Slope Handling")]
@@ -65,29 +73,39 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void Start()
     {
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+        if(speedParticles != null)
+        {
+            speedParticles.GetComponent<ParticleSystem>().Stop();
+        }
         readyToJump = true;
 
         startYScale = transform.localScale.y;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()
     {
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-        //grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, Ground);
 
-        MyInput();
-        SpeedControl();
-        StateHandler();
+        if(!PauseMenu.gameIsPaused)
+        {
+            MyInput();
+            SpeedControl();
+            StateHandler();
+            // handle drag
+            if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching)
+                rb.drag = groundDrag;
+            else
+                rb.drag = 0; 
+        }
         
-        // handle drag
-        if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching)
-            rb.drag = groundDrag;
-        else
-            rb.drag = 0;
     }
 
     private void FixedUpdate()
@@ -97,18 +115,29 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void MyInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        Vector2 moveInputVector = controls.actions["Move"].ReadValue<Vector2>();
+        horizontalInput = moveInputVector.x;
+        verticalInput = moveInputVector.y;
+        if(verticalInput > 0 && speedParticles!= null)
+        {
+            speedParticles.GetComponent<ParticleSystem>().Play();
+        }else if(speedParticles != null)
+        {
+            speedParticles.GetComponent<ParticleSystem>().Stop();
+        }
+        // Look
+        Look();
 
         // when to jump
-        if(Input.GetKeyDown(jumpKey) && readyToJump==true && numOfJumps<totalJumps)
+        if(controls.actions["Jump"].triggered && readyToJump==true && numOfJumps<totalJumps)
         {
             numOfJumps++;
             if(numOfJumps==totalJumps){
                 readyToJump = false;
             }
             Jump();
-
+            //Invoke(nameof(ResetJump), jumpCooldown);
+            //numOfJumps=0;
         }else if(grounded){
             readyToJump = true;
             numOfJumps=1;
@@ -116,17 +145,26 @@ public class PlayerMovement2 : MonoBehaviour
         }
 
         // start crouch
-        if (Input.GetKeyDown(crouchKey))
+        if (controls.actions["Crouch"].triggered)
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
         }
 
         // stop crouch
-        if (Input.GetKeyUp(crouchKey))
+        if (controls.actions["Crouch"].triggered)
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
+    }
+
+    private void Look()
+    {
+        Vector2 lookInputVector = controls.actions["Look"].ReadValue<Vector2>();
+        rotationX += -lookInputVector.y * lookSpeed;
+        rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
+        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        transform.rotation *= Quaternion.Euler(0, lookInputVector.x * lookSpeed, 0);
     }
 
     private void StateHandler()
@@ -137,17 +175,10 @@ public class PlayerMovement2 : MonoBehaviour
             moveSpeed = dashSpeed;
         }
         // Mode - Crouching
-        else if (Input.GetKey(crouchKey))
+        else if (controls.actions["Crouch"].triggered)
         {
             state = MovementState.crouching;
             moveSpeed = crouchSpeed;
-        }
-
-        // Mode - walking
-        else if(grounded && Input.GetKey(walkKey))
-        {
-            state = MovementState.walking;
-            moveSpeed = walkSpeed;
         }
 
         // Mode - sprinting
@@ -177,7 +208,6 @@ public class PlayerMovement2 : MonoBehaviour
             if (rb.velocity.y > 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
         }
-
         // on ground
         else if(grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);

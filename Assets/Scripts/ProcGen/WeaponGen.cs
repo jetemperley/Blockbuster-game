@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class WeaponGen : MonoBehaviour
 {
     public WeaponModel[][] weaponPool = new WeaponModel[4][];
+    public WeaponModel[] lv0Pool;
     public WeaponModel[] lv1Pool;
     public WeaponModel[] lv2Pool;
     public WeaponModel[] lv3Pool;
-    public WeaponModel[] lv4Pool;
 
     public Pickup[] choices;
 
@@ -22,10 +22,10 @@ public class WeaponGen : MonoBehaviour
 
     void Awake()
     {
-        weaponPool[0] = lv1Pool;
-        weaponPool[1] = lv2Pool;
-        weaponPool[2] = lv3Pool;
-        weaponPool[3] = lv4Pool;
+        weaponPool[0] = lv0Pool;
+        weaponPool[1] = lv1Pool;
+        weaponPool[2] = lv2Pool;
+        weaponPool[3] = lv3Pool;
     }
 
     // Start is called before the first frame update
@@ -36,10 +36,10 @@ public class WeaponGen : MonoBehaviour
 
         for (int i = 0; i < choices.Length; i++)
         {
-            randomNumber = random.Next(0, weaponPool[0].Length);
-            choices[i].pickupPrefab = weaponPool[0][randomNumber].gameObject;
-            choices[i].pickupModel = weaponPool[0][randomNumber].weaponModel;
-            choices[i].displayString = weaponPool[0][randomNumber].weaponName;
+            randomNumber = random.Next(0, weaponPool[TerrainGen.level].Length);
+            choices[i].pickupPrefab = weaponPool[TerrainGen.level][randomNumber].gameObject;
+            choices[i].pickupModel = weaponPool[TerrainGen.level][randomNumber].weaponModel;
+            choices[i].displayString = weaponPool[TerrainGen.level][randomNumber].weaponName;
         }
 
         randomNumber = random.Next(0, flavourText.Length);
