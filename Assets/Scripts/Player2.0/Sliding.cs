@@ -48,7 +48,7 @@ public class Sliding : MonoBehaviour{
             slideKey = !slideKey;
         }
 
-        if(slideKey && (horizontalInput !=0 || verticalInput !=0)){
+        if(slideKey && (horizontalInput !=0 || verticalInput !=0) && pm.grounded==true){
             StartSlide();
         }
         if(!slideKey && sliding){
