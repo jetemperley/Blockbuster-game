@@ -50,7 +50,6 @@ GameObject:
   - component: {fileID: 7446298872315177969}
   - component: {fileID: 1142724164257125742}
   - component: {fileID: 9025976170419661499}
-  - component: {fileID: 911842433871348035}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -1738,20 +1737,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5409324868727041128}
   m_Mesh: {fileID: 0}
---- !u!64 &911842433871348035
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5409324868727041128}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &6882832133802855961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,7 +1749,6 @@ GameObject:
   - component: {fileID: 4899775458047076337}
   - component: {fileID: 4902302256010809723}
   - component: {fileID: 2244819833125806724}
-  - component: {fileID: 2699873060482414818}
   m_Layer: 0
   m_Name: screen
   m_TagString: Untagged
@@ -2054,20 +2038,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6882832133802855961}
   m_Mesh: {fileID: 0}
---- !u!64 &2699873060482414818
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6882832133802855961}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1001 &1669484499908176144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2139,7 +2109,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5116485585977970744, guid: d00f8428acbd03745afcdb5ae23c6904, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d00f8428acbd03745afcdb5ae23c6904, type: 3}
 --- !u!4 &8928185601895233658 stripped
 Transform:
@@ -2217,7 +2188,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5116485585977970744, guid: d00f8428acbd03745afcdb5ae23c6904, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d00f8428acbd03745afcdb5ae23c6904, type: 3}
 --- !u!4 &2947746333571557224 stripped
 Transform:
@@ -2295,7 +2267,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5116485585977970744, guid: d00f8428acbd03745afcdb5ae23c6904, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d00f8428acbd03745afcdb5ae23c6904, type: 3}
 --- !u!4 &4077555673057477901 stripped
 Transform:
@@ -2373,7 +2346,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5116485585977970744, guid: d00f8428acbd03745afcdb5ae23c6904, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d00f8428acbd03745afcdb5ae23c6904, type: 3}
 --- !u!4 &6071692371795118 stripped
 Transform:
@@ -2451,7 +2425,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5116485585977970744, guid: d00f8428acbd03745afcdb5ae23c6904, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d00f8428acbd03745afcdb5ae23c6904, type: 3}
 --- !u!4 &1822444941464621518 stripped
 Transform:
