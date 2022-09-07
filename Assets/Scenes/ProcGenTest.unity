@@ -469,6 +469,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 565d8c1925fde8f4a83c72152140a902, type: 3}
+--- !u!1 &381274366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5407070356911978948, guid: 565d8c1925fde8f4a83c72152140a902, type: 3}
+  m_PrefabInstance: {fileID: 381274365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &686673066
 Mesh:
   m_ObjectHideFlags: 0
@@ -1289,7 +1294,7 @@ PrefabInstance:
       objectReference: {fileID: 1788037564}
     - target: {fileID: 54026469256644510, guid: 0fe018bdc434e9f4db1de446571c1980, type: 3}
       propertyPath: m_VersionIndex
-      value: 84
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 125257169192292072, guid: 0fe018bdc434e9f4db1de446571c1980, type: 3}
       propertyPath: m_Mesh
@@ -1297,7 +1302,7 @@ PrefabInstance:
       objectReference: {fileID: 362584094}
     - target: {fileID: 125257169192292072, guid: 0fe018bdc434e9f4db1de446571c1980, type: 3}
       propertyPath: m_VersionIndex
-      value: 81
+      value: 87
       objectReference: {fileID: 0}
     - target: {fileID: 133233283602216606, guid: 0fe018bdc434e9f4db1de446571c1980, type: 3}
       propertyPath: m_Mesh
@@ -1313,7 +1318,7 @@ PrefabInstance:
       objectReference: {fileID: 686673066}
     - target: {fileID: 1005660795168599965, guid: 0fe018bdc434e9f4db1de446571c1980, type: 3}
       propertyPath: m_VersionIndex
-      value: 78
+      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 1363672259048962441, guid: 0fe018bdc434e9f4db1de446571c1980, type: 3}
       propertyPath: m_Mesh
@@ -1343,6 +1348,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1816192805}
+    - target: {fileID: 2639284148020671168, guid: 0fe018bdc434e9f4db1de446571c1980, type: 3}
+      propertyPath: gotHitScreen
+      value: 
+      objectReference: {fileID: 381274366}
     - target: {fileID: 2688703735852175200, guid: 0fe018bdc434e9f4db1de446571c1980, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1373,7 +1382,7 @@ PrefabInstance:
       objectReference: {fileID: 1816192805}
     - target: {fileID: 3143841220232405764, guid: 0fe018bdc434e9f4db1de446571c1980, type: 3}
       propertyPath: m_VersionIndex
-      value: 78
+      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 3188547567192166482, guid: 0fe018bdc434e9f4db1de446571c1980, type: 3}
       propertyPath: m_Mesh
@@ -1433,7 +1442,7 @@ PrefabInstance:
       objectReference: {fileID: 1323410952}
     - target: {fileID: 6532051730936259082, guid: 0fe018bdc434e9f4db1de446571c1980, type: 3}
       propertyPath: m_VersionIndex
-      value: 81
+      value: 87
       objectReference: {fileID: 0}
     - target: {fileID: 6876678917245485123, guid: 0fe018bdc434e9f4db1de446571c1980, type: 3}
       propertyPath: m_Mesh
@@ -2410,9 +2419,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
-      propertyPath: blocks.Array.size
-      value: 6
+      propertyPath: blocksToSpawn
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
+      propertyPath: lengthIncrement
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
+      propertyPath: distToCheckpoint
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
+      propertyPath: blocks.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
+      propertyPath: blocks.Array.data[0]
+      value: 
+      objectReference: {fileID: 2147084409492033645, guid: 4ce63bb99a73cd24190f1e17bf2c2775, type: 3}
     - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
       propertyPath: blocks.Array.data[5]
       value: 
