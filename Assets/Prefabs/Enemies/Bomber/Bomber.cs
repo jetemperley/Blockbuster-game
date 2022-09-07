@@ -25,7 +25,6 @@ public class Bomber : MonoBehaviour
     public float bombCD = 4;
     private float bombCDTimer;
 
-    private int bombCount = 0;
 
     void Start()
     {
@@ -36,7 +35,6 @@ public class Bomber : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(bombCDTimer);
         if(isInRange() && bombCDTimer<bombCD){
             LookAtPlayer();
             bombCDTimer += Time.deltaTime;

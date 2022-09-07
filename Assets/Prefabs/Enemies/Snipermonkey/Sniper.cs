@@ -81,7 +81,7 @@ public class Sniper : MonoBehaviour
 
     private void Shoot(){
         RaycastHit hit;
-        if (Physics.Raycast(points[1], rb.transform.forward, out hit)){
+        if (Physics.Raycast(transform.position, transform.forward, out hit)){
             if(hit.transform.name == targetTag){
             Health h = target.gameObject.GetComponent<Health>();
             if (h != null)

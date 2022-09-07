@@ -21,7 +21,6 @@ public class bomb : MonoBehaviour
 
     public float countdownTimer = 5;
     private int damage = 1000;
-    private int takeDmgCount=0;
 
 
     // Start is called before the first frame update
@@ -43,8 +42,6 @@ public class bomb : MonoBehaviour
                 health.takeDamage(damage);
             }
         }
-
-        Debug.Log(countdownTimer);
     }
 
 

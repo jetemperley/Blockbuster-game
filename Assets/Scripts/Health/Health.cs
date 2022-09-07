@@ -96,7 +96,6 @@ public class Health : MonoBehaviour
                 }
 
                 if(gameObject.tag == "Enemy"){
-                    Debug.Log("Enemy Killed");
                     Analytics.CustomEvent(
                         "Enemy Killed",
                         new Dictionary<string, object>{
@@ -104,8 +103,8 @@ public class Health : MonoBehaviour
                         }
                     );
                 }
-                
                 Destroy(gameObject);
+
                 PlayerStats.getInst().addStat("kill "+ name);
                 ScoreManager.Inst.AddScore(scoreValue);
             }
