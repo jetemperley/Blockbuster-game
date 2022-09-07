@@ -30,8 +30,6 @@ public class PlayerMove : MonoBehaviour
     public bool canDash;
     private float dashTimer;
 
-    private int nbJumps;
-
     public float DashTimer
     {
         get {
@@ -64,6 +62,12 @@ public class PlayerMove : MonoBehaviour
             GetComponent<Health>().takeDamage(100);
         }
 
+        if(PauseMenu.gameIsPaused)
+        {
+            characterController.enabled = false;
+        }else{
+            characterController.enabled = true;
+        
         // We are grounded, so recalculate move direction based on axes
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
@@ -74,15 +78,13 @@ public class PlayerMove : MonoBehaviour
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        if (Input.GetKeyDown("space") && canMove && nbJumps<2)
+        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             jumpSFX.Play(0);
             PlayerStats.getInst().addStat("jump");   
             moveDirection.y = jumpSpeed;
-            nbJumps++;
         }
         else if (characterController.isGrounded){
-            nbJumps=0;
             moveDirection.y = 0;
         } else 
         {
@@ -128,7 +130,7 @@ public class PlayerMove : MonoBehaviour
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
-        
+        }
     }
 
     IEnumerator Dash()

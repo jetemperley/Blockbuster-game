@@ -146,7 +146,7 @@ public class PlayerStats : MonoBehaviour
     }
     public void addStatAnalytic(string name, GameObject thingy){
 
-        StartCoroutine(Upload(thingy.transform.position));
+        //StartCoroutine(Upload(thingy.transform.position));
 
         Analytics.CustomEvent(
             "Player Died",

@@ -45,7 +45,7 @@ public class MinigunFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1") && fireTimer <= 0)
+        if (Input.GetButton("Fire1") && fireTimer <= 0 && !PauseMenu.gameIsPaused)
         {
 
                 if(volumeAdjuster < 1)

@@ -30,7 +30,7 @@ public class PistolFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")&& fireTimer <=0)
+        if (Input.GetButtonDown("Fire1") && fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
             AudioSource audio = AudioPool.GetAudioSource();
             audio.clip = fireSFX;

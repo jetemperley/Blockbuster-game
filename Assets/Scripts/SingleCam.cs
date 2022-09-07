@@ -8,7 +8,7 @@ public class SingleCam : MonoBehaviour
 
     void Awake()
     {
-        if(instance != null)
+        if(instance != null )
         {
             Destroy(instance);            
         }
@@ -17,7 +17,6 @@ public class SingleCam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame

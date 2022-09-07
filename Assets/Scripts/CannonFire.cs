@@ -33,7 +33,7 @@ public class CannonFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")&& fireTimer <=0)
+        if (Input.GetButtonDown("Fire1") && fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
             audioData.Play(0);
             animator.SetTrigger("Shoot");
