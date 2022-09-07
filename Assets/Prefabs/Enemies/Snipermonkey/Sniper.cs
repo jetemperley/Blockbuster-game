@@ -10,6 +10,14 @@ public class Sniper : MonoBehaviour
     public float maxLookDist = 10;
     public string targetTag = "Player";
 
+    public float lockOnTime = 3;
+    private float lockOnTimer = 0;
+
+    public float shootDelayTime = 0.4f;
+    private float shootDelayTimer = 0;
+
+    public int damage = 1;
+
     private Vector3[] points;
     LineRenderer laser;
 
@@ -27,7 +35,22 @@ public class Sniper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LookAtPlayer();
+        if(lockOnTimer<lockOnTime && isInRange()){
+            LookAtPlayer();
+            LaserLine();
+            lockOnTimer += Time.deltaTime;
+        }else if(lockOnTimer>lockOnTime && isInRange()){
+            shootDelayTimer += Time.deltaTime;
+            if(shootDelayTimer>shootDelayTime){
+                Shoot();
+                shootDelayTimer = 0;
+                lockOnTimer= 0;
+            }
+        }else{
+            laser.enabled = false;
+            lockOnTimer= 0;
+            shootDelayTimer = 0;
+        }
     }
 
     private void OnDrawGizmosSelected() {
@@ -35,22 +58,36 @@ public class Sniper : MonoBehaviour
     }
 
     private void LookAtPlayer(){
-        if (target == null || (target.position - transform.position).magnitude > maxLookDist || target.position.z > rb.position.z){
-            laser.enabled=false;
-            return;
-        }
-        LaserLine();
-        Debug.DrawLine(rb.position, target.position,Color.red);
-        Vector3 direction = target.position-transform.position;
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        transform.rotation = rotation;
-        rb.MovePosition( rb.position +(target.position - rb.position).normalized*moveSpeed*Time.fixedDeltaTime);
+            Vector3 direction = target.position-transform.position;
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            transform.rotation = rotation;
+            rb.MovePosition( rb.position +(target.position - rb.position).normalized*moveSpeed*Time.fixedDeltaTime);
     }
 
     private void LaserLine(){
         laser.enabled=true;
-        points[0] = target.position;
         points[1] = rb.position;
+        points[0] = target.position;
         laser.SetPositions(points);
     }
+
+    private bool isInRange(){
+        if(target == null || (target.position - transform.position).magnitude > maxLookDist || target.position.z > rb.position.z){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    private void Shoot(){
+        RaycastHit hit;
+        if (Physics.Raycast(points[1], rb.transform.forward, out hit)){
+            if(hit.transform.name == targetTag){
+            Health h = target.gameObject.GetComponent<Health>();
+            if (h != null)
+                h.takeDamage(damage);
+            }
+        }
+    }
+    
 }

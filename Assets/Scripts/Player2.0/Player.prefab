@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 9095399046714683632}
   - component: {fileID: 9095399046714683633}
   - component: {fileID: 9095399046714683634}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9095399046714683637}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.2224312, y: 2.9799995, z: -73.78922}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 9216
   maxSlopeAngle: 50
   orientation: {fileID: 9095399047246374461}
   dashing: 0
@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9095399046826519517}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CameraPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9095399046826519516}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 9095399047231198100}
   - component: {fileID: 9095399047231198123}
   - component: {fileID: 9095399047231198122}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9095399047246374461}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}

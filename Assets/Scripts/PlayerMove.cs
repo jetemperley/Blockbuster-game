@@ -63,7 +63,6 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown("k")){
             GetComponent<Health>().takeDamage(100);
         }
-        Debug.Log(moveDirection.y);
 
         // We are grounded, so recalculate move direction based on axes
         Vector3 forward = transform.TransformDirection(Vector3.forward);
