@@ -88,4 +88,9 @@ public class GameManager : MonoBehaviour
         mainMenuPanel.SetActive(true);
     }
 
+    public void OpenWindow()
+    {
+        Application.OpenURL("https://docs.unity3d.com/ScriptReference/Application.OpenURL.html");
+    }
+
 }

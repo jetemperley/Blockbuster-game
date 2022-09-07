@@ -42,13 +42,9 @@ public class Laserfire : MonoBehaviour
 
     private void Shoot(){
         lineRenderer.enabled=true;
-<<<<<<< HEAD
-        if (Physics.Raycast(transform.position, transform.forward*laserRange, out hit)){
-=======
         foreach(RaycastHit hit in Physics.SphereCastAll(spawnPoint.transform.position, beamWidth, spawnPoint.transform.forward*1000, laserRange))
         {
             try{
->>>>>>> parent of d8a35b9 (Merge branch 'main' of https://github.com/jvisvikis/Blockbuster-game)
                 if(hit.transform.tag == "Enemy"){
                     ticRate+=Time.deltaTime;
                     if(ticRate>=ticRateCap){
