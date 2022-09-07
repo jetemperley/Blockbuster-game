@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3834cf16800acc848afa46a72d9fa1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedParticles: {fileID: 3586777711709859399}
   playerCamera: {fileID: 2596643181358554350}
   lookSpeed: 0.05
   lookXLimit: 90
@@ -679,11 +680,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7351732653492997948, guid: ef8ba1e97982d114e95a58b5d6eecb20, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.415
+      value: -0.41499996
       objectReference: {fileID: 0}
     - target: {fileID: 7351732653492997948, guid: ef8ba1e97982d114e95a58b5d6eecb20, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7351732653492997948, guid: ef8ba1e97982d114e95a58b5d6eecb20, type: 3}
       propertyPath: m_LocalRotation.w
@@ -715,6 +716,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef8ba1e97982d114e95a58b5d6eecb20, type: 3}
+--- !u!1 &3586777711709859399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1229139585297746622, guid: ef8ba1e97982d114e95a58b5d6eecb20, type: 3}
+  m_PrefabInstance: {fileID: 2362151901120308473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3560174061467043703
 PrefabInstance:
   m_ObjectHideFlags: 0

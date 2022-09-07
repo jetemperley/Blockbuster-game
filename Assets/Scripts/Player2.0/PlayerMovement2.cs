@@ -7,6 +7,7 @@ public class PlayerMovement2 : MonoBehaviour
 {
     private PlayerInput controls;
 
+    public GameObject speedParticles;
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
@@ -76,6 +77,10 @@ public class PlayerMovement2 : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+        if(speedParticles != null)
+        {
+            speedParticles.GetComponent<ParticleSystem>().Stop();
+        }
         readyToJump = true;
 
         startYScale = transform.localScale.y;
@@ -113,6 +118,14 @@ public class PlayerMovement2 : MonoBehaviour
         Vector2 moveInputVector = controls.actions["Move"].ReadValue<Vector2>();
         horizontalInput = moveInputVector.x;
         verticalInput = moveInputVector.y;
+        Debug.Log(speedParticles.GetComponent<ParticleSystem>().isEmitting);
+        if(verticalInput > 0 && speedParticles!= null)
+        {
+            speedParticles.GetComponent<ParticleSystem>().Play();
+        }else if(speedParticles != null)
+        {
+            speedParticles.GetComponent<ParticleSystem>().Stop();
+        }
         // Look
         Look();
 
