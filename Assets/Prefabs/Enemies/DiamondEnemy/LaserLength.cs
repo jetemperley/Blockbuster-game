@@ -22,7 +22,9 @@ public class LaserLength : MonoBehaviour
     //     laser.localScale = new Vector3(laser.localScale.x*laserLength, laser.localScale.y, laser.localScale.z);
     // }
     private void OnValidate() {
-        laser.localScale = new Vector3(laserLength, laser.localScale.y, laser.localScale.z);
+        if(laser != null){
+            laser.localScale = new Vector3(laserLength, laser.localScale.y, laser.localScale.z);
+        }
     }
 
 

@@ -48,17 +48,11 @@ public class TankAttack : MonoBehaviour
         {
             float dist = Vector3.Distance(player.transform.position, transform.position);   
 
-            if(!isAttacking && fov.visibleTargets.Count > 0)
-            {
-                transform.LookAt(player.gameObject.transform);
-            }
-
 
             if(dist <= startMeleeDistance && attackTimer <= 0 && !isAttacking)
             {
                 StartCoroutine(AttackSequence());
                 isAttacking = true;
-                GetComponent<Rigidbody>().AddForce((player.transform.position - transform.position) * 10);
 
             }else if(dist > startMeleeDistance && fov.visibleTargets.Count > 0 && burstFireTimer <=0 && !isAttacking)
             {
