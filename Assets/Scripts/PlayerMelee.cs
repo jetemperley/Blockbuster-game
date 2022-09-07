@@ -37,7 +37,7 @@ public class PlayerMelee : MonoBehaviour
         recovering = false;
         //weaponHolder = GetComponent<GunHolder>();
         // CurrentWeapon();
-        // animator = sword.GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         // sword.SetActive(false);
         playerCamera = FindObjectOfType<Camera>();
     }
@@ -55,7 +55,7 @@ public class PlayerMelee : MonoBehaviour
             //weaponHolder.canSwitch = false;
             // weapon.SetActive(false);
             // sword.SetActive(true);
-            // animator.SetTrigger("Attack");
+            animator.SetTrigger("Attack");
             timer = startup;
             attacking = true;
             canAttack = false;
