@@ -42,7 +42,7 @@ public class FallAway : MonoBehaviour
             
             // rb.AddForce(randX, randY, randZ, ForceMode.VelocityChange);
             rb.AddForce(
-                Random.Range(0f, 1f), 
+                0, 
                 1, // Random.Range(0f, 1f), 
                 0, 
                 ForceMode.VelocityChange);
