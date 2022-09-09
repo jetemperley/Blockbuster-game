@@ -49,6 +49,15 @@ public class PlayerMovement2 : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitingSlope;
     
+    private Vector3 startPos;
+    private float distance;
+    public float Distance
+    {
+        get
+        {
+            return distance;
+        }
+    }
 
     public Transform orientation;
 
@@ -76,6 +85,7 @@ public class PlayerMovement2 : MonoBehaviour
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        startPos = transform.position;
 
         if(speedParticles != null)
         {
@@ -105,6 +115,9 @@ public class PlayerMovement2 : MonoBehaviour
             else
                 rb.drag = 0; 
         }
+
+        //distance
+        distance = Vector3.Distance(startPos, transform.position);
         
     }
 

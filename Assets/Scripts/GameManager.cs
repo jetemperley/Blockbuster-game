@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenWindow()
     {
-        Application.OpenURL("https://docs.unity3d.com/ScriptReference/Application.OpenURL.html");
+        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSeImuncEjWfrFVEE-joCW1IxG83RbtGpwTC4PQKUXh8vaY7aA/viewform?usp=sf_link");
     }
 
 }
