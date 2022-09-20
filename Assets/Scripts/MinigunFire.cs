@@ -17,6 +17,9 @@ public class MinigunFire : MonoBehaviour
     public float fireRateIncrement;
     public int damage;
 
+    public bool piercing; //Whether or not the weapon has piercing shots
+    public int pierceNum; 
+
     private Camera cam;
     private Animator animator;
     private bool audioPlaying;
@@ -99,12 +102,28 @@ public class MinigunFire : MonoBehaviour
 //          Debug.Log(dir);
             Laser laser = LaserPool.GetLaser();
             laser.SetDamage(damage);
-            laser.fire(
-                spawnPoint.transform.position,
-                dir,
-                0.1f,
-                gameObject.name
+
+            if (!piercing)
+            {
+                laser.fire(
+                    spawnPoint.transform.position,
+                    dir,
+                    0.1f,
+                    gameObject.name
+                    );
+            } 
+            else 
+            {
+                laser.firePierce(
+                    spawnPoint.transform.position,
+                    dir,
+                    0.1f,
+                    150,
+                    gameObject.name,
+                    pierceNum
                 );
+            }
+            
             animator.SetBool("Shooting",true);
             
         }else if(controls.actions["Fire"].ReadValue<float>() == 0)
