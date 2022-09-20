@@ -10,6 +10,8 @@ public class PistolFire : MonoBehaviour
     public Bullet bulletPrefab;
     public float fireCooldown; //seconds
 
+    public bool autoFire; //Whether or not the weapon has automatic fire
+
     private AudioSource audioData;
     private Animator animator;
 
@@ -33,7 +35,7 @@ public class PistolFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controls.actions["Fire"].triggered && fireTimer <=0 && !PauseMenu.gameIsPaused)
+        if (((!autoFire && controls.actions["Fire"].triggered) | (autoFire && controls.actions["Fire"].ReadValue<float>() == 1)) && fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
             AudioSource audio = AudioPool.GetAudioSource();
             audio.clip = fireSFX;
