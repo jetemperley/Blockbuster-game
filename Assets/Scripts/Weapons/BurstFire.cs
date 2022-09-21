@@ -21,6 +21,9 @@ public class BurstFire : MonoBehaviour
     public int numberOfShots = 3; //Number of shots in a burst
     public float shotsDelay = 0.1f; //Delay between shots in a burst
 
+    public bool piercing;
+    public int pierceNum;
+
     private float delayTimer;
     private int shotCount;
 
@@ -71,12 +74,26 @@ public class BurstFire : MonoBehaviour
             
             Laser laser = LaserPool.GetLaser();
             laser.SetDamage(damage);
-            laser.fire(
-                spawnPoint.transform.position,
-                spawnPoint.transform.forward*1000,
-                0.2f,
-                gameObject.name
+            if (!piercing)
+            {
+                laser.fire(
+                    spawnPoint.transform.position,
+                    spawnPoint.transform.forward*1000,
+                    0.2f,
+                    gameObject.name
                 );
+            }
+            else
+            {
+                laser.firePierce(
+                    spawnPoint.transform.position,
+                    spawnPoint.transform.forward*1000,
+                    0.2f,
+                    150,
+                    gameObject.name,
+                    pierceNum
+                );
+            }
             
             shotCount -= 1;
             delayTimer = shotsDelay;

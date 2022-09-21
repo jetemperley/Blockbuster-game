@@ -24,6 +24,9 @@ public class ShotgunFire : MonoBehaviour
 
     public int damage = 1;
 
+    public bool autoFire;
+    public bool piercing;
+    public int pierceNum;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +42,7 @@ public class ShotgunFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controls.actions["Fire"].triggered && fireTimer <=0 && !PauseMenu.gameIsPaused)
+        if (((!autoFire && controls.actions["Fire"].triggered) | (autoFire && controls.actions["Fire"].ReadValue<float>() == 1)) && fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
             AudioSource audio = AudioPool.GetAudioSource();
             audio.clip = fireSFX;
@@ -68,12 +71,26 @@ public class ShotgunFire : MonoBehaviour
                     Debug.Log(dir);
                     Laser laser = LaserPool.GetLaser();
                     laser.SetDamage(damage);
-                    laser.fire(
-                        spawnPoint.transform.position,
-                        dir,
-                        0.2f,
-                        gameObject.name
-                        );  
+                    if (!piercing)
+                    {
+                        laser.fire(
+                            spawnPoint.transform.position,
+                            dir,
+                            0.2f,
+                            gameObject.name
+                            ); 
+                    } 
+                    else
+                    {
+                        laser.firePierce(
+                            spawnPoint.transform.position,
+                            dir,
+                            0.2f,
+                            150,
+                            gameObject.name,
+                            pierceNum
+                        ); 
+                    }
                 }
                 
             

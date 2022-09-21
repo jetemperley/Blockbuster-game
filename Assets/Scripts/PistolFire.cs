@@ -20,6 +20,9 @@ public class PistolFire : MonoBehaviour
 
     public int damage = 1;
 
+    public bool piercing; //Whether or not the weapon has piercing shots
+    public int pierceNum;
+
     private float fireTimer; //seconds
     // Start is called before the first frame update
     void Start()
@@ -45,12 +48,27 @@ public class PistolFire : MonoBehaviour
             
             Laser laser = LaserPool.GetLaser();
             laser.SetDamage(damage);
-            laser.fire(
-                spawnPoint.transform.position,
-                spawnPoint.transform.forward*1000,
-                0.2f,
-                gameObject.name
+
+            if (!piercing)
+            {
+                laser.fire(
+                    spawnPoint.transform.position,
+                    spawnPoint.transform.forward*1000,
+                    0.2f,
+                    gameObject.name
+                    );
+            }
+            else
+            {
+                laser.firePierce(
+                    spawnPoint.transform.position,
+                    spawnPoint.transform.forward*1000,
+                    0.2f,
+                    150,
+                    gameObject.name,
+                    pierceNum
                 );
+            }
             
             fireTimer = fireCooldown;
         }else{
