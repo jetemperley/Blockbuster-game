@@ -24,7 +24,7 @@ public class Void : MonoBehaviour
     //CONSUME
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.transform.parent.gameObject)
+        if(other.gameObject.transform.parent.gameObject != null)
         {
             Destroy(other.gameObject.transform.parent.gameObject);
         }
