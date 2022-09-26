@@ -431,6 +431,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.9411765
       objectReference: {fileID: 0}
+    - target: {fileID: 7013306410994253539, guid: 565d8c1925fde8f4a83c72152140a902, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -11.445038
+      objectReference: {fileID: 0}
     - target: {fileID: 7013306411036233024, guid: 565d8c1925fde8f4a83c72152140a902, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2607,6 +2611,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
+      propertyPath: blocks.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
+      propertyPath: blocks.Array.data[7]
+      value: 
+      objectReference: {fileID: 2614139096010856227, guid: fadc22a479666214e8be27e4086ee16e, type: 3}
     - target: {fileID: 5125213347258825941, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
       propertyPath: m_Name
       value: TerrainGenerator

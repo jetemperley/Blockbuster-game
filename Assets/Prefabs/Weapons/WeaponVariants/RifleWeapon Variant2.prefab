@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8044025768302870838, guid: 7e55b1bc66f3a6247acab473a95c3aa5, type: 3}
       propertyPath: damage
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8044025768302870838, guid: 7e55b1bc66f3a6247acab473a95c3aa5, type: 3}
       propertyPath: piercing
@@ -73,7 +73,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8044025768302870838, guid: 7e55b1bc66f3a6247acab473a95c3aa5, type: 3}
       propertyPath: shotsDelay
-      value: 0.05
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044025768302870838, guid: 7e55b1bc66f3a6247acab473a95c3aa5, type: 3}
+      propertyPath: fireCooldown
+      value: 0.26
       objectReference: {fileID: 0}
     - target: {fileID: 8044025768302870838, guid: 7e55b1bc66f3a6247acab473a95c3aa5, type: 3}
       propertyPath: numberOfShots

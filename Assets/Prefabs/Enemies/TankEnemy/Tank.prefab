@@ -5048,8 +5048,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldOrNot: 0
   name: Tank
-  maxHealth: 40
-  currentHealth: 40
+  maxHealth: 80
+  currentHealth: 80
   invulnerableTimeCooldown: 0
   scoreValue: 100
   shield: {fileID: 0}
@@ -5074,7 +5074,7 @@ MonoBehaviour:
   moveSpeed: 1
   maxMeleeRadius: 10
   startMeleeDistance: 14
-  meleeDamage: 10
+  meleeDamage: 1
   meleeChargeTime: 1
   attackCooldown: 5
   projectile: {fileID: 4908726643756490345, guid: 1af70f223f13a8044ab6a499d54f8ee7, type: 3}
