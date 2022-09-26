@@ -76,8 +76,6 @@ public class UIManager : MonoBehaviour
             pistolCursor.SetActive(false);
             minigunCursor.SetActive(false);
             cannonCursor.SetActive(false);
-            StatSliders.SetActive(false);
-            WeaponSlots.SetActive(false);
         }
 
         scoreDisplayText.text = "Final Score: " + ScoreManager.currentScore;
