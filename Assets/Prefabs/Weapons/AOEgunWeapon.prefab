@@ -80,6 +80,7 @@ MonoBehaviour:
   weaponModel: {fileID: 7431977365561322469, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
   weaponName: Cannon
   weaponPrefab: {fileID: 4311856298354361030}
+  icon: {fileID: 21300000, guid: 7dc87af1f14e8b84aa948b76805c0012, type: 3}
 --- !u!1001 &4311856297784859463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87,14 +88,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4311856298354361029}
     m_Modifications:
-    - target: {fileID: 522091113841650492, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 925937116069969751, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2359253289722499879, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -156,22 +149,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2940139065767823505, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
+      propertyPath: m_VersionIndex
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940139065767823505, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
       propertyPath: m_MeshFormatVersion
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3053442481921964216, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053442481921964216, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
+      propertyPath: m_VersionIndex
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 3053442481921964216, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
       propertyPath: m_MeshFormatVersion
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3080598570171595407, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3273173249070856476, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
@@ -186,6 +183,10 @@ PrefabInstance:
     - target: {fileID: 6090523992561848564, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090523992561848564, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
+      propertyPath: m_VersionIndex
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 6090523992561848564, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
       propertyPath: m_MeshFormatVersion
@@ -407,10 +408,7 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 925937116069969751, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
-    - {fileID: 522091113841650492, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
-    - {fileID: 3273173249070856476, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a230042fd03ca74d9bba7ac6d8da149, type: 3}
 --- !u!4 &1975684032119933024 stripped
 Transform:
@@ -552,6 +550,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   explosiveProjectilePrefab: {fileID: 8547807683775799938, guid: cf871699bc7bcb2448bbedc9b503d670, type: 3}
-  fireCooldown: 0.7
+  fireCooldown: 0.8
+  projectileVelocity: 75
+  explosiveRadius: 8
+  damage: 10
+  autoFire: 0
   spawnPoint: {fileID: 2061508731737891201}
   explosion: {fileID: 6269241604099225854, guid: a16d11605df561d4e8a07142cfac3352, type: 3}

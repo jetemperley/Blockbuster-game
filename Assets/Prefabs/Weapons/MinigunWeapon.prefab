@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 5340235192551012511}
   - component: {fileID: 7181828472751154130}
   - component: {fileID: 4951221220798010238}
-  - component: {fileID: 199154799338092869}
   m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
@@ -3605,20 +3604,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3739859656091179786}
   m_Mesh: {fileID: 0}
---- !u!64 &199154799338092869
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3739859656091179786}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &4351422155872909643
 GameObject:
   m_ObjectHideFlags: 0
@@ -3631,7 +3616,6 @@ GameObject:
   - component: {fileID: 3265374327693533094}
   - component: {fileID: 3037878415459502524}
   - component: {fileID: 8842051316877103436}
-  - component: {fileID: 4308158960445951699}
   - component: {fileID: 7817814424982988518}
   m_Layer: 8
   m_Name: body (1)
@@ -4240,20 +4224,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4351422155872909643}
   m_Mesh: {fileID: 0}
---- !u!64 &4308158960445951699
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4351422155872909643}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!95 &7817814424982988518
 Animator:
   serializedVersion: 4
@@ -4366,10 +4336,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireSFX: {fileID: 8300000, guid: 6b93d32d3e10ec144b939b65f83480a6, type: 3}
   bulletPrefab: {fileID: 574378370519593902, guid: 47afac7a68da64c4fa30d1963d8ac8df, type: 3}
-  maxFireRate: 0.05
-  minFireRate: 0.1
-  maxFireRadius: 0.03
-  minFireRadius: 0.02
+  maxFireRate: 0.08
+  minFireRate: 0.15
+  maxFireRadius: 0.04
+  minFireRadius: 0.03
   fireRadiusIncrement: 0.2
   fireRateIncrement: 0.5
   damage: 3
@@ -4455,7 +4425,6 @@ GameObject:
   - component: {fileID: 162920901958169051}
   - component: {fileID: 1026675068313446735}
   - component: {fileID: 7978644541251837909}
-  - component: {fileID: 8357000490034987082}
   m_Layer: 8
   m_Name: body
   m_TagString: Untagged
@@ -5063,20 +5032,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7312633072020644507}
   m_Mesh: {fileID: 0}
---- !u!64 &8357000490034987082
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7312633072020644507}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &7610877724497649401
 GameObject:
   m_ObjectHideFlags: 0
@@ -5089,7 +5044,6 @@ GameObject:
   - component: {fileID: 7014301273600879965}
   - component: {fileID: 194890122148365477}
   - component: {fileID: 5441723757243996356}
-  - component: {fileID: 6763435657182952471}
   m_Layer: 8
   m_Name: Arch
   m_TagString: Untagged
@@ -5619,20 +5573,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7610877724497649401}
   m_Mesh: {fileID: 0}
---- !u!64 &6763435657182952471
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7610877724497649401}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1001 &438482363797205630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5646,11 +5586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 51983982134830744, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_VersionIndex
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 646183043769837933, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 706136315418408655, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_Layer
@@ -5730,11 +5666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4678912680120505013, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_VersionIndex
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5496350110557251796, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5988707651010818358, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5752,7 +5684,9 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
 --- !u!4 &1844004651040094787 stripped
 Transform:
@@ -5774,10 +5708,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 252fe8268a32d5d409367e5fee9a17f3, type: 2}
-    - target: {fileID: 4295876508739031264, guid: 3bf9e62c972006147842e2912e2979f0, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6936827239732884698, guid: 3bf9e62c972006147842e2912e2979f0, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5836,7 +5766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8601979232652648108, guid: 3bf9e62c972006147842e2912e2979f0, type: 3}
       propertyPath: m_VersionIndex
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8601979232652648108, guid: 3bf9e62c972006147842e2912e2979f0, type: 3}
       propertyPath: m_MeshFormatVersion
@@ -5870,11 +5800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 51983982134830744, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_VersionIndex
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 646183043769837933, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 706136315418408655, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_Layer
@@ -5954,11 +5880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4678912680120505013, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_VersionIndex
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5496350110557251796, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5988707651010818358, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5976,7 +5898,9 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
 --- !u!4 &191517351357068268 stripped
 Transform:
@@ -5996,11 +5920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 51983982134830744, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_VersionIndex
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 646183043769837933, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 706136315418408655, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_Layer
@@ -6080,11 +6000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4678912680120505013, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_VersionIndex
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5496350110557251796, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5988707651010818358, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6102,7 +6018,9 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
 --- !u!4 &27663684183242182 stripped
 Transform:
@@ -6122,11 +6040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 51983982134830744, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_VersionIndex
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 646183043769837933, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 706136315418408655, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_Layer
@@ -6206,11 +6120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4678912680120505013, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_VersionIndex
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5496350110557251796, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5988707651010818358, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6228,7 +6138,9 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
 --- !u!4 &2949540769550807382 stripped
 Transform:
@@ -6248,11 +6160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 51983982134830744, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_VersionIndex
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 646183043769837933, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 706136315418408655, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_Layer
@@ -6332,11 +6240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4678912680120505013, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_VersionIndex
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5496350110557251796, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5988707651010818358, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6374,11 +6278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 51983982134830744, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_VersionIndex
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 646183043769837933, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 706136315418408655, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_Layer
@@ -6458,11 +6358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4678912680120505013, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_VersionIndex
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5496350110557251796, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5988707651010818358, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6480,7 +6376,9 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ceeca966aa4d7fc43bb9f82c700048dc, type: 3}
 --- !u!4 &6863963918662427039 stripped
 Transform:
@@ -6502,10 +6400,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 252fe8268a32d5d409367e5fee9a17f3, type: 2}
-    - target: {fileID: 4295876508739031264, guid: 3bf9e62c972006147842e2912e2979f0, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6936827239732884698, guid: 3bf9e62c972006147842e2912e2979f0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -6564,7 +6458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8601979232652648108, guid: 3bf9e62c972006147842e2912e2979f0, type: 3}
       propertyPath: m_VersionIndex
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8601979232652648108, guid: 3bf9e62c972006147842e2912e2979f0, type: 3}
       propertyPath: m_MeshFormatVersion
@@ -6962,7 +6856,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 3bf9e62c972006147842e2912e2979f0, type: 3}
 --- !u!4 &3551317880216642978 stripped
 Transform:

@@ -18,11 +18,16 @@ public class UIFlash : MonoBehaviour
                 color.a -= fadeAwaySpeed;
                 gotHitScreen.GetComponent<Image>().color=color;
             }
+            else
+            {
+                gotHitScreen.SetActive(false);
+            }
         }
     }
 
     private void OnCollisionEnter(Collision collision){
         if(collision.gameObject.layer==11){
+            gotHitScreen.SetActive(true);
                 var color = gotHitScreen.GetComponent<Image>().color;
                 color.a = StartOpacity;
                 gotHitScreen.GetComponent<Image>().color=color;

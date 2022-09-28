@@ -6,7 +6,7 @@ public class EndOnDestroy : MonoBehaviour
 {
     // the health script destroys the object when its health reaches zero
     void OnDestroy() {
-        FindObjectOfType<GameManager>().EndGame();  
+        // FindObjectOfType<GameManager>().EndGame();  
     }
 
 }

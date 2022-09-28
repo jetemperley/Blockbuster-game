@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMelee : MonoBehaviour
 {
+    private PlayerInput controls;
+
     public float startup;
     public float activeTime;
     public float recovery;
@@ -21,34 +24,37 @@ public class PlayerMelee : MonoBehaviour
     private float timer;
     private Animator animator;
     private GameObject weapon;
-    private GunHolder weaponHolder;
+    //private GunHolder weaponHolder;
 
     // Start is called before the first frame update
     void Start()
     {
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
+        
         timer = startup;
         attacking = false;
         canAttack = true;
         recovering = false;
-        weaponHolder = GetComponent<GunHolder>();
-        CurrentWeapon();
-        animator = sword.GetComponent<Animator>();
-        sword.SetActive(false);
+        //weaponHolder = GetComponent<GunHolder>();
+        // CurrentWeapon();
+        animator = GetComponent<Animator>();
+        // sword.SetActive(false);
+        playerCamera = FindObjectOfType<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire2") && canAttack)
+         if (canAttack && controls.actions["Fire"].triggered)
         {
             AudioSource audio = AudioPool.GetAudioSource();
             audio.clip = swordSwingSFX;
             audio.volume = 0.25f;
             audio.Play(0);
-            CurrentWeapon();
-            weaponHolder.canSwitch = false;
-            weapon.SetActive(false);
-            sword.SetActive(true);
+            //CurrentWeapon();
+            //weaponHolder.canSwitch = false;
+            // weapon.SetActive(false);
+            // sword.SetActive(true);
             animator.SetTrigger("Attack");
             timer = startup;
             attacking = true;
@@ -76,19 +82,19 @@ public class PlayerMelee : MonoBehaviour
 
         if (recovering && timer <= 0)
         {
-            weapon.SetActive(true);
-            sword.SetActive(false);
+            // weapon.SetActive(true);
+            // sword.SetActive(false);
             recovering = false;
             canAttack = true;
-            weaponHolder.canSwitch = true;
+            // weaponHolder.canSwitch = true;
         }
     }
 
-    private void CurrentWeapon()
-    {
-        if (weaponHolder.gunRoot != null && weaponHolder.gunRoot.activeSelf)
-        {
-            weapon = weaponHolder.gunRoot;
-        }
-    }
+    // private void CurrentWeapon()
+    // {
+    //     if (weaponHolder.gunRoot != null && weaponHolder.gunRoot.activeSelf)
+    //     {
+    //         weapon = weaponHolder.gunRoot;
+    //     }
+    // }
 }

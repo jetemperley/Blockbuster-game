@@ -41,6 +41,20 @@ public class ExplosiveProjectile : MonoBehaviour
         rb.AddForce(new Vector3(0,1f,0) * verticalOffset);
     }
 
+    public void SetProperties (float projVel, float expRad, int dmg)
+    {
+        SetProperties(projVel, expRad, dmg, 6, 2);
+    }
+
+    public void SetProperties (float projVel, float expRad, int dmg, float vOffset, float timeTL)
+    {
+        projectileVelocity = projVel;
+        explosiveRadius = expRad;
+        damage = dmg;
+        verticalOffset = vOffset;
+        timeToLive = timeTL;
+    }
+
     void ExplosionDamage(Vector3 center, float radius)
     {
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
@@ -48,12 +62,15 @@ public class ExplosiveProjectile : MonoBehaviour
 
             Rigidbody rb = hc.GetComponent<Collider>().attachedRigidbody;
             if(rb != null){
-                Health h = rb.gameObject.GetComponent<Health>();
-                if (h != null){
-                    if (h.takeDamage(damage) <= 0){
-                        PlayerStats.getInst().addStat(gameObject.name);
+                if (rb.gameObject.layer != 9)
+                {
+                    Health h = rb.gameObject.GetComponent<Health>();
+                    if (h != null){
+                        if (h.takeDamage(damage) <= 0){
+                            PlayerStats.getInst().addStat(gameObject.name);
+                        } 
                     } 
-                } 
+                }
             }
                         
         }        

@@ -6,12 +6,14 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     Conductor conductor;
+    ConductorV2 conductorV2;
     Rigidbody rigidbody;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         conductor = Conductor.conductor;
+        conductorV2 = ConductorV2.getConductor();
     }
 
     // Update is called once per frame
@@ -28,7 +30,6 @@ public class EnemyMove : MonoBehaviour
             }
         }
         rigidbody.MovePosition(rigidbody.position + Vector3.back * Time.fixedDeltaTime * cond);
-
         
     }
 }

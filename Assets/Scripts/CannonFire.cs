@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CannonFire : MonoBehaviour
 {
+    private PlayerInput controls;
+
     public Camera cam;
     public ExplosiveProjectile explosiveProjectilePrefab;
     public float fireCooldown; //seconds
+
+    public float projectileVelocity;
+    public float explosiveRadius;
+    public int damage;
+
+    public bool autoFire;
 
     private AudioSource audioData;
     private Animator animator;
@@ -20,6 +29,7 @@ public class CannonFire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;
         audioData = GetComponent<AudioSource>();
         audioData.Stop();
@@ -33,11 +43,12 @@ public class CannonFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && fireTimer <=0 && !PauseMenu.gameIsPaused)
+        if (((!autoFire && controls.actions["Fire"].triggered) | (autoFire && controls.actions["Fire"].ReadValue<float>() == 1)) && fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
             audioData.Play(0);
             animator.SetTrigger("Shoot");
             ExplosiveProjectile explosiveProjectile = Instantiate(explosiveProjectilePrefab);
+            explosiveProjectile.SetProperties(projectileVelocity, explosiveRadius, damage);
             explosiveProjectile.setExplosion(ps);
             explosiveProjectile.transform.parent = spawnPoint.transform;
             explosiveProjectile.transform.localPosition = new Vector3(0,0,0);
@@ -46,8 +57,10 @@ public class CannonFire : MonoBehaviour
             Rigidbody rb = explosiveProjectile.GetComponent<Rigidbody>();
             rb.velocity = (spawnPoint.transform.forward)*explosiveProjectile.projectileVelocity;
             fireTimer = fireCooldown;
+        }else{
+           fireTimer -= Time.deltaTime; 
         }
-
-        fireTimer -= Time.deltaTime;
+        
     }
+
 }

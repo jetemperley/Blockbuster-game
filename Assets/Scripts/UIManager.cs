@@ -13,7 +13,6 @@ public class UIManager : MonoBehaviour
     public FillHealthBar healthBar;
     public FillHealthBar shieldBar;
     public FillDashBar dashBar;
-    public FillDashBar escapeBar;
 
     public TMP_Text scoreText;
     public TMP_Text scoreAddText;
@@ -25,8 +24,8 @@ public class UIManager : MonoBehaviour
     private Health playerHealth;
     private Health playerShield;
     private GameObject StatSliders;
-    private PlayerMove playerMove;
-    private PlayerBounds playerBounds;
+    private GameObject WeaponSlots;
+    private Dashing playerMove;
     private ScoreManager scoreManager;
     
     // Start is called before the first frame update
@@ -36,16 +35,19 @@ public class UIManager : MonoBehaviour
         weapon = FindObjectOfType<GunHolder>().GetComponent<GunHolder>();
         playerHealth =  FindObjectOfType<GunHolder>().GetComponent<Health>(); 
         playerShield = playerHealth.shield;   
-        playerMove =  FindObjectOfType<GunHolder>().GetComponent<PlayerMove>();  
-        playerBounds =  FindObjectOfType<GunHolder>().GetComponent<PlayerBounds>(); 
+        playerMove =  FindObjectOfType<GunHolder>().GetComponent<Dashing>();  
         scoreManager = ScoreManager.Inst;
         StatSliders = GameObject.Find("StatSliders");
+        WeaponSlots = GameObject.Find("WeaponSlots");
     }
 
     // Update is called once per frame
     void Update()
     {
         if(playerHealth != null && !PauseMenu.gameIsPaused){
+            StatSliders.SetActive(true);
+            WeaponSlots.SetActive(true);
+            
             if(playerHealth.currentHealth > 0)
             {
                 UpdateHealthBar();
@@ -59,7 +61,7 @@ public class UIManager : MonoBehaviour
             }
 
             if(playerMove != null){
-                if(playerMove.DashTimer < playerMove.dashCooldown)
+                if(playerMove.DashCDTimer < playerMove.dashCD)
                 {
                     UpdateDashBar();
                 }  
@@ -69,10 +71,11 @@ public class UIManager : MonoBehaviour
             scoreAddText.text = "+" + ScoreManager.scoreToAdd;
             scoreMultiplierText.text = "x" + scoreManager.scoreMultiplier;
             UpdateCursor();
+
         }else{
             pistolCursor.SetActive(false);
             minigunCursor.SetActive(false);
-            cannonCursor.SetActive(false);    
+            cannonCursor.SetActive(false);
         }
 
         scoreDisplayText.text = "Final Score: " + ScoreManager.currentScore;
@@ -96,12 +99,6 @@ public class UIManager : MonoBehaviour
                 cannonCursor.SetActive(true);
             }
         } 
-        /*else if (weapon.pistolRoot.activeSelf)
-        {
-            pistolCursor.SetActive(true);
-            minigunCursor.SetActive(false);
-            cannonCursor.SetActive(false);
-        }*/
     }
 
     private void UpdateHealthBar()
@@ -116,12 +113,7 @@ public class UIManager : MonoBehaviour
 
     private void UpdateDashBar()
     {
-        dashBar.UpdateBar(playerMove.DashTimer, playerMove.dashCooldown);
-    }
-
-    private void UpdateEscapeBar()
-    {
-        escapeBar.UpdateBar(playerBounds.EscapeTime, playerBounds.escapeTimeMax);
+        dashBar.UpdateBar(playerMove.DashCDTimer, playerMove.dashCD);
     }
 
     public void UpdateWeaponSlots(int slot, WeaponModel wm)

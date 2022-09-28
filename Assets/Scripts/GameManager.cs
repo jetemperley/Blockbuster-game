@@ -9,13 +9,24 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
     public CheckpointManager CPManager;
 
+    //Main Menu objects
+    public GameObject controlPanel;
+    public GameObject mainMenuPanel;
+
     public static bool resetToCheckpointOrNot = false;
 
     public static bool gameHasEnded = false;
 
     void Start()
     {
+        if(PlayerPrefs.GetFloat("MouseSens") == null)
+        {
+            PlayerPrefs.SetFloat("MouseSens", 0.5f);
+            PlayerPrefs.Save();
+        }
+
         CPManager = CheckpointManager.Inst;
+        
         if (resetToCheckpointOrNot) 
         {
             CPManager.ResetToCheckpoint();
@@ -26,7 +37,7 @@ public class GameManager : MonoBehaviour
     public void EndGame (){
         
         if(gameHasEnded == false){
-            GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().volume = 0.15f;
+            // GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().volume = 0.15f;
             gameHasEnded = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
@@ -41,7 +52,7 @@ public class GameManager : MonoBehaviour
     public void Restart (){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         ScoreManager.ResetScores();
-        CheckpointManager.ResetCheckpoints();
+        // CheckpointManager.ResetCheckpoints();
         gameHasEnded = false;
     }
 
@@ -70,6 +81,23 @@ public class GameManager : MonoBehaviour
 
     public void Load1(){
         SceneManager.LoadScene(1);
+    }
+
+    public void ActivateControlPanel()
+    {
+        controlPanel.SetActive(true);
+        mainMenuPanel.SetActive(false);
+    }
+
+    public void ActivateMenuPanel()
+    {
+        controlPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
+    }
+
+    public void OpenWindow()
+    {
+        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSeImuncEjWfrFVEE-joCW1IxG83RbtGpwTC4PQKUXh8vaY7aA/viewform?usp=sf_link");
     }
 
 }

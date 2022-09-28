@@ -14,9 +14,14 @@ public class TerrainGen : MonoBehaviour
     public Block emptyBlock; //Empty block for the start of each level
 
     public float distToCheckpoint; //Total distance needed to spawn the next checkpoint
-    private int checkpointNumber = 1; //The number of checkpoints spawned, starting at 1
+    private int checkpointNumber; //The total number of checkpoints spawned
+    private int checkpointCount;
+    public int checkpointsToNextLvl; //The number of checkpoints to be reached until a level increase
 
-    public static int level = 1; //The current level (determines difficulty)
+    public static int level = 0; //The current level (determines difficulty)
+    public int maxLevel; //Maximum level
+    public int lengthIncrement; //The increase in a level length
+    public float levelSpeedIncrement; //Increase in fall away speed after increasing level
 
     public static TerrainGen instance;
 
@@ -27,7 +32,11 @@ public class TerrainGen : MonoBehaviour
     {
         instance = this;
 
-        player =  FindObjectOfType<PlayerMove>().gameObject;
+        zOffset = 0.0f;
+        yOffset = 0.0f;
+        level = 0;
+
+        player =  FindObjectOfType<PlayerMovement2>().gameObject;
 
         for (int i = 0; i < blocksToSpawn; i++) //Create initial starting area
         {
@@ -49,12 +58,22 @@ public class TerrainGen : MonoBehaviour
         }
 
         //Spawn a checkpoint
-        if (zOffset >= distToCheckpoint*checkpointNumber)
+        if (zOffset >= distToCheckpoint*(checkpointNumber+1))
         {
             Instantiate(checkpointBlock.gameObject, new Vector3(0.0f, yOffset, zOffset), checkpointBlock.gameObject.transform.rotation);
             zOffset += checkpointBlock.length;
             yOffset += checkpointBlock.heightOffset;
             checkpointNumber++;
+            checkpointCount++;
+        }
+
+        //Increase level after reaching set number of checkpoints
+        if (checkpointCount >= checkpointsToNextLvl && level < maxLevel)
+        {
+            level += 1;
+            distToCheckpoint += lengthIncrement;
+            checkpointCount = 0;
+            ConductorV2.getConductor().levelSpeed += levelSpeedIncrement;
         }
     }
 

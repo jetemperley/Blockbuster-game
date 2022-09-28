@@ -64,6 +64,59 @@ public class Laser : MonoBehaviour
         }
     }
 
+    public void firePierce(Vector3 pos, Vector3 dir, float time, float speed, string weap, int pierceNum)
+    {
+        this.dir = dir;
+        this.speed = speed;
+        this.time = time;
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(pos, dir, 1000);
+
+        Vector3[] arr = {pos,pos+(dir*1000)};
+        RaycastHit hit;
+
+        int numPierced = 0;
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (numPierced > pierceNum)
+            {
+                line.SetPositions(arr);
+                return;
+            }
+
+            hit = hits[i];
+
+            try 
+            {
+                if (hit.collider.attachedRigidbody.gameObject.layer == 9)
+                    return;
+        
+                Health health = hit.collider.attachedRigidbody.gameObject.GetComponent<Health>();
+                if (health != null){
+                    health.takeDamage(damage); 
+                    numPierced++;
+                    if (health.getHealth() <= 0){
+                        // Debug.Log(weap);
+                        PlayerStats.getInst().addStat(weap);
+                    }
+                }
+            } catch {}
+        }
+
+        if (hits.Length > 0)
+        {
+            hit = hits[hits.Length-1];
+
+            Vector3[] arr1 = {pos, hit.point};
+            line.SetPositions(arr1);
+        }
+        else 
+        {
+            line.SetPositions(arr);
+        }
+    }
+
     public void SetDamage(int dmg){
         damage = dmg;
     }

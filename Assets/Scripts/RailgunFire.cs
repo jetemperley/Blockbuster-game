@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RailgunFire : MonoBehaviour
 {
+    private PlayerInput controls; 
+
     public float fireCooldown; //seconds
     public float beamWidth;
 
@@ -18,6 +21,7 @@ public class RailgunFire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;
         audioData = GetComponent<AudioSource>();
         audioData.Stop();
@@ -29,19 +33,18 @@ public class RailgunFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")&& fireTimer <=0 && !PauseMenu.gameIsPaused)
+        if (controls.actions["Fire"].triggered && fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
             
             audioData.Play(0);
             //animator.SetTrigger("Shoot");
-
             Health health;
 
             foreach(RaycastHit hit in Physics.SphereCastAll(spawnPoint.transform.position, beamWidth, spawnPoint.transform.forward*1000, 300.0f))
             {
                 try{
                     health = hit.collider.attachedRigidbody.gameObject.GetComponent<Health>();
-                    if (health != null){
+                    if (health != null && hit.collider.attachedRigidbody.gameObject.layer != 9){
                         health.takeDamage(damage); 
                         /*if (health.getHealth() <= 0){
                             Debug.Log(weap);
@@ -49,13 +52,15 @@ public class RailgunFire : MonoBehaviour
                         }*/
                     }
                 } catch{}
-            }
-        
+            }        
             fireTimer = fireCooldown;
-        } else if (fireTimer > 0){
-            fireTimer -= Time.deltaTime;
+        }else{
+        fireTimer -= Time.deltaTime;
         }
+    }
 
+    public void Fire(InputAction.CallbackContext ctx)
+    {
         
     }
 }
