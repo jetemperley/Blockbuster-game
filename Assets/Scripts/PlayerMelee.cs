@@ -37,8 +37,9 @@ public class PlayerMelee : MonoBehaviour
         recovering = false;
         //weaponHolder = GetComponent<GunHolder>();
         // CurrentWeapon();
-        animator = sword.GetComponent<Animator>();
-        sword.SetActive(false);
+        animator = GetComponent<Animator>();
+        // sword.SetActive(false);
+        playerCamera = FindObjectOfType<Camera>();
     }
 
     // Update is called once per frame

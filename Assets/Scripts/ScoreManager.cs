@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static int currentScore = 0;
+    public static int additiveScore = 0;
     public static int scoreToAdd = 0;
+    public static int currentScore = 0;
     public int baseAddRate;
     private int addRate;
     public float timeToAdd;
@@ -25,6 +26,8 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    private PlayerMovement2 player;
+
     void Awake() {
         if (inst == null)
             inst = this;
@@ -35,6 +38,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<PlayerMovement2>();
         timer = timeToAdd;
         scoreMultiplier = baseMultiplier;
     }
@@ -49,17 +53,20 @@ public class ScoreManager : MonoBehaviour
 
         if (timer <= 0 && scoreToAdd > addRate)
         {
-            currentScore += addRate;
+            additiveScore += addRate;
             scoreToAdd -= addRate;
         }
 
         if (timer <= 0 && scoreToAdd <= baseAddRate)
         {
-            currentScore += scoreToAdd;
+            additiveScore += scoreToAdd;
             scoreToAdd = 0;
             timer = timeToAdd;
             scoreMultiplier = baseMultiplier;
         }
+
+        if(player)
+            currentScore = additiveScore + (int)FindObjectOfType<PlayerMovement2>().Distance;
     }
 
     public void AddScore(int score)
@@ -76,12 +83,12 @@ public class ScoreManager : MonoBehaviour
 
     public static int SetScore()
     {
-        return currentScore += scoreToAdd;
+        return additiveScore += scoreToAdd;
     }
 
     public static void ResetScores()
     {
-        currentScore = 0;
+        additiveScore = 0;
         scoreToAdd = 0;
     }
 }

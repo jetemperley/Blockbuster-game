@@ -45,7 +45,7 @@ public class Laserfire : MonoBehaviour
         foreach(RaycastHit hit in Physics.SphereCastAll(spawnPoint.transform.position, beamWidth, spawnPoint.transform.forward*1000, laserRange))
         {
             try{
-                if(hit.transform.tag == "Enemy"){
+                if(hit.collider.attachedRigidbody.gameObject.layer == 11){
                     ticRate+=Time.deltaTime;
                     if(ticRate>=ticRateCap){
                         Health health = hit.collider.attachedRigidbody.gameObject.GetComponent<Health>();

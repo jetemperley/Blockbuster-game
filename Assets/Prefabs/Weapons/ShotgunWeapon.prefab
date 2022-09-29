@@ -159,13 +159,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d32261e6e85d44ea151f41d21153e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireCooldown: 1
-  maxSpread: 0.1
+  fireCooldown: 0.45
+  maxSpread: 65
   bulletRows: 3
   bulletColumns: 3
   spawnPoint: {fileID: 5265274450837369437}
-  fireSFX: {fileID: 0}
-  damage: 2
+  fireSFX: {fileID: 8300000, guid: 9b6f859923d28c84792da8f2b48f7f83, type: 3}
+  damage: 1
 --- !u!4 &5663481359794424454 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8361795809751395564, guid: d83588e96ac7aa546bf582bd10cdf959, type: 3}

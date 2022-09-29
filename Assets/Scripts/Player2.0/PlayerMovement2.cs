@@ -49,6 +49,15 @@ public class PlayerMovement2 : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitingSlope;
     
+    private Vector3 startPos;
+    private float distance;
+    public float Distance
+    {
+        get
+        {
+            return distance;
+        }
+    }
 
     public Transform orientation;
 
@@ -76,6 +85,7 @@ public class PlayerMovement2 : MonoBehaviour
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        startPos = transform.position;
 
         if(speedParticles != null)
         {
@@ -105,6 +115,9 @@ public class PlayerMovement2 : MonoBehaviour
             else
                 rb.drag = 0; 
         }
+
+        //distance
+        distance = Vector3.Distance(startPos, transform.position);
         
     }
 
@@ -118,7 +131,7 @@ public class PlayerMovement2 : MonoBehaviour
         Vector2 moveInputVector = controls.actions["Move"].ReadValue<Vector2>();
         horizontalInput = moveInputVector.x;
         verticalInput = moveInputVector.y;
-        if(verticalInput > 0 && speedParticles!= null)
+        if(verticalInput != 0 && speedParticles!= null)
         {
             speedParticles.GetComponent<ParticleSystem>().Play();
         }else if(speedParticles != null)
@@ -161,10 +174,10 @@ public class PlayerMovement2 : MonoBehaviour
     private void Look()
     {
         Vector2 lookInputVector = controls.actions["Look"].ReadValue<Vector2>();
-        rotationX += -lookInputVector.y * lookSpeed;
+        rotationX += -lookInputVector.y * (lookSpeed* 2 * PlayerPrefs.GetFloat("MouseSens"));
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, lookInputVector.x * lookSpeed, 0);
+        transform.rotation *= Quaternion.Euler(0, lookInputVector.x * (lookSpeed* 2 * PlayerPrefs.GetFloat("MouseSens")), 0);
     }
 
     private void StateHandler()

@@ -19,7 +19,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        if(PlayerPrefs.GetFloat("MouseSens") == null)
+        {
+            PlayerPrefs.SetFloat("MouseSens", 0.5f);
+            PlayerPrefs.Save();
+        }
+
         CPManager = CheckpointManager.Inst;
+        
         if (resetToCheckpointOrNot) 
         {
             CPManager.ResetToCheckpoint();
@@ -86,6 +93,11 @@ public class GameManager : MonoBehaviour
     {
         controlPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+    }
+
+    public void OpenWindow()
+    {
+        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSeImuncEjWfrFVEE-joCW1IxG83RbtGpwTC4PQKUXh8vaY7aA/viewform?usp=sf_link");
     }
 
 }
