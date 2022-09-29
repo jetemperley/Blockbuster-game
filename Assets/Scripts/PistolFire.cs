@@ -7,7 +7,6 @@ public class PistolFire : MonoBehaviour
 {
     private PlayerInput controls;
 
-    public Bullet bulletPrefab;
     public float fireCooldown; //seconds
 
     private AudioSource audioData;

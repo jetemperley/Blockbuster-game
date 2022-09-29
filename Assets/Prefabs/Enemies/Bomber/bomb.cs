@@ -18,30 +18,47 @@ public class bomb : MonoBehaviour
     public Health health;
     Vector3 startPos;
     Vector3 endPos;
+    Vector3 inFrontPos = new Vector3 (0,0,6);
 
     public float countdownTimer = 5;
+    private float countdowner;
+
     private int damage = 1000;
+    public LayerMask ground;
+
+    public AudioSource bombBeep;
+    private float beepRate;
+    private float beepRate2;
+    private float volume;
+    private float distance;
+    public float maxSoundDist;
+    private float multiplier;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        beepRate = 4;
         target = GameObject.FindGameObjectWithTag(targetTag).transform;
         startTime = Time.time;
         startPos = transform.position;
-        endPos = target.position + new Vector3 (0,0,6);
+        endPos = target.position + inFrontPos;
+        countdowner=countdownTimer;
     }
 
     // Update is called once per frame
     void Update()
     {
         moveAtPlayerArc();
-        countdownTimer-=Time.deltaTime;
-        if(countdownTimer<=0){
+        countdowner-=Time.deltaTime;
+        Beep();
+        if(countdowner<=0){
             if (health != null){
                 health.takeDamage(damage);
             }
         }
+        Debug.Log(volume);
+        
     }
 
 
@@ -57,6 +74,33 @@ public class bomb : MonoBehaviour
 
         transform.position = Vector3.Slerp(startRelCenter, endRelCenter, fracComplete);
         transform.position += centerPoint;
+    }
+
+    // private void FindGround(){
+    //     RaycastHit hit;
+    //     if(Physics.Raycast(target.position + inFrontPos, new Vector3 (0,-1,0), out hit, Mathf.Infinity, ground)){
+            
+    //     }
+    // }
+
+    private void Beep(){
+        multiplier = -countdowner+countdownTimer;
+        beepRate += Time.deltaTime*multiplier;
+        distance = (target.position - transform.position).magnitude;
+        volume=(-1/maxSoundDist)*distance+0.5f; 
+        //beepRate2= (countdownTimer/12.5f)+0.2f;
+        
+        if(beepRate>=1f){
+            bombBeep.PlayOneShot(bombBeep.clip, volume);
+            beepRate = 0;
+        }
+
+
+    //     //volume=(-1/maxLookDist)*distance+1; //y = m*x+b
+    //         if(beepRate>distance/50){
+    //             mineBeep.PlayOneShot(clip, volume);
+    //             beepRate=0;
+    //         }
     }
 
 }
