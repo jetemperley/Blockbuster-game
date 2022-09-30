@@ -8,6 +8,7 @@ public class MineBehaviour2 : MonoBehaviour
     Rigidbody rb;
     public float moveSpeed;
     public float maxLookDist;
+    public float maxBeepDist;
     public string targetTag = "Player";
     private bool foundTarget = false;
     private Vector3 foundTheMotherFucker;
@@ -20,6 +21,8 @@ public class MineBehaviour2 : MonoBehaviour
     private float time;
     private float volume;
 
+    public Health health;
+    private int damage = 1000;
 
 
     // Start is called before the first frame update
@@ -42,8 +45,8 @@ public class MineBehaviour2 : MonoBehaviour
         beepRate += Time.deltaTime;
         
         if(mineBeep != null || clip != null){
-            volume=(-1/maxLookDist)*distance+1f; //y = m*x+b
-            if(distance<maxLookDist){
+            volume=(-1/maxBeepDist)*distance+1f; //y = m*x+b
+            if(distance<maxBeepDist){
                 if(beepRate>distance/25){
                     mineBeep.Play();
                     beepRate=0;
@@ -51,10 +54,18 @@ public class MineBehaviour2 : MonoBehaviour
             }
         }
 
+        if(distance<=maxLookDist){
+            if (health != null){
+                health.takeDamage(damage);
+            }
+        }
+
     }
 
     private void OnDrawGizmosSelected() {
         Gizmos.DrawWireSphere(transform.position, maxLookDist);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, maxBeepDist);
         
     }
 }
