@@ -25,7 +25,11 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
    public void OnPointerEnter(PointerEventData eventData)
    {
       GetComponent<Outline>().effectColor = hovColour;
-      text.GetComponent<Outline>().effectColor = hovColour;
+      if(text.GetComponent<Outline>() != null)
+      {
+        text.GetComponent<Outline>().effectColor = hovColour; 
+      }
+      
    }
 
    public void OnPointerExit(PointerEventData eventData)
