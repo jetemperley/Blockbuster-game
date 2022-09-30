@@ -23,6 +23,8 @@ public class TerrainGen : MonoBehaviour
     public int lengthIncrement; //The increase in a level length
     public float levelSpeedIncrement; //Increase in fall away speed after increasing level
 
+    public bool checkpointSpawned;
+
     public static TerrainGen instance;
 
     private GameObject player;
@@ -44,6 +46,8 @@ public class TerrainGen : MonoBehaviour
             zOffset += emptyBlock.length;
             yOffset += emptyBlock.heightOffset;
         }
+
+        checkpointSpawned = false;
     }
 
     // Update is called once per frame
@@ -51,20 +55,33 @@ public class TerrainGen : MonoBehaviour
     {
         if (player != null)
         {
-            if (player.transform.position.z > (zOffset - distanceToSpawn))
+            /*if (player.transform.position.z > (zOffset - distanceToSpawn))
             {
                 SpawnTerrain();
+            }*/
+
+            if (player.transform.position.z > (zOffset - checkpointBlock.length))
+            {
+                checkpointNumber++;
+                checkpointCount++;
+                checkpointSpawned = false;
             }
         }
 
+        while(zOffset < distToCheckpoint*(checkpointNumber+1))
+        {
+            SpawnTerrain();
+        }
+
         //Spawn a checkpoint
-        if (zOffset >= distToCheckpoint*(checkpointNumber+1))
+        if (zOffset >= distToCheckpoint*(checkpointNumber+1) && !checkpointSpawned)
         {
             Instantiate(checkpointBlock.gameObject, new Vector3(0.0f, yOffset, zOffset), checkpointBlock.gameObject.transform.rotation);
             zOffset += checkpointBlock.length;
             yOffset += checkpointBlock.heightOffset;
-            checkpointNumber++;
-            checkpointCount++;
+            checkpointSpawned = true;
+            //checkpointNumber++;
+            //checkpointCount++;
         }
 
         //Increase level after reaching set number of checkpoints
