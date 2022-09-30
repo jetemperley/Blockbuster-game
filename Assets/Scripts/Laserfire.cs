@@ -15,8 +15,13 @@ public class Laserfire : MonoBehaviour
     private Vector3[] points;
 
     public GameObject spawnPoint;
+    public GameObject particle;
     private float ticRate;
     public float ticRateCap = 0.2f;
+
+    public float endWidth;
+    public float startWidth;
+    public Vector3 laserOffset;
 
     // Start is called before the first frame update
     void Start()
@@ -24,19 +29,22 @@ public class Laserfire : MonoBehaviour
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;     
         lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.startWidth = 0.2f;
-        lineRenderer.endWidth = 0.2f;
+
         points = new Vector3[2];
     }
 
     // Update is called once per frame
     void Update(){
+        lineRenderer.startWidth = startWidth;
+        lineRenderer.endWidth = endWidth;
         if (controls.actions["Fire"].ReadValue<float>() == 1 && !PauseMenu.gameIsPaused)
         {
             Shoot();
+            particle.SetActive(true);
         }else{
             lineRenderer.enabled = false;
             ticRate = 0;
+            particle.SetActive(false);
         }
     }
 
@@ -57,7 +65,7 @@ public class Laserfire : MonoBehaviour
                 }
             } catch{}
             }
-            points[0] = spawnPoint.transform.position; 
+            points[0] = spawnPoint.transform.position + laserOffset; 
             points[1] = spawnPoint.transform.position+(spawnPoint.transform.forward*laserRange);
             lineRenderer.SetPositions(points);
         }
