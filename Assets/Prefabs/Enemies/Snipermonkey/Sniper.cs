@@ -89,5 +89,9 @@ public class Sniper : MonoBehaviour
             }
         }
     }
+
+    private void Flicker(){
+        
+    }
     
 }
