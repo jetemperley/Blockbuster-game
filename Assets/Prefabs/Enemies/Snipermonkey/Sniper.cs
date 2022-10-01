@@ -32,6 +32,7 @@ public class Sniper : MonoBehaviour
         points = new Vector3[2];
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -39,6 +40,7 @@ public class Sniper : MonoBehaviour
         if(lockOnTimer<lockOnTime && isInRange()){
             LookAtPlayer();
             LaserLine();
+            Flicker();
             lockOnTimer += Time.deltaTime;
         }else if(lockOnTimer>lockOnTime && isInRange()){
             laser.enabled = true;
@@ -67,7 +69,7 @@ public class Sniper : MonoBehaviour
     }
 
     private void LaserLine(){
-        laser.enabled=true;
+        //laser.enabled=true;
         points[1] = rb.position;
         points[0] = target.position;
         laser.SetPositions(points);
@@ -87,10 +89,30 @@ public class Sniper : MonoBehaviour
             if(hit.transform.name == targetTag){
             Health h = target.gameObject.GetComponent<Health>();
             if (h != null)
+                Debug.Log("sniper delt damage hehe");
                 h.takeDamage(damage);
             }
         }
     }
 
-    
+    private float flickerOnTimer;
+    private float flickerOffTimer;
+    public float flickerOffTime;
+    public float flickerOnTime;
+    private float flickerMultiply;
+    private void Flicker(){
+        flickerOffTimer += Time.deltaTime;
+        flickerMultiply = 12*lockOnTimer+1;
+        laser.enabled = false;
+        if(flickerOffTimer>=flickerOffTime){
+            if(laser.enabled!=true){
+                laser.enabled = true;
+            }
+            flickerOnTimer += Time.deltaTime * flickerMultiply;
+        }
+        if(flickerOnTimer>=flickerOnTime){
+            flickerOffTimer = 0;
+            flickerOnTimer = 0;
+        }
+    }
 }
