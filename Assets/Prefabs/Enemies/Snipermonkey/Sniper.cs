@@ -35,11 +35,13 @@ public class Sniper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(lockOnTimer<lockOnTime && isInRange()){
             LookAtPlayer();
             LaserLine();
             lockOnTimer += Time.deltaTime;
         }else if(lockOnTimer>lockOnTime && isInRange()){
+            laser.enabled = true;
             shootDelayTimer += Time.deltaTime;
             if(shootDelayTimer>shootDelayTime){
                 Shoot();
@@ -90,8 +92,5 @@ public class Sniper : MonoBehaviour
         }
     }
 
-    private void Flicker(){
-        
-    }
     
 }

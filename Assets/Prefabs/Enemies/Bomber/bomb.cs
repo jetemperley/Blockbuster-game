@@ -57,7 +57,6 @@ public class bomb : MonoBehaviour
                 health.takeDamage(damage);
             }
         }
-        Debug.Log(volume);
         
     }
 
@@ -90,7 +89,7 @@ public class bomb : MonoBehaviour
         volume=(-1/maxSoundDist)*distance+0.5f; 
         //beepRate2= (countdownTimer/12.5f)+0.2f;
         
-        if(beepRate>=1f){
+        if(beepRate>=0.27f){
             bombBeep.PlayOneShot(bombBeep.clip, volume);
             beepRate = 0;
         }
@@ -103,4 +102,7 @@ public class bomb : MonoBehaviour
     //         }
     }
 
+    private void OnDrawGizmosSelected() {
+        Gizmos.DrawWireSphere(transform.position, maxSoundDist);
+    }
 }
