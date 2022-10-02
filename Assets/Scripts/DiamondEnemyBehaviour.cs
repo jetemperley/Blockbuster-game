@@ -12,7 +12,7 @@ public class DiamondEnemyBehaviour : MonoBehaviour
 
     public GameObject laser;
     public float laserTotalLength;
-    public float laserCurrentLength;
+    private float laserCurrentLength;
     public float laserGrowthRate;
 
     public float moveSpeed;

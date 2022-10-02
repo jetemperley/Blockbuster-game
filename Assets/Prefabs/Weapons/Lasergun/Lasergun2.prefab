@@ -429,7 +429,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 189
+  m_VersionIndex: 207
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -878,7 +878,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 180
+  m_VersionIndex: 198
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1331,7 +1331,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 183
+  m_VersionIndex: 201
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1632,7 +1632,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 180
+  m_VersionIndex: 198
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1744,10 +1744,11 @@ MonoBehaviour:
   laserRange: 40
   lineRenderer: {fileID: 4651232096533198367}
   spawnPoint: {fileID: 1407139535535640806}
+  particle: {fileID: 5023881764808007436}
   ticRateCap: 0.05
   endWidth: 1
   startWidth: 0.5
-  laserOffset: {x: 0, y: 0, z: -5}
+  laserOffset: {x: 0, y: 0, z: 0}
 --- !u!120 &4651232096533198367
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1873,9 +1874,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5023881764808007436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.023, y: 0.023, z: 0.0759}
+  m_LocalPosition: {x: -0.01, y: 0.023, z: 0.0759}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9206224270384599109}
   m_RootOrder: 5
@@ -7305,7 +7306,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 180
+  m_VersionIndex: 198
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

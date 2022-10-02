@@ -72,4 +72,5 @@ public class Bomber : MonoBehaviour
             Vector3 dir = (target.position - transform.position).normalized * bombSpawnDist;
             g.transform.position = transform.position + dir;
     }
+    
 }
