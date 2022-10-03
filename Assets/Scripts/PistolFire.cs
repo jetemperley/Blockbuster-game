@@ -25,8 +25,6 @@ public class PistolFire : MonoBehaviour
     {
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;
-        audioData = GetComponent<AudioSource>();
-        audioData.Stop();
         animator = GetComponent<Animator>();
         LaserPool.Init();        
     }
