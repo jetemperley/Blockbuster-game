@@ -5086,6 +5086,9 @@ MonoBehaviour:
   projPerBurst: 3
   projInterval: 0.05
   burstFireCooldown: 3
+  chargeUpsfx: {fileID: 3284608777412317739}
+  impactsfx: {fileID: 8114176148966133175}
+  cooldownsfx: {fileID: 1888802140250178518}
 --- !u!114 &8077535858866078102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5123,7 +5126,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 152595c66959e964081a224d349bbc50, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5167,7 +5170,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5263,7 +5266,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.75
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5359,7 +5362,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.75
       inSlope: 0
       outSlope: 0
       tangentMode: 0

@@ -39,6 +39,11 @@ public class TankAttack : MonoBehaviour
 
     private FieldOfView fov;
     private float burstFireTimer;
+
+    //Sound
+    public AudioSource chargeUpsfx;
+    public AudioSource impactsfx;
+    public AudioSource cooldownsfx;
     
 
     // Start is called before the first frame update
@@ -89,8 +94,9 @@ public class TankAttack : MonoBehaviour
 
     private IEnumerator AttackSequence()
     {
-        //do charge up particles
+        //do charge up particles and sfx
         ChargeMelee();
+        chargeUpsfx.Play();
         yield return new WaitForSeconds(meleeChargeTime);
         meleeCharge.Stop();
         AttackPlayer();
@@ -120,6 +126,7 @@ public class TankAttack : MonoBehaviour
     
     private void AttackPlayer()
     {
+        impactsfx.Play();
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, maxMeleeRadius);
         foreach(Collider hc in hitColliders){
 
@@ -144,6 +151,7 @@ public class TankAttack : MonoBehaviour
 
     private void ResetMelee()
     {
+        cooldownsfx.Play();
         growChargeCircle = false;
         chargeCircleTimer = 0;
         attackTimer = attackCooldown;
