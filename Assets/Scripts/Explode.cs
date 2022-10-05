@@ -27,7 +27,7 @@ public class Explode : DeathEffect
             }
     }
 
-        private void OnDrawGizmosSelected() {
+    private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
         

@@ -7,7 +7,6 @@ public class PistolFire : MonoBehaviour
 {
     private PlayerInput controls;
 
-    public Bullet bulletPrefab;
     public float fireCooldown; //seconds
 
     public bool autoFire; //Whether or not the weapon has automatic fire
@@ -29,8 +28,6 @@ public class PistolFire : MonoBehaviour
     {
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;
-        audioData = GetComponent<AudioSource>();
-        audioData.Stop();
         animator = GetComponent<Animator>();
         LaserPool.Init();        
     }

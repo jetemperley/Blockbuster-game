@@ -276,11 +276,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
-  maxLookDist: 23.57
+  maxLookDist: 40
   targetTag: Player
   lockOnTime: 3
-  shootDelayTime: 0.4
-  damage: 1
+  shootDelayTime: 0.015
+  damage: 3
+  flickerOffTime: 0.12
+  flickerOnTime: 3
 --- !u!1 &824403828101235870
 GameObject:
   m_ObjectHideFlags: 0

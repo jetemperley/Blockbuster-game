@@ -68,7 +68,9 @@ public class Bomber : MonoBehaviour
     private void Shoot(){
             GameObject g = Instantiate(bomb);
             g.transform.SetParent(transform);
+            g.GetComponent<bomb>().maxSoundDist = maxLookDist*1.5f;
             Vector3 dir = (target.position - transform.position).normalized * bombSpawnDist;
             g.transform.position = transform.position + dir;
     }
+    
 }

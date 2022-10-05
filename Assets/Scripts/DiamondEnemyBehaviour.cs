@@ -12,7 +12,7 @@ public class DiamondEnemyBehaviour : MonoBehaviour
 
     public GameObject laser;
     public float laserTotalLength;
-    public float laserCurrentLength;
+    private float laserCurrentLength;
     public float laserGrowthRate;
 
     public float moveSpeed;
@@ -40,19 +40,8 @@ public class DiamondEnemyBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-
-
-        if(rigidbody.position.z > conductor.startBoundary)
-            rigidbody.MovePosition(rigidbody.position + Vector3.back * Time.deltaTime * conductor.getLevelSpeed());
-
-        if (rigidbody.position.z <= conductor.getBoundary())
-        {
-            Destroy(this.gameObject);
-        }
-
-        if(rigidbody.position.z <= conductor.startBoundary){
             if(laser!=null){
                 if(laserCurrentLength<=laserTotalLength){
                     laser.transform.localScale = new Vector3(laserCurrentLength, 1f, 1f);
@@ -61,6 +50,7 @@ public class DiamondEnemyBehaviour : MonoBehaviour
             }
    
             var step = moveSpeed*Time.deltaTime;
+
             if(laserCurrentLength>=laserTotalLength){
                 if(Positions!=null && Positions.Length != 0){
                     if(newPosCheck==false){             
@@ -85,12 +75,10 @@ public class DiamondEnemyBehaviour : MonoBehaviour
                     }
                 }
             }
-
-
-            
-
         }
-
-
-        }
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(transform.position + new Vector3(0,1,-laserTotalLength/2), new Vector3(1,1,laserTotalLength));
+    }
 }
+
