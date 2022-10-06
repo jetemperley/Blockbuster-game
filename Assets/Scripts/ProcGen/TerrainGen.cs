@@ -69,13 +69,13 @@ public class TerrainGen : MonoBehaviour
         }
 
         //Increase level after reaching set number of checkpoints
-        if (checkpointCount >= checkpointsToNextLvl && level < maxLevel)
+        /*if (checkpointCount >= checkpointsToNextLvl && level < maxLevel)
         {
             level += 1;
             distToCheckpoint += lengthIncrement;
             checkpointCount = 0;
             ConductorV2.getConductor().levelSpeed += levelSpeedIncrement;
-        }
+        }*/
 
         while(zOffset < distToCheckpoint*(checkpointNumber+1))
         {
@@ -85,12 +85,20 @@ public class TerrainGen : MonoBehaviour
         //Spawn a checkpoint
         if (zOffset >= distToCheckpoint*(checkpointNumber+1) && !checkpointSpawned)
         {
+            checkpointNumber++;
+            checkpointCount++;
+            //Increase level after reaching set number of checkpoints
+            if (checkpointCount >= checkpointsToNextLvl && level < maxLevel)
+            {
+                level += 1;
+                distToCheckpoint += lengthIncrement;
+                checkpointCount = 0;
+                ConductorV2.getConductor().levelSpeed += levelSpeedIncrement;
+            }
             Instantiate(checkpointBlock.gameObject, new Vector3(0.0f, yOffset, zOffset), checkpointBlock.gameObject.transform.rotation);
             zOffset += checkpointBlock.length;
             yOffset += checkpointBlock.heightOffset;
             checkpointSpawned = true;
-            //checkpointNumber++;
-            //checkpointCount++;
         }
 
     }
@@ -109,8 +117,8 @@ public class TerrainGen : MonoBehaviour
     {
         if (checkpointSpawned)
         {
-            checkpointNumber++;
-            checkpointCount++;
+            //checkpointNumber++;
+            //checkpointCount++;
             checkpointSpawned = false;
         }
     }

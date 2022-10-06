@@ -276,11 +276,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
-  maxLookDist: 40
+  maxLookDist: 80
   targetTag: Player
   lockOnTime: 3
   shootDelayTime: 0.015
-  damage: 3
+  damage: 1
   flickerOffTime: 0.12
   flickerOnTime: 3
 --- !u!1 &824403828101235870
@@ -9373,7 +9373,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8764407908071460867
 GameObject:
