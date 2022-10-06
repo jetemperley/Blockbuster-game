@@ -58,7 +58,7 @@ public class ShotgunFire : MonoBehaviour
                 for(int k = 0; k<bulletColumns; k++)
                 {
                     //Vector3 hitDir = (hitPos - spawnPoint.transform.position).normalized; 
-                    hitPos = cam.transform.position + cam.transform.forward*1000;
+                    hitPos = spawnPoint.transform.position + spawnPoint.transform.forward*1000;
                     Vector3 dir = hitPos
                         + new Vector3(
                             Random.Range(-maxSpread,maxSpread), //* Random.Range(maxSpread/2,maxSpread),
