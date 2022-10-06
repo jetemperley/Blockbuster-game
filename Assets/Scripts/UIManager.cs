@@ -14,9 +14,9 @@ public class UIManager : MonoBehaviour
     public HealthBarImage shieldBar;
     public FillDashBar dashBar;
 
-    public TMP_Text scoreText;
-    public TMP_Text scoreAddText;
-    public TMP_Text scoreMultiplierText;
+    public Text scoreText;
+    public Text scoreAddText;
+    public Text scoreMultiplierText;
     public Text scoreDisplayText;
 
     private GameManager gameManager;
@@ -67,9 +67,9 @@ public class UIManager : MonoBehaviour
             //     }  
             // }
 
-            scoreText.text = "Score: " + ScoreManager.currentScore;
-            scoreAddText.text = "+" + ScoreManager.scoreToAdd;
-            scoreMultiplierText.text = "x" + scoreManager.scoreMultiplier;
+            scoreText.text = "" + ScoreManager.currentScore;
+            scoreAddText.text = "+ " + ScoreManager.scoreToAdd;
+            scoreMultiplierText.text = "x " + scoreManager.scoreMultiplier;
             UpdateCursor();
 
         }else{
