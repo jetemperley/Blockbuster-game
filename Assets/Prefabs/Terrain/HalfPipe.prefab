@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2572900820984855974}
   - component: {fileID: 8315105171801899730}
   - component: {fileID: 3911405445178929189}
+  - component: {fileID: 2790123943882082436}
   m_Layer: 10
   m_Name: HalfPipe
   m_TagString: Untagged
@@ -830,3 +831,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2790123943882082436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2288350740305256988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd4c25308a878a458f80b51ffa65fd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backWall: -10
+  rend: {fileID: 2572900820984855974}
