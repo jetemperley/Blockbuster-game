@@ -19,17 +19,28 @@ public class GunHolder : MonoBehaviour
     {
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         Destroy(gunRoot);
-
+        UI = FindObjectOfType<UIManager>();
         activeSlot = 0;
         gunRoot = slots[activeSlot];
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i != activeSlot && slots[i] != null)
-                slots[i].SetActive(false);
+            if(slots[i] != null)
+            {
+                UI.UpdateWeaponSlots(i, slots[i].GetComponent<WeaponModel>());
+                if (i != activeSlot)
+                {
+                    slots[i].SetActive(false);
+                }else{
+                    UI.UpdateWeaponSlots(3, slots[i].GetComponent<WeaponModel>());
+                }
+                    
+            }
+            
+                
         }
         gunRoot.SetActive(true);
 
-        UI = FindObjectOfType<UIManager>();
+        
     }
 
     // Update is called once per frame
@@ -68,6 +79,7 @@ public class GunHolder : MonoBehaviour
             gunRoot.SetActive(false);
             gunRoot = slots[activeSlot];
             gunRoot.SetActive(true);
+            UI.UpdateWeaponSlots(3, gunRoot.GetComponent<WeaponModel>());
         }
     }
 
@@ -86,6 +98,7 @@ public class GunHolder : MonoBehaviour
                 SwitchGun(i);
                 Destroy(pickup.gameObject.transform.parent.gameObject);
                 UI.UpdateWeaponSlots(i, newGun.GetComponent<WeaponModel>());
+                UI.UpdateWeaponSlots(3, newGun.GetComponent<WeaponModel>());
                 return;
             }
         }
@@ -97,5 +110,6 @@ public class GunHolder : MonoBehaviour
         gunRoot = slots[activeSlot];
         slots[activeSlot].SetActive(true);
         UI.UpdateWeaponSlots(activeSlot, newGun.GetComponent<WeaponModel>());
+        UI.UpdateWeaponSlots(3, newGun.GetComponent<WeaponModel>());
     }
 }
