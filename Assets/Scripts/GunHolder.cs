@@ -30,8 +30,6 @@ public class GunHolder : MonoBehaviour
                 if (i != activeSlot)
                 {
                     slots[i].SetActive(false);
-                }else{
-                    UI.UpdateWeaponSlots(3, slots[i].GetComponent<WeaponModel>());
                 }
                     
             }
@@ -79,7 +77,6 @@ public class GunHolder : MonoBehaviour
             gunRoot.SetActive(false);
             gunRoot = slots[activeSlot];
             gunRoot.SetActive(true);
-            UI.UpdateWeaponSlots(3, gunRoot.GetComponent<WeaponModel>());
         }
     }
 
@@ -98,7 +95,6 @@ public class GunHolder : MonoBehaviour
                 SwitchGun(i);
                 Destroy(pickup.gameObject.transform.parent.gameObject);
                 UI.UpdateWeaponSlots(i, newGun.GetComponent<WeaponModel>());
-                UI.UpdateWeaponSlots(3, newGun.GetComponent<WeaponModel>());
                 return;
             }
         }
@@ -110,6 +106,5 @@ public class GunHolder : MonoBehaviour
         gunRoot = slots[activeSlot];
         slots[activeSlot].SetActive(true);
         UI.UpdateWeaponSlots(activeSlot, newGun.GetComponent<WeaponModel>());
-        UI.UpdateWeaponSlots(3, newGun.GetComponent<WeaponModel>());
     }
 }
