@@ -33,13 +33,39 @@ public class WeaponGen : MonoBehaviour
     {
         System.Random random = new System.Random();
         int randomNumber;
+        int[] randomNumbers = new int[choices.Length];
+        bool unique;
 
         for (int i = 0; i < choices.Length; i++)
         {
             randomNumber = random.Next(0, weaponPool[TerrainGen.level].Length);
+            unique = false;
+            if (i > 0 && choices.Length <= weaponPool[TerrainGen.level].Length)
+            {
+                //Loop until the random number is unique from all others
+                do
+                {
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (randomNumber == randomNumbers[j])
+                        {
+                            unique = false;
+                            do
+                            {
+                                randomNumber = random.Next(0, weaponPool[TerrainGen.level].Length);
+                            } while(randomNumber == randomNumbers[j]);
+                        }
+                        else
+                        {
+                            unique = true;
+                        }
+                    }
+                } while(!unique);
+            }
             choices[i].pickupPrefab = weaponPool[TerrainGen.level][randomNumber].gameObject;
             choices[i].pickupModel = weaponPool[TerrainGen.level][randomNumber].weaponModel;
             choices[i].displayString = weaponPool[TerrainGen.level][randomNumber].weaponName;
+            randomNumbers[i] = randomNumber;
         }
 
         randomNumber = random.Next(0, flavourText.Length);

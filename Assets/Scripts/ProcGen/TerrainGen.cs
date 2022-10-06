@@ -60,12 +60,12 @@ public class TerrainGen : MonoBehaviour
                 SpawnTerrain();
             }*/
 
-            if (player.transform.position.z > (zOffset - checkpointBlock.length))
+            /*if (player.transform.position.z > (zOffset - checkpointBlock.length))
             {
                 checkpointNumber++;
                 checkpointCount++;
                 checkpointSpawned = false;
-            }
+            }*/
         }
 
         //Increase level after reaching set number of checkpoints
@@ -103,5 +103,15 @@ public class TerrainGen : MonoBehaviour
 
         zOffset += blocks[randomNumber].length;
         yOffset += blocks[randomNumber].heightOffset;
+    }
+
+    public void ProgressCheckpoint()
+    {
+        if (checkpointSpawned)
+        {
+            checkpointNumber++;
+            checkpointCount++;
+            checkpointSpawned = false;
+        }
     }
 }
