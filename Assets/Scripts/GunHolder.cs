@@ -22,23 +22,21 @@ public class GunHolder : MonoBehaviour
         UI = FindObjectOfType<UIManager>();
         activeSlot = 0;
         gunRoot = slots[activeSlot];
+        UI.UpdateActiveSlot(activeSlot);
         for (int i = 0; i < slots.Length; i++)
         {
             if(slots[i] != null)
             {
                 UI.UpdateWeaponSlots(i, slots[i].GetComponent<WeaponModel>());
+   
                 if (i != activeSlot)
                 {
                     slots[i].SetActive(false);
-                }
-                    
-            }
-            
+                }                    
+            }           
                 
         }
-        gunRoot.SetActive(true);
-
-        
+        gunRoot.SetActive(true);        
     }
 
     // Update is called once per frame
@@ -70,7 +68,6 @@ public class GunHolder : MonoBehaviour
 
     public void SwitchGun(int slot) 
     {
-
         if (slots[slot] != null)
         {
             activeSlot = slot;
@@ -78,6 +75,7 @@ public class GunHolder : MonoBehaviour
             gunRoot = slots[activeSlot];
             gunRoot.SetActive(true);
         }
+        UI.UpdateActiveSlot(slot);
     }
 
     public void AddGun(GameObject newGun, Pickup pickup)
@@ -93,6 +91,7 @@ public class GunHolder : MonoBehaviour
             {
                 slots[i] = newGun;
                 SwitchGun(i);
+                UI.UpdateActiveSlot(i);
                 Destroy(pickup.gameObject.transform.parent.gameObject);
                 UI.UpdateWeaponSlots(i, newGun.GetComponent<WeaponModel>());
                 return;
@@ -106,5 +105,6 @@ public class GunHolder : MonoBehaviour
         gunRoot = slots[activeSlot];
         slots[activeSlot].SetActive(true);
         UI.UpdateWeaponSlots(activeSlot, newGun.GetComponent<WeaponModel>());
+        
     }
 }

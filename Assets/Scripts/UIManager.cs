@@ -123,4 +123,19 @@ public class UIManager : MonoBehaviour
     {
         iconWeaponSlots[slot].sprite = wm.icon;
     }
+
+    public void UpdateActiveSlot(int slot)
+    {
+        for(int i = 0; i<iconWeaponSlots.Length; i++)
+        {
+            if(i == slot)
+            {
+                iconWeaponSlots[i].color = new Color32(0,255,255,255);
+                iconWeaponSlots[i].transform.Find("Slot").GetComponent<Text>().color = new Color32(0,255,255,255);
+            }else{
+                iconWeaponSlots[i].color = new Color32(255,0,230,255);
+                iconWeaponSlots[i].transform.Find("Slot").GetComponent<Text>().color = new Color32(255,0,230,255);
+            }            
+        }        
+    }
 }
