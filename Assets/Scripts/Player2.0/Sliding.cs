@@ -29,6 +29,10 @@ public class Sliding : MonoBehaviour{
 
     private bool sliding;
     private bool slideKey = false;
+    private bool slideNeedsReset = false;
+    private bool slideKeyNeedsRelease;
+
+    private Vector3 inputDirection;
 
     private void Start(){
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
@@ -48,7 +52,13 @@ public class Sliding : MonoBehaviour{
             slideKey = !slideKey;
         }
 
-        if(slideKey && (horizontalInput !=0 || verticalInput !=0) && pm.grounded==true){
+        if(!slideKey)
+        {
+            slideKeyNeedsRelease = false;
+        }
+
+
+        if(slideKey && (horizontalInput !=0 || verticalInput !=0) && pm.grounded==true && !sliding && !slideNeedsReset && !slideKeyNeedsRelease){
             StartSlide();
         }
         if(!slideKey && sliding){
@@ -63,8 +73,9 @@ public class Sliding : MonoBehaviour{
     }
 
     private void StartSlide(){
+        slideKeyNeedsRelease = true;
         sliding = true;
-
+        inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
         playerObj.localScale= new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
         cam.transform.localScale = new Vector3(1,1/slideYScale,1);
         rb.AddForce(Vector3.down *5f, ForceMode.Impulse);
@@ -73,7 +84,7 @@ public class Sliding : MonoBehaviour{
     }
 
     private void SlidingMovement(){
-        Vector3 inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        
 
         if(!pm.OnSlope() || rb.velocity.y > -0.1f){
             rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
@@ -89,8 +100,16 @@ public class Sliding : MonoBehaviour{
     }
 
     private void StopSlide(){
+        slideNeedsReset = true;
         sliding=false;
         playerObj.localScale= new Vector3(playerObj.localScale.x, startYScale, playerObj.localScale.z);
         cam.transform.localScale = new Vector3(1,1,1);
+        StartCoroutine(ResetSlide());
+    }
+
+    IEnumerator ResetSlide()
+    {
+        yield return new WaitForSeconds(0.25f);
+        slideNeedsReset = false;
     }
 }
