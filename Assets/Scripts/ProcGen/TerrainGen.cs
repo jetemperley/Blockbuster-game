@@ -53,7 +53,7 @@ public class TerrainGen : MonoBehaviour
         {
             if (player.transform.position.z > (zOffset - distanceToSpawn))
             {
-                SpawnTerrain();
+                StartCoroutine(SpawnTerrain());
             }
         }
 
@@ -77,13 +77,18 @@ public class TerrainGen : MonoBehaviour
         }
     }
 
-    void SpawnTerrain()
+    IEnumerator SpawnTerrain()
     {
+
         System.Random random = new System.Random();
         int randomNumber = random.Next(0, blocks.Length);
         Instantiate(blocks[randomNumber].gameObject, new Vector3(0.0f, yOffset, zOffset), blocks[randomNumber].gameObject.transform.rotation);
 
         zOffset += blocks[randomNumber].length;
         yOffset += blocks[randomNumber].heightOffset;
+
+        yield return new WaitForSeconds(0.1f);
     }
+
+
 }

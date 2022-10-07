@@ -29,6 +29,6 @@ public class DeathParticles : DeathEffect
             particlesOnDeath.gameObject.transform.localScale = new Vector3 (explosion,explosion,explosion);
         }
         particlesOnDeath.Play();
-        Destroy(particlesOnDeath, 5);
+        Destroy(particlesOnDeath.gameObject, 3);
     }
 }
