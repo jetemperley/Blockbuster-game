@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
     public static int additiveScore = 0;
     public static int scoreToAdd = 0;
     public static int currentScore = 0;
+    public static int highscore = 0;
     public int baseAddRate;
     private int addRate;
     public float timeToAdd;
@@ -38,6 +39,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        highscore = PlayerPrefs.GetInt("highscore", 0);
         player = FindObjectOfType<PlayerMovement2>();
         timer = timeToAdd;
         scoreMultiplier = baseMultiplier;
@@ -67,6 +69,12 @@ public class ScoreManager : MonoBehaviour
 
         if(player)
             currentScore = additiveScore + (int)FindObjectOfType<PlayerMovement2>().Distance;
+            if(currentScore>highscore)
+            {
+                highscore = currentScore;
+                PlayerPrefs.SetInt("highscore",highscore);
+                PlayerPrefs.Save();
+            }
     }
 
     public void AddScore(int score)

@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public Text scoreAddText;
     public Text scoreMultiplierText;
     public Text scoreDisplayText;
+    public Text highscoreDisplayText;
 
     private GameManager gameManager;
     private GunHolder weapon;
@@ -73,12 +74,14 @@ public class UIManager : MonoBehaviour
             UpdateCursor();
 
         }else{
+            //StatSliders.SetActive(false);
             pistolCursor.SetActive(false);
             minigunCursor.SetActive(false);
             cannonCursor.SetActive(false);
         }
 
         scoreDisplayText.text = "Final Score: " + ScoreManager.currentScore;
+        highscoreDisplayText.text = "Personal Best: " + ScoreManager.highscore;
     }
 
     private void UpdateCursor(){

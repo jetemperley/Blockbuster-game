@@ -19,11 +19,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        if(PlayerPrefs.GetFloat("MouseSens") == null)
-        {
-            PlayerPrefs.SetFloat("MouseSens", 0.5f);
-            PlayerPrefs.Save();
-        }
+        PlayerPrefs.GetFloat("MouseSens", 0.5f);       
 
         CPManager = CheckpointManager.Inst;
         
