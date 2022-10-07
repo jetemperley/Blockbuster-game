@@ -12,14 +12,14 @@ public class MouseSens : MonoBehaviour
     void Start()
     {
         slider = GetComponent<Slider>();
-        if(PlayerPrefs.GetFloat("MouseSens") == null)
+        if(PlayerPrefs.GetFloat("MouseSens", 0.5f) == null)
         {
             PlayerPrefs.SetFloat("MouseSens", 0.5f);
             PlayerPrefs.Save();
         }
         else
         {
-            slider.value = PlayerPrefs.GetFloat("MouseSens");
+            slider.value = PlayerPrefs.GetFloat("MouseSens", 0.5f);
         }
         
     }

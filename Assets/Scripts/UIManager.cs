@@ -10,14 +10,15 @@ public class UIManager : MonoBehaviour
     public GameObject minigunCursor;
     public GameObject cannonCursor;
     public Image [] iconWeaponSlots;
-    public FillHealthBar healthBar;
-    public FillHealthBar shieldBar;
+    public HealthBarImage healthBar;
+    public HealthBarImage shieldBar;
     public FillDashBar dashBar;
 
-    public TMP_Text scoreText;
-    public TMP_Text scoreAddText;
-    public TMP_Text scoreMultiplierText;
+    public Text scoreText;
+    public Text scoreAddText;
+    public Text scoreMultiplierText;
     public Text scoreDisplayText;
+    public Text highscoreDisplayText;
 
     private GameManager gameManager;
     private GunHolder weapon;
@@ -37,8 +38,8 @@ public class UIManager : MonoBehaviour
         playerShield = playerHealth.shield;   
         playerMove =  FindObjectOfType<GunHolder>().GetComponent<Dashing>();  
         scoreManager = ScoreManager.Inst;
-        StatSliders = GameObject.Find("StatSliders");
-        WeaponSlots = GameObject.Find("WeaponSlots");
+        StatSliders = GameObject.Find("3DUI");
+        //WeaponSlots = GameObject.Find("WeaponSlots");
     }
 
     // Update is called once per frame
@@ -46,7 +47,7 @@ public class UIManager : MonoBehaviour
     {
         if(playerHealth != null && !PauseMenu.gameIsPaused){
             StatSliders.SetActive(true);
-            WeaponSlots.SetActive(true);
+            //WeaponSlots.SetActive(true);
             
             if(playerHealth.currentHealth > 0)
             {
@@ -60,25 +61,27 @@ public class UIManager : MonoBehaviour
                 }  
             }
 
-            if(playerMove != null){
-                if(playerMove.DashCDTimer < playerMove.dashCD)
-                {
-                    UpdateDashBar();
-                }  
-            }
+            // if(playerMove != null){
+            //     if(playerMove.DashCDTimer < playerMove.dashCD)
+            //     {
+            //         UpdateDashBar();
+            //     }  
+            // }
 
-            scoreText.text = "Score: " + ScoreManager.currentScore;
-            scoreAddText.text = "+" + ScoreManager.scoreToAdd;
-            scoreMultiplierText.text = "x" + scoreManager.scoreMultiplier;
+            scoreText.text = "" + ScoreManager.currentScore;
+            scoreAddText.text = "+ " + ScoreManager.scoreToAdd;
+            scoreMultiplierText.text = "x " + scoreManager.scoreMultiplier;
             UpdateCursor();
 
         }else{
+            //StatSliders.SetActive(false);
             pistolCursor.SetActive(false);
             minigunCursor.SetActive(false);
             cannonCursor.SetActive(false);
         }
 
         scoreDisplayText.text = "Final Score: " + ScoreManager.currentScore;
+        highscoreDisplayText.text = "Personal Best: " + ScoreManager.highscore;
     }
 
     private void UpdateCursor(){

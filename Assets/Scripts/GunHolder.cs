@@ -19,17 +19,26 @@ public class GunHolder : MonoBehaviour
     {
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         Destroy(gunRoot);
-
+        UI = FindObjectOfType<UIManager>();
         activeSlot = 0;
         gunRoot = slots[activeSlot];
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i != activeSlot && slots[i] != null)
-                slots[i].SetActive(false);
+            if(slots[i] != null)
+            {
+                UI.UpdateWeaponSlots(i, slots[i].GetComponent<WeaponModel>());
+                if (i != activeSlot)
+                {
+                    slots[i].SetActive(false);
+                }
+                    
+            }
+            
+                
         }
         gunRoot.SetActive(true);
 
-        UI = FindObjectOfType<UIManager>();
+        
     }
 
     // Update is called once per frame

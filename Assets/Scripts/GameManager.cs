@@ -19,11 +19,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        if(PlayerPrefs.GetFloat("MouseSens") == null)
-        {
-            PlayerPrefs.SetFloat("MouseSens", 0.5f);
-            PlayerPrefs.Save();
-        }
+        PlayerPrefs.GetFloat("MouseSens", 0.5f);       
 
         CPManager = CheckpointManager.Inst;
         
@@ -35,8 +31,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void EndGame (){
-        
         if(gameHasEnded == false){
+            Debug.Log("End Game");
             // GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().volume = 0.15f;
             gameHasEnded = true;
             Cursor.visible = true;

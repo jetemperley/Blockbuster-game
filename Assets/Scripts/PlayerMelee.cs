@@ -39,7 +39,7 @@ public class PlayerMelee : MonoBehaviour
         // CurrentWeapon();
         animator = GetComponent<Animator>();
         // sword.SetActive(false);
-        playerCamera = FindObjectOfType<Camera>();
+        playerCamera = GameObject.Find("BloomCamera").GetComponent<Camera>();
     }
 
     // Update is called once per frame

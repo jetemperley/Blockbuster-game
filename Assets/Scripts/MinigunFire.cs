@@ -40,7 +40,7 @@ public class MinigunFire : MonoBehaviour
 
         fireTimer = 0f;
         animator = GetComponent<Animator>();
-        cam = (Camera)FindObjectOfType(typeof(Camera));
+        cam = GameObject.Find("BloomCamera").GetComponent<Camera>();
         audioPlaying = false;
         line = gameObject.AddComponent<LineRenderer>();
         line.startWidth = 0.1f;
