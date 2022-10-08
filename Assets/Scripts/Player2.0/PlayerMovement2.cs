@@ -34,11 +34,6 @@ public class PlayerMovement2 : MonoBehaviour
     public float crouchYScale;
     private float startYScale;
 
-    [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode walkKey = KeyCode.LeftAlt;
-    public KeyCode crouchKey = KeyCode.LeftControl;
-
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -258,6 +253,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void Jump()
     {
+        Debug.Log("Jump");
         exitingSlope = true;
 
         // reset y velocity

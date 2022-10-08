@@ -32,6 +32,8 @@ public class Sliding : MonoBehaviour{
     private bool slideNeedsReset = false;
     private bool slideKeyNeedsRelease;
 
+    private bool jumpKey;
+
     private Vector3 inputDirection;
 
     private void Start(){
@@ -52,16 +54,28 @@ public class Sliding : MonoBehaviour{
             slideKey = !slideKey;
         }
 
+        if(controls.actions["Jump"].triggered)
+        {
+            jumpKey = !jumpKey;
+        }
+
         if(!slideKey)
         {
             slideKeyNeedsRelease = false;
         }
 
 
-        if(slideKey && (horizontalInput !=0 || verticalInput !=0) && pm.grounded==true && !sliding && !slideNeedsReset && !slideKeyNeedsRelease){
-            StartSlide();
-        }
-        if(!slideKey && sliding){
+        if(slideKey && (horizontalInput !=0 || verticalInput !=0)
+            && pm.grounded==true && !sliding && !slideNeedsReset && !slideKeyNeedsRelease)
+            {
+                StartSlide();
+            }
+        if(slideKey && !pm.grounded && !sliding && !slideNeedsReset && !slideKeyNeedsRelease)
+            {
+                GoDown();
+            }
+            
+        if((!slideKey && sliding)){
             StopSlide();
         }
     }
@@ -85,7 +99,7 @@ public class Sliding : MonoBehaviour{
 
     private void SlidingMovement(){
         
-
+        Debug.Log(rb.velocity.y);
         if(!pm.OnSlope() || rb.velocity.y > -0.1f){
             rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
 
@@ -99,6 +113,10 @@ public class Sliding : MonoBehaviour{
         }
     }
 
+    private void GoDown(){
+        rb.AddForce(-transform.up, ForceMode.Impulse);
+    }
+
     private void StopSlide(){
         slideNeedsReset = true;
         sliding=false;
@@ -109,7 +127,7 @@ public class Sliding : MonoBehaviour{
 
     IEnumerator ResetSlide()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.35f);
         slideNeedsReset = false;
     }
 }
