@@ -18,13 +18,15 @@ public class Explode : DeathEffect
 
         
         foreach(Collider nearbyObject in colliders){
-                        
-            Health h = nearbyObject.gameObject.GetComponent<Health>();
-            if (h != null){
-                h.takeDamage(damage);
-            }
-            
-            }
+
+            if(nearbyObject.gameObject.GetComponent<Health>() != null){
+                Health h = nearbyObject.gameObject.GetComponent<Health>();
+                if (h != null){
+                    h.takeDamage(damage);
+                }
+                
+                }
+            }            
     }
 
     private void OnDrawGizmosSelected() {

@@ -76,9 +76,5 @@ public class DiamondEnemyBehaviour : MonoBehaviour
                 }
             }
         }
-    private void OnDrawGizmosSelected() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(transform.position + new Vector3(0,1,-laserTotalLength/2), new Vector3(1,1,laserTotalLength));
-    }
 }
 
