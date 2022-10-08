@@ -36,12 +36,13 @@ public class PauseMenu : MonoBehaviour
     {
         if(!GameManager.gameHasEnded)
         {
-            if(gameIsPaused)
+            if(gameIsPaused && !controlMenuUI.activeSelf)
             {
                 Resume();
             } 
             else
             {
+                CloseControls();
                 Pause();
             }
         }

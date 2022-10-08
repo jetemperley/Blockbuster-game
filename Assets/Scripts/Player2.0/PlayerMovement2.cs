@@ -34,11 +34,6 @@ public class PlayerMovement2 : MonoBehaviour
     public float crouchYScale;
     private float startYScale;
 
-    [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode walkKey = KeyCode.LeftAlt;
-    public KeyCode crouchKey = KeyCode.LeftControl;
-
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -263,7 +258,13 @@ public class PlayerMovement2 : MonoBehaviour
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        if(this.gameObject.GetComponent<Sliding>().IsSliding)
+        {
+            rb.AddForce(transform.up * jumpForce * 1.5f, ForceMode.Impulse);
+        }else{
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        }
+       
     }
     // private void ResetJump()
     // {
