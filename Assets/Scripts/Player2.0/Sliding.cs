@@ -9,7 +9,7 @@ public class Sliding : MonoBehaviour{
 
     public Camera cam;
 
-    [Header("Referebces")]
+    [Header("References")]
     public Transform orientation;
     public Transform playerObj;
     private Rigidbody rb;
@@ -28,11 +28,14 @@ public class Sliding : MonoBehaviour{
     private float verticalInput;
 
     private bool sliding;
+    public bool IsSliding{
+        get{
+            return sliding;
+        }
+    }
     private bool slideKey = false;
     private bool slideNeedsReset = false;
     private bool slideKeyNeedsRelease;
-
-    private bool jumpKey;
 
     private Vector3 inputDirection;
 
@@ -54,11 +57,6 @@ public class Sliding : MonoBehaviour{
             slideKey = !slideKey;
         }
 
-        if(controls.actions["Jump"].triggered)
-        {
-            jumpKey = !jumpKey;
-        }
-
         if(!slideKey)
         {
             slideKeyNeedsRelease = false;
@@ -74,7 +72,7 @@ public class Sliding : MonoBehaviour{
             {
                 GoDown();
             }
-            
+
         if((!slideKey && sliding)){
             StopSlide();
         }
