@@ -9,7 +9,7 @@ public class Sliding : MonoBehaviour{
 
     public Camera cam;
 
-    [Header("Referebces")]
+    [Header("References")]
     public Transform orientation;
     public Transform playerObj;
     private Rigidbody rb;
@@ -28,7 +28,16 @@ public class Sliding : MonoBehaviour{
     private float verticalInput;
 
     private bool sliding;
+    public bool IsSliding{
+        get{
+            return sliding;
+        }
+    }
     private bool slideKey = false;
+    private bool slideNeedsReset = false;
+    private bool slideKeyNeedsRelease;
+
+    private Vector3 inputDirection;
 
     private void Start(){
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
@@ -48,10 +57,23 @@ public class Sliding : MonoBehaviour{
             slideKey = !slideKey;
         }
 
-        if(slideKey && (horizontalInput !=0 || verticalInput !=0) && pm.grounded==true){
-            StartSlide();
+        if(!slideKey)
+        {
+            slideKeyNeedsRelease = false;
         }
-        if(!slideKey && sliding){
+
+
+        if(slideKey && (horizontalInput !=0 || verticalInput !=0)
+            && pm.grounded==true && !sliding && !slideNeedsReset && !slideKeyNeedsRelease)
+            {
+                StartSlide();
+            }
+        if(slideKey && !pm.grounded && !sliding && !slideNeedsReset && !slideKeyNeedsRelease)
+            {
+                GoDown();
+            }
+
+        if((!slideKey && sliding)){
             StopSlide();
         }
     }
@@ -63,8 +85,9 @@ public class Sliding : MonoBehaviour{
     }
 
     private void StartSlide(){
+        slideKeyNeedsRelease = true;
         sliding = true;
-
+        inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
         playerObj.localScale= new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
         cam.transform.localScale = new Vector3(1,1/slideYScale,1);
         rb.AddForce(Vector3.down *5f, ForceMode.Impulse);
@@ -73,8 +96,8 @@ public class Sliding : MonoBehaviour{
     }
 
     private void SlidingMovement(){
-        Vector3 inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
+        
+        Debug.Log(rb.velocity.y);
         if(!pm.OnSlope() || rb.velocity.y > -0.1f){
             rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
 
@@ -88,9 +111,21 @@ public class Sliding : MonoBehaviour{
         }
     }
 
+    private void GoDown(){
+        rb.AddForce(-transform.up, ForceMode.Impulse);
+    }
+
     private void StopSlide(){
+        slideNeedsReset = true;
         sliding=false;
         playerObj.localScale= new Vector3(playerObj.localScale.x, startYScale, playerObj.localScale.z);
         cam.transform.localScale = new Vector3(1,1,1);
+        StartCoroutine(ResetSlide());
+    }
+
+    IEnumerator ResetSlide()
+    {
+        yield return new WaitForSeconds(0.35f);
+        slideNeedsReset = false;
     }
 }
