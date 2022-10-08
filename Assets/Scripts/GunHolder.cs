@@ -74,8 +74,8 @@ public class GunHolder : MonoBehaviour
             gunRoot.SetActive(false);
             gunRoot = slots[activeSlot];
             gunRoot.SetActive(true);
-        }
-        UI.UpdateActiveSlot(slot);
+            UI.UpdateActiveSlot(slot);
+        }        
     }
 
     public void AddGun(GameObject newGun, Pickup pickup)
