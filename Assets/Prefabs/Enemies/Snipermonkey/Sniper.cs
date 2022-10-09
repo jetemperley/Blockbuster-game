@@ -18,6 +18,8 @@ public class Sniper : MonoBehaviour
 
     public int damage = 1;
 
+    private FieldOfView FoV;
+
     private Vector3[] points;
     LineRenderer laser;
 
@@ -30,6 +32,8 @@ public class Sniper : MonoBehaviour
         laser.startWidth = 0.1f;
         laser.endWidth = 0.1f;
         points = new Vector3[2];
+
+        FoV = GetComponent<FieldOfView>();
     }
 
 
@@ -76,7 +80,8 @@ public class Sniper : MonoBehaviour
     }
 
     private bool isInRange(){
-        if(target == null || (target.position - transform.position).magnitude > maxLookDist || target.position.z > rb.position.z){
+        //if(target == null || (target.position - transform.position).magnitude > maxLookDist || target.position.z > rb.position.z){
+        if(FoV.visibleTargets.Count <= 0){   
             return false;
         }else{
             return true;
