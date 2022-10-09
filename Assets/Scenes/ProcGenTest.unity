@@ -123,41 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &107140426 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5600112180534490655, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
-  m_PrefabInstance: {fileID: 1388256372}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &107140430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107140426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 0.9019608, b: 0, a: 1}
-  m_EffectDistance: {x: 3, y: -3}
-  m_UseGraphicAlpha: 1
---- !u!114 &107140431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107140426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.9019608, g: 0, b: 1, a: 1}
-  m_EffectDistance: {x: 3, y: -3}
-  m_UseGraphicAlpha: 1
 --- !u!1001 &286818517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -225,7 +190,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3221570
+  m_Name: pb_Mesh-66698
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -389,7 +354,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3221540
+  m_Name: pb_Mesh-66668
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -719,7 +684,7 @@ PrefabInstance:
       objectReference: {fileID: 1898439697}
     - target: {fileID: 2651713011743635859, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
       propertyPath: m_VersionIndex
-      value: 102
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: 3464226518831986007, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
       propertyPath: m_Mesh
@@ -733,13 +698,13 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 322477141}
-    - target: {fileID: 5600112180543818013, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5600112182268923063, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
       propertyPath: m_Name
       value: BackToMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600112182358753126, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -11.444946
       objectReference: {fileID: 0}
     - target: {fileID: 6182156347010857117, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
       propertyPath: m_Mesh
@@ -747,7 +712,7 @@ PrefabInstance:
       objectReference: {fileID: 1238365909}
     - target: {fileID: 6182156347010857117, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
       propertyPath: m_VersionIndex
-      value: 102
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: 7410879792555707182, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
       propertyPath: m_Mesh
@@ -803,7 +768,7 @@ PrefabInstance:
       objectReference: {fileID: 2042203166}
     - target: {fileID: 8331263166862554116, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
       propertyPath: m_VersionIndex
-      value: 102
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: 9139409301204245511, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
       propertyPath: m_Mesh
@@ -811,7 +776,7 @@ PrefabInstance:
       objectReference: {fileID: 322477141}
     - target: {fileID: 9139409301204245511, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
       propertyPath: m_VersionIndex
-      value: 108
+      value: 129
       objectReference: {fileID: 0}
     - target: {fileID: 9211906488395355505, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
       propertyPath: m_Mesh
@@ -819,7 +784,7 @@ PrefabInstance:
       objectReference: {fileID: 1827103439}
     - target: {fileID: 9211906488395355505, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
       propertyPath: m_VersionIndex
-      value: 105
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
@@ -931,6 +896,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
+      propertyPath: blocks.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125213347258825940, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
+      propertyPath: blocks.Array.data[9]
+      value: 
+      objectReference: {fileID: 3921666357170405795, guid: 96ae4a9d72f4a4348a2bd6c81e0fe545, type: 3}
     - target: {fileID: 5125213347258825941, guid: 43bc6037d1563ad4c91669a7361719ac, type: 3}
       propertyPath: m_Name
       value: TerrainGenerator
@@ -943,7 +916,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3221560
+  m_Name: pb_Mesh-66688
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1107,7 +1080,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3221530
+  m_Name: pb_Mesh-66658
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1271,7 +1244,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3221550
+  m_Name: pb_Mesh-66678
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

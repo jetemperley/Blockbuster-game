@@ -44,12 +44,12 @@ public class RailgunFire : MonoBehaviour
         lineRenderer.enabled=false;
     }
 
-
-
-    void Update(){
-
-
-        if (((!autoFire && controls.actions["Fire"].triggered) | (autoFire && controls.actions["Fire"].ReadValue<float>() == 1)) && fireTimer <=0 && !PauseMenu.gameIsPaused && shootDelay != true){
+    // Update is called once per frame
+    void Update()
+    {
+        if (((!autoFire && controls.actions["Fire"].triggered) | (autoFire && controls.actions["Fire"].ReadValue<float>() == 1)) && fireTimer <=0 && !PauseMenu.gameIsPaused)
+        {
+            audioData.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
             audioData.Play(0);
             particle.Play();
             shootDelay=true;
