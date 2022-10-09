@@ -21,6 +21,8 @@ public class Bomber : MonoBehaviour
     Vector3 centerPoint;
     Vector3 startRelCenter;
     Vector3 endRelCenter;
+    
+    private FieldOfView FoV;
 
     public float bombCD = 4;
     private float bombCDTimer;
@@ -29,6 +31,7 @@ public class Bomber : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        FoV = GetComponent<FieldOfView>();
         target = GameObject.FindGameObjectWithTag(targetTag).transform;
         bombCDTimer = 4;
     }
@@ -58,7 +61,8 @@ public class Bomber : MonoBehaviour
     }
 
     private bool isInRange(){
-        if(target == null || (target.position - transform.position).magnitude > maxLookDist || target.position.z > rb.position.z){
+        //if(target == null || (target.position - transform.position).magnitude > maxLookDist || target.position.z > rb.position.z){
+        if(FoV.visibleTargets.Count <= 0){  
             return false;
         }else{
             return true;

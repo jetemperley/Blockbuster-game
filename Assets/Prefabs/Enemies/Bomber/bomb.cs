@@ -75,31 +75,17 @@ public class bomb : MonoBehaviour
         transform.position += centerPoint;
     }
 
-    // private void FindGround(){
-    //     RaycastHit hit;
-    //     if(Physics.Raycast(target.position + inFrontPos, new Vector3 (0,-1,0), out hit, Mathf.Infinity, ground)){
-            
-    //     }
-    // }
 
     private void Beep(){
         multiplier = -countdowner+countdownTimer;
         beepRate += Time.deltaTime*multiplier;
         distance = (target.position - transform.position).magnitude;
-        volume=(-1/maxSoundDist)*distance+0.5f; 
-        //beepRate2= (countdownTimer/12.5f)+0.2f;
+        volume=(-1/maxSoundDist)*distance+0.2f; 
         
         if(beepRate>=0.27f){
             bombBeep.PlayOneShot(bombBeep.clip, volume);
             beepRate = 0;
         }
-
-
-    //     //volume=(-1/maxLookDist)*distance+1; //y = m*x+b
-    //         if(beepRate>distance/50){
-    //             mineBeep.PlayOneShot(clip, volume);
-    //             beepRate=0;
-    //         }
     }
 
     private void OnDrawGizmosSelected() {
