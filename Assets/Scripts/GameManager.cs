@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         PlayerPrefs.GetFloat("MouseSens", 0.5f);
-               
+        PlayerPrefs.Save();
 
         CPManager = CheckpointManager.Inst;
         

@@ -172,10 +172,10 @@ public class PlayerMovement2 : MonoBehaviour
     private void Look()
     {
         Vector2 lookInputVector = controls.actions["Look"].ReadValue<Vector2>();
-        rotationX += -lookInputVector.y * (lookSpeed* 2 * PlayerPrefs.GetFloat("MouseSens"));
+        rotationX += -lookInputVector.y * (lookSpeed* 2 * PlayerPrefs.GetFloat("MouseSens", 0.5f));
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, lookInputVector.x * (lookSpeed* 2 * PlayerPrefs.GetFloat("MouseSens")), 0);
+        transform.rotation *= Quaternion.Euler(0, lookInputVector.x * (lookSpeed* 2 * PlayerPrefs.GetFloat("MouseSens", 0.5f)), 0);
     }
 
     private void StateHandler()
