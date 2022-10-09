@@ -53,7 +53,7 @@ public class Health : MonoBehaviour
                 AudioSource audio = AudioPool.GetAudioSource();
                 audio.gameObject.transform.position = this.gameObject.transform.position;
                 audio.clip = hitSFX;
-                audio.volume = 0.25f;
+                audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
                 audio.Play(0);
             }
             

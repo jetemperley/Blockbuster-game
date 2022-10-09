@@ -63,7 +63,9 @@ public class MinigunFire : MonoBehaviour
                 }
                 AudioSource audio = AudioPool.GetAudioSource();
                 audio.clip = fireSFX;
-                audio.volume = 0.75f/volumeAdjuster;
+                audio.volume = (PlayerPrefs.GetFloat("sfxSound",1f)
+                             * PlayerPrefs.GetFloat("masterSound",1f))
+                             /volumeAdjuster;
                 audio.Play(0);
                 volumeAdjuster--;       
             

@@ -11,7 +11,6 @@ public class PistolFire : MonoBehaviour
 
     public bool autoFire; //Whether or not the weapon has automatic fire
 
-    private AudioSource audioData;
     private Animator animator;
 
     public GameObject spawnPoint;
@@ -39,7 +38,7 @@ public class PistolFire : MonoBehaviour
         {
             AudioSource audio = AudioPool.GetAudioSource();
             audio.clip = fireSFX;
-            audio.volume = 0.25f;
+            audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
             audio.Play(0);
             animator.SetTrigger("Shoot");
             
