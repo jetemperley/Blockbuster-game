@@ -9,8 +9,11 @@ public class PauseMenu : MonoBehaviour
     private PlayerInput controls;
     private Input playerInputActions;
 
+    public GameObject pausePanel;
     public GameObject pauseMenuUI;
     public GameObject controlMenuUI;
+    public GameObject soundMenuUI;
+    public GameObject settingsMenuUI;
 
     public static bool gameIsPaused = false;
     // Update is called once per frame
@@ -36,13 +39,13 @@ public class PauseMenu : MonoBehaviour
     {
         if(!GameManager.gameHasEnded)
         {
-            if(gameIsPaused && !controlMenuUI.activeSelf)
+            if(gameIsPaused && (!settingsMenuUI.activeSelf || !controlMenuUI.activeSelf || !soundMenuUI.activeSelf))
             {
                 Resume();
             } 
             else
             {
-                CloseControls();
+                OpenPauseMenu();
                 Pause();
             }
         }
@@ -51,7 +54,8 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         gameIsPaused = true;
-        pauseMenuUI.SetActive(true);
+        OpenPauseMenu();
+        pausePanel.SetActive(true);
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
@@ -60,20 +64,40 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         gameIsPaused = false;
-        pauseMenuUI.SetActive(false);
+        pausePanel.SetActive(false);
         Time.timeScale = 1f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
     
+    public void OpenSettings()
+    {
+        settingsMenuUI.SetActive(true);
+        soundMenuUI.SetActive(false);
+        controlMenuUI.SetActive(false);
+        pauseMenuUI.SetActive(false);
+    }
+
+    public void OpenSound()
+    {
+        settingsMenuUI.SetActive(false);
+        soundMenuUI.SetActive(true);
+        controlMenuUI.SetActive(false);
+        pauseMenuUI.SetActive(false);
+    }
+
     public void OpenControls()
     {
+        settingsMenuUI.SetActive(false);
+        soundMenuUI.SetActive(false);
         controlMenuUI.SetActive(true);
         pauseMenuUI.SetActive(false);
     }
 
-    public void CloseControls()
+    public void OpenPauseMenu()
     {
+        settingsMenuUI.SetActive(false);
+        soundMenuUI.SetActive(false);
         controlMenuUI.SetActive(false);
         pauseMenuUI.SetActive(true);
     }

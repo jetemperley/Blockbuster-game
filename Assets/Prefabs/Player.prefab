@@ -225,9 +225,6 @@ MonoBehaviour:
   totalJumps: 2
   crouchSpeed: 6
   crouchYScale: 0.5
-  jumpKey: 32
-  walkKey: 308
-  crouchKey: 306
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -235,6 +232,7 @@ MonoBehaviour:
   grounded: 0
   maxSlopeAngle: 50
   orientation: {fileID: 1164993421717732661}
+  jumpSFX: {fileID: 8300000, guid: e487a926b89bc58459b789db8f433008, type: 3}
   dashing: 0
 --- !u!114 &3234270993111012452
 MonoBehaviour:
@@ -255,6 +253,7 @@ MonoBehaviour:
   dashDuration: 0.25
   dashCD: 1.5
   dashKey: 304
+  dashSFX: {fileID: 8300000, guid: d1500e7aa52e6df4c868bc1702161c31, type: 3}
 --- !u!114 &2285770098102767923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +272,7 @@ MonoBehaviour:
   maxSlideTime: 0.75
   slideForce: 800
   slideYScale: 0.5
+  slideSFX: {fileID: 8300000, guid: d1500e7aa52e6df4c868bc1702161c31, type: 3}
 --- !u!114 &238968272100124135
 MonoBehaviour:
   m_ObjectHideFlags: 0

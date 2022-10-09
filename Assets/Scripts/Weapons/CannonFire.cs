@@ -17,7 +17,8 @@ public class CannonFire : MonoBehaviour
 
     public bool autoFire;
 
-    private AudioSource audioData;
+    public AudioClip clip;
+
     private Animator animator;
 
     public GameObject spawnPoint;
@@ -31,8 +32,6 @@ public class CannonFire : MonoBehaviour
     {
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;
-        audioData = GetComponent<AudioSource>();
-        audioData.Stop();
         animator = GetComponent<Animator>();
         ps = Instantiate(explosion);
         ps.gameObject.AddComponent<Terrain>();
@@ -45,7 +44,10 @@ public class CannonFire : MonoBehaviour
     {
         if (((!autoFire && controls.actions["Fire"].triggered) | (autoFire && controls.actions["Fire"].ReadValue<float>() == 1)) && fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
-            audioData.Play(0);
+            // AudioSource audio = AudioPool.GetAudioSource();
+            // audio.clip = clip;
+            // audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
+            // audio.Play(0);
             animator.SetTrigger("Shoot");
             ExplosiveProjectile explosiveProjectile = Instantiate(explosiveProjectilePrefab);
             explosiveProjectile.SetProperties(projectileVelocity, explosiveRadius, damage);

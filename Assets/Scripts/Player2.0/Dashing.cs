@@ -31,6 +31,9 @@ public class Dashing : MonoBehaviour{
     [Header("Input")]
     public KeyCode dashKey = KeyCode.LeftShift;
 
+    [Header("Sound")]
+    public AudioClip dashSFX;
+
     private void Start(){
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
@@ -53,6 +56,11 @@ public class Dashing : MonoBehaviour{
         }else{
             dashCDTimer=dashCD; 
         }
+        AudioSource audio = AudioPool.GetAudioSource();
+        audio.clip = dashSFX;
+        audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
+        audio.Play(0);
+
         pm.dashing = true;
         Vector3 forceToApply = orientation.forward * dashForce + orientation.up * dashUpwardForce;
 

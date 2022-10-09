@@ -10,7 +10,6 @@ public class BurstFire : MonoBehaviour
     public Bullet bulletPrefab;
     public float fireCooldown; //seconds
 
-    private AudioSource audioData;
     private Animator animator;
 
     public GameObject spawnPoint;
@@ -45,20 +44,6 @@ public class BurstFire : MonoBehaviour
     {
         if (controls.actions["Fire"].triggered && fireTimer <=0 && !PauseMenu.gameIsPaused)
         {
-            /*AudioSource audio = AudioPool.GetAudioSource();
-            audio.clip = fireSFX;
-            audio.volume = 0.25f;
-            audio.Play(0);
-            animator.SetTrigger("Shoot");
-            
-            Laser laser = LaserPool.GetLaser();
-            laser.SetDamage(damage);
-            laser.fire(
-                spawnPoint.transform.position,
-                spawnPoint.transform.forward*1000,
-                0.2f,
-                gameObject.name
-                );*/
             shotCount = numberOfShots;
             delayTimer = 0;
             fireTimer = fireCooldown;
@@ -68,7 +53,7 @@ public class BurstFire : MonoBehaviour
         {
             AudioSource audio = AudioPool.GetAudioSource();
             audio.clip = fireSFX;
-            audio.volume = 0.25f;
+            audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
             audio.Play(0);
             //animator.SetTrigger("Shoot");
             

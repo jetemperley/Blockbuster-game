@@ -96,6 +96,7 @@ public class TankAttack : MonoBehaviour
     {
         //do charge up particles and sfx
         ChargeMelee();
+        chargeUpsfx.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
         chargeUpsfx.Play();
         yield return new WaitForSeconds(meleeChargeTime);
         meleeCharge.Stop();
@@ -126,6 +127,7 @@ public class TankAttack : MonoBehaviour
     
     private void AttackPlayer()
     {
+        impactsfx.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
         impactsfx.Play();
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, maxMeleeRadius);
         foreach(Collider hc in hitColliders){
@@ -151,6 +153,7 @@ public class TankAttack : MonoBehaviour
 
     private void ResetMelee()
     {
+        cooldownsfx.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
         cooldownsfx.Play();
         growChargeCircle = false;
         chargeCircleTimer = 0;

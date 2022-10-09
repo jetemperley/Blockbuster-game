@@ -34,8 +34,6 @@ public class ShotgunFire : MonoBehaviour
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;
         cam = (Camera)FindObjectOfType(typeof(Camera));
-        // audioData = GetComponent<AudioSource>();
-        // audioData.Stop();
         // animator = GetComponent<Animator>();      
     }
 
@@ -46,21 +44,15 @@ public class ShotgunFire : MonoBehaviour
         {
             AudioSource audio = AudioPool.GetAudioSource();
             audio.clip = fireSFX;
-            audio.volume = 0.25f;
+            audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
             audio.Play(0);
             // animator.SetTrigger("Shoot");
             Vector3 hitPos;
-            // RaycastHit hit;
-            // if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1000)){
-            //     hitPos = hit.point;
-            // } else {
-            //     hitPos = cam.transform.position + cam.transform.forward*1000;
-            // }
             for(int i = 0; i<bulletRows; i++)
             {
                 for(int k = 0; k<bulletColumns; k++)
                 {
-                    //Vector3 hitDir = (hitPos - spawnPoint.transform.position).normalized; 
+                     
                     hitPos = spawnPoint.transform.position + spawnPoint.transform.forward*1000;
                     Vector3 dir = hitPos
                         + new Vector3(

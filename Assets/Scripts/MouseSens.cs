@@ -33,5 +33,6 @@ public class MouseSens : MonoBehaviour
     public void OnEndDrag()
     {
         PlayerPrefs.SetFloat("MouseSens", Mathf.Round(slider.value * 100f) / 100f);
+        PlayerPrefs.Save();
     }
 }

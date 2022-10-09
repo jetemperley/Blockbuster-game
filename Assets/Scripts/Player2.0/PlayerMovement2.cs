@@ -63,6 +63,9 @@ public class PlayerMovement2 : MonoBehaviour
 
     Rigidbody rb;
 
+    [Header("Sound")]
+    public AudioClip jumpSFX;
+
     private MovementState state;
     private enum MovementState
     {
@@ -264,6 +267,11 @@ public class PlayerMovement2 : MonoBehaviour
         }else{
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }
+
+        AudioSource audio = AudioPool.GetAudioSource();
+        audio.clip = jumpSFX;
+        audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
+        audio.Play(0);
        
     }
     // private void ResetJump()
