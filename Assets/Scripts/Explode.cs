@@ -13,7 +13,8 @@ public class Explode : DeathEffect
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
 
         if(clip!= null){
-            AudioSource.PlayClipAtPoint(clip, transform.position, 1f);
+            AudioSource.PlayClipAtPoint(clip, transform.position, 
+                                        PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f));
         }
 
         

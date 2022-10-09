@@ -92,6 +92,7 @@ public class ExplosiveProjectile : MonoBehaviour
         explosion.transform.localScale = new Vector3(size, size, size);
         explosion.Play();
         AudioSource audioData = explosion.gameObject.GetComponent<AudioSource>();
+        audioData.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
         audioData.Stop();
         audioData.Play(0);
         ExplosionDamage(transform.position, explosiveRadius);
