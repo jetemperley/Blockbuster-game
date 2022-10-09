@@ -41,7 +41,10 @@ public class MineBehaviour2 : MonoBehaviour
     {
 
         //distance between player and this gameObject
-        distance = (target.position - transform.position).magnitude;
+        if(target!=null){
+            distance = (target.position - transform.position).magnitude;
+        }
+
         beepRate += Time.deltaTime;
         
         if(mineBeep != null || clip != null){
