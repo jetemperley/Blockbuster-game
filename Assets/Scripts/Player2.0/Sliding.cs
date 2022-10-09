@@ -39,6 +39,9 @@ public class Sliding : MonoBehaviour{
 
     private Vector3 inputDirection;
 
+    [Header("Sound")]
+    public AudioClip slideSFX;
+
     private void Start(){
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
@@ -85,6 +88,10 @@ public class Sliding : MonoBehaviour{
     }
 
     private void StartSlide(){
+        AudioSource audio = AudioPool.GetAudioSource();
+        audio.clip = slideSFX;
+        audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
+        audio.Play(0);
         slideKeyNeedsRelease = true;
         sliding = true;
         inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
