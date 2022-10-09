@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9492359072af474c9ca77e553933adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponModel: {fileID: 919132149155446097, guid: 84cff2f303b374f47a4915ac9ee9c383, type: 3}
+  weaponModel: {fileID: 919132149155446097, guid: fb36735f3f006d64b93b39e5044212a0, type: 3}
   weaponName: Shotgun
   weaponPrefab: {fileID: 5265274450101243310}
   icon: {fileID: 21300000, guid: cdfcc23f3a2504b42bd7111007fe0c88, type: 3}
@@ -178,6 +178,9 @@ MonoBehaviour:
   spawnPoint: {fileID: 5265274450837369437}
   fireSFX: {fileID: 8300000, guid: 15002d588e6f7c142b4b2a917b186b21, type: 3}
   damage: 1
+  autoFire: 0
+  piercing: 0
+  pierceNum: 0
 --- !u!4 &4313077129777255152 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fb36735f3f006d64b93b39e5044212a0, type: 3}
