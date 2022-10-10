@@ -23,6 +23,12 @@ public class Sniper : MonoBehaviour
     private Vector3[] points;
     LineRenderer laser;
 
+    [Header("Sounds")]
+    public AudioClip chargesfx;
+    public AudioClip firesfx;
+
+    private bool isFiring;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +48,7 @@ public class Sniper : MonoBehaviour
     {
 
         if(lockOnTimer<lockOnTime && isInRange()){
+            PlayChargeEffect();
             LookAtPlayer();
             LaserLine();
             Flicker();
@@ -50,7 +57,7 @@ public class Sniper : MonoBehaviour
             laser.enabled = true;
             shootDelayTimer += Time.deltaTime;
             if(shootDelayTimer>shootDelayTime){
-                Shoot();
+                StartCoroutine(Shoot());
                 shootDelayTimer = 0;
                 lockOnTimer= 0;
             }
@@ -61,6 +68,17 @@ public class Sniper : MonoBehaviour
         }
     }
 
+    private void PlayChargeEffect()
+    {
+        if(!isFiring)
+        {
+            isFiring = true;
+            AudioSource audio = AudioPool.GetAudioSource();
+            audio.clip = chargesfx;
+            audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
+            audio.Play(0);
+        }
+    }
     private void OnDrawGizmosSelected() {
         Gizmos.DrawWireSphere(transform.position, maxLookDist);
     }
@@ -88,7 +106,14 @@ public class Sniper : MonoBehaviour
         }
     }
 
-    private void Shoot(){
+    IEnumerator Shoot(){
+        isFiring = false;
+        AudioSource audio = AudioPool.GetAudioSource();
+        audio.clip = firesfx;
+        audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
+        audio.Play(0);
+
+        yield return new WaitForSeconds(0.05f);
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit)){
             if(hit.transform.name == targetTag){
