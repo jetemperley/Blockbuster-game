@@ -44,7 +44,7 @@ public class FallAway : MonoBehaviour
             rb.AddForce(
                 Random.Range(-30f, 30f), 
                 Random.Range(1f, 20f), // Random.Range(0f, 1f), 
-                0, 
+                Random.Range(-30f, -20f), 
                 ForceMode.VelocityChange);
             // rb.MovePosition(rb.position + fallSpeed*Time.deltaTime);
             
