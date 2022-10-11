@@ -64,10 +64,10 @@ public class Health : MonoBehaviour
 
             if (shield != null) {
 
-                if (shield.takeDamage(dam)<=0 && !shield.shieldOrNot)
+                if (shield.takeDamage(dam)<=0 && !shield.shieldOrNot){
                     shield = null;
-                    return 0;
-                
+                    return currentHealth;
+                }
                 if (shield.currentHealth > 0 && shield.shieldOrNot)
                 {
                     dam = shield.takeDamage(dam);
