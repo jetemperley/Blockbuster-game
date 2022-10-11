@@ -61,10 +61,12 @@ public class Health : MonoBehaviour
             {
                 invulnerableTimer = invulnerableTimeCooldown;
             }
+
             if (shield != null) {
 
                 if (shield.takeDamage(dam)<=0 && !shield.shieldOrNot)
                     shield = null;
+                    return 0;
                 
                 if (shield.currentHealth > 0 && shield.shieldOrNot)
                 {
