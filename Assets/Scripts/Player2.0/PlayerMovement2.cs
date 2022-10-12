@@ -142,16 +142,17 @@ public class PlayerMovement2 : MonoBehaviour
         // when to jump
         if(controls.actions["Jump"].triggered && readyToJump==true && numOfJumps<totalJumps)
         {
+            
+            Jump();
             numOfJumps++;
             if(numOfJumps==totalJumps){
                 readyToJump = false;
             }
-            Jump();
-            //Invoke(nameof(ResetJump), jumpCooldown);
-            //numOfJumps=0;
+            
+
         }else if(grounded){
             readyToJump = true;
-            numOfJumps=1;
+            numOfJumps=0;
             exitingSlope = false;
         }
 
