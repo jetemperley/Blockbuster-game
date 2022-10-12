@@ -20,9 +20,7 @@ public class DeathChildBreak : DeathEffect
             g.transform.SetParent(null);
             Vector3 f = Random.onUnitSphere*speedOnBreak;
             r.AddForce(f, ForceMode.VelocityChange);
-
-            g.AddComponent<Terrain>();
-            Destroy(g, 15);
+            Destroy(g, 1);
             
                 
         }

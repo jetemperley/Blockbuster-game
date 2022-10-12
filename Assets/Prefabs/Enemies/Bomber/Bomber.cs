@@ -61,8 +61,8 @@ public class Bomber : MonoBehaviour
     }
 
     private bool isInRange(){
-        //if(target == null || (target.position - transform.position).magnitude > maxLookDist || target.position.z > rb.position.z){
-        if(FoV.visibleTargets.Count <= 0){  
+        if(target == null || (target.position - transform.position).magnitude > maxLookDist || target.position.z > rb.position.z){
+        //if(FoV.visibleTargets.Count <= 0){  
             return false;
         }else{
             return true;

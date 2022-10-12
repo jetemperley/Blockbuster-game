@@ -264,7 +264,7 @@ public class PlayerMovement2 : MonoBehaviour
 
         if(this.gameObject.GetComponent<Sliding>().IsSliding)
         {
-            rb.AddForce(transform.up * jumpForce * 1.5f, ForceMode.Impulse);
+            rb.AddForce(transform.up * jumpForce * 2f, ForceMode.Impulse);
         }else{
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }
