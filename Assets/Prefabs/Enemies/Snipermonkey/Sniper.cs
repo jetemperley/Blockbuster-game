@@ -26,6 +26,7 @@ public class Sniper : MonoBehaviour
     [Header("Sounds")]
     public AudioClip chargesfx;
     public AudioClip firesfx;
+    private AudioSource audio;
 
     private bool isFiring;
 
@@ -62,6 +63,7 @@ public class Sniper : MonoBehaviour
                 lockOnTimer= 0;
             }
         }else{
+            StopChargeEffect();
             laser.enabled = false;
             lockOnTimer= 0;
             shootDelayTimer = 0;
@@ -73,10 +75,17 @@ public class Sniper : MonoBehaviour
         if(!isFiring)
         {
             isFiring = true;
-            AudioSource audio = AudioPool.GetAudioSource();
+            audio = AudioPool.GetAudioSource();
             audio.clip = chargesfx;
             audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
             audio.Play(0);
+        }
+    }
+    private void StopChargeEffect()
+    {
+        if(audio != null){
+            isFiring = false;
+            audio.Stop();
         }
     }
     private void OnDrawGizmosSelected() {

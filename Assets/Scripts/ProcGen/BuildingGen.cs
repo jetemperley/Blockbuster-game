@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class BuildingGen : MonoBehaviour
 {
-    public float zOffset = 0.0f; //Next z position to spawn buildings
-    public float yOffset = 0.0f; //Next y position to spawn buildings
-    public float xOffset = 0.0f; //Next x position to spawn buildings
+    private float zOffset = 0.0f; //Next z position to spawn buildings
+    //private float yOffset = 0.0f; //Next y position to spawn buildings
+    private float xOffset = 0.0f; //Next x position to spawn buildings
 
     public Building[] buildings; //Array of the different types of buildings to spawn
-    
-    public int numOfBuildings;
+    public GameObject parent;
 
+    public Vector2 randX;
+    public Vector2 randY;
+    public Vector2 randZ;
+
+    private float randomX;
+    private float randomY;
+    private float randomZ;
 
     // Start is called before the first frame update
     void Start()
@@ -23,26 +29,29 @@ public class BuildingGen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        while(zOffset < numOfBuildings)
-        {
-            SpawnBuilding();
-            numOfBuildings++;
+        // if(zOffset <= TerrainGen.zOffset){
+        //     SpawnBuilding();
+        // }
+    }
+
+    public void SpawnBuilding()
+    {
+        while(zOffset<=TerrainGen.zOffset){
+            System.Random random = new System.Random();
+            int randomNumber = random.Next(0, buildings.Length);
+
+            randomX = random.Next((int) randX.x, (int) randX.y);
+            randomY = random.Next((int) randY.x, (int) randY.y);
+            randomZ = random.Next((int) randZ.x, (int) randZ.y);
+
+            Instantiate(buildings[randomNumber].gameObject, new Vector3(xOffset+randomX, TerrainGen.yOffset+randomY, zOffset+randomZ), buildings[randomNumber].gameObject.transform.rotation, parent.transform);
+            xOffset *= -1;
+
+            randomX = random.Next((int) randX.x, (int) randX.y);
+            randomY = random.Next((int) randY.x, (int) randY.y);
+            randomZ = random.Next((int) randZ.x, (int) randZ.y);
+            Instantiate(buildings[randomNumber].gameObject, new Vector3(xOffset+randomX, TerrainGen.yOffset+randomY, zOffset+randomZ), buildings[randomNumber].gameObject.transform.rotation, parent.transform);
+            zOffset += 20;
         }
     }
-
-    void SpawnBuilding()
-    {
-        System.Random random = new System.Random();
-        int randomNumber = random.Next(0, buildings.Length);
-
-        float randomX = random.Next(-20,20);
-        float randomY = random.Next(-40,40);
-        float randomZ = random.Next(-10,10);
-
-        Instantiate(buildings[randomNumber].gameObject, new Vector3(xOffset+randomX, randomY, zOffset+randomZ), buildings[randomNumber].gameObject.transform.rotation);
-        xOffset *= -1;
-        Instantiate(buildings[randomNumber].gameObject, new Vector3(xOffset+randomX, randomY, zOffset+randomZ), buildings[randomNumber].gameObject.transform.rotation);
-        zOffset += 20;
-    }
-
 }

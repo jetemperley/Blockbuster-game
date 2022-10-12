@@ -26,8 +26,11 @@ public class TerrainGen : MonoBehaviour
     public bool checkpointSpawned;
 
     public static TerrainGen instance;
+    public GameObject parent;
+    public BuildingGen buildingGen;
 
     private GameObject player;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +45,7 @@ public class TerrainGen : MonoBehaviour
 
         for (int i = 0; i < blocksToSpawn; i++) //Create initial starting area
         {
-            Instantiate(emptyBlock.gameObject, new Vector3(0.0f, yOffset, zOffset), emptyBlock.gameObject.transform.rotation);
+            Instantiate(emptyBlock.gameObject, new Vector3(0.0f, yOffset, zOffset), emptyBlock.gameObject.transform.rotation, parent.transform);
             zOffset += emptyBlock.length;
             yOffset += emptyBlock.heightOffset;
         }
@@ -80,6 +83,7 @@ public class TerrainGen : MonoBehaviour
         while(zOffset < distToCheckpoint*(checkpointNumber+1))
         {
             SpawnTerrain();
+            buildingGen.SpawnBuilding();
         }
 
         //Spawn a checkpoint
@@ -95,7 +99,7 @@ public class TerrainGen : MonoBehaviour
                 checkpointCount = 0;
                 ConductorV2.getConductor().levelSpeed += levelSpeedIncrement;
             }
-            Instantiate(checkpointBlock.gameObject, new Vector3(0.0f, yOffset, zOffset), checkpointBlock.gameObject.transform.rotation);
+            Instantiate(checkpointBlock.gameObject, new Vector3(0.0f, yOffset, zOffset), checkpointBlock.gameObject.transform.rotation, parent.transform);
             zOffset += checkpointBlock.length;
             yOffset += checkpointBlock.heightOffset;
             checkpointSpawned = true;
@@ -107,7 +111,7 @@ public class TerrainGen : MonoBehaviour
     {
         System.Random random = new System.Random();
         int randomNumber = random.Next(0, blocks.Length);
-        Instantiate(blocks[randomNumber].gameObject, new Vector3(0.0f, yOffset, zOffset), blocks[randomNumber].gameObject.transform.rotation);
+        Instantiate(blocks[randomNumber].gameObject, new Vector3(0.0f, yOffset, zOffset), blocks[randomNumber].gameObject.transform.rotation, parent.transform);
 
         zOffset += blocks[randomNumber].length;
         yOffset += blocks[randomNumber].heightOffset;
