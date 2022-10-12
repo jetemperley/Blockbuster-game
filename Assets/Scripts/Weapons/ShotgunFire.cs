@@ -60,7 +60,6 @@ public class ShotgunFire : MonoBehaviour
                             Random.Range(-maxSpread,maxSpread),//* Random.Range(maxSpread/2,maxSpread),
                             Random.Range(-maxSpread,maxSpread)); //* Random.Range(maxSpread/2,maxSpread));
                     dir = (dir - spawnPoint.transform.position).normalized;
-                    Debug.Log(dir);
                     Laser laser = LaserPool.GetLaser();
                     laser.SetDamage(damage);
                     if (!piercing)

@@ -104,7 +104,6 @@ public class Sliding : MonoBehaviour{
 
     private void SlidingMovement(){
         
-        Debug.Log(rb.velocity.y);
         if(!pm.OnSlope() || rb.velocity.y > -0.1f){
             rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
 

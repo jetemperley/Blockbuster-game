@@ -11,12 +11,15 @@ public class CubeHomeBehaviour : MonoBehaviour
     public float moveSpeed = 3;
     public float maxLookDist = 10;
     public string targetTag = "Player";
+
+    private AudioSource followsfx;
     // Start is called before the first frame update
     void Start()
     {
         fov = GetComponent<FieldOfView>();
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag(targetTag).transform;
+        followsfx = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,8 +31,18 @@ public class CubeHomeBehaviour : MonoBehaviour
     void FixedUpdate() {
 
         if (target == null || fov.visibleTargets.Count < 1)
+        {
+            followsfx.Stop();
             return;
+        }
+            
 
+        if(!followsfx.isPlaying)
+        {
+            followsfx.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
+            followsfx.Play();
+        }
+        
         Vector3 direction = target.position-transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = rotation;
