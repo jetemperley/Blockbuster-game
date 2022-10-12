@@ -63,8 +63,9 @@ public class Health : MonoBehaviour
             }
 
             if (shield != null) {
-
+                Debug.Log("hasShield");
                 if (shield.takeDamage(dam)<=0 && !shield.shieldOrNot){
+                    Debug.Log("shield down");
                     shield = null;
                     return currentHealth;
                 }
@@ -115,7 +116,7 @@ public class Health : MonoBehaviour
             {
                 if (damageEffect != null)
                     damageEffect.DamageFlash();
-                return 0;
+                return currentHealth;
             }
             
         } 
