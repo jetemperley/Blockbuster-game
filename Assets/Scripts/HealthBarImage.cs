@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HealthBarImage : MonoBehaviour
 {
-    public Image healthFill;
+    public Image [] healthFill;
     public Text healthTxt;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,15 @@ public class HealthBarImage : MonoBehaviour
     }
 
     public void UpdateBar(int currentHealth, int maxHealth){
-        healthFill.fillAmount = (float)currentHealth/(float)maxHealth;
-        healthTxt.text = "" + (int)((float)currentHealth/(float)maxHealth*100);
+        for(int i = 0; i<maxHealth; i++)
+        {
+            if(i+1 > currentHealth)
+            {
+                healthFill[i].enabled = false;
+            }else{
+                healthFill[i].enabled = true;
+            }
+            
+        }
     }
 }
