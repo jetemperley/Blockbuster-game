@@ -47,26 +47,27 @@ public class Sniper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(lockOnTimer<lockOnTime && isInRange()){
-            PlayChargeEffect();
-            LookAtPlayer();
-            LaserLine();
-            Flicker();
-            lockOnTimer += Time.deltaTime;
-        }else if(lockOnTimer>lockOnTime && isInRange()){
-            laser.enabled = true;
-            shootDelayTimer += Time.deltaTime;
-            if(shootDelayTimer>shootDelayTime){
-                StartCoroutine(Shoot());
-                shootDelayTimer = 0;
+        if(target!= null){
+            if(lockOnTimer<lockOnTime && isInRange()){
+                PlayChargeEffect();
+                LookAtPlayer();
+                LaserLine();
+                Flicker();
+                lockOnTimer += Time.deltaTime;
+            }else if(lockOnTimer>lockOnTime && isInRange()){
+                laser.enabled = true;
+                shootDelayTimer += Time.deltaTime;
+                if(shootDelayTimer>shootDelayTime){
+                    StartCoroutine(Shoot());
+                    shootDelayTimer = 0;
+                    lockOnTimer= 0;
+                }
+            }else{
+                StopChargeEffect();
+                laser.enabled = false;
                 lockOnTimer= 0;
+                shootDelayTimer = 0;
             }
-        }else{
-            StopChargeEffect();
-            laser.enabled = false;
-            lockOnTimer= 0;
-            shootDelayTimer = 0;
         }
     }
 
@@ -93,6 +94,7 @@ public class Sniper : MonoBehaviour
     }
 
     private void LookAtPlayer(){
+        
             Vector3 direction = target.position-transform.position;
             Quaternion rotation = Quaternion.LookRotation(direction);
             transform.rotation = rotation;

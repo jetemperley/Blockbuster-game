@@ -7281,7 +7281,6 @@ GameObject:
   - component: {fileID: 1693621032887713687}
   - component: {fileID: 1693621032887713686}
   - component: {fileID: 1693621032887713685}
-  - component: {fileID: 733506577711400769}
   m_Layer: 11
   m_Name: Bomba
   m_TagString: Enemy
@@ -7448,31 +7447,6 @@ MonoBehaviour:
   bombSpeed: 5
   journeyTime: 0.5
   bombCD: 2.5
---- !u!114 &733506577711400769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693621032887713684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a70f31d6a159aa48a2e3fd3a88f3025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewRadius: 50
-  viewAngle: 90
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 512
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 29697
-  visibleTargets: []
-  meshResolution: 1
-  edgeResolveIterations: 4
-  edgeDistanceThreshold: 0.5
-  viewMeshFilter: {fileID: 1264571726196803542}
 --- !u!1 &1693621032958235438
 GameObject:
   m_ObjectHideFlags: 0
@@ -11234,10 +11208,5 @@ PrefabInstance:
 --- !u!4 &1264571726196803496 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7600346653825095663, guid: e11152b68e401994a8db5a12b19776cd, type: 3}
-  m_PrefabInstance: {fileID: 8715998322774790215}
-  m_PrefabAsset: {fileID: 0}
---- !u!33 &1264571726196803542 stripped
-MeshFilter:
-  m_CorrespondingSourceObject: {fileID: 7600346653825095569, guid: e11152b68e401994a8db5a12b19776cd, type: 3}
   m_PrefabInstance: {fileID: 8715998322774790215}
   m_PrefabAsset: {fileID: 0}
