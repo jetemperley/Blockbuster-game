@@ -28,6 +28,7 @@ public class TerrainGen : MonoBehaviour
     public static TerrainGen instance;
 
     private GameObject player;
+    private GameObject loadingAlert;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,7 @@ public class TerrainGen : MonoBehaviour
         level = 0;
 
         player =  FindObjectOfType<PlayerMovement2>().gameObject;
+        loadingAlert = FindObjectOfType<UIManager>().GetComponent<UIManager>().loadingAlert;
 
         for (int i = 0; i < blocksToSpawn; i++) //Create initial starting area
         {

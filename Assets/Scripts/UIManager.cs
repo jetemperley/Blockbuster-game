@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public HealthBarImage healthBar;
     public HealthBarImage shieldBar;
     public FillDashBar dashBar;
+    public GameObject loadingAlert;
 
     public Text scoreText;
     public Text scoreAddText;
@@ -138,4 +139,5 @@ public class UIManager : MonoBehaviour
             }            
         }        
     }
+
 }
