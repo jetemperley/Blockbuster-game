@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class BuildingGen : MonoBehaviour
 {
-    private float zOffset = 0.0f; //Next z position to spawn buildings
-    //private float yOffset = 0.0f; //Next y position to spawn buildings
-    private float xOffset = 0.0f; //Next x position to spawn buildings
+    private float zOffset = 0.0f;
+    private float xOffset = 0.0f;
 
     public Building[] buildings; //Array of the different types of buildings to spawn
     public GameObject parent;
@@ -29,9 +28,7 @@ public class BuildingGen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if(zOffset <= TerrainGen.zOffset){
-        //     SpawnBuilding();
-        // }
+
     }
 
     public void SpawnBuilding()
@@ -40,18 +37,21 @@ public class BuildingGen : MonoBehaviour
             System.Random random = new System.Random();
             int randomNumber = random.Next(0, buildings.Length);
 
-            randomX = random.Next((int) randX.x, (int) randX.y);
-            randomY = random.Next((int) randY.x, (int) randY.y);
-            randomZ = random.Next((int) randZ.x, (int) randZ.y);
 
+            RandXYZ();
             Instantiate(buildings[randomNumber].gameObject, new Vector3(xOffset+randomX, TerrainGen.yOffset+randomY, zOffset+randomZ), buildings[randomNumber].gameObject.transform.rotation, parent.transform);
             xOffset *= -1;
 
-            randomX = random.Next((int) randX.x, (int) randX.y);
-            randomY = random.Next((int) randY.x, (int) randY.y);
-            randomZ = random.Next((int) randZ.x, (int) randZ.y);
+            RandXYZ();
             Instantiate(buildings[randomNumber].gameObject, new Vector3(xOffset+randomX, TerrainGen.yOffset+randomY, zOffset+randomZ), buildings[randomNumber].gameObject.transform.rotation, parent.transform);
             zOffset += 20;
         }
+    }
+
+    void RandXYZ(){
+        System.Random random = new System.Random();
+        randomX = random.Next((int) randX.x, (int) randX.y);
+        randomY = random.Next((int) randY.x, (int) randY.y);
+        randomZ = random.Next((int) randZ.x, (int) randZ.y);
     }
 }
