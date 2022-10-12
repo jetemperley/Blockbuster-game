@@ -10,7 +10,6 @@ public class MineBehaviour2 : MonoBehaviour
     public float maxLookDist;
     public float maxBeepDist;
     public string targetTag = "Player";
-    private bool foundTarget = false;
     private Vector3 foundTheMotherFucker;
 
     private float distance;
@@ -30,7 +29,6 @@ public class MineBehaviour2 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag(targetTag).transform;
-        foundTarget = false;
         mineBeep = GetComponent<AudioSource>();
         mineBeep.maxDistance = maxLookDist;
         
