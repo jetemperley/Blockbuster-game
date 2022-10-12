@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1434345613419229717}
   - component: {fileID: 1153978688689487892}
+  - component: {fileID: -3943033401464522543}
   m_Layer: 0
   m_Name: BuildingType1
   m_TagString: Untagged
@@ -45,6 +46,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95e9f531d3969a4895541127a44e078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3943033401464522543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4635264952902261376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd4c25308a878a458f80b51ffa65fd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backWall: -10
+  rend: {fileID: 2907168011995757631}
 --- !u!1001 &224532705999605706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -230,6 +245,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77fc9ecffafc95c478e2ec4413f4ee09, type: 3}
+--- !u!23 &2907168011995757631 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3118151930630829045, guid: 77fc9ecffafc95c478e2ec4413f4ee09, type: 3}
+  m_PrefabInstance: {fileID: 224532705999605706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6922996619432406171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7137888683997258577, guid: 77fc9ecffafc95c478e2ec4413f4ee09, type: 3}
