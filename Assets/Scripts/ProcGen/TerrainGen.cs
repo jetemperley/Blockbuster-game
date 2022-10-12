@@ -30,6 +30,10 @@ public class TerrainGen : MonoBehaviour
     public BuildingGen buildingGen;
 
     private GameObject player;
+    private GameObject loadingAlert;
+
+    private float loadTime = 0.2f;
+    private float loadTimer;
 
 
     // Start is called before the first frame update
@@ -42,6 +46,9 @@ public class TerrainGen : MonoBehaviour
         level = 0;
 
         player =  FindObjectOfType<PlayerMovement2>().gameObject;
+        loadingAlert = FindObjectOfType<UIManager>().GetComponent<UIManager>().loadingAlert;
+
+        loadTimer = loadTime;
 
         for (int i = 0; i < blocksToSpawn; i++) //Create initial starting area
         {
@@ -82,8 +89,27 @@ public class TerrainGen : MonoBehaviour
 
         while(zOffset < distToCheckpoint*(checkpointNumber+1))
         {
+            if (loadingAlert != null)
+            {
+                loadingAlert.SetActive(true);
+                loadTimer = loadTime;
+            }
+
             SpawnTerrain();
             buildingGen.SpawnBuilding();
+        }
+
+        if (loadingAlert != null) 
+        {
+            if (loadingAlert.activeSelf && loadTimer > 0)
+            {
+                loadTimer -= Time.deltaTime;
+            }
+
+            if (loadingAlert.activeSelf && loadTimer <= 0)
+            {
+                loadingAlert.SetActive(false);
+            }
         }
 
         //Spawn a checkpoint
@@ -124,6 +150,12 @@ public class TerrainGen : MonoBehaviour
             //checkpointNumber++;
             //checkpointCount++;
             checkpointSpawned = false;
+
+            if (loadingAlert != null)
+            {
+                loadingAlert.SetActive(true);
+                loadTimer = loadTime;
+            }
         }
     }
 }

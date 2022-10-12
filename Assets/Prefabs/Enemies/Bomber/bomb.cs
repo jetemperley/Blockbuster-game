@@ -18,7 +18,7 @@ public class bomb : MonoBehaviour
     public Health health;
     Vector3 startPos;
     Vector3 endPos;
-    Vector3 inFrontPos = new Vector3 (0,0,6);
+    public Vector3 inFrontPos = new Vector3 (0,0,6);
 
     public float countdownTimer = 5;
     private float countdowner;
