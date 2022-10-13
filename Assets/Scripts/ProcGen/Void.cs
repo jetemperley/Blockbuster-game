@@ -25,8 +25,14 @@ public class Void : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.transform.parent != null)
-        {            
-            Destroy(other.gameObject.transform.parent.gameObject);
+        {        
+            if(other.gameObject.transform.parent.name.Contains("PlayerContainer"))
+            {
+                GameObject.Find("Player").GetComponent<Health>().takeDamage(1000);
+            }else{
+                Destroy(other.gameObject.transform.parent.gameObject);
+            }    
+            
         }
         
     }

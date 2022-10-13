@@ -102,8 +102,8 @@ public class UIManager : MonoBehaviour
 
         scoreDisplayText.text = "Final Score: " + ScoreManager.currentScore;
         highscoreDisplayText.text = "Personal Best: " + ScoreManager.highscore;
-        endTimerText.text = "Time:" + DisplayTime(timer);
-        bestTimeText.text = "Longest Time:" + DisplayTime(PlayerPrefs.GetFloat("bestTime", timer));
+        endTimerText.text = "Time: " + DisplayTime(timer);
+        bestTimeText.text = "Longest Time: " + DisplayTime(PlayerPrefs.GetFloat("bestTime", timer));
     }
 
     private void UpdateCursor(){
@@ -163,42 +163,15 @@ public class UIManager : MonoBehaviour
 
     public void UpdateDistance(float distance)
     {
-        distanceText.text = "" + distance + "M" ;
-    }
-
-    public void UpdateTimer()
-    {
-        int hours = (int)(timer/60)/60;
-        int minutes = (int)(timer/60) % 60;
-        int seconds = (int)(timer) % 60;
-        int milliseconds = (int)(timer*10) % 100;
-
-        string hoursString = "" + hours;
-        string minutesString = "" + minutes;
-        string secondsString = "" + seconds;
-        string millisecondsString = "" + milliseconds;
-
-        if(hours < 10){
-            hoursString = "0" + hours;
-        }
-
-        if(minutes < 10)
+        distanceText.text = "" + distance + "M";
+        endDistText.text = "Distance: " + distance + "M";
+        if(distance > PlayerPrefs.GetFloat("bestDist"))
         {
-            minutesString = "0" + minutes;
+            PlayerPrefs.SetFloat("bestDist", distance);
+            PlayerPrefs.Save();
         }
 
-        if(seconds < 10)
-        {
-            secondsString = "0" + seconds;
-        }
-
-        if(milliseconds < 10)
-        {
-            millisecondsString = "0" + milliseconds;
-        }
-
-        timerText.text = hoursString + ":" + minutesString + ":" + secondsString + "." + millisecondsString;      
-        
+        bestDistText.text = "Longest Distance: " + PlayerPrefs.GetFloat("bestDist") + "M";
     }
 
     public string DisplayTime(float timer_)
