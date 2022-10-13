@@ -22,7 +22,10 @@ public class UIManager : MonoBehaviour
     public Text highscoreDisplayText;
     public Text timerText;
     public Text endTimerText;
+    public Text bestTimeText;
     public Text distanceText;
+    public Text endDistText;
+    public Text bestDistText;
 
     private GameManager gameManager;
     private GunHolder weapon;
@@ -68,8 +71,13 @@ public class UIManager : MonoBehaviour
             }
 
             timer += Time.deltaTime;
+            if(timer > PlayerPrefs.GetFloat("bestTime"))
+            {
+                PlayerPrefs.SetFloat("bestTime", timer);
+                PlayerPrefs.Save();
+            }
             
-            UpdateTimer();
+            timerText.text = DisplayTime(timer);
 
             
 
@@ -94,6 +102,8 @@ public class UIManager : MonoBehaviour
 
         scoreDisplayText.text = "Final Score: " + ScoreManager.currentScore;
         highscoreDisplayText.text = "Personal Best: " + ScoreManager.highscore;
+        endTimerText.text = "Time:" + DisplayTime(timer);
+        bestTimeText.text = "Longest Time:" + DisplayTime(PlayerPrefs.GetFloat("bestTime", timer));
     }
 
     private void UpdateCursor(){
@@ -187,9 +197,42 @@ public class UIManager : MonoBehaviour
             millisecondsString = "0" + milliseconds;
         }
 
-        timerText.text = hoursString + ":" + minutesString + ":" + secondsString + "." + millisecondsString;
-       
+        timerText.text = hoursString + ":" + minutesString + ":" + secondsString + "." + millisecondsString;      
         
+    }
+
+    public string DisplayTime(float timer_)
+    {
+        int hours = (int)(timer_/60)/60;
+        int minutes = (int)(timer_/60) % 60;
+        int seconds = (int)(timer_) % 60;
+        int milliseconds = (int)(timer_*10) % 100;
+
+        string hoursString = "" + hours;
+        string minutesString = "" + minutes;
+        string secondsString = "" + seconds;
+        string millisecondsString = "" + milliseconds;
+
+        if(hours < 10){
+            hoursString = "0" + hours;
+        }
+
+        if(minutes < 10)
+        {
+            minutesString = "0" + minutes;
+        }
+
+        if(seconds < 10)
+        {
+            secondsString = "0" + seconds;
+        }
+
+        if(milliseconds < 10)
+        {
+            millisecondsString = "0" + milliseconds;
+        }
+
+        return hoursString + ":" + minutesString + ":" + secondsString + "." + millisecondsString;
     }
 
 }
