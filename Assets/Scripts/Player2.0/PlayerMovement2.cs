@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement2 : MonoBehaviour
 {
     private PlayerInput controls;
+    private UIManager uim;
 
     public GameObject speedParticles;
     public Camera playerCamera;
@@ -82,6 +83,7 @@ public class PlayerMovement2 : MonoBehaviour
     {
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
+        uim = FindObjectOfType<UIManager>().GetComponent<UIManager>();
         rb.freezeRotation = true;
         startPos = transform.position;
 
@@ -115,7 +117,8 @@ public class PlayerMovement2 : MonoBehaviour
         }
 
         //distance
-        distance = Vector3.Distance(startPos, transform.position);
+        distance = transform.position.z-startPos.z;
+        uim.UpdateDistance((int)distance);
         
     }
 
@@ -123,6 +126,8 @@ public class PlayerMovement2 : MonoBehaviour
     {
         MovePlayer();
     }
+
+    
 
     private void MyInput()
     {

@@ -20,6 +20,9 @@ public class UIManager : MonoBehaviour
     public Text scoreMultiplierText;
     public Text scoreDisplayText;
     public Text highscoreDisplayText;
+    public Text timerText;
+    public Text endTimerText;
+    public Text distanceText;
 
     private GameManager gameManager;
     private GunHolder weapon;
@@ -29,6 +32,8 @@ public class UIManager : MonoBehaviour
     private GameObject WeaponSlots;
     private Dashing playerMove;
     private ScoreManager scoreManager;
+
+    private float timer;
     
     // Start is called before the first frame update
     void Start()
@@ -61,6 +66,12 @@ public class UIManager : MonoBehaviour
                     UpdateShieldBar();
                 }  
             }
+
+            timer += Time.deltaTime;
+            
+            UpdateTimer();
+
+            
 
             // if(playerMove != null){
             //     if(playerMove.DashCDTimer < playerMove.dashCD)
@@ -138,6 +149,47 @@ public class UIManager : MonoBehaviour
                 iconWeaponSlots[i].transform.Find("Slot").GetComponent<Text>().color = new Color32(255,0,230,255);
             }            
         }        
+    }
+
+    public void UpdateDistance(float distance)
+    {
+        distanceText.text = "" + distance + "M" ;
+    }
+
+    public void UpdateTimer()
+    {
+        int hours = (int)(timer/60)/60;
+        int minutes = (int)(timer/60) % 60;
+        int seconds = (int)(timer) % 60;
+        int milliseconds = (int)(timer*10) % 100;
+
+        string hoursString = "" + hours;
+        string minutesString = "" + minutes;
+        string secondsString = "" + seconds;
+        string millisecondsString = "" + milliseconds;
+
+        if(hours < 10){
+            hoursString = "0" + hours;
+        }
+
+        if(minutes < 10)
+        {
+            minutesString = "0" + minutes;
+        }
+
+        if(seconds < 10)
+        {
+            secondsString = "0" + seconds;
+        }
+
+        if(milliseconds < 10)
+        {
+            millisecondsString = "0" + milliseconds;
+        }
+
+        timerText.text = hoursString + ":" + minutesString + ":" + secondsString + "." + millisecondsString;
+       
+        
     }
 
 }
