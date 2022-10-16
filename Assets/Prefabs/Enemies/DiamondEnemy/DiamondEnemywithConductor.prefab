@@ -74,7 +74,6 @@ MonoBehaviour:
   maxLookDist: 10
   laser: {fileID: 2768201937835070407}
   laserTotalLength: 20
-  laserCurrentLength: 0
   laserGrowthRate: 50
   moveSpeed: 5
   Positions: []
@@ -264,7 +263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9155766361790398000}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +301,7 @@ GameObject:
   - component: {fileID: 532747723503933821}
   - component: {fileID: 4313873787067304328}
   - component: {fileID: 1329007348304342914}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1064,7 +1063,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6604347947734247383}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -1379,6 +1378,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5013671202562954711, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5045355487076219245, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1386,6 +1389,10 @@ PrefabInstance:
     - target: {fileID: 5329299280087306203, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407371562181003856, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5837026998454522353, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
       propertyPath: m_Mesh
