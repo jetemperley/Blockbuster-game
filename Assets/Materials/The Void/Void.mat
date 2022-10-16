@@ -14,7 +14,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 0
+  m_CustomRenderQueue: 2950
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -42,8 +42,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BUILTIN_QueueControl: 1
-    - _BUILTIN_QueueOffset: 0
+    - _BUILTIN_QueueControl: 0
+    - _BUILTIN_QueueOffset: -50
     - _DissolveAmount: 0.2
     - _NoiseAmount: 0.25
     - _NoisePower: 2
@@ -55,7 +55,7 @@ Material:
     - _Ripple_Density: 111.3
     - _Ripple_Slimness: 5.4
     - _Ripple_Speed: 3
-    - _Void_Alpha: 0.94
+    - _Void_Alpha: 1
     m_Colors:
     - _BaseColour: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0, g: 0, b: 0, a: 0}
