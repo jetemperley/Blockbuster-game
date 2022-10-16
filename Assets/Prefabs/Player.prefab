@@ -898,6 +898,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3113323975226853033, guid: 6b512504ab1bc0747930a99ac88bbaac, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 3244547024501171174, guid: 6b512504ab1bc0747930a99ac88bbaac, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -956,7 +960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4204945933537074060, guid: 6b512504ab1bc0747930a99ac88bbaac, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4533450089176843503, guid: 6b512504ab1bc0747930a99ac88bbaac, type: 3}
       propertyPath: m_Mesh
@@ -1497,6 +1501,18 @@ PrefabInstance:
     - target: {fileID: 1540624994094848900, guid: b5194b727cfa8ac43bfea6e77b03dff7, type: 3}
       propertyPath: weight
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540624994094848921, guid: b5194b727cfa8ac43bfea6e77b03dff7, type: 3}
+      propertyPath: field of view
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540624994094848921, guid: b5194b727cfa8ac43bfea6e77b03dff7, type: 3}
+      propertyPath: far clip plane
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540624994094848921, guid: b5194b727cfa8ac43bfea6e77b03dff7, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1540624994094848921, guid: b5194b727cfa8ac43bfea6e77b03dff7, type: 3}
       propertyPath: m_CullingMask.m_Bits

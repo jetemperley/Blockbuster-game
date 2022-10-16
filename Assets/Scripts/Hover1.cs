@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hover1 : MonoBehaviour
 {
+    public float dampener = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class Hover1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position += (Vector3.up * Mathf.Cos(Time.time))/20;
+        this.transform.position += (Vector3.up * Mathf.Cos(Time.time))/dampener;
     }
 }
