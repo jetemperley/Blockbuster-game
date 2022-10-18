@@ -42,7 +42,12 @@ public class MinigunFire : MonoBehaviour
         animator = GetComponent<Animator>();
         cam = GameObject.Find("BloomCamera").GetComponent<Camera>();
         audioPlaying = false;
-        line = gameObject.AddComponent<LineRenderer>();
+
+        if (gameObject.GetComponent<LineRenderer>() == null)
+            line = gameObject.AddComponent<LineRenderer>();
+        else
+            line = gameObject.GetComponent<LineRenderer>();
+
         line.startWidth = 0.1f;
         line.endWidth = 0.1f;
         currentFireRadius = minFireRadius;
@@ -53,7 +58,6 @@ public class MinigunFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (controls.actions["Fire"].ReadValue<float>() == 1 && fireTimer <= 0 && !PauseMenu.gameIsPaused)
         {
 

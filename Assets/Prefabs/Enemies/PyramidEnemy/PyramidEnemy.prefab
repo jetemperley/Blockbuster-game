@@ -518,8 +518,27 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2605430842811993299, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
+--- !u!1 &262079040710547673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2658792419789820641, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
+  m_PrefabInstance: {fileID: 2830225263574534712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &6059815970003564120
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262079040710547673}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.9
+  m_Center: {x: -0.8, y: 0.3, z: -0.000000029802333}
 --- !u!4 &3289020115322210880 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 784198904724275320, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
