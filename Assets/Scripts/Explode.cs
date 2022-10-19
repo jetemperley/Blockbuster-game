@@ -20,12 +20,17 @@ public class Explode : DeathEffect
         
         foreach(Collider nearbyObject in colliders){
 
-            if(nearbyObject.gameObject.GetComponent<Health>() != null){
-                Health h = nearbyObject.gameObject.GetComponent<Health>();
-                if (h != null){
-                    h.takeDamage(damage);
-                }
-                
+                Rigidbody rb = nearbyObject.GetComponent<Collider>().attachedRigidbody;
+                if (rb != null){
+                    Health h = rb.gameObject.GetComponent<Health>();
+                    if(h!=null){
+                        if(rb.gameObject.layer == 11){
+                            Debug.Log("i hit an enemy!");
+                            h.takeDamage(damage);
+                        }else{
+                            h.takeDamage(1);
+                        }
+                    }
                 }
             }            
     }
