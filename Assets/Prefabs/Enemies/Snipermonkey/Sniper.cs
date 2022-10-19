@@ -30,10 +30,12 @@ public class Sniper : MonoBehaviour
 
     private bool isFiring;
 
+    public GameObject head;
+
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = head.GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag(targetTag).transform;
         laser = GetComponent<LineRenderer>();
         laser.startWidth = 0.1f;
@@ -79,7 +81,6 @@ public class Sniper : MonoBehaviour
             audio = AudioPool.GetAudioSource();
             audio.clip = chargesfx;
             audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
-            Debug.Log(audio.volume);
             audio.Play(0);
         }
     }
@@ -96,9 +97,9 @@ public class Sniper : MonoBehaviour
 
     private void LookAtPlayer(){
         
-            Vector3 direction = target.position-transform.position;
+            Vector3 direction = target.position- head.transform.position;
             Quaternion rotation = Quaternion.LookRotation(direction);
-            transform.rotation = rotation;
+            head.transform.rotation = rotation;
             rb.MovePosition( rb.position +(target.position - rb.position).normalized*moveSpeed*Time.fixedDeltaTime);
     }
 
@@ -127,7 +128,9 @@ public class Sniper : MonoBehaviour
 
         yield return new WaitForSeconds(0.05f);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit)){
+
+        if (Physics.Raycast(head.transform.position, head.transform.forward, out hit)){
+            Debug.Log(hit.transform.name);
             if(hit.transform.name == targetTag){
             Health h = target.gameObject.GetComponent<Health>();
             if (h != null)
