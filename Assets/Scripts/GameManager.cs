@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject completeLevelUI;
     public GameObject gameOverUI;
     
-    public CheckpointManager CPManager;
+    //public CheckpointManager CPManager;
 
     //Main Menu objects
     public GameObject controlPanel;
@@ -25,13 +25,13 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.GetFloat("MouseSens", 0.5f);
         PlayerPrefs.Save();
 
-        CPManager = CheckpointManager.Inst;
+        //CPManager = CheckpointManager.Inst;
         
-        if (resetToCheckpointOrNot) 
-        {
-            CPManager.ResetToCheckpoint();
-            resetToCheckpointOrNot = false;
-        }
+        // if (resetToCheckpointOrNot) 
+        // {
+        //     CPManager.ResetToCheckpoint();
+        //     resetToCheckpointOrNot = false;
+        // }
     }
 
     public void EndGame (){
@@ -56,14 +56,14 @@ public class GameManager : MonoBehaviour
         gameHasEnded = false;
     }
 
-    public void LoadCheckpoint(){
-        Debug.Log("Attempted to reset to checkpoint");
-        if(CPManager != null && CheckpointManager.activeCheckpoint != null){
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            resetToCheckpointOrNot = true;
-        }
-        gameHasEnded = false;
-    }
+    // public void LoadCheckpoint(){
+    //     Debug.Log("Attempted to reset to checkpoint");
+    //     if(CPManager != null && CheckpointManager.activeCheckpoint != null){
+    //         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //         resetToCheckpointOrNot = true;
+    //     }
+    //     gameHasEnded = false;
+    // }
 
     public void CompleteLevel(){
         GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().volume = 0.15f;

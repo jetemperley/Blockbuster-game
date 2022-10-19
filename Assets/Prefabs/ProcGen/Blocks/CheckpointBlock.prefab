@@ -284,6 +284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6714811654483148310}
   - component: {fileID: 2192451997911297189}
+  - component: {fileID: 5754428133301212350}
   m_Layer: 2
   m_Name: CheckpointBounday
   m_TagString: PlayerBoundary
@@ -319,6 +320,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 40, y: 60, z: 40}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5754428133301212350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3924270997723402887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6542f6c9524ee72499186643c7fd94d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6364285922792399369
 GameObject:
   m_ObjectHideFlags: 0

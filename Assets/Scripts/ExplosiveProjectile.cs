@@ -57,8 +57,7 @@ public class ExplosiveProjectile : MonoBehaviour
     {
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         foreach(Collider hc in hitColliders){
-
-            Rigidbody rb = hc.GetComponent<Collider>().attachedRigidbody;
+            Rigidbody rb = hc.attachedRigidbody;
             if(rb != null){
                 if (rb.gameObject.layer != 9)
                 {

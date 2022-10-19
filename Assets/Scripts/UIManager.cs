@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
     private ScoreManager scoreManager;
 
     private float timer;
+    private bool inCheckpoint;
     
     // Start is called before the first frame update
     void Start()
@@ -70,7 +71,11 @@ public class UIManager : MonoBehaviour
                 }  
             }
 
-            timer += Time.deltaTime;
+            if(!inCheckpoint)
+            {
+                timer += Time.deltaTime;  
+            }
+            
             if(timer > PlayerPrefs.GetFloat("bestTime"))
             {
                 PlayerPrefs.SetFloat("bestTime", timer);
@@ -206,6 +211,17 @@ public class UIManager : MonoBehaviour
         }
 
         return hoursString + ":" + minutesString + ":" + secondsString + "." + millisecondsString;
+    }
+
+    public void InCheckpoint()
+    {
+        Debug.Log("called");
+        inCheckpoint = true;
+    }
+
+    public void OutCheckpoint()
+    {
+        inCheckpoint = false;
     }
 
 }

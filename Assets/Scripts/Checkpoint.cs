@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    private GameObject player;
     private bool active;
-    public Vector3 startPosition;
+    private UIManager uim;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerMove>().gameObject;
         active = false;
-        startPosition = gameObject.transform.position;
+        uim = FindObjectOfType<UIManager>().GetComponent<UIManager>();
     }
 
     // Update is called once per frame
@@ -23,24 +21,28 @@ public class Checkpoint : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        if(other.gameObject.layer == 9){
-            active = true;
-            CheckpointManager.activeCheckpoint = this;
-            CheckpointManager.savedScore = ScoreManager.SetScore();
+        if(other.gameObject.layer == 9)
+        {
+            IsActive();
         }
-        CheckpointManager.GetInst().DeactivateOthers();
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.layer == 9)
+        {
+            Deactivate();
+        }
     }
 
     public bool IsActive(){
+        uim.InCheckpoint();
         return active;
     }
 
     public void Deactivate(){
+        uim.OutCheckpoint();
         active = false;
     }
 
-    public void ResetPosition()
-    {
-        gameObject.transform.position = startPosition;
-    }
 }

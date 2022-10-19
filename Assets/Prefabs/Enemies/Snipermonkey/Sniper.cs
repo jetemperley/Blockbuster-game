@@ -79,6 +79,7 @@ public class Sniper : MonoBehaviour
             audio = AudioPool.GetAudioSource();
             audio.clip = chargesfx;
             audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
+            Debug.Log(audio.volume);
             audio.Play(0);
         }
     }
