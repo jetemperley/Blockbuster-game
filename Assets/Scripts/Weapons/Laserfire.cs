@@ -23,13 +23,19 @@ public class Laserfire : MonoBehaviour
     public float startWidth;
     public Vector3 laserOffset;
 
+    public AudioClip lasersfx;
+    private AudioSource audio;
+    private bool isFiring;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;     
         lineRenderer = GetComponent<LineRenderer>();
-
+        audio = AudioPool.GetAudioSource();
         points = new Vector3[2];
     }
 
@@ -40,8 +46,10 @@ public class Laserfire : MonoBehaviour
         if (controls.actions["Fire"].ReadValue<float>() == 1 && !PauseMenu.gameIsPaused)
         {
             Shoot();
+            PlaySound();
             particle.SetActive(true);
         }else{
+            StopSound();
             lineRenderer.enabled = false;
             ticRate = 0;
             particle.SetActive(false);
@@ -69,4 +77,32 @@ public class Laserfire : MonoBehaviour
             points[1] = spawnPoint.transform.position+(spawnPoint.transform.forward*laserRange);
             lineRenderer.SetPositions(points);
         }
+
+    private void PlaySound()
+    {
+        if(!audio.isPlaying)
+        {
+            audio = AudioPool.GetAudioSource();
+            audio.clip = lasersfx;
+            audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
+            audio.Play(0); 
+        }
     }
+
+    private void StopSound()
+    {
+        if(audio.isPlaying)
+        {
+            audio.volume -= Time.deltaTime;
+            if(audio.volume <= 0)
+            {
+                audio.Stop();
+            }
+        }
+    }
+    
+}
+
+    
+        
+
