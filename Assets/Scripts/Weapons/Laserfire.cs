@@ -35,7 +35,7 @@ public class Laserfire : MonoBehaviour
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;     
         lineRenderer = GetComponent<LineRenderer>();
-        audio = AudioPool.GetAudioSource();
+        audio = GetComponent<AudioSource>();
         points = new Vector3[2];
     }
 
@@ -82,10 +82,13 @@ public class Laserfire : MonoBehaviour
     {
         if(!audio.isPlaying)
         {
-            audio = AudioPool.GetAudioSource();
             audio.clip = lasersfx;
             audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
             audio.Play(0); 
+        }
+        if(audio.volume != PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f))
+        {
+            audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
         }
     }
 
