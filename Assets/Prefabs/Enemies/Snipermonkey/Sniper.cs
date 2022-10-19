@@ -81,7 +81,6 @@ public class Sniper : MonoBehaviour
             audio = AudioPool.GetAudioSource();
             audio.clip = chargesfx;
             audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
-            Debug.Log(audio.volume);
             audio.Play(0);
         }
     }
@@ -129,7 +128,9 @@ public class Sniper : MonoBehaviour
 
         yield return new WaitForSeconds(0.05f);
         RaycastHit hit;
-        if (Physics.Raycast(head.transform.position, transform.forward, out hit)){
+
+        if (Physics.Raycast(head.transform.position, head.transform.forward, out hit)){
+            Debug.Log(hit.transform.name);
             if(hit.transform.name == targetTag){
             Health h = target.gameObject.GetComponent<Health>();
             if (h != null)
