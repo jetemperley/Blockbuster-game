@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Explode : DeathEffect
 {
-    public int damage = 10;
+    public int damageToEnemies = 10;
+    public int damageToPlayer = 1;
     public int explosionRadius = 10;
     public AudioClip clip;
 
@@ -25,10 +26,9 @@ public class Explode : DeathEffect
                     Health h = rb.gameObject.GetComponent<Health>();
                     if(h!=null){
                         if(rb.gameObject.layer == 11){
-                            Debug.Log("i hit an enemy!");
-                            h.takeDamage(damage);
+                            h.takeDamage(damageToEnemies);
                         }else{
-                            h.takeDamage(1);
+                            h.takeDamage(damageToPlayer);
                         }
                     }
                 }

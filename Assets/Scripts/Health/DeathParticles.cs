@@ -15,7 +15,7 @@ public class DeathParticles : DeathEffect
     {  
 
         if(explodeScale != null){
-            explosion = explodeScale.explosionRadius*1.5f;
+            explosion = explodeScale.explosionRadius;
         }
         
     }
