@@ -22,15 +22,24 @@ public class PistolFire : MonoBehaviour
     public int pierceNum;
 
     private float fireTimer; //seconds
+
+    private Vector3 origPos;
+    private Quaternion origRot;
     // Start is called before the first frame update
     void Start()
     {
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;
         animator = GetComponent<Animator>();
-        LaserPool.Init();        
+        LaserPool.Init();
+        origPos = transform.position;
+        origRot = transform.rotation;        
     }
 
+    void OnDisable()
+    {
+        animator.StopPlayback();
+    }
     // Update is called once per frame
     void Update()
     {
