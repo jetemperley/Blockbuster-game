@@ -35,11 +35,7 @@ public class PistolFire : MonoBehaviour
         origPos = transform.position;
         origRot = transform.rotation;        
     }
-
-    void OnDisable()
-    {
-        animator.StopPlayback();
-    }
+    
     // Update is called once per frame
     void Update()
     {
