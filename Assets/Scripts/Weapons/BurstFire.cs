@@ -32,7 +32,7 @@ public class BurstFire : MonoBehaviour
     {
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         LaserPool.Init(); 
 
         delayTimer = 0.0f;   
@@ -55,7 +55,7 @@ public class BurstFire : MonoBehaviour
             audio.clip = fireSFX;
             audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
             audio.Play(0);
-            //animator.SetTrigger("Shoot");
+            animator.SetTrigger("Shoot");
             
             Laser laser = LaserPool.GetLaser();
             laser.SetDamage(damage);
