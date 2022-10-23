@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9492359072af474c9ca77e553933adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponModel: {fileID: 0}
+  weaponModel: {fileID: 1698911862364022994, guid: 42d6b15c3086ad449b5c3719f4d44d0e, type: 3}
   weaponName: Burst Rifle
   weaponPrefab: {fileID: 6656603484612156461}
   icon: {fileID: 21300000, guid: bdd6eb9e624ed494fb7ae82b61166e10, type: 3}
@@ -271,6 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7811675851381192488}
   - component: {fileID: 8044025768302870838}
+  - component: {fileID: 748480285138391803}
   m_Layer: 0
   m_Name: Rifle gun
   m_TagString: Untagged
@@ -286,7 +287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7431912869104643474}
   m_LocalRotation: {x: 0.026082745, y: -0.6989826, z: 0.027150033, w: -0.7141469}
-  m_LocalPosition: {x: 0.40207195, y: -0.55388343, z: 1.1997947}
+  m_LocalPosition: {x: 0.35, y: -0.55388343, z: 0.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -296,7 +297,7 @@ Transform:
   - {fileID: 1868827445721546654}
   m_Father: {fileID: 3015075494472484304}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0.113, y: -93.267, z: 4.314}
+  m_LocalEulerAnglesHint: {x: 7.639119e-15, y: -180, z: 7.639119e-15}
 --- !u!114 &8044025768302870838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,6 +319,26 @@ MonoBehaviour:
   shotsDelay: 0.1
   piercing: 0
   pierceNum: 0
+--- !u!95 &748480285138391803
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7431912869104643474}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b48c9f9492d83e74396ca75aa53061b0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8588478924659784882
 GameObject:
   m_ObjectHideFlags: 0
