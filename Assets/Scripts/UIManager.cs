@@ -215,7 +215,6 @@ public class UIManager : MonoBehaviour
 
     public void InCheckpoint()
     {
-        Debug.Log("called");
         inCheckpoint = true;
     }
 
