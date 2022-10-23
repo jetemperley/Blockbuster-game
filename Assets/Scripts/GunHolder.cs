@@ -71,6 +71,7 @@ public class GunHolder : MonoBehaviour
         if (slots[slot] != null)
         {
             activeSlot = slot;
+            
             gunRoot.SetActive(false);
             gunRoot = slots[activeSlot];
             gunRoot.SetActive(true);

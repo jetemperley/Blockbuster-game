@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Explode : DeathEffect
 {
-    public int damage = 10;
+    public int damageToEnemies = 10;
+    public int damageToPlayer = 1;
     public int explosionRadius = 10;
     public AudioClip clip;
 
@@ -20,12 +21,16 @@ public class Explode : DeathEffect
         
         foreach(Collider nearbyObject in colliders){
 
-            if(nearbyObject.gameObject.GetComponent<Health>() != null){
-                Health h = nearbyObject.gameObject.GetComponent<Health>();
-                if (h != null){
-                    h.takeDamage(damage);
-                }
-                
+                Rigidbody rb = nearbyObject.GetComponent<Collider>().attachedRigidbody;
+                if (rb != null){
+                    Health h = rb.gameObject.GetComponent<Health>();
+                    if(h!=null){
+                        if(rb.gameObject.layer == 11){
+                            h.takeDamage(damageToEnemies);
+                        }else{
+                            h.takeDamage(damageToPlayer);
+                        }
+                    }
                 }
             }            
     }

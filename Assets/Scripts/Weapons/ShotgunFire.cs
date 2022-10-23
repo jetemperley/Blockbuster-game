@@ -34,7 +34,8 @@ public class ShotgunFire : MonoBehaviour
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;
         cam = (Camera)FindObjectOfType(typeof(Camera));
-        // animator = GetComponent<Animator>();      
+        animator = GetComponent<Animator>();  
+        Debug.Log(animator);    
     }
 
     // Update is called once per frame
@@ -46,7 +47,7 @@ public class ShotgunFire : MonoBehaviour
             audio.clip = fireSFX;
             audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
             audio.Play(0);
-            // animator.SetTrigger("Shoot");
+            animator.SetTrigger("Shoot");
             Vector3 hitPos;
             for(int i = 0; i<bulletRows; i++)
             {

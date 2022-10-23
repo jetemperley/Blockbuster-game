@@ -601,6 +601,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4313077129777255152}
   - component: {fileID: 4853156494328439735}
+  - component: {fileID: 3915321138432188028}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -646,6 +647,26 @@ MonoBehaviour:
   autoFire: 0
   piercing: 0
   pierceNum: 0
+--- !u!95 &3915321138432188028
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499561209257805898}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4be9452df14834a478238946d501c264, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3997935502584585209
 GameObject:
   m_ObjectHideFlags: 0
