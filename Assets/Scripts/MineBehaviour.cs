@@ -45,7 +45,8 @@ public class MineBehaviour : MonoBehaviour
         }
         if(foundTarget==true){
         transform.Translate(0,0,moveSpeed*Time.deltaTime);
-        volume=(-1/maxLookDist)*distance+0.5f; //y = m*x+b
+        volume= PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f)
+                *(-1/maxLookDist)*distance+0.5f; //y = m*x+b
         if(target.position.z < rb.position.z+7){
             if(beepRate>distance/50){
                 mineBeep.PlayOneShot(clip, volume);
