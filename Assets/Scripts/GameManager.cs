@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
 
     public void EndGame (){
         if(gameHasEnded == false){
-            Debug.Log("End Game");
             // GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().volume = 0.15f;
             gameHasEnded = true;
             Cursor.visible = true;
