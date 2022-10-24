@@ -60,7 +60,7 @@ public class Laserfire : MonoBehaviour
         lineRenderer.enabled=true;
         foreach(RaycastHit hit in Physics.SphereCastAll(spawnPoint.transform.position, beamWidth, spawnPoint.transform.forward*1000, laserRange))
         {
-            try{
+            /*try{
                 if(hit.collider.attachedRigidbody.gameObject.layer == 11){
                     ticRate+=Time.deltaTime;
                     if(ticRate>=ticRateCap){
@@ -70,6 +70,15 @@ public class Laserfire : MonoBehaviour
                             ticRate=0;
                         }
                     }
+                }
+            } catch{}*/
+
+            try{
+                Health health = hit.collider.attachedRigidbody.gameObject.GetComponent<Health>();
+                ticRate+=Time.deltaTime;
+                if (ticRate>=ticRateCap && health != null && hit.collider.attachedRigidbody.gameObject.layer != 9){
+                    health.takeDamage(damage); 
+                    ticRate=0;
                 }
             } catch{}
             }
