@@ -7,6 +7,8 @@ public class Void : MonoBehaviour
     ConductorV2 conductor;
     public float eventHorizon; //Distance between the fallaway and the void
     GameObject player;
+    public static float voidPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,8 @@ public class Void : MonoBehaviour
     {
         if (player != null)
             transform.position = new Vector3(0, player.transform.position.y, conductor.getPosition()-eventHorizon);
+
+        voidPosition = transform.position.z;
     }
 
     //CONSUME
