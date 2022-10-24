@@ -5,7 +5,6 @@ using UnityEngine;
 public class DiamondEnemyBehaviour : MonoBehaviour
 {
     Rigidbody rigidbody;
-    Conductor conductor;
     Transform target;
     public string targetTag = "Player";
     public float maxLookDist = 10;
@@ -33,10 +32,7 @@ public class DiamondEnemyBehaviour : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        conductor = Conductor.getConductor();
         target = GameObject.FindGameObjectWithTag(targetTag).transform;
-
-
     }
 
     // Update is called once per frame

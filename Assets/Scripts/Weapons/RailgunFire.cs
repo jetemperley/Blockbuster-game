@@ -91,10 +91,6 @@ public class RailgunFire : MonoBehaviour
                     health = hit.collider.attachedRigidbody.gameObject.GetComponent<Health>();
                     if (health != null && hit.collider.attachedRigidbody.gameObject.layer != 9){
                         health.takeDamage(damage); 
-                        /*if (health.getHealth() <= 0){
-                            Debug.Log(weap);
-                            PlayerStats.getInst().addStat(weap);
-                        }*/
                     }
                 } catch{}
             }        
