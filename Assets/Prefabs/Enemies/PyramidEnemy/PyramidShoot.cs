@@ -15,11 +15,13 @@ public class PyramidShoot : MonoBehaviour
 
     private Transform target;
     private Rigidbody rb;
+    private FieldOfView fov;
     
     private float timer = 0;
     // Start is called before the first frame update
     void Start()
     {
+        fov = GetComponent<FieldOfView>();
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag(targetTag).transform;
     }
@@ -30,9 +32,7 @@ public class PyramidShoot : MonoBehaviour
 
         timer += Time.deltaTime;
         
-        if (target == null || 
-            (target.position - transform.position).magnitude > maxLookDist ||
-            target.position.z > transform.position.z)
+        if (fov.visibleTargets.Count < 1)
             {    
                 return;
             }
