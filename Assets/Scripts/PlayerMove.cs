@@ -34,8 +34,6 @@ public class PlayerMove : MonoBehaviour
     public bool canDash;
     private float dashTimer;
     private float movementDirectionY;
-    private bool jumpPressed;
-    private bool dashPressed;
 
     private int nbJumps;
 
@@ -58,9 +56,6 @@ public class PlayerMove : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         dashSFX.Stop();
         jumpSFX.Stop();
-
-        jumpPressed = false;
-        dashPressed = false;
 
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
@@ -142,25 +137,9 @@ public class PlayerMove : MonoBehaviour
         // // as an acceleration (ms^-2)
        
     }
-    private void JumpPressed(InputAction.CallbackContext ctx)
-    {
-        jumpPressed = true;
-    }
 
-    private void JumpReleased(InputAction.CallbackContext ctx)
-    {
-       jumpPressed = false;
-    }
 
-    private void DashPressed(InputAction.CallbackContext ctx)
-    {
-        dashPressed = true;
-    }
-
-    private void DashReleased(InputAction.CallbackContext ctx)
-    {
-        dashPressed = false;
-    }
+   
 
     IEnumerator Dash()
     {

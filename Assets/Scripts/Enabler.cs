@@ -7,8 +7,6 @@ public class Enabler : MonoBehaviour
 {
     
     public GameObject enableThis;
-    float toOffset = 0;
-    int layers = 2;
     public GameObject player;
     bool playerPassed = false;
     void Start()

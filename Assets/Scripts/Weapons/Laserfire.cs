@@ -9,7 +9,6 @@ public class Laserfire : MonoBehaviour
     public float fireCooldown; //seconds
     public int damage = 1;
     public float beamWidth;
-    private float fireTimer; //seconds
     public int laserRange;
     public LineRenderer lineRenderer;
     private Vector3[] points;
@@ -24,7 +23,7 @@ public class Laserfire : MonoBehaviour
     public Vector3 laserOffset;
 
     public AudioClip lasersfx;
-    private AudioSource audio;
+    new private AudioSource audio;
     private bool isFiring;
 
 
@@ -32,8 +31,7 @@ public class Laserfire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
-        fireTimer = 0f;     
+        controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();     
         lineRenderer = GetComponent<LineRenderer>();
         audio = GetComponent<AudioSource>();
         points = new Vector3[2];

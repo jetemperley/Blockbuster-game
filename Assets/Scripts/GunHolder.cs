@@ -42,6 +42,7 @@ public class GunHolder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (controls.actions["Weapon 1"].triggered)
         {
             SwitchGun(0);
@@ -53,6 +54,14 @@ public class GunHolder : MonoBehaviour
         if (controls.actions["Weapon 3"].triggered)
         {
             SwitchGun(2);
+        }
+        if(controls.actions["NextWeap"].ReadValue<float>() > 0)
+        {
+            SwitchGun(activeSlot - 1);
+        }
+         if(controls.actions["NextWeap"].ReadValue<float>() < 0)
+        {
+            SwitchGun(activeSlot + 1);
         }
     }
 
@@ -68,6 +77,15 @@ public class GunHolder : MonoBehaviour
 
     public void SwitchGun(int slot) 
     {
+        if(slot < 0)
+        {
+            slot = 2;
+        }
+        if(slot > 2)
+        {
+            slot = 0;
+        }
+
         if (slots[slot] != null)
         {
             activeSlot = slot;
@@ -88,15 +106,31 @@ public class GunHolder : MonoBehaviour
 
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i] == null)
+            if(slots[i] != null)
+            {
+                if(newGun.GetComponent<WeaponModel>().weaponName.Contains(slots[i].GetComponent<WeaponModel>().weaponName))
+                {
+                    pickup.SetGunPickup(gunRoot);
+                    slots[i] = newGun;
+                    gunRoot = slots[i];
+                    slots[i].SetActive(true);
+                    SwitchGun(i);
+                    UI.UpdateActiveSlot(i);
+                    Destroy(pickup.gameObject.transform.parent.gameObject);
+                    UI.UpdateWeaponSlots(i, newGun.GetComponent<WeaponModel>());
+                    return; 
+                }    
+            }
+            else
             {
                 slots[i] = newGun;
                 SwitchGun(i);
                 UI.UpdateActiveSlot(i);
                 Destroy(pickup.gameObject.transform.parent.gameObject);
                 UI.UpdateWeaponSlots(i, newGun.GetComponent<WeaponModel>());
-                return;
+                return;  
             }
+ 
         }
         //Give the old gun to the pickup object
         pickup.SetGunPickup(gunRoot);

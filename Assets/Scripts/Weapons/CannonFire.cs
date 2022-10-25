@@ -34,8 +34,7 @@ public class CannonFire : MonoBehaviour
         fireTimer = 0f;
         animator = GetComponent<Animator>();
         ps = Instantiate(explosion);
-        ps.gameObject.AddComponent<Terrain>();
-        ps.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        ps.Stop();
         
     }
 
