@@ -103,6 +103,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "NextWeap",
+                    "type": "PassThrough",
+                    "id": "c2d347ad-09b2-4681-aa86-d97e958da09d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -295,6 +304,17 @@
                 },
                 {
                     "name": "",
+                    "id": "865934f3-e6dc-4fb4-aa36-5bd86348acf0",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0f53762c-af66-4bea-9519-5101bce86479",
                     "path": "<Keyboard>/1",
                     "interactions": "Press",
@@ -367,6 +387,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "27947c9e-ae57-4043-8e59-0c49b95ee4ea",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "NextWeap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

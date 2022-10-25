@@ -18,7 +18,6 @@ public class DiamondEnemyBehaviour : MonoBehaviour
 
     public Vector3[] Positions;
     private Vector3 oldPosition;
-    private bool oldPosCheck=false;
 
     private Vector3 newPosition;
     private bool newPosCheck=false;

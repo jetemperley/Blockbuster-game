@@ -125,6 +125,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextWeap"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""c2d347ad-09b2-4681-aa86-d97e958da09d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -317,6 +326,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""865934f3-e6dc-4fb4-aa36-5bd86348acf0"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""0f53762c-af66-4bea-9519-5101bce86479"",
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": ""Press"",
@@ -389,6 +409,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27947c9e-ae57-4043-8e59-0c49b95ee4ea"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""NextWeap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1007,6 +1038,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Slide = m_Player.FindAction("Slide", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
+        m_Player_NextWeap = m_Player.FindAction("NextWeap", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1090,6 +1122,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Slide;
     private readonly InputAction m_Player_Crouch;
+    private readonly InputAction m_Player_NextWeap;
     public struct PlayerActions
     {
         private @Input m_Wrapper;
@@ -1105,6 +1138,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Slide => m_Wrapper.m_Player_Slide;
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
+        public InputAction @NextWeap => m_Wrapper.m_Player_NextWeap;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1147,6 +1181,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Crouch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
                 @Crouch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
                 @Crouch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
+                @NextWeap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextWeap;
+                @NextWeap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextWeap;
+                @NextWeap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextWeap;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1184,6 +1221,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Crouch.started += instance.OnCrouch;
                 @Crouch.performed += instance.OnCrouch;
                 @Crouch.canceled += instance.OnCrouch;
+                @NextWeap.started += instance.OnNextWeap;
+                @NextWeap.performed += instance.OnNextWeap;
+                @NextWeap.canceled += instance.OnNextWeap;
             }
         }
     }
@@ -1359,6 +1399,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+        void OnNextWeap(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

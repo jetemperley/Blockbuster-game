@@ -81,7 +81,7 @@ public class HeatMap : MonoBehaviour
                         ));
                         Debug.Log("parsed " + vecs[vecs.Count-1]);
                     } catch (Exception e){
-                        Debug.Log("failed to parse: " + posn);
+                        Debug.Log("failed to parse: " + posn + e);
                     }
                     
                 }
@@ -114,7 +114,7 @@ public class HeatMap : MonoBehaviour
 
                 tex.SetPixels(relInt.x, relInt.z, pixelsPerGrid, pixelsPerGrid, pixels);
             } catch (Exception e){
-                Debug.Log("some position was omitted, probably out of camera bounds");
+                Debug.Log("some position was omitted, probably out of camera bounds" + e);
             }
 
 

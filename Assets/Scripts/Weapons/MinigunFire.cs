@@ -22,7 +22,6 @@ public class MinigunFire : MonoBehaviour
 
     private Camera cam;
     private Animator animator;
-    private bool audioPlaying;
     private int volumeAdjuster;
 
     public GameObject spawnPoint;
@@ -41,7 +40,6 @@ public class MinigunFire : MonoBehaviour
         fireTimer = 0f;
         animator = GetComponent<Animator>();
         cam = GameObject.Find("BloomCamera").GetComponent<Camera>();
-        audioPlaying = false;
 
         if (gameObject.GetComponent<LineRenderer>() == null)
             line = gameObject.AddComponent<LineRenderer>();
@@ -136,7 +134,6 @@ public class MinigunFire : MonoBehaviour
         {
             currentFireRate = minFireRate;
             currentFireRadius = minFireRadius;
-            audioPlaying = false;
             animator.SetBool("Shooting",false);
         } else {
             line.enabled = false;
