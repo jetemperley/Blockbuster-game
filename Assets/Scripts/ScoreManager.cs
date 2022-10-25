@@ -68,7 +68,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         if(player)
-            currentScore = additiveScore + (int)FindObjectOfType<PlayerMovement2>().Distance;
+            currentScore = additiveScore + (int)player.Distance;
             if(currentScore>highscore)
             {
                 highscore = currentScore;

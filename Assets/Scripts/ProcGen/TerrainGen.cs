@@ -113,13 +113,14 @@ public class TerrainGen : MonoBehaviour
 
     IEnumerator SpawnTerrain()
     {
-        yield return new WaitForEndOfFrame();
         System.Random random = new System.Random();
         int randomNumber = random.Next(0, blocks.Length);
         Instantiate(blocks[randomNumber].gameObject, new Vector3(0.0f, yOffset, zOffset), blocks[randomNumber].gameObject.transform.rotation, parent.transform);
 
         zOffset += blocks[randomNumber].length;
         yOffset += blocks[randomNumber].heightOffset;
+
+        yield return new WaitForEndOfFrame();
     }
 
     public void ProgressCheckpoint()
