@@ -41,9 +41,9 @@ public class Health : MonoBehaviour
         }else{
             invulnerableTimer = 0;
         }
-        if(fallLimit > TerrainGen.yOffset-10)
+        if(fallLimit > TerrainGen.yOffset-25)
         {
-            fallLimit = TerrainGen.yOffset-10;
+            fallLimit = TerrainGen.yOffset-25;
         }
         if (transform.position.y < fallLimit && gameObject.layer == 9) {
             takeDamage(1000);
