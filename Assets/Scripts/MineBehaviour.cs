@@ -67,10 +67,8 @@ public class MineBehaviour : MonoBehaviour
     private bool isInRange(){
         //if(target == null || (target.position - transform.position).magnitude > maxLookDist || target.position.z > rb.position.z){
         if(FoV.visibleTargets.Count <= 0){  
-            Debug.Log("I'm not in range");
             return false;
         }else{
-            Debug.Log("i'm in range!");
             return true;
         }
     }

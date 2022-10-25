@@ -5,17 +5,6 @@ using UnityEngine;
 public class GoBack : MonoBehaviour
 {
     public GameObject start;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnTriggerEnter(Collider other)
     {

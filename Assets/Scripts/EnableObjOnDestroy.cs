@@ -6,17 +6,6 @@ public class EnableObjOnDestroy : MonoBehaviour
 {
 
     public GameObject[] toEnable;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnDestroy(){
         foreach (GameObject g in toEnable){

@@ -18,12 +18,6 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void FixedUpdate(){
         rb.MovePosition(transform.position + dir*bulletSpeed*Time.fixedDeltaTime);
         if(bulletLifeSpan>0){

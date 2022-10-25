@@ -7,18 +7,7 @@ public class HealthBarImage : MonoBehaviour
 {
     public Image [] healthFill;
     public Text healthTxt;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void UpdateBar(int currentHealth, int maxHealth){
         for(int i = 0; i<maxHealth; i++)
         {

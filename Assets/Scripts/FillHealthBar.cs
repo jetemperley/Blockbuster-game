@@ -12,11 +12,6 @@ public class FillHealthBar : MonoBehaviour
         slider = GetComponent<Slider>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void UpdateBar(int currentHealth, int maxHealth){
         slider.value = (float)currentHealth/(float)maxHealth;
     }

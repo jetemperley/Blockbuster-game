@@ -72,12 +72,6 @@ public class WeaponGen : MonoBehaviour
         displayText.text = flavourText[randomNumber];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void ChoiceMade(Pickup save)
     {
         if (!choiceMade)

@@ -42,15 +42,7 @@ public class DespawnEnclosure: MonoBehaviour
         g.transform.localPosition = Vector3.zero;
         g.transform.localScale = new Vector3(allowedArea.x, allowedArea.y, 1);
         g.transform.Translate(0, 0, -allowedArea.z/2);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
+    }    
 
     void OnDrawGizmos() {
         Gizmos.DrawWireCube(transform.position, allowedArea);
