@@ -10,7 +10,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     public GameObject speedParticles;
     public Camera playerCamera;
-    public float lookSpeed = 2.0f;
+    public float lookSpeed = 0.1f;
     public float lookXLimit = 45.0f;
 
     [Header("Movement")]
