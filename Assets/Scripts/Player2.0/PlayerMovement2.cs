@@ -97,6 +97,7 @@ public class PlayerMovement2 : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
     }
 
     private void Update()
@@ -178,6 +179,11 @@ public class PlayerMovement2 : MonoBehaviour
     private void Look()
     {
         Vector2 lookInputVector = controls.actions["Look"].ReadValue<Vector2>();
+        if(controls.currentControlScheme.Contains("Gamepad"))
+        {
+            lookInputVector *= 10f;
+        }
+        
         rotationX += -lookInputVector.y * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f));
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
