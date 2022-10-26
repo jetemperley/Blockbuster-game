@@ -55,14 +55,27 @@ public class GunHolder : MonoBehaviour
         {
             SwitchGun(2);
         }
-        if(controls.actions["NextWeap"].ReadValue<float>() > 0)
+        if(controls.currentControlScheme.Contains("Gamepad"))
         {
-            SwitchGun(activeSlot - 1);
+            if(controls.actions["NextWeap"].triggered)
+            {
+                SwitchGun(activeSlot + 1);
+            }
+            if(controls.actions["PrevWeap"].triggered)
+            {
+                SwitchGun(activeSlot - 1);
+            }
+        }else{
+            if(controls.actions["NextWeap"].ReadValue<float>() > 0)
+            {
+                SwitchGun(activeSlot - 1);
+            }
+            if(controls.actions["NextWeap"].ReadValue<float>() < 0)
+            {
+                SwitchGun(activeSlot + 1);
+            } 
         }
-         if(controls.actions["NextWeap"].ReadValue<float>() < 0)
-        {
-            SwitchGun(activeSlot + 1);
-        }
+        
     }
 
     public void SetGun(GameObject gun){

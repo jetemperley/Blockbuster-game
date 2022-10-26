@@ -112,6 +112,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PrevWeap",
+                    "type": "Button",
+                    "id": "954d9f8f-ebdc-457b-93b0-c46690d82f18",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -424,37 +433,26 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "074bb411-bb13-4579-a350-9c2776335d81",
-                    "path": "1DAxis",
-                    "interactions": "",
+                    "name": "",
+                    "id": "76f77392-d8dc-471a-a4ce-6e51da422e5e",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Press",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "NextWeap",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "positive",
-                    "id": "8bd140f5-7555-4f7d-b4e1-183400dcaba3",
+                    "name": "",
+                    "id": "7234a3b9-23f4-45de-bb24-0aafd4aca136",
                     "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "NextWeap",
+                    "action": "PrevWeap",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "negative",
-                    "id": "3714a27f-0eaf-4012-9fe6-bea125b4c70a",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NextWeap",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         },
