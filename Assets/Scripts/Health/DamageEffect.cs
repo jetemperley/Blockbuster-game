@@ -20,6 +20,7 @@ public class DamageEffect : MonoBehaviour
     {
         renderer.material.color = flashColor;
         Invoke("ResetColor", flashTime);
+        Debug.Log("I flashed!");
     }
 
     void ResetColor()

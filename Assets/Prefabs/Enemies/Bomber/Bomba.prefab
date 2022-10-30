@@ -5000,7 +5000,7 @@ MonoBehaviour:
   effect:
   - {fileID: 1693621032887713770}
   - {fileID: 1693621032887713769}
-  damageEffect: {fileID: 0}
+  damageEffect: {fileID: 1693621032887713687}
 --- !u!114 &1693621032887713770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5259,17 +5259,13 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -4145618739577389089, guid: 242255281ac1a024a9bb71edba9904c7, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -4145618739577389089, guid: 242255281ac1a024a9bb71edba9904c7, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4145618739577389089, guid: 242255281ac1a024a9bb71edba9904c7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7354ced5d5d695b43bb163c3ff0e8535, type: 2}
+      objectReference: {fileID: 2100000, guid: 4a34d02744adc1c49a323824cb9aae26, type: 2}
+    - target: {fileID: -4145618739577389089, guid: 242255281ac1a024a9bb71edba9904c7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 53c11375b9b3b0344933df1b2ac19f8f, type: 2}
     - target: {fileID: 919132149155446097, guid: 242255281ac1a024a9bb71edba9904c7, type: 3}
       propertyPath: m_Name
       value: BomberCannonFloat3
