@@ -130,11 +130,9 @@ public class Sniper : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(head.transform.position, head.transform.forward, out hit)){
-            Debug.Log(hit.transform.name);
             if(hit.transform.name == targetTag){
             Health h = target.gameObject.GetComponent<Health>();
             if (h != null)
-                Debug.Log("sniper delt damage hehe");
                 h.takeDamage(damage);
             }
         }

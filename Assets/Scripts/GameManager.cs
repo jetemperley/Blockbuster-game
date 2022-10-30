@@ -65,10 +65,8 @@ public class GameManager : MonoBehaviour
     // }
 
     public void CompleteLevel(){
-        GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().volume = 0.15f;
         if (gameHasEnded)
             return;
-        Debug.Log("Level Complete!");
         gameHasEnded = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;

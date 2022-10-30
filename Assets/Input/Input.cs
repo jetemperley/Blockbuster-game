@@ -134,6 +134,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrevWeap"",
+                    ""type"": ""Button"",
+                    ""id"": ""954d9f8f-ebdc-457b-93b0-c46690d82f18"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -392,11 +401,33 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""d8bdbe9b-d486-4f3d-8c8c-9d1cc3a6826f"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""fe2d3100-5d2c-43b8-a5da-c8102251e8b7"",
                     ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": ""Press(pressPoint=0.05,behavior=2)"",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Slide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37360b17-0a11-4bf3-a478-0e9b645c60a4"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": ""Press(pressPoint=0.05,behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Slide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -420,6 +451,28 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""NextWeap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76f77392-d8dc-471a-a4ce-6e51da422e5e"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": ""Press(pressPoint=0.1)"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NextWeap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7234a3b9-23f4-45de-bb24-0aafd4aca136"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": ""Press(pressPoint=0.1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrevWeap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -895,6 +948,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""dfeca912-f9b2-4844-a825-fdbe923a0bfa"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""38c99815-14ea-4617-8627-164d27641299"",
                     ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",
@@ -955,6 +1019,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bdd988aa-4594-4e4e-9681-6424e188953a"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1039,6 +1114,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_Player_Slide = m_Player.FindAction("Slide", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_NextWeap = m_Player.FindAction("NextWeap", throwIfNotFound: true);
+        m_Player_PrevWeap = m_Player.FindAction("PrevWeap", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1123,6 +1199,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Slide;
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_NextWeap;
+    private readonly InputAction m_Player_PrevWeap;
     public struct PlayerActions
     {
         private @Input m_Wrapper;
@@ -1139,6 +1216,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         public InputAction @Slide => m_Wrapper.m_Player_Slide;
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         public InputAction @NextWeap => m_Wrapper.m_Player_NextWeap;
+        public InputAction @PrevWeap => m_Wrapper.m_Player_PrevWeap;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1184,6 +1262,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @NextWeap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextWeap;
                 @NextWeap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextWeap;
                 @NextWeap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextWeap;
+                @PrevWeap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrevWeap;
+                @PrevWeap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrevWeap;
+                @PrevWeap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrevWeap;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1224,6 +1305,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @NextWeap.started += instance.OnNextWeap;
                 @NextWeap.performed += instance.OnNextWeap;
                 @NextWeap.canceled += instance.OnNextWeap;
+                @PrevWeap.started += instance.OnPrevWeap;
+                @PrevWeap.performed += instance.OnPrevWeap;
+                @PrevWeap.canceled += instance.OnPrevWeap;
             }
         }
     }
@@ -1400,6 +1484,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         void OnSlide(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnNextWeap(InputAction.CallbackContext context);
+        void OnPrevWeap(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

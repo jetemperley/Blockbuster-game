@@ -112,6 +112,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PrevWeap",
+                    "type": "Button",
+                    "id": "954d9f8f-ebdc-457b-93b0-c46690d82f18",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -370,11 +379,33 @@
                 },
                 {
                     "name": "",
+                    "id": "d8bdbe9b-d486-4f3d-8c8c-9d1cc3a6826f",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fe2d3100-5d2c-43b8-a5da-c8102251e8b7",
                     "path": "<Keyboard>/ctrl",
                     "interactions": "Press(pressPoint=0.05,behavior=2)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
+                    "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "37360b17-0a11-4bf3-a478-0e9b645c60a4",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "Press(pressPoint=0.05,behavior=2)",
+                    "processors": "",
+                    "groups": "",
                     "action": "Slide",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -398,6 +429,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "NextWeap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76f77392-d8dc-471a-a4ce-6e51da422e5e",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Press(pressPoint=0.1)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "NextWeap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7234a3b9-23f4-45de-bb24-0aafd4aca136",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "Press(pressPoint=0.1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrevWeap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -873,6 +926,17 @@
                 },
                 {
                     "name": "",
+                    "id": "dfeca912-f9b2-4844-a825-fdbe923a0bfa",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "38c99815-14ea-4617-8627-164d27641299",
                     "path": "<Mouse>/scroll",
                     "interactions": "",
@@ -933,6 +997,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bdd988aa-4594-4e4e-9681-6424e188953a",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false

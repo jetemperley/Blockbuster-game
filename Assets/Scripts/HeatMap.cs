@@ -19,16 +19,6 @@ public class HeatMap : MonoBehaviour
     public Color heatColor;
     public float heatAlpha = 0.5f;
     public float unitsPerGrid = 1;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void buildHeatmap(){
         Vector2Int res = new Vector2Int((int)(cameraSize.x*pixelsPerWorldUnit), (int)(cameraSize.y*pixelsPerWorldUnit));

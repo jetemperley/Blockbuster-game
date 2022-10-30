@@ -34,8 +34,7 @@ public class ShotgunFire : MonoBehaviour
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;
         cam = (Camera)FindObjectOfType(typeof(Camera));
-        animator = GetComponent<Animator>();  
-        Debug.Log(animator);    
+        animator = GetComponent<Animator>();    
     }
 
     // Update is called once per frame

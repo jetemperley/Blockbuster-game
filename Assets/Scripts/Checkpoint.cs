@@ -14,12 +14,6 @@ public class Checkpoint : MonoBehaviour
         uim = FindObjectOfType<UIManager>().GetComponent<UIManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter(Collider other){
         if(other.gameObject.layer == 9)
         {

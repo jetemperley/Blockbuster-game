@@ -10,7 +10,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     public GameObject speedParticles;
     public Camera playerCamera;
-    public float lookSpeed = 2.0f;
+    public float lookSpeed = 0.1f;
     public float lookXLimit = 45.0f;
 
     [Header("Movement")]
@@ -97,6 +97,7 @@ public class PlayerMovement2 : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
     }
 
     private void Update()
@@ -178,10 +179,15 @@ public class PlayerMovement2 : MonoBehaviour
     private void Look()
     {
         Vector2 lookInputVector = controls.actions["Look"].ReadValue<Vector2>();
-        rotationX += -lookInputVector.y * (lookSpeed* 2 * PlayerPrefs.GetFloat("MouseSens", 0.5f));
+        if(controls.currentControlScheme.Contains("Gamepad"))
+        {
+            lookInputVector *= 10f;
+        }
+        
+        rotationX += -lookInputVector.y * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f));
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, lookInputVector.x * (lookSpeed* 2 * PlayerPrefs.GetFloat("MouseSens", 0.5f)), 0);
+        transform.rotation *= Quaternion.Euler(0, lookInputVector.x * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f)), 0);
     }
 
     private void StateHandler()

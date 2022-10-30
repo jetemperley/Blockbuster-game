@@ -21,6 +21,8 @@ public class Health : MonoBehaviour
     public DeathEffect[] effect;
     public DamageEffect damageEffect;
 
+    private float fallLimit;
+
    
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,7 @@ public class Health : MonoBehaviour
         if (!shieldOrNot)
             currentHealth = maxHealth;
         invulnerableTimer = 0;
+        fallLimit = TerrainGen.yOffset-25;
     }
 
     // Update is called once per frame
@@ -38,8 +41,11 @@ public class Health : MonoBehaviour
         }else{
             invulnerableTimer = 0;
         }
-
-        if (transform.position.y < TerrainGen.yOffset-25 && gameObject.layer == 9) {
+        if(fallLimit > TerrainGen.yOffset-25)
+        {
+            fallLimit = TerrainGen.yOffset-25;
+        }
+        if (transform.position.y < fallLimit && gameObject.layer == 9) {
             takeDamage(1000);
             PlayerStats.getInst().addStat("fall");
         }

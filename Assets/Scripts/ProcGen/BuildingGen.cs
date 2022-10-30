@@ -25,12 +25,6 @@ public class BuildingGen : MonoBehaviour
         xOffset = 80f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void SpawnBuilding()
     {
         while(zOffset<=TerrainGen.zOffset){

@@ -12,11 +12,6 @@ public class FillDashBar : MonoBehaviour
         slider = GetComponent<Slider>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void UpdateBar(float currentDashtimer, float maxDashtime){
         slider.value = currentDashtimer/maxDashtime;
     }

@@ -12,14 +12,14 @@ public class MouseSens : MonoBehaviour
     void Start()
     {
         slider = GetComponent<Slider>();
-        if(PlayerPrefs.GetFloat("MouseSens", 0.5f) == 0)
+        if(PlayerPrefs.GetFloat("MouseSens", 1f) == 0)
         {
-            PlayerPrefs.SetFloat("MouseSens", 0.5f);
+            PlayerPrefs.SetFloat("MouseSens", 1f);
             PlayerPrefs.Save();
         }
         else
         {
-            slider.value = PlayerPrefs.GetFloat("MouseSens", 0.5f);
+            slider.value = PlayerPrefs.GetFloat("MouseSens", 1f);
         }
         
     }
@@ -27,7 +27,7 @@ public class MouseSens : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "x" + 2f * Mathf.Round(slider.value * 100f) / 100f;
+        text.text = "x" + Mathf.Round(slider.value * 100f) / 100f;
     }
 
     public void OnEndDrag()

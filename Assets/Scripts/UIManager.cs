@@ -115,7 +115,7 @@ public class UIManager : MonoBehaviour
         if (weapon.gunRoot != null && weapon.gunRoot.activeSelf)
         {
             string weaponName = weapon.gunRoot.name;
-            if(weaponName.Contains("Pistol")){
+            if(weaponName.Contains("Pistol") || weaponName.Contains("Revolver") || weaponName.Contains("Rifle") ){
                 pistolCursor.SetActive(true);
                 minigunCursor.SetActive(false);
                 cannonCursor.SetActive(false);

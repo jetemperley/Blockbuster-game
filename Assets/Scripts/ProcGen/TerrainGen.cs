@@ -63,41 +63,19 @@ public class TerrainGen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player != null)
-        {
-            /*if (player.transform.position.z > (zOffset - distanceToSpawn))
-            {
-                SpawnTerrain();
-            }*/
 
-            /*if (player.transform.position.z > (zOffset - checkpointBlock.length))
-            {
-                checkpointNumber++;
-                checkpointCount++;
-                checkpointSpawned = false;
-            }*/
-        }
+        // while(zOffset < distToCheckpoint*(checkpointNumber+1))
+        // {
+        //     if (loadingAlert != null)
+        //     {
+        //         loadingAlert.SetActive(true);
+        //         loadTimer = loadTime;
+        //     }
 
-        //Increase level after reaching set number of checkpoints
-        /*if (checkpointCount >= checkpointsToNextLvl && level < maxLevel)
-        {
-            level += 1;
-            distToCheckpoint += lengthIncrement;
-            checkpointCount = 0;
-            ConductorV2.getConductor().levelSpeed += levelSpeedIncrement;
-        }*/
-
-        while(zOffset < distToCheckpoint*(checkpointNumber+1))
-        {
-            if (loadingAlert != null)
-            {
-                loadingAlert.SetActive(true);
-                loadTimer = loadTime;
-            }
-
-            SpawnTerrain();
-            buildingGen.SpawnBuilding();
-        }
+        //     SpawnTerrain();
+        //     buildingGen.SpawnBuilding();
+        // }
+        StartCoroutine(LoadBlocks());
 
         if (loadingAlert != null) 
         {
@@ -133,7 +111,7 @@ public class TerrainGen : MonoBehaviour
 
     }
 
-    void SpawnTerrain()
+    IEnumerator SpawnTerrain()
     {
         System.Random random = new System.Random();
         int randomNumber = random.Next(0, blocks.Length);
@@ -141,6 +119,8 @@ public class TerrainGen : MonoBehaviour
 
         zOffset += blocks[randomNumber].length;
         yOffset += blocks[randomNumber].heightOffset;
+
+        yield return new WaitForEndOfFrame();
     }
 
     public void ProgressCheckpoint()
@@ -157,5 +137,35 @@ public class TerrainGen : MonoBehaviour
                 loadTimer = loadTime;
             }
         }
+    }
+
+    IEnumerator LoadBlocks()
+    {
+        float startTime;
+        float endTime;
+        float elapsedTime = 0;
+        float desiredTime = 0.015f;
+        while(zOffset < distToCheckpoint*(checkpointNumber+1))
+        {
+            startTime = Time.realtimeSinceStartup;
+            if (loadingAlert != null)
+            {
+                loadingAlert.SetActive(true);
+                loadTimer = loadTime;
+            }
+
+            StartCoroutine(SpawnTerrain());
+            buildingGen.SpawnBuilding();
+            endTime = Time.realtimeSinceStartup;
+            elapsedTime += endTime = startTime;
+
+            if(elapsedTime >= desiredTime)
+            {
+                elapsedTime = 0;
+                yield return null;
+            }
+        }
+
+        yield return null;
     }
 }
