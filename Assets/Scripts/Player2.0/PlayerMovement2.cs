@@ -187,17 +187,10 @@ public class PlayerMovement2 : MonoBehaviour
             if(fov.visibleTargets.Count > 0)
             {
                 var targetDirection = fov.visibleTargets[0].position - playerCamera.transform.position;
-                var ytd = targetDirection;
-                targetDirection.y = 0.00F; // Lock global y-axis
-
-                var ytr = Quaternion.LookRotation(ytd);
+                targetDirection.y = 0.00F; // Lock global y-axis 
                 var targetRotation = Quaternion.LookRotation(targetDirection);
-
                 var deltaAngle = Quaternion.Angle(playerCamera.transform.localRotation, targetRotation);
-                var yda = Quaternion.Angle(playerCamera.transform.rotation, ytr);
-                
-                playerCamera.transform.localRotation = Quaternion.Slerp(playerCamera.transform.localRotation,ytr, lookSpeed*500*Time.deltaTime/yda);
-                Debug.Log(playerCamera.transform.localRotation);
+
                 transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation, lookSpeed*500*Time.deltaTime/deltaAngle);
             }
 
