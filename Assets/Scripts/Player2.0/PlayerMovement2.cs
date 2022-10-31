@@ -194,17 +194,13 @@ public class PlayerMovement2 : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation, lookSpeed*500*Time.deltaTime/deltaAngle);
             }
 
-            rotationX += -lookInputVector.y * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f));
-            rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-            transform.rotation *= Quaternion.Euler(0, lookInputVector.x * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f)), 0); 
-            
-        }else{
-            rotationX += -lookInputVector.y * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f));
-            rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-            transform.rotation *= Quaternion.Euler(0, lookInputVector.x * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f)), 0); 
         }
+        
+        rotationX += -lookInputVector.y * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f));
+        rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
+        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        transform.rotation *= Quaternion.Euler(0, lookInputVector.x * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f)), 0); 
+        
         
         
     }
