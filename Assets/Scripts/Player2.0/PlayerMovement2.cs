@@ -9,6 +9,7 @@ public class PlayerMovement2 : MonoBehaviour
     private UIManager uim;
 
     public GameObject speedParticles;
+    public FieldOfView fov;
     public Camera playerCamera;
     public float lookSpeed = 0.1f;
     public float lookXLimit = 45.0f;
@@ -81,6 +82,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void Start()
     {
+        fov = GetComponent<FieldOfView>();
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         uim = FindObjectOfType<UIManager>().GetComponent<UIManager>();
@@ -103,7 +105,7 @@ public class PlayerMovement2 : MonoBehaviour
     private void Update()
     {
         // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.1f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         if(!PauseMenu.gameIsPaused)
         {
@@ -182,12 +184,36 @@ public class PlayerMovement2 : MonoBehaviour
         if(controls.currentControlScheme.Contains("Gamepad"))
         {
             lookInputVector *= 10f;
+            if(fov.visibleTargets.Count > 0)
+            {
+                var targetDirection = fov.visibleTargets[0].position - playerCamera.transform.position;
+                var ytd = targetDirection;
+                targetDirection.y = 0.00F; // Lock global y-axis
+
+                var ytr = Quaternion.LookRotation(ytd);
+                var targetRotation = Quaternion.LookRotation(targetDirection);
+
+                var deltaAngle = Quaternion.Angle(playerCamera.transform.localRotation, targetRotation);
+                var yda = Quaternion.Angle(playerCamera.transform.rotation, ytr);
+                
+                playerCamera.transform.localRotation = Quaternion.Slerp(playerCamera.transform.localRotation,ytr, lookSpeed*500*Time.deltaTime/yda);
+                Debug.Log(playerCamera.transform.localRotation);
+                transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation, lookSpeed*500*Time.deltaTime/deltaAngle);
+            }
+
+            rotationX += -lookInputVector.y * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f));
+            rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
+            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+            transform.rotation *= Quaternion.Euler(0, lookInputVector.x * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f)), 0); 
+            
+        }else{
+            rotationX += -lookInputVector.y * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f));
+            rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
+            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+            transform.rotation *= Quaternion.Euler(0, lookInputVector.x * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f)), 0); 
         }
         
-        rotationX += -lookInputVector.y * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f));
-        rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, lookInputVector.x * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f)), 0);
+        
     }
 
     private void StateHandler()
