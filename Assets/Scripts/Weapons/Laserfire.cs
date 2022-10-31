@@ -8,7 +8,7 @@ public class Laserfire : MonoBehaviour
     private PlayerInput controls;
     public float fireCooldown; //seconds
     public int damage = 1;
-    public float beamWidth;
+    public float beamHitboxWidth;
     public int laserRange;
     public LineRenderer lineRenderer;
     private Vector3[] points;
@@ -18,9 +18,8 @@ public class Laserfire : MonoBehaviour
     private float ticRate;
     public float ticRateCap = 0.2f;
 
-    public float endWidth;
-    public float startWidth;
-    public Vector3 laserOffset;
+    public float VisualLaserWidth;
+    //public Vector3 laserOffset;
 
     public AudioClip lasersfx;
     new private AudioSource audio;
@@ -39,8 +38,8 @@ public class Laserfire : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-        lineRenderer.startWidth = startWidth;
-        lineRenderer.endWidth = endWidth;
+        lineRenderer.startWidth = VisualLaserWidth;
+        lineRenderer.endWidth = VisualLaserWidth;
         if (controls.actions["Fire"].ReadValue<float>() == 1 && !PauseMenu.gameIsPaused)
         {
             Shoot();
@@ -56,7 +55,7 @@ public class Laserfire : MonoBehaviour
 
     private void Shoot(){
         lineRenderer.enabled=true;
-        foreach(RaycastHit hit in Physics.SphereCastAll(spawnPoint.transform.position, beamWidth, spawnPoint.transform.forward*1000, laserRange))
+        foreach(RaycastHit hit in Physics.SphereCastAll(spawnPoint.transform.position, beamHitboxWidth, spawnPoint.transform.forward*1000, laserRange))
         {
             /*try{
                 if(hit.collider.attachedRigidbody.gameObject.layer == 11){
@@ -80,7 +79,7 @@ public class Laserfire : MonoBehaviour
                 }
             } catch{}
             }
-            points[0] = spawnPoint.transform.position + laserOffset; 
+            points[0] = spawnPoint.transform.position /*+ laserOffset*/; 
             points[1] = spawnPoint.transform.position+(spawnPoint.transform.forward*laserRange);
             lineRenderer.SetPositions(points);
         }

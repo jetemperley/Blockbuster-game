@@ -704,15 +704,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireCooldown: 0
   damage: 3
-  beamWidth: 0
+  beamHitboxWidth: 0
   laserRange: 40
   lineRenderer: {fileID: 4651232096533198367}
   spawnPoint: {fileID: 1407139535535640806}
   particle: {fileID: 5023881764808007436}
   ticRateCap: 0.05
-  endWidth: 1
-  startWidth: 0.5
-  laserOffset: {x: 0, y: 0, z: 0}
+  VisualLaserWidth: 1
   lasersfx: {fileID: 8300000, guid: abea098ff436a964ba7d0a9656c2b139, type: 3}
 --- !u!120 &4651232096533198367
 LineRenderer:
