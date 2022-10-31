@@ -1015,7 +1015,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashTime: 0.3
   flashColor: {r: 1, g: 0, b: 0, a: 0}
-  renderer: {fileID: 8487917701638752044}
+  renderer:
+  - {fileID: 8487917701638752044}
+  - {fileID: 8887238694938499243}
 --- !u!65 &-1542408540806135805
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1279,6 +1281,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5013671202562954711, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5045355487076219245, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1286,6 +1292,10 @@ PrefabInstance:
     - target: {fileID: 5329299280087306203, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407371562181003856, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5837026998454522353, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
       propertyPath: m_Mesh
@@ -1410,5 +1420,10 @@ Transform:
 --- !u!23 &8487917701638752044 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5407371562181003856, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
+  m_PrefabInstance: {fileID: 4522163663795424636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8887238694938499243 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5013671202562954711, guid: 99c3ded90308efa44bf077c761dfad6e, type: 3}
   m_PrefabInstance: {fileID: 4522163663795424636}
   m_PrefabAsset: {fileID: 0}

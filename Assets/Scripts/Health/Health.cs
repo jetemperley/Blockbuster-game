@@ -87,7 +87,12 @@ public class Health : MonoBehaviour
             }
 
 
-            
+            if (currentHealth > 0)
+            {
+                if (damageEffect != null)
+                    damageEffect.DamageFlash();
+                return currentHealth;
+            }
             
             if (currentHealth <= 0 && !shieldOrNot){
                 if(effect != null){
@@ -116,12 +121,7 @@ public class Health : MonoBehaviour
                 ScoreManager.Inst.AddScore(scoreValue);
             }
 
-            if (currentHealth > 0)
-            {
-                if (damageEffect != null)
-                    damageEffect.DamageFlash();
-                return currentHealth;
-            }
+
             
         } 
         return currentHealth;

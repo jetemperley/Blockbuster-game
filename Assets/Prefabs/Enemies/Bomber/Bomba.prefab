@@ -5043,7 +5043,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashTime: 0.3
   flashColor: {r: 1, g: 0, b: 0, a: 0}
-  renderer: {fileID: 6637763765118132827}
+  renderer:
+  - {fileID: 6637763765118132827}
+  - {fileID: 4422723324807368314}
 --- !u!114 &1693621032887713685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5301,6 +5303,11 @@ BoxCollider:
 --- !u!4 &2153677455253535343 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 242255281ac1a024a9bb71edba9904c7, type: 3}
+  m_PrefabInstance: {fileID: 1903297789410549124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4422723324807368314 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2812907188377375742, guid: 242255281ac1a024a9bb71edba9904c7, type: 3}
   m_PrefabInstance: {fileID: 1903297789410549124}
   m_PrefabAsset: {fileID: 0}
 --- !u!23 &6637763765118132827 stripped

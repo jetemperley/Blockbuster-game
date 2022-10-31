@@ -220,7 +220,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashTime: 0.3
   flashColor: {r: 1, g: 0, b: 0, a: 0}
-  renderer: {fileID: 8522871795078860143}
+  renderer:
+  - {fileID: 8522871795078860143}
+  - {fileID: 7214792577595556287}
+  - {fileID: 4294787754932930695}
+  - {fileID: 8509677804475081074}
 --- !u!120 &6395701618193673323
 LineRenderer:
   m_ObjectHideFlags: 0

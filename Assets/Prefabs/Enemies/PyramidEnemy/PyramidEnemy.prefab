@@ -142,7 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashTime: 0.3
   flashColor: {r: 1, g: 0, b: 0, a: 0}
-  renderer: {fileID: 7803661906327847016}
+  renderer:
+  - {fileID: 7803661906327847016}
 --- !u!65 &1359805555541872707
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -485,6 +486,10 @@ PrefabInstance:
     - target: {fileID: 5329299280087306203, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407371562181003856, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5407371562181003856, guid: cbf8de3cc4a34fd448d5bf09879ceba4, type: 3}
       propertyPath: m_CastShadows
