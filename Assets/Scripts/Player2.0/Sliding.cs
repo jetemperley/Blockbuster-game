@@ -121,7 +121,7 @@ public class Sliding : MonoBehaviour{
         rb.AddForce(-transform.up, ForceMode.Impulse);
     }
 
-    private void StopSlide(){
+    public void StopSlide(){
         slideNeedsReset = true;
         sliding=false;
         playerObj.localScale= new Vector3(playerObj.localScale.x, startYScale, playerObj.localScale.z);

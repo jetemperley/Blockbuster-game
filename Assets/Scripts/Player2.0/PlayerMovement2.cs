@@ -8,6 +8,7 @@ public class PlayerMovement2 : MonoBehaviour
     private PlayerInput controls;
     private UIManager uim;
 
+    public Sliding slidingComp;
     public GameObject speedParticles;
     public FieldOfView fov;
     public Camera playerCamera;
@@ -288,9 +289,10 @@ public class PlayerMovement2 : MonoBehaviour
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if(this.gameObject.GetComponent<Sliding>().IsSliding)
+        if(slidingComp.IsSliding)
         {
-            rb.AddForce(transform.up * jumpForce * 2f, ForceMode.Impulse);
+            slidingComp.StopSlide();
+            rb.AddForce(transform.up * jumpForce * 1.5f, ForceMode.Impulse);
         }else{
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }
