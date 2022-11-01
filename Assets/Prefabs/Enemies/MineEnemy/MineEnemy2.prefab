@@ -45726,6 +45726,7 @@ GameObject:
   - component: {fileID: 320275872325384585}
   - component: {fileID: 4852560868040548249}
   - component: {fileID: 6994773492108182837}
+  - component: {fileID: 3598601433339230622}
   - component: {fileID: 6011761916922428496}
   m_Layer: 11
   m_Name: Icosphere
@@ -54316,6 +54317,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7269219712844100105}
   m_Mesh: {fileID: 0}
+--- !u!64 &3598601433339230622
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7269219712844100105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!65 &6011761916922428496
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60718,8 +60733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcffc5dbb396d6a49906c0ea71deb0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageToEnemies: 10
-  damageToPlayer: 1
+  damage: 10
   explosionRadius: 7
   clip: {fileID: 8300000, guid: 42a46d6a1dd5f374eb7f31b2ef8d5b36, type: 3}
 --- !u!82 &8576446365344429711
