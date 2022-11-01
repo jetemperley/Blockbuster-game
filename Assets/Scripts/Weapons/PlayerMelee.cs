@@ -12,7 +12,8 @@ public class PlayerMelee : MonoBehaviour
     public float recovery;
     public int damage;
 
-    public GameObject sword;    
+    public GameObject sword;
+    public TrailRenderer trail;    
     public GameObject prefabHitbox;
     public Camera playerCamera;
     public AudioClip swordSwingSFX;
@@ -47,6 +48,7 @@ public class PlayerMelee : MonoBehaviour
     {
          if (canAttack && controls.actions["Fire"].triggered)
         {
+            trail.enabled = true;
             AudioSource audio = AudioPool.GetAudioSource();
             audio.clip = swordSwingSFX;
             audio.volume = PlayerPrefs.GetFloat("sfxSound",1f) * PlayerPrefs.GetFloat("masterSound",1f);
@@ -84,6 +86,7 @@ public class PlayerMelee : MonoBehaviour
         {
             // weapon.SetActive(true);
             // sword.SetActive(false);
+            trail.enabled = false;
             recovering = false;
             canAttack = true;
             // weaponHolder.canSwitch = true;
