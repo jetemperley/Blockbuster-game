@@ -181,16 +181,18 @@ public class PlayerMovement2 : MonoBehaviour
     private void Look()
     {
         Vector2 lookInputVector = controls.actions["Look"].ReadValue<Vector2>();
+        
         if(controls.currentControlScheme.Contains("Gamepad"))
         {
             lookInputVector *= 10f;
             if(fov.visibleTargets.Count > 0)
             {
                 var targetDirection = fov.visibleTargets[0].position - playerCamera.transform.position;
+
                 targetDirection.y = 0.00F; // Lock global y-axis 
                 var targetRotation = Quaternion.LookRotation(targetDirection);
-                var deltaAngle = Quaternion.Angle(playerCamera.transform.localRotation, targetRotation);
 
+                var deltaAngle = Quaternion.Angle(playerCamera.transform.localRotation, targetRotation);
                 transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation, lookSpeed*500*Time.deltaTime/deltaAngle);
             }
 
@@ -200,9 +202,7 @@ public class PlayerMovement2 : MonoBehaviour
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
         transform.rotation *= Quaternion.Euler(0, lookInputVector.x * (lookSpeed* PlayerPrefs.GetFloat("MouseSens", 1f)), 0); 
-        
-        
-        
+          
     }
 
     private void StateHandler()
