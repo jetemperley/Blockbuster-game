@@ -15290,6 +15290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cc16b7d25f2f1f4190989550e453838, type: 3}
+--- !u!1 &1114252129 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6312245892552355595, guid: 8cc16b7d25f2f1f4190989550e453838, type: 3}
+  m_PrefabInstance: {fileID: 1114252128}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1128237130
 Mesh:
   m_ObjectHideFlags: 0
@@ -30271,11 +30276,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1874150082 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4705668374510183833, guid: f562a2ceb8160d54aa4273367aa01ee8, type: 3}
-  m_PrefabInstance: {fileID: 1660054279}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1874967717
 Mesh:
   m_ObjectHideFlags: 0
@@ -35357,7 +35357,7 @@ PrefabInstance:
     - target: {fileID: 6342196330826352082, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
       propertyPath: slots.Array.data[0]
       value: 
-      objectReference: {fileID: 1874150082}
+      objectReference: {fileID: 1114252129}
     - target: {fileID: 6342196330826352082, guid: 773d77eb1a7a36b47b6ccf23a1c9918a, type: 3}
       propertyPath: slots.Array.data[1]
       value: 

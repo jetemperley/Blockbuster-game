@@ -185,15 +185,15 @@ public class PlayerMovement2 : MonoBehaviour
         if(controls.currentControlScheme.Contains("Gamepad"))
         {
             lookInputVector *= 10f;
-            if(fov.visibleTargets.Count > 0)
-            {
-                var targetDirection = fov.visibleTargets[0].position - playerCamera.transform.position;
-                targetDirection.y = 0.00F; // Lock global y-axis 
-                var targetRotation = Quaternion.LookRotation(targetDirection);
-                var deltaAngle = Quaternion.Angle(playerCamera.transform.localRotation, targetRotation);
+            // if(fov.visibleTargets.Count > 0)
+            // {
+            //     var targetDirection = fov.visibleTargets[0].position - playerCamera.transform.position;
+            //     targetDirection.y = 0.00F; // Lock global y-axis 
+            //     var targetRotation = Quaternion.LookRotation(targetDirection);
+            //     var deltaAngle = Quaternion.Angle(playerCamera.transform.localRotation, targetRotation);
 
-                transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation, lookSpeed*500*Time.deltaTime/deltaAngle);
-            }
+            //     transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation, lookSpeed*500*Time.deltaTime/deltaAngle);
+            // }
 
         }
         
