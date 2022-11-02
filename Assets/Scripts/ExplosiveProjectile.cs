@@ -41,7 +41,7 @@ public class ExplosiveProjectile : MonoBehaviour
 
     public void SetProperties (float projVel, float expRad, int dmg)
     {
-        SetProperties(projVel, expRad, dmg, 6, 2);
+        SetProperties(projVel, expRad, dmg, verticalOffset, timeToLive);
     }
 
     public void SetProperties (float projVel, float expRad, int dmg, float vOffset, float timeTL)

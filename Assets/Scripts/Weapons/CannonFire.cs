@@ -30,6 +30,7 @@ public class CannonFire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = GameObject.Find("BloomCamera").GetComponent<Camera>();
         controls = PlayerInputLoader.Instance.gameObject.GetComponent<PlayerInput>();
         fireTimer = 0f;
         animator = GetComponent<Animator>();
@@ -56,7 +57,7 @@ public class CannonFire : MonoBehaviour
             explosiveProjectile.transform.localRotation = Quaternion.Euler(90,0,0);
             explosiveProjectile.transform.parent = null;
             Rigidbody rb = explosiveProjectile.GetComponent<Rigidbody>();
-            rb.velocity = (spawnPoint.transform.forward)*explosiveProjectile.projectileVelocity;
+            rb.velocity = (cam.transform.forward)*explosiveProjectile.projectileVelocity;
             fireTimer = fireCooldown;
         }else{
            fireTimer -= Time.deltaTime; 
