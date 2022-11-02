@@ -1878,7 +1878,7 @@ MonoBehaviour:
   recovery: 0.3
   damage: 6
   sword: {fileID: 0}
-  trail: {fileID: 821231222368869204}
+  trail: {fileID: 7423306384315356764}
   prefabHitbox: {fileID: 4518084797337923592, guid: 2285ea7c40e50134b820208623dd55d8, type: 3}
   playerCamera: {fileID: 0}
   swordSwingSFX: {fileID: 8300000, guid: 64356b48b0aedec46b396a1e4b6d9459, type: 3}
@@ -2402,7 +2402,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1134437377889221570, guid: ce73baf6feea2574abba698a5102832c, type: 3}
   m_PrefabInstance: {fileID: 6145166095742569575}
   m_PrefabAsset: {fileID: 0}
---- !u!96 &821231222368869204
+--- !u!96 &7423306384315356764
 TrailRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
@@ -2410,7 +2410,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6554515134310627237}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2423,7 +2423,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5899843169260396085, guid: 302a123f4e6f1ce4e906e8236730725f, type: 3}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2453,7 +2453,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.5061722
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2463,18 +2463,18 @@ TrailRenderer:
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -0.45896196
-        outSlope: -0.45896196
+        inSlope: 0
+        outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.14794523
+        inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.14901961, g: 0.5019608, b: 1, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
