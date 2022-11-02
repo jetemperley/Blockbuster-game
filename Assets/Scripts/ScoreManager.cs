@@ -28,6 +28,9 @@ public class ScoreManager : MonoBehaviour
     }
 
     private PlayerMovement2 player;
+    private Vector3 savePoint;
+    private float distanceScore;
+    bool addingScore;
 
     void Awake() {
         if (inst == null)
@@ -48,8 +51,16 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        addRate = scoreToAdd/baseAddRate;
 
+        if(timer <= 0)
+        {
+            distanceScore = 0;
+        }else{
+            distanceScore = (Vector3.Distance(savePoint, player.transform.position)*scoreMultiplier) - Vector3.Distance(savePoint, player.transform.position);
+        }
+
+        scoreToAdd += (int)distanceScore;
+        addRate = scoreToAdd/baseAddRate;
         if (scoreToAdd > 0)
             timer -= Time.deltaTime;
 
@@ -63,7 +74,7 @@ public class ScoreManager : MonoBehaviour
         {
             additiveScore += scoreToAdd;
             scoreToAdd = 0;
-            timer = timeToAdd;
+            timer = timeToAdd;            
             scoreMultiplier = baseMultiplier;
         }
 
@@ -80,12 +91,12 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int score)
     {
         float floatScore;
-
         floatScore = (float)score*scoreMultiplier;
         scoreToAdd += (int)floatScore;
         timer = timeToAdd;
-
-        if (scoreMultiplier < maxMultiplier)
+        scoreToAdd += (int)distanceScore;
+        if (scoreMultiplier < maxMultiplier)            
+            savePoint = player.transform.position;
             scoreMultiplier += multiplierRate;
     }
 
