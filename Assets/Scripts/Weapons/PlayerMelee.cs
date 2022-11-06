@@ -75,7 +75,7 @@ public class PlayerMelee : MonoBehaviour
             MeleeHitbox meleeHitbox = hitbox.AddComponent<MeleeHitbox>();
             meleeHitbox.activeTime = activeTime;
             meleeHitbox.damage = damage;
-            hitbox.transform.position = gameObject.transform.position;
+            hitbox.transform.position = playerCamera.transform.position;
             hitbox.transform.rotation = playerCamera.transform.rotation;
             attacking = false;
             recovering = true;

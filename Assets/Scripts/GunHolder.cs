@@ -12,8 +12,10 @@ public class GunHolder : MonoBehaviour
     public int activeSlot;
     //public GameObject pistolRoot;
     public GameObject playerCamera;
+    public GameObject uiCamera;
     public bool canSwitch = true;
     public UIManager UI;
+    private int uiLayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +25,13 @@ public class GunHolder : MonoBehaviour
         activeSlot = 0;
         gunRoot = slots[activeSlot];
         UI.UpdateActiveSlot(activeSlot);
+        uiLayer = LayerMask.NameToLayer("3DUI");
         for (int i = 0; i < slots.Length; i++)
         {
             if(slots[i] != null)
             {
+                ChangeLayer(slots[i].transform, uiLayer);
+                MoveModel(slots[i]);
                 UI.UpdateWeaponSlots(i, slots[i].GetComponent<WeaponModel>());
    
                 if (i != activeSlot)
@@ -113,9 +118,8 @@ public class GunHolder : MonoBehaviour
     public void AddGun(GameObject newGun, Pickup pickup)
     {
         
-        newGun.transform.parent = playerCamera.transform;
-        newGun.transform.localPosition = Vector3.zero;
-        newGun.transform.localRotation = Quaternion.identity;
+        MoveModel(newGun);
+        ChangeLayer(newGun.transform, uiLayer);
 
         for (int i = 0; i < slots.Length; i++)
         {
@@ -137,6 +141,31 @@ public class GunHolder : MonoBehaviour
         gunRoot = slots[activeSlot];
         slots[activeSlot].SetActive(true);
         UI.UpdateWeaponSlots(activeSlot, newGun.GetComponent<WeaponModel>());
+        
+    }
+
+    public void ChangeLayer(Transform root, int layer)
+    {
+        root.gameObject.layer = layer;
+        foreach(Transform child in root)
+            ChangeLayer(child, layer);
+    }
+
+    public void MoveModel(GameObject weapon)
+    {
+        if(weapon.transform.childCount > 1)
+        {
+            Transform bulletSpawn = weapon.transform.GetChild(1);
+            bulletSpawn.parent = null;
+            weapon.transform.parent = uiCamera.transform;
+            weapon.transform.localPosition = Vector3.zero;
+            weapon.transform.localRotation = Quaternion.identity;
+            bulletSpawn.parent = playerCamera.transform;  
+        }else{
+            weapon.transform.parent = uiCamera.transform;
+            weapon.transform.localPosition = Vector3.zero;
+            weapon.transform.localRotation = Quaternion.identity;
+        }
         
     }
 }
