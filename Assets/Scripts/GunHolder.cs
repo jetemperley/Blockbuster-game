@@ -134,6 +134,7 @@ public class GunHolder : MonoBehaviour
             }
         }
         //Give the old gun to the pickup object
+        ChangeLayer(gunRoot.transform, 0);
         pickup.SetGunPickup(gunRoot);
 
         //Replace the old gun with the new gun
@@ -153,6 +154,10 @@ public class GunHolder : MonoBehaviour
 
     public void MoveModel(GameObject weapon)
     {
+        weapon.transform.parent = playerCamera.transform;
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.localRotation = Quaternion.identity;
+        
         if(weapon.transform.childCount > 1)
         {
             Transform bulletSpawn = weapon.transform.GetChild(1);
